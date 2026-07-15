@@ -95,7 +95,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(7,7,12,0.6);backdrop-fi
 .hero h1{font-size:60px;margin:24px 0 22px;line-height:1.08;}
 .type-wrap{display:inline;}
 .type-line{display:block;min-height:2.2em;}
-.type-cursor{display:inline-block;width:3px;height:.95em;background:var(--gold);margin-left:4px;border-radius:2px;transform:translateY(4px);animation:blink 1s step-end infinite;}
+.type-cursor{display:inline-block;width:3px;height:.95em;background:linear-gradient(180deg,var(--gold-soft),var(--gold-deep));margin-left:4px;border-radius:2px;transform:translateY(4px);box-shadow:0 0 10px rgba(232,184,75,.7);animation:blink 1s step-end infinite;}
 @keyframes blink{50%{opacity:0;}}
 .hero p.lede{font-size:18px;color:var(--muted);max-width:480px;margin-bottom:16px;}
 .hero .rating{display:flex;align-items:center;gap:10px;margin-bottom:28px;font-size:14px;color:var(--muted);}
