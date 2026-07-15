@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vantage Tutoring — Premium QCE Tutoring, Brisbane</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12161D;
+    --ink-2:#1B212C;
+    --ink-3:#262E3B;
+    --paper:#F2F0EA;
+    --paper-2:#E9E6DC;
+    --ink-text:#20242C;
+    --muted:#5B6270;
+    --muted-on-ink:#9BA3B4;
+    --gold:#B08D45;
+    --gold-soft:#E7D9B8;
+    --platinum:#8B94A3;
+    --platinum-soft:#DADEE4;
+    --line:#D8D4C8;
+    --line-on-ink:#333B49;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink-text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Libre Caslon Text',serif;
+    font-weight:700;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:6px;height:6px;border-radius:50%;
+    background:var(--gold);
+    display:inline-block;
+  }
+
+  /* HEADER */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(18,22,29,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-on-ink);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 24px;
+  }
+  .brand{
+    font-family:'Libre Caslon Text',serif;
+    font-size:19px;color:#F2F0EA;
+    display:flex;align-items:center;gap:10px;
+  }
+  .brand .mark{
+    width:32px;height:32px;border-radius:50%;
+    border:1px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;color:var(--gold);
+    flex-shrink:0;
+  }
+  .navlinks{display:flex;gap:32px;align-items:center;}
+  .navlinks a{
+    color:var(--muted-on-ink);font-size:14px;
+    transition:color .15s;
+  }
+  .navlinks a:hover{color:#F2F0EA;}
+  .nav-cta{
+    background:var(--gold);color:#20180A;
+    padding:9px 18px;border-radius:999px;
+    font-size:13px;font-weight:600;
+    white-space:nowrap;
+  }
+  .navtoggle{display:none;background:none;border:0;color:#F2F0EA;font-size:22px;cursor:pointer;}
+
+  /* HERO */
+  .hero{
+    background:var(--ink);color:#F2F0EA;
+    padding:76px 0 0;
+  }
+  .hero-inner{
+    display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;
+    align-items:center;
+    padding-bottom:64px;
+  }
+  .hero .eyebrow{color:var(--gold-soft);margin-bottom:22px;}
+  .hero h1{
+    font-size:56px;line-height:1.05;color:#FAF9F5;
+    margin-bottom:22px;
+  }
+  .hero h1 em{
+    font-style:italic;color:var(--gold-soft);
+  }
+  .hero p.lede{
+    font-size:17px;color:var(--muted-on-ink);
+    max-width:440px;margin-bottom:32px;
+  }
+  .price-tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:15px;color:var(--gold-soft);
+    margin-bottom:32px;
+  }
+  .price-tag b{font-size:22px;color:#FAF9F5;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--gold);color:#20180A;
+    padding:14px 26px;border-radius:999px;
+    font-weight:600;font-size:14px;
+    border:1px solid var(--gold);
+    cursor:pointer;
+    transition:transform .15s;
+    display:inline-block;
+  }
+  .btn-primary:hover{transform:translateY(-1px);}
+  .btn-ghost{
+    background:transparent;color:#F2F0EA;
+    padding:14px 26px;border-radius:999px;
+    font-weight:500;font-size:14px;
+    border:1px solid var(--line-on-ink);
+    cursor:pointer;
+    display:inline-block;
+  }
+  .hero-panel{
+    background:var(--ink-2);
+    border:1px solid var(--line-on-ink);
+    border-radius:var(--radius);
+    padding:28px;
+  }
+  .hero-panel-title{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;color:var(--muted-on-ink);
+    text-transform:uppercase;letter-spacing:.12em;
+    margin-bottom:18px;
+  }
+  .hero-panel-row{
+    display:flex;justify-content:space-between;align-items:baseline;
+    padding:12px 0;border-bottom:1px dashed var(--line-on-ink);
+  }
+  .hero-panel-row:last-child{border-bottom:none;}
+  .hero-panel-row .label{font-size:13px;color:var(--muted-on-ink);}
+  .hero-panel-row .val{font-family:'IBM Plex Mono',monospace;font-size:20px;color:#FAF9F5;}
+
+  /* RESULTS DOCKET */
+  .docket{
+    background:var(--ink-2);
+    border-top:1px solid var(--line-on-ink);
+    border-bottom:1px solid var(--line-on-ink);
+  }
+  .docket-inner{
+    display:grid;grid-template-columns:repeat(4,1fr);
+  }
+  .docket-stat{
+    padding:30px 24px;
+    text-align:center;
+    position:relative;
+    border-right:1px solid var(--line-on-ink);
+  }
+  .docket-stat:last-child{border-right:none;}
+  .docket-stat .num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:32px;font-weight:600;color:var(--gold-soft);
+    display:block;
+  }
+  .docket-stat .lbl{
+    font-size:12px;color:var(--muted-on-ink);
+    margin-top:6px;display:block;
+  }
+
+  section{padding:88px 0;}
+  .section-head{
+    max-width:600px;margin-bottom:48px;
+  }
+  .section-head .eyebrow{color:var(--gold);margin-bottom:14px;}
+  .section-head h2{font-size:34px;color:var(--ink-text);}
+  .section-head p{color:var(--muted);margin-top:12px;font-size:15px;}
+
+  /* SERVICES */
+  .services{background:var(--paper);}
+  .service-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:20px;
+  }
+  .service-card{
+    background:#FAF9F5;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:30px;
+    position:relative;
+  }
+  .service-card.featured{
+    border:1px solid var(--gold);
+    background:linear-gradient(180deg,#FAF6EC,#FAF9F5);
+  }
+  .service-badge{
+    position:absolute;top:24px;right:24px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+    background:var(--gold);color:#20180A;
+    padding:4px 10px;border-radius:999px;
+  }
+  .service-card h3{font-size:20px;margin-bottom:6px;padding-right:80px;}
+  .service-card .note{font-size:13px;color:var(--muted);margin-bottom:16px;}
+  .service-card ul{margin:0;padding:0;list-style:none;}
+  .service-card li{
+    font-size:14px;color:var(--ink-text);
+    padding:9px 0 9px 22px;position:relative;
+    border-top:1px solid var(--line);
+  }
+  .service-card li:first-child{border-top:none;}
+  .service-card li::before{
+    content:'';position:absolute;left:0;top:16px;
+    width:6px;height:6px;background:var(--gold);border-radius:1px;
+    transform:rotate(45deg);
+  }
+  .service-card.free-badge-wrap li::before{background:var(--platinum);}
+
+  /* RATES */
+  .rates{background:var(--ink);color:#F2F0EA;}
+  .rates .section-head h2{color:#FAF9F5;}
+  .rates .section-head p{color:var(--muted-on-ink);}
+  .tier-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:24px;
+  }
+  .tier-card{
+    background:var(--ink-2);
+    border-radius:var(--radius);
+    padding:0;
+    overflow:hidden;
+    border-top:3px solid var(--gold);
+  }
+  .tier-card.platinum{border-top:3px solid var(--platinum);}
+  .tier-head{padding:28px 28px 20px;border-bottom:1px dashed var(--line-on-ink);}
+  .tier-head .tier-name{
+    font-family:'Libre Caslon Text',serif;font-size:24px;color:#FAF9F5;
+  }
+  .tier-head .tier-desc{font-size:13px;color:var(--muted-on-ink);margin-top:6px;}
+  .tier-rows{padding:8px 28px 24px;}
+  .tier-row{
+    padding:16px 0;border-bottom:1px solid var(--line-on-ink);
+  }
+  .tier-row:last-child{border-bottom:none;}
+  .tier-row .yr{
+    font-size:13px;color:var(--muted-on-ink);
+    text-transform:uppercase;letter-spacing:.06em;
+    margin-bottom:8px;
+  }
+  .tier-row .prices{
+    display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:14px;
+  }
+  .tier-row .prices span:last-child{color:var(--gold-soft);}
+  .platinum .tier-row .prices span:last-child{color:var(--platinum-soft);}
+  .tier-row .prices small{color:var(--muted-on-ink);font-size:11px;font-family:'Inter',sans-serif;}
+  .tier-note{
+    margin-top:20px;font-size:15px;color:var(--muted-on-ink);
+    text-align:center;
+  }
+
+  /* WORKSHOPS STRIP */
+  .workshop-strip{
+    background:var(--paper-2);
+    padding:44px 0;
+  }
+  .workshop-inner{
+    display:flex;align-items:center;justify-content:space-between;gap:32px;
+    flex-wrap:wrap;
+  }
+  .workshop-inner h3{font-size:20px;max-width:480px;}
+  .workshop-inner p{font-size:14px;color:var(--muted);max-width:480px;margin-top:8px;}
+
+  /* FAQ */
+  .faq{background:var(--paper);}
+  .faq-list{max-width:760px;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px 0;cursor:pointer;
+    font-size:16px;font-weight:600;
+    background:none;border:none;width:100%;text-align:left;color:var(--ink-text);
+    font-family:'Inter',sans-serif;
+  }
+  .faq-q .plus{font-family:'IBM Plex Mono',monospace;color:var(--gold);font-size:18px;transition:transform .2s;}
+  .faq-item.open .faq-q .plus{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0;overflow:hidden;transition:max-height .25s ease;
+  }
+  .faq-a p{font-size:14px;color:var(--muted);padding-bottom:22px;max-width:600px;margin:0;}
+  .faq-item.open .faq-a{max-height:200px;}
+
+  /* CONTACT */
+  .contact{background:var(--ink);color:#F2F0EA;}
+  .contact-inner{
+    display:grid;grid-template-columns:1fr 1fr;gap:56px;
+  }
+  .contact-info h2{font-size:34px;color:#FAF9F5;margin-bottom:16px;}
+  .contact-info p{color:var(--muted-on-ink);font-size:15px;margin-bottom:32px;max-width:400px;}
+  .contact-line{
+    display:flex;align-items:center;gap:14px;padding:14px 0;
+    border-top:1px solid var(--line-on-ink);
+    font-size:15px;
+  }
+  .contact-line:last-child{border-bottom:1px solid var(--line-on-ink);}
+  .contact-line .k{color:var(--muted-on-ink);width:70px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-family:'IBM Plex Mono',monospace;}
+  .contact-line a{color:var(--gold-soft);}
+  form{display:flex;flex-direction:column;gap:14px;}
+  form input, form textarea{
+    background:var(--ink-2);
+    border:1px solid var(--line-on-ink);
+    border-radius:8px;
+    padding:14px 16px;
+    color:#F2F0EA;
+    font-family:'Inter',sans-serif;
+    font-size:14px;
+  }
+  form input::placeholder, form textarea::placeholder{color:var(--muted-on-ink);}
+  form textarea{resize:vertical;min-height:110px;}
+  form button{
+    background:var(--gold);color:#20180A;border:none;
+    padding:14px;border-radius:8px;font-weight:600;font-size:14px;
+    cursor:pointer;
+  }
+  .form-note{font-size:12px;color:var(--muted-on-ink);}
+
+  footer{
+    background:var(--ink);color:var(--muted-on-ink);
+    padding:24px 0;border-top:1px solid var(--line-on-ink);
+    text-align:center;font-size:13px;
+  }
+
+  @media (max-width:860px){
+    .hero-inner{grid-template-columns:1fr;padding-bottom:44px;}
+    .hero h1{font-size:38px;}
+    .docket-inner{grid-template-columns:repeat(2,1fr);}
+    .docket-stat:nth-child(2){border-right:none;}
+    .docket-stat{border-bottom:1px solid var(--line-on-ink);}
+    .service-grid{grid-template-columns:1fr;}
+    .tier-grid{grid-template-columns:1fr;}
+    .contact-inner{grid-template-columns:1fr;}
+    .navlinks{
+      position:absolute;top:100%;left:0;right:0;
+      background:var(--ink);flex-direction:column;
+      padding:20px 24px;gap:18px;
+      border-bottom:1px solid var(--line-on-ink);
+      display:none;
+    }
+    .navlinks.open{display:flex;}
+    .navtoggle{display:block;}
+    section{padding:56px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav wrap">
+    <a href="#top" class="brand"><span class="mark">VT</span>Vantage Tutoring</a>
+    <nav class="navlinks" id="navlinks">
+      <a href="#services">Services</a>
+      <a href="#rates">Rates</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="nav-cta">Enrol today</a>
+    </nav>
+    <button class="navtoggle" id="navtoggle" aria-label="Menu">&#9776;</button>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div>
+        <span class="eyebrow">Now enrolling — Term 3, 2026</span>
+        <h1>Premium tutoring<br>for the <em>QCE.</em></h1>
+        <p class="lede">One-on-one tutoring from Queensland's highest-scoring graduates. Structured, syllabus-aligned, and built around your subject score.</p>
+        <div class="price-tag">Sessions from <b>$60</b> / hour</div>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn-primary">Start your learning journey</a>
+          <a href="#rates" class="btn-ghost">View rates</a>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div class="hero-panel-title">Tutor verification</div>
+        <div class="hero-panel-row"><span class="label">Median tutor ATAR</span><span class="val">99.85</span></div>
+        <div class="hero-panel-row"><span class="label">Tutoring hours delivered</span><span class="val">5,000+</span></div>
+        <div class="hero-panel-row"><span class="label">Students tutored</span><span class="val">80</span></div>
+        <div class="hero-panel-row"><span class="label">Avg. Yr 12 subject score</span><span class="val">98</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="docket">
+  <div class="wrap">
+    <div class="docket-inner">
+      <div class="docket-stat"><span class="num mono">99.85</span><span class="lbl">Median tutor ATAR</span></div>
+      <div class="docket-stat"><span class="num mono">5,000+</span><span class="lbl">Hours of tutoring experience</span></div>
+      <div class="docket-stat"><span class="num mono">80</span><span class="lbl">Students tutored</span></div>
+      <div class="docket-stat"><span class="num mono">98</span><span class="lbl">Avg. Year 12 subject score</span></div>
+    </div>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Services we provide</span>
+      <h2>Everything built around one goal: your subject score.</h2>
+    </div>
+    <div class="service-grid">
+      <div class="service-card featured">
+        <span class="service-badge">Core service</span>
+        <h3>1-on-1 private tutoring</h3>
+        <p class="note">Ongoing weekly sessions, fully personalised</p>
+        <ul>
+          <li>40 hours of recorded Chemistry masterclasses covering the entire syllabus (formerly QLD ATAR Accelerator)</li>
+          <li>Full-mark Year 12 assignment exemplars for every subject</li>
+          <li>Thousands of past papers across every subject</li>
+          <li>Custom lesson plans built around your progress</li>
+          <li>24/7 tutor and Vantage Resources support</li>
+          <li>Weekly homework and retrieval practice worksheets</li>
+          <li>External exam preparation workshops in core subjects</li>
+          <li>Career pathway discussion call</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <h3>Assignment review</h3>
+        <p class="note">Written feedback on any assessment piece</p>
+        <ul>
+          <li>72-hour turnaround, with a same-day option available</li>
+          <li>Comprehensive written feedback on your draft</li>
+          <li>Feedback written only by tutors who scored full marks on that assignment</li>
+          <li>30-minute post-feedback call to talk through next steps</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <h3>Year 12 Chemistry masterclasses</h3>
+        <p class="note">Free with any 1-on-1 enrolment</p>
+        <ul>
+          <li>40 hours of recorded masterclasses covering the entire syllabus</li>
+          <li>Full-mark Year 12 assignment exemplars in Chemistry</li>
+          <li>Hundreds of Chemistry past papers</li>
+          <li>Weekly Chemistry retrieval practice worksheets</li>
+        </ul>
+      </div>
+      <div class="service-card free-badge-wrap">
+        <h3>Free external exam workshops</h3>
+        <p class="note">Exclusive to current Vantage students, Year 12</p>
+        <ul>
+          <li>Hosted online and in-person at the State Library of Queensland</li>
+          <li>Subject-based, run ahead of each External Exam</li>
+          <li>Led by Vantage tutors who scored 99 or 100 in that subject</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="rates" id="rates">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Our rates</span>
+      <h2>Two tiers of tutor. One standard of results.</h2>
+      <p>Every session includes access to the Vantage Resource Library, past papers, and weekly homework, in addition to the services listed above.</p>
+    </div>
+    <div class="tier-grid">
+      <div class="tier-card">
+        <div class="tier-head">
+          <div class="tier-name">Gold tutors</div>
+          <div class="tier-desc">Top 1% of graduates — our high-achieving tutors</div>
+        </div>
+        <div class="tier-rows">
+          <div class="tier-row">
+            <div class="yr">Year 8 &amp; 9</div>
+            <div class="prices"><span>Online <small>per hour</small></span><span>$60</span></div>
+            <div class="prices"><span>In person <small>State Library, UQ, Griffith, Garden City</small></span><span>$65</span></div>
+          </div>
+          <div class="tier-row">
+            <div class="yr">Year 10 &amp; 11</div>
+            <div class="prices"><span>Online <small>per hour</small></span><span>$65</span></div>
+            <div class="prices"><span>In person <small>State Library, UQ, Griffith, Garden City</small></span><span>$70</span></div>
+          </div>
+          <div class="tier-row">
+            <div class="yr">Year 12 <small style="font-family:'Inter',sans-serif;text-transform:none;letter-spacing:0;">— incl. mock exams, exemplars &amp; free workshops</small></div>
+            <div class="prices"><span>Online <small>per hour</small></span><span>$70</span></div>
+            <div class="prices"><span>In person <small>State Library, UQ, Griffith, Garden City</small></span><span>$75</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="tier-card platinum">
+        <div class="tier-head">
+          <div class="tier-name">Platinum tutors</div>
+          <div class="tier-desc">Top 0.2% of graduates — our most elite tutors</div>
+        </div>
+        <div class="tier-rows">
+          <div class="tier-row">
+            <div class="yr">Year 8 &amp; 9</div>
+            <div class="prices"><span>Online <small>per hour</small></span><span>$70</span></div>
+            <div class="prices"><span>In person <small>State Library, UQ, Griffith, Garden City</small></span><span>$75</span></div>
+          </div>
+          <div class="tier-row">
+            <div class="yr">Year 10 &amp; 11</div>
+            <div class="prices"><span>Online <small>per hour</small></span><span>$75</span></div>
+            <div class="prices"><span>In person <small>State Library, UQ, Griffith, Garden City</small></span><span>$80</span></div>
+          </div>
+          <div class="tier-row">
+            <div class="yr">Year 12 <small style="font-family:'Inter',sans-serif;text-transform:none;letter-spacing:0;">— incl. mock exams, exemplars &amp; free workshops</small></div>
+            <div class="prices"><span>Online <small>per hour</small></span><span>$80</span></div>
+            <div class="prices"><span>In person <small>State Library, UQ, Griffith, Garden City</small></span><span>$85</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="tier-note">Preferred in-person venue is the State Library of Queensland.</p>
+  </div>
+</section>
+
+<div class="workshop-strip">
+  <div class="wrap workshop-inner">
+    <div>
+      <h3>Ready to enrol for Term 3?</h3>
+      <p>Tell us your year level and subjects, and we'll match you with a Gold or Platinum tutor within 48 hours.</p>
+    </div>
+    <a href="#contact" class="btn-primary" style="background:var(--ink);color:#F2F0EA;border-color:var(--ink);">Enrol today</a>
+  </div>
+</div>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Frequently asked questions</span>
+      <h2>Learn more</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">Why choose us? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Our tutors have a median ATAR of 99.85 and a combined 5,000+ hours of tutoring experience, and our Year 12 students average a subject score of 98. Every tutor is selected for both academic results and teaching ability.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Why university students as tutors? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Our tutors sat the exact same QCE syllabus recently, so they know current exam structures, marking criteria and common mistakes first-hand — and they're close enough in age to explain things in a way that actually clicks.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do you provide homework or assignment feedback? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Yes. Weekly homework is included in every 1-on-1 package, and our standalone Assignment Review service gives you comprehensive written feedback from a tutor who scored full marks on that assignment, with a 72-hour turnaround.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What are your qualifications? <span class="plus">+</span></button>
+        <div class="faq-a"><p>All tutors are vetted before joining and placed into one of two tiers based on their own academic results: Gold (top 1% of graduates) or Platinum (top 0.2%).</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do all tutors charge the same rate? <span class="plus">+</span></button>
+        <div class="faq-a"><p>No. Rates depend on tutor tier (Gold or Platinum), year level, and whether sessions are online or in person. Full pricing is listed in the rates table above.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What do your tutors study? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Our tutors are current university students at Brisbane institutions including UQ and Griffith, studying a range of degrees while continuing to tutor the subjects they excelled in.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div class="contact-info">
+        <span class="eyebrow" style="color:var(--gold-soft);">Contact us</span>
+        <h2 style="margin-top:16px;">Enrol today</h2>
+        <p>Send us your year level and subjects and we'll match you with a Gold or Platinum tutor.</p>
+        <div class="contact-line"><span class="k">Phone</span><a href="tel:0414131893">0414 131 893</a></div>
+        <div class="contact-line"><span class="k">Email</span><a href="mailto:hello@vantagetutoring.com.au">hello@vantagetutoring.com.au</a></div>
+      </div>
+      <form onsubmit="return false;">
+        <input type="text" placeholder="Your name" required>
+        <input type="email" placeholder="Email address" required>
+        <textarea placeholder="Tell us your year level and subjects" required></textarea>
+        <button type="submit">Send message</button>
+        <span class="form-note">We'll get back to you within 48 hours.</span>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Vantage Tutoring &copy; 2026. All rights reserved.</div>
+</footer>
+
+<script>
+  document.getElementById('navtoggle').addEventListener('click', function(){
+    document.getElementById('navlinks').classList.toggle('open');
+  });
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.faq-item');
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); });
+      if(!wasOpen){ item.classList.add('open'); }
+    });
+  });
+</script>
+
+</body>
+</html>
