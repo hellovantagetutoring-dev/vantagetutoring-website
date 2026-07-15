@@ -29,11 +29,19 @@
   // Tutor marquee
   var marquee=document.getElementById('marquee');
   if(marquee){
-    var names=['Benjamin','Zara','Sam','Poppy','Maddie','Charli','Patrick','Kiran','Olivia','Daniel','Rebecca','Joshua','Alexander','Anna','Harry','Rhys','Isaiah','Kai'];
-    var scores=['99.95','99.90','99.85','99.75','99.70','99.65','99.55','99.45','99.40','99.30'];
+    var tutors=[
+      {name:'Jason',atar:'99.85'},
+      {name:'Jeremy',atar:'99.90'},
+      {name:'Yun',atar:'99.90'},
+      {name:'Keeran',atar:'99.50'},
+      {name:'Brooklyn',atar:'99.75'},
+      {name:'Jize',atar:'99.85'},
+      {name:'Ken',atar:'99.85'},
+      {name:'Lincoln',atar:'99.80'}
+    ];
     var html='';
-    for(var i=0;i<names.length;i++){
-      html+='<span class="chip"><b>'+names[i]+'</b><span class="score">'+scores[i%scores.length]+' ATAR</span></span>';
+    for(var i=0;i<tutors.length;i++){
+      html+='<span class="chip"><b>'+tutors[i].name+'</b><span class="score">'+tutors[i].atar+' ATAR</span></span>';
     }
     marquee.innerHTML=html+html;
   }
