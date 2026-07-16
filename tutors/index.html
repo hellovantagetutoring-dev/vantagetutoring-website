@@ -44,8 +44,42 @@
   </div>
 </section>
 
+<section class="tutor-filter-bar" id="tutorFilterBar">
+  <div class="wrap">
+    <div class="tutor-filters" id="tutorFilters">
+      <div class="filter-group">
+        <span class="filter-label">Subject <em class="filter-hint">(must teach all selected)</em></span>
+        <div class="filter-chips" data-filter="subject" role="group" aria-label="Filter by subject">
+          <button type="button" class="filter-chip active" data-value="all">All</button>
+          <button type="button" class="filter-chip" data-value="maths-methods">Maths Methods</button>
+          <button type="button" class="filter-chip" data-value="specialist-maths">Specialist Maths</button>
+          <button type="button" class="filter-chip" data-value="chemistry">Chemistry</button>
+          <button type="button" class="filter-chip" data-value="physics">Physics</button>
+          <button type="button" class="filter-chip" data-value="literature">Literature</button>
+          <button type="button" class="filter-chip" data-value="economics">Economics</button>
+          <button type="button" class="filter-chip" data-value="philosophy">Philosophy</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Degree area</span>
+        <div class="filter-chips" data-filter="degree" role="group" aria-label="Filter by degree area">
+          <button type="button" class="filter-chip active" data-value="all">All</button>
+          <button type="button" class="filter-chip" data-value="medicine">Medicine / Health</button>
+          <button type="button" class="filter-chip" data-value="engineering">Engineering</button>
+          <button type="button" class="filter-chip" data-value="science">Science</button>
+          <button type="button" class="filter-chip" data-value="commerce">Commerce / Finance</button>
+          <button type="button" class="filter-chip" data-value="law">Law</button>
+          <button type="button" class="filter-chip" data-value="music">Music</button>
+        </div>
+      </div>
+      <p class="filter-count" id="filterCount" aria-live="polite"></p>
+      <p class="filter-empty" id="filterEmpty" hidden>No tutors match these filters. <button type="button" class="filter-reset" id="filterReset">Clear filters</button></p>
+    </div>
+  </div>
+</section>
+
 <!-- Replace the placeholder tutors below with your real team profiles and photos. -->
-<section class="tight">
+<section class="tight tutor-tier-section" data-tier="platinum">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="pill"><span class="dot"></span>Platinum tutors</span>
@@ -53,7 +87,7 @@
       <p>Our most elite tutors, ideal for students targeting top university entry and 99+ subject results.</p>
     </div>
     <div class="tutor-grid">
-      <div class="tutor-card platinum reveal">
+      <div class="tutor-card platinum reveal" data-subjects="" data-degrees="medicine science">
         <div class="tutor-top">
           <div class="tutor-avatar"><img src="/assets/tutors/jason-liu.jpg" alt="Jason Liu"></div>
           <div><div class="tutor-name">Jason Liu</div><span class="tutor-tier">Platinum tutor</span></div>
@@ -62,30 +96,10 @@
         <div class="tutor-degree">Founder of Vantage Tutoring</div>
         <div class="tutor-degree">Bachelor of Medical Science, provisional MD entry (Griffith)</div>
       </div>
-      <div class="tutor-card platinum reveal">
-        <div class="tutor-top">
-          <div class="tutor-avatar">JL</div>
-          <div><div class="tutor-name">Jeremy Ling</div><span class="tutor-tier">Platinum tutor</span></div>
-        </div>
-        <div class="tutor-atar"><span class="a-num gold-text">99.90</span><span class="a-lbl">ATAR</span></div>
-        <div class="tutor-note">Contact us for more information.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="tight">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="pill"><span class="dot"></span>Gold tutors</span>
-      <h2 class="shine-gold">Gold</h2>
-      <p>High-achieving tutors with a track record of lifting subject scores across Years 8 to 12.</p>
-    </div>
-    <div class="tutor-grid">
-      <div class="tutor-card reveal">
+      <div class="tutor-card platinum reveal" data-subjects="physics maths-methods specialist-maths chemistry" data-degrees="medicine science">
         <div class="tutor-top">
           <div class="tutor-avatar"><img src="/assets/tutors/yun-hao.jpg" alt="Yun Hao"></div>
-          <div><div class="tutor-name">Yun Hao</div><span class="tutor-tier">Gold tutor</span></div>
+          <div><div class="tutor-name">Yun Hao</div><span class="tutor-tier">Platinum tutor</span></div>
         </div>
         <div class="tutor-atar"><span class="a-num gold-text">99.90</span><span class="a-lbl">ATAR</span></div>
         <div class="tutor-degree">Bachelor of Medical Science, provisional MD entry (Griffith)</div>
@@ -97,7 +111,34 @@
           <span class="score"><b>98</b> Chemistry</span>
         </div>
       </div>
-      <div class="tutor-card reveal">
+      <div class="tutor-card platinum reveal" data-subjects="maths-methods physics specialist-maths chemistry" data-degrees="engineering science">
+        <div class="tutor-top">
+          <div class="tutor-avatar"><img src="/assets/tutors/lincoln-murray-brown.jpg" alt="Lincoln Murray-Brown"></div>
+          <div><div class="tutor-name">Lincoln Murray-Brown</div><span class="tutor-tier">Platinum tutor</span></div>
+        </div>
+        <div class="tutor-atar"><span class="a-num gold-text">99.80</span><span class="a-lbl">ATAR</span></div>
+        <div class="tutor-degree">Bachelor of Engineering (Honours) / Science (UQ)</div>
+        <div class="tutor-avail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg>Available online and in person in Brisbane</div>
+        <div class="tutor-scores">
+          <span class="score"><b>100</b> Maths Methods</span>
+          <span class="score"><b>99</b> Physics</span>
+          <span class="score"><b>99</b> Specialist Maths</span>
+          <span class="score"><b>98</b> Chemistry</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tight tutor-tier-section" data-tier="gold">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="pill"><span class="dot"></span>Gold tutors</span>
+      <h2 class="shine-gold">Gold</h2>
+      <p>High-achieving tutors with a track record of lifting subject scores across Years 8 to 12.</p>
+    </div>
+    <div class="tutor-grid">
+      <div class="tutor-card reveal" data-subjects="literature economics" data-degrees="commerce">
         <div class="tutor-top">
           <div class="tutor-avatar"><img src="/assets/tutors/keeran-subendranathan.jpg" alt="Keeran Subendranathan"></div>
           <div><div class="tutor-name">Keeran Subendranathan</div><span class="tutor-tier">Gold tutor</span></div>
@@ -110,7 +151,7 @@
           <span class="score"><b>99</b> Economics</span>
         </div>
       </div>
-      <div class="tutor-card reveal">
+      <div class="tutor-card reveal" data-subjects="literature chemistry economics maths-methods philosophy" data-degrees="commerce">
         <div class="tutor-top">
           <div class="tutor-avatar"><img src="/assets/tutors/brooklyn-tran.jpg" alt="Brooklyn Tran"></div>
           <div><div class="tutor-name">Brooklyn Tran</div><span class="tutor-tier">Gold tutor</span></div>
@@ -126,7 +167,7 @@
           <span class="score"><b>97</b> Philosophy and Reason</span>
         </div>
       </div>
-      <div class="tutor-card reveal">
+      <div class="tutor-card reveal" data-subjects="maths-methods physics specialist-maths chemistry literature philosophy" data-degrees="music">
         <div class="tutor-top">
           <div class="tutor-avatar"><img src="/assets/tutors/jize-peng.jpg" alt="Jize Peng"></div>
           <div><div class="tutor-name">Jize Peng</div><span class="tutor-tier">Gold tutor</span></div>
@@ -143,7 +184,7 @@
           <span class="score"><b>98</b> Philosophy</span>
         </div>
       </div>
-      <div class="tutor-card reveal">
+      <div class="tutor-card reveal" data-subjects="maths-methods specialist-maths chemistry physics" data-degrees="law commerce">
         <div class="tutor-top">
           <div class="tutor-avatar">KW</div>
           <div><div class="tutor-name">Ken Wu</div><span class="tutor-tier">Gold tutor</span></div>
@@ -158,22 +199,7 @@
           <span class="score"><b>98</b> Physics</span>
         </div>
       </div>
-      <div class="tutor-card reveal">
-        <div class="tutor-top">
-          <div class="tutor-avatar"><img src="/assets/tutors/lincoln-murray-brown.jpg" alt="Lincoln Murray-Brown"></div>
-          <div><div class="tutor-name">Lincoln Murray-Brown</div><span class="tutor-tier">Gold tutor</span></div>
-        </div>
-        <div class="tutor-atar"><span class="a-num gold-text">99.80</span><span class="a-lbl">ATAR</span></div>
-        <div class="tutor-degree">Bachelor of Engineering (Honours) / Science (UQ)</div>
-        <div class="tutor-avail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg>Available online and in person in Brisbane</div>
-        <div class="tutor-scores">
-          <span class="score"><b>100</b> Maths Methods</span>
-          <span class="score"><b>99</b> Physics</span>
-          <span class="score"><b>99</b> Specialist Maths</span>
-          <span class="score"><b>98</b> Chemistry</span>
-        </div>
-      </div>
-      <div class="tutor-card reveal">
+      <div class="tutor-card reveal" data-subjects="" data-degrees="">
         <div class="tutor-top">
           <div class="tutor-avatar">CT</div>
           <div><div class="tutor-name">Crystal Tsao</div><span class="tutor-tier">Gold tutor</span></div>
@@ -220,6 +246,124 @@
   </div>
 </footer>
 
+
+<script>
+(function(){
+  var filterRoot=document.getElementById('tutorFilters');
+  if(!filterRoot) return;
+
+  var subjects=[];
+  var degree='all';
+  var cards=[].slice.call(document.querySelectorAll('.tutor-card'));
+  var sections=[].slice.call(document.querySelectorAll('.tutor-tier-section'));
+  var emptyEl=document.getElementById('filterEmpty');
+  var countEl=document.getElementById('filterCount');
+  var resetBtn=document.getElementById('filterReset');
+  var subjectGroup=filterRoot.querySelector('[data-filter="subject"]');
+  var degreeGroup=filterRoot.querySelector('[data-filter="degree"]');
+
+  function tags(el, attr){
+    return (el.getAttribute(attr)||'').toLowerCase().split(/\s+/).filter(Boolean);
+  }
+  function matchesSubjects(card){
+    if(!subjects.length) return true;
+    var list=tags(card,'data-subjects');
+    for(var i=0;i<subjects.length;i++){
+      if(list.indexOf(subjects[i])===-1) return false;
+    }
+    return true;
+  }
+  function matchesDegree(card){
+    if(degree==='all') return true;
+    return tags(card,'data-degrees').indexOf(degree)!==-1;
+  }
+  function syncSubjectUI(){
+    if(!subjectGroup) return;
+    var useAll=!subjects.length;
+    [].forEach.call(subjectGroup.querySelectorAll('.filter-chip'), function(b){
+      var v=b.getAttribute('data-value');
+      var on=useAll ? v==='all' : subjects.indexOf(v)!==-1;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+  function syncDegreeUI(){
+    if(!degreeGroup) return;
+    [].forEach.call(degreeGroup.querySelectorAll('.filter-chip'), function(b){
+      var on=b.getAttribute('data-value')===degree;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+  function apply(){
+    var shown=0;
+    cards.forEach(function(card){
+      var ok=matchesSubjects(card)&&matchesDegree(card);
+      if(ok){
+        card.classList.remove('is-filtered-out');
+        card.classList.add('in');
+        shown++;
+      }else{
+        card.classList.add('is-filtered-out');
+      }
+    });
+    sections.forEach(function(sec){
+      var any=sec.querySelectorAll('.tutor-card:not(.is-filtered-out)').length>0;
+      sec.classList.toggle('is-empty', !any);
+    });
+    if(countEl){
+      var filtering=subjects.length>0||degree!=='all';
+      countEl.textContent=filtering ? (shown+' tutor'+(shown===1?'':'s')+' match') : '';
+    }
+    if(emptyEl) emptyEl.hidden=shown>0;
+  }
+
+  function onSubjectClick(e){
+    var btn=e.target.closest ? e.target.closest('.filter-chip') : null;
+    if(!btn||!subjectGroup.contains(btn)) return;
+    e.preventDefault();
+    var val=btn.getAttribute('data-value');
+    if(val==='all'){
+      subjects=[];
+    }else{
+      var idx=subjects.indexOf(val);
+      if(idx===-1) subjects.push(val);
+      else subjects.splice(idx,1);
+    }
+    syncSubjectUI();
+    apply();
+  }
+  function onDegreeClick(e){
+    var btn=e.target.closest ? e.target.closest('.filter-chip') : null;
+    if(!btn||!degreeGroup.contains(btn)) return;
+    e.preventDefault();
+    degree=btn.getAttribute('data-value');
+    syncDegreeUI();
+    apply();
+  }
+
+  if(subjectGroup){
+    subjectGroup.setAttribute('aria-multiselectable','true');
+    subjectGroup.addEventListener('click', onSubjectClick);
+  }
+  if(degreeGroup){
+    degreeGroup.addEventListener('click', onDegreeClick);
+  }
+  if(resetBtn){
+    resetBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      subjects=[];
+      degree='all';
+      syncSubjectUI();
+      syncDegreeUI();
+      apply();
+    });
+  }
+  syncSubjectUI();
+  syncDegreeUI();
+  apply();
+})();
+</script>
 <script src="/assets/main.js"></script>
 </body>
 </html>

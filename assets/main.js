@@ -31,7 +31,6 @@
   if(marquee){
     var tutors=[
       {name:'Jason',atar:'99.85'},
-      {name:'Jeremy',atar:'99.90'},
       {name:'Yun',atar:'99.90'},
       {name:'Keeran',atar:'99.50'},
       {name:'Brooklyn',atar:'99.75'},
@@ -138,4 +137,5 @@
         });
     });
   }
+
 })();
