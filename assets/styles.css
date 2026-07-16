@@ -1369,45 +1369,41 @@ footer{border-top:1px solid var(--stroke);padding:44px 0 30px;margin-top:20px;}
     background:rgba(255,255,255,0.97);
     border-color:rgba(0,0,0,0.1);
   }
-  .tutor-filters.is-open{
-    position:relative;
-    z-index:2;
+  /* Backdrop + sheet live on document.body (see tutors JS) so sticky header can't trap them */
+  .filter-backdrop{
+    display:none;
+    position:fixed;inset:0;
+    z-index:10040;
+    background:rgba(15,12,28,.42);
+    -webkit-tap-highlight-color:transparent;
   }
-  .tutor-filters.is-open .filter-toggle{position:relative;z-index:2;}
-  .tutor-filters.is-open .filter-panel{
-    position:fixed;left:12px;right:12px;top:62px;bottom:auto;
-    z-index:122;
-    margin:0;padding:10px;
-    width:auto;
-    height:min(62vh, calc(100dvh - 86px));
-    max-height:min(62vh, calc(100dvh - 86px));
+  .filter-backdrop.is-on{display:block;}
+  .filter-panel.is-sheet{
+    display:block !important;
+    position:fixed;
+    left:12px;right:12px;
+    top:max(12px, env(safe-area-inset-top, 0px));
+    z-index:10050;
+    margin:0;padding:12px;
+    width:auto;box-sizing:border-box;
+    max-height:min(72vh, calc(100dvh - 24px));
     overflow-x:hidden;overflow-y:auto;
     -webkit-overflow-scrolling:touch;
     overscroll-behavior:contain;
-    border:1px solid rgba(0,0,0,0.1);
+    border:1px solid rgba(0,0,0,0.12);
     border-radius:16px;
     background:#fff;
-    box-shadow:0 22px 48px -16px rgba(15,12,28,.4);
+    box-shadow:0 22px 48px -16px rgba(15,12,28,.5);
     pointer-events:auto;
   }
   html.filters-sheet-open,
-  body.filters-sheet-open{overflow:hidden;touch-action:none;}
-  /* Lift whole filter bar above dim overlay (stacking context fix) */
-  body.filters-sheet-open .tutor-filter-bar{
-    z-index:120;
-  }
-  body.filters-sheet-open::before{
-    content:'';position:fixed;inset:0;z-index:110;
-    background:rgba(15,12,28,.28);
-    pointer-events:auto;
-  }
+  body.filters-sheet-open{overflow:hidden;}
   .filter-sections{grid-template-columns:1fr;gap:10px;}
   .filter-section{padding:10px 12px;}
   .filter-section-head{margin-bottom:8px;gap:8px;}
   .filter-section-title{font-size:12.5px;}
   .filter-section-desc{font-size:11px;}
   .filter-section-num{width:20px;height:20px;font-size:10px;border-radius:6px;}
-  /* Wrap chips in-panel — no sideways page scroll */
   .filter-chips{
     gap:5px;flex-wrap:wrap;overflow:visible;padding-bottom:0;
   }
@@ -1419,10 +1415,15 @@ footer{border-top:1px solid var(--stroke);padding:44px 0 30px;margin-top:20px;}
   #filterDays.filter-checks{
     display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px;
   }
+  .filter-panel.is-sheet .filter-check{
+    background:#F3F3F5;
+    border:1px solid rgba(0,0,0,.12);
+    color:var(--text);
+  }
   #filterDays .filter-check{
     position:relative;justify-content:center;align-items:center;
-    padding:0;min-height:24px;font-size:9px;font-weight:700;gap:0;
-    border-radius:7px;
+    padding:0;min-height:32px;font-size:11px;font-weight:700;gap:0;
+    border-radius:8px;
   }
   #filterDays .filter-check input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none;}
   #filterDays .filter-check:has(input:checked){
@@ -1640,12 +1641,13 @@ footer{border-top:1px solid var(--stroke);padding:44px 0 30px;margin-top:20px;}
       background:#12121C;
       border-color:rgba(255,255,255,0.14);
     }
-    .tutor-filters.is-open .filter-panel{
+    .filter-panel.is-sheet{
       background:#12121C;
       border-color:rgba(255,255,255,0.14);
       box-shadow:0 22px 48px -16px rgba(0,0,0,.8);
     }
-    body.filters-sheet-open::before{background:rgba(0,0,0,.55);}
+    .filter-backdrop{background:rgba(0,0,0,.55);}
+    .filter-panel.is-sheet{background:#12121C;border-color:rgba(255,255,255,0.14);}
   }
 
   /* Filter bar — more opaque so pills/sections read solid */

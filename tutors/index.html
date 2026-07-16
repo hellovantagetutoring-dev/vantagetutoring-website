@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/styles.css?v=theme32">
+<link rel="stylesheet" href="/assets/styles.css?v=theme36">
 </head>
 <body>
 
@@ -381,24 +381,54 @@
   var filterPanel=document.getElementById('filterPanel');
   var filterToggleMeta=document.getElementById('filterToggleMeta');
   if(filterToggle && filterPanel){
+    var panelHome = filterPanel.parentNode;
+    var backdrop = document.createElement('div');
+    backdrop.id = 'filterBackdrop';
+    backdrop.className = 'filter-backdrop';
+    backdrop.hidden = true;
+    document.body.appendChild(backdrop);
+
+    function isMobileFilters(){
+      return window.matchMedia && window.matchMedia('(max-width:920px)').matches;
+    }
+
     function setFiltersOpen(open){
+      var mobile = isMobileFilters();
       filterRoot.classList.toggle('is-open', open);
       filterToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      if(open) filterPanel.removeAttribute('hidden');
-      else filterPanel.setAttribute('hidden','');
-      var mobile = window.matchMedia && window.matchMedia('(max-width:920px)').matches;
-      document.documentElement.classList.toggle('filters-sheet-open', !!(open && mobile));
-      document.body.classList.toggle('filters-sheet-open', !!(open && mobile));
+
+      if(open){
+        filterPanel.removeAttribute('hidden');
+        if(mobile){
+          document.body.appendChild(filterPanel);
+          filterPanel.classList.add('is-sheet');
+          backdrop.hidden = false;
+          backdrop.classList.add('is-on');
+          document.documentElement.classList.add('filters-sheet-open');
+          document.body.classList.add('filters-sheet-open');
+        }
+      }else{
+        filterPanel.classList.remove('is-sheet');
+        if(panelHome && filterPanel.parentNode !== panelHome){
+          panelHome.appendChild(filterPanel);
+        }
+        filterPanel.setAttribute('hidden','');
+        backdrop.classList.remove('is-on');
+        backdrop.hidden = true;
+        document.documentElement.classList.remove('filters-sheet-open');
+        document.body.classList.remove('filters-sheet-open');
+      }
     }
-    filterToggle.addEventListener('click', function(){
-      var open=!filterRoot.classList.contains('is-open');
-      setFiltersOpen(open);
+
+    filterToggle.addEventListener('click', function(e){
+      e.stopPropagation();
+      setFiltersOpen(!filterRoot.classList.contains('is-open'));
     });
-    // Tap outside filter sheet to close on mobile
-    document.addEventListener('click', function(e){
-      if(!document.body.classList.contains('filters-sheet-open')) return;
-      if(filterRoot.contains(e.target) || (filterPanel && filterPanel.contains(e.target))) return;
+    backdrop.addEventListener('click', function(){
       setFiltersOpen(false);
+    });
+    window.addEventListener('resize', function(){
+      if(filterRoot.classList.contains('is-open')) setFiltersOpen(true);
     });
     setFiltersOpen(false);
     if(location.hash==='#when'){
@@ -594,6 +624,6 @@
   apply();
 })();
 </script>
-<script src="/assets/main.js?v=theme32"></script>
+<script src="/assets/main.js?v=theme36"></script>
 </body>
 </html>
