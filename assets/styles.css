@@ -1734,3 +1734,71 @@ footer{border-top:1px solid var(--stroke);padding:44px 0 30px;margin-top:20px;}
     background:rgba(232,184,75,.16);
   }
 }
+
+/* Vantage AI page */
+.vai-free-pill{margin:0 0 14px;}
+.vai-highlights{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;
+  max-width:960px;margin:0 auto;
+}
+.vai-hl{
+  padding:20px 18px;border-radius:var(--radius-sm);
+  border:1px solid var(--glass-border);background:var(--glass-fill-soft);
+}
+.vai-hl strong{
+  display:block;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;
+  font-size:15px;margin:0 0 6px;color:var(--text);
+}
+.vai-hl span{font-size:13.5px;color:var(--muted);line-height:1.45;}
+.vai-form-wrap{max-width:720px;margin:0 auto;}
+.vai-form-wrap .form-note{display:block;margin-top:6px;}
+.vai-form-wrap .form-success{display:none;text-align:center;padding:28px 10px;}
+.vai-form-wrap .form-success.show{display:block;}
+.vai-form-wrap .form-success .check{
+  width:48px;height:48px;border-radius:50%;margin:0 auto 14px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(160deg,var(--gold-soft),var(--gold-deep));
+}
+.vai-form-wrap .form-success .check svg{width:22px;height:22px;color:#3A2E10;}
+.vai-ea{
+  position:relative;max-width:920px;margin:0 auto;padding:32px 28px;
+  border:1px solid var(--glass-border);border-radius:var(--radius-lg);
+  background:var(--glass-fill-soft);
+}
+.vai-ea-badge{
+  display:inline-flex;align-items:center;font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  padding:5px 11px;border-radius:999px;margin-bottom:14px;
+  border:1px solid rgba(232,184,75,.35);color:var(--gold-deep);
+  background:rgba(232,184,75,.12);
+}
+.vai-ea h3{font-size:28px;margin:0 0 10px;}
+.vai-ea-lede{font-size:15.5px;color:var(--muted);margin:0 0 18px;max-width:54ch;}
+.vai-ea-list{list-style:none;padding:0;margin:0 0 22px;display:grid;gap:10px;}
+.vai-ea-list li{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;color:var(--muted);line-height:1.45;}
+.vai-ea-list li svg{width:18px;height:18px;color:var(--gold);flex-shrink:0;margin-top:2px;}
+.vai-ea-samples{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:0 0 22px;}
+.vai-ea-card{
+  padding:18px 16px;border-radius:16px;border:1px solid var(--stroke);
+  background:var(--bg-2);
+}
+.vai-ea-tag{
+  display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--gold-deep);margin-bottom:10px;
+}
+.vai-ea-q{font-size:13.5px;color:var(--text);line-height:1.5;margin:0 0 10px;}
+.vai-ea-meta{font-size:12px;color:var(--muted-2);margin:0;}
+.vai-ea-note{font-size:13.5px;color:var(--muted);margin:0 0 16px;line-height:1.5;}
+@media (max-width:920px){
+  .vai-highlights,.vai-ea-samples{grid-template-columns:1fr;}
+  .vai-ea{padding:24px 18px;}
+  .vai-ea h3{font-size:24px;}
+}
+@media (prefers-color-scheme:dark){
+  .vai-hl,.vai-ea,.vai-ea-card{
+    background:var(--surface);
+    border-color:var(--stroke);
+    box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;
+  }
+  .vai-ea-badge{color:var(--gold-soft);}
+}

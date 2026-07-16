@@ -151,6 +151,7 @@
   }
   wireAjaxForm('contactForm','formSuccess');
   wireAjaxForm('careersForm','careersFormSuccess');
+  wireAjaxForm('vantageAiForm','vantageAiFormSuccess');
 
   // Careers tutor application: subjects + scores, ABN/Blue Card numbers, availability summary
   (function(){
