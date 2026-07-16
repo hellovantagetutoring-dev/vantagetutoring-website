@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" href="/assets/logo.png">
-<link rel="stylesheet" href="/assets/styles.css?v=theme31">
+<link rel="stylesheet" href="/assets/styles.css?v=theme34">
 </head>
 <body>
 
@@ -250,24 +250,19 @@
           </div>
         </div>
 
-        <div class="form-row-2">
-          <div>
-            <label for="c_exp">Tutoring experience</label>
-            <input id="c_exp" type="text" name="tutoring_experience" placeholder="e.g. 8 months / none yet" required>
-          </div>
-          <div>
-            <label for="c_transport">Transport</label>
-            <select id="c_transport" name="transport" required>
-              <option value="">Select</option>
-              <option value="Car and licence">Car and licence</option>
-              <option value="Licence only">Licence only</option>
-              <option value="Public transport / other">Public transport / other</option>
-            </select>
-          </div>
-        </div>
+        <label for="c_transport">Transport</label>
+        <select id="c_transport" name="transport" required>
+          <option value="">Select</option>
+          <option value="Car and licence">Car and licence</option>
+          <option value="Licence only">Licence only</option>
+          <option value="Public transport / other">Public transport / other</option>
+        </select>
+
+        <label for="c_exp">Tutoring experience (2–3 sentences)</label>
+        <textarea id="c_exp" name="tutoring_experience" rows="6" minlength="60" placeholder="Required. e.g. how long you’ve tutored, who you’ve taught, subjects, and what you’ve learned from it. Or say if you’re new and why you’re ready." required></textarea>
 
         <label for="c_style">Teaching style</label>
-        <textarea id="c_style" name="teaching_style" rows="8" placeholder="How you explain hard ideas, keep students engaged, prepare for sessions, and work with parents. A short paragraph or two is ideal." required></textarea>
+        <textarea id="c_style" name="teaching_style" rows="3" placeholder="How you explain hard ideas and keep students engaged" required></textarea>
 
         <div class="form-q career-avail">
           <span class="form-q-title">Weekly availability</span>
@@ -379,6 +374,6 @@
   </div>
 </footer>
 
-<script src="/assets/main.js?v=theme31"></script>
+<script src="/assets/main.js?v=theme34"></script>
 </body>
 </html>

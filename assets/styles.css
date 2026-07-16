@@ -1008,8 +1008,11 @@ section.tight{padding:56px 0;}
   font-weight:800;
   font-family:'Plus Jakarta Sans',sans-serif;
 }
+.career-form-wrap #c_exp{
+  min-height:140px;
+}
 .career-form-wrap #c_style{
-  min-height:180px;
+  min-height:96px;
 }
 .career-form-wrap .career-avail .avail-granularity{
   margin-left:28px !important;
@@ -1368,12 +1371,12 @@ footer{border-top:1px solid var(--stroke);padding:44px 0 30px;margin-top:20px;}
   }
   .tutor-filters.is-open{
     position:relative;
-    z-index:96;
+    z-index:2;
   }
   .tutor-filters.is-open .filter-toggle{position:relative;z-index:2;}
   .tutor-filters.is-open .filter-panel{
     position:fixed;left:12px;right:12px;top:62px;bottom:auto;
-    z-index:120;
+    z-index:122;
     margin:0;padding:10px;
     width:auto;
     height:min(62vh, calc(100dvh - 86px));
@@ -1385,12 +1388,18 @@ footer{border-top:1px solid var(--stroke);padding:44px 0 30px;margin-top:20px;}
     border-radius:16px;
     background:#fff;
     box-shadow:0 22px 48px -16px rgba(15,12,28,.4);
+    pointer-events:auto;
   }
   html.filters-sheet-open,
   body.filters-sheet-open{overflow:hidden;touch-action:none;}
+  /* Lift whole filter bar above dim overlay (stacking context fix) */
+  body.filters-sheet-open .tutor-filter-bar{
+    z-index:120;
+  }
   body.filters-sheet-open::before{
     content:'';position:fixed;inset:0;z-index:110;
     background:rgba(15,12,28,.28);
+    pointer-events:auto;
   }
   .filter-sections{grid-template-columns:1fr;gap:10px;}
   .filter-section{padding:10px 12px;}
