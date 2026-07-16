@@ -616,9 +616,7 @@
     window.addEventListener('mouseup', endPaint);
 
     wrap.addEventListener('touchstart', function(e){
-      if(!e.touches || !e.touches[0]) return;
-      var el = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY);
-      var cell = el && el.closest ? el.closest('.avail-cell') : null;
+      var cell = cellFromEvent(e);
       if(!cell || !wrap.contains(cell)) return;
       var input = cell.querySelector('input[type=checkbox]');
       if(!input || input.disabled) return;

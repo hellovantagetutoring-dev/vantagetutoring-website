@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/styles.css?v=theme36">
+<link rel="stylesheet" href="/assets/styles.css?v=theme37">
 </head>
 <body>
 
@@ -436,6 +436,29 @@
     }
   }
 
+  // Tutors with no availability: default Mon–Fri 3pm–8pm online
+  (function(){
+    var weekdays = ['Mon','Tue','Wed','Thu','Fri'];
+    var defaultSlots = [];
+    weekdays.forEach(function(day){
+      for(var h = 3; h <= 8; h++){
+        ['00','30'].forEach(function(m){
+          defaultSlots.push(day + ' ' + h + ':' + m + 'pm');
+        });
+      }
+    });
+    [].forEach.call(document.querySelectorAll('.tutor-card'), function(card){
+      if(card.querySelectorAll('.avail-half.on').length > 0) return;
+      defaultSlots.forEach(function(title){
+        var el = card.querySelector('.avail-half[title="' + title + '"]');
+        if(el) el.classList.add('on','online');
+      });
+      if(!card.getAttribute('data-slots')){
+        card.setAttribute('data-slots', defaultSlots.join(','));
+      }
+    });
+  })();
+
   var subjects=[];
   var degree='all';
   var cards=[].slice.call(document.querySelectorAll('.tutor-card'));
@@ -624,6 +647,6 @@
   apply();
 })();
 </script>
-<script src="/assets/main.js?v=theme36"></script>
+<script src="/assets/main.js?v=theme37"></script>
 </body>
 </html>
