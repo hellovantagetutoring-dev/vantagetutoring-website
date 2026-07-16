@@ -403,9 +403,17 @@ footer{border-top:1px solid var(--stroke);padding:44px 0 30px;margin-top:20px;}
 .tutor-card.is-filtered-out{display:none !important;}
 .tutor-tier-section.is-empty{display:none;}
 @media (max-width:920px){
-  .tutor-filter-bar{top:64px;padding:4px 0 20px;}
-  .tutor-filters{padding:14px 14px;border-radius:16px;}
-  .filter-chip{padding:8px 12px;font-size:12.5px;}
+  .tutor-filter-bar{top:58px;padding:2px 0 12px;}
+  .tutor-filters{padding:10px 10px;border-radius:14px;box-shadow:0 12px 28px -22px rgba(0,0,0,.7);}
+  .filter-group{gap:6px;}
+  .filter-group + .filter-group{margin-top:8px;}
+  .filter-label{font-size:10px;letter-spacing:.06em;}
+  .filter-hint{display:none;}
+  .filter-chips{gap:5px;}
+  .filter-chip{padding:5px 9px;font-size:11px;font-weight:600;box-shadow:none;}
+  .filter-chip.active{box-shadow:0 4px 12px -6px rgba(232,184,75,.5);}
+  .filter-count{margin:8px 0 0;font-size:11.5px;}
+  .filter-empty{margin:8px 0 0;font-size:12.5px;}
 }
 
 /* Reveal */
