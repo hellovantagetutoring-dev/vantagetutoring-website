@@ -178,14 +178,53 @@
       }
     }
 
+    function syncStudentName(){
+      var wrap = document.getElementById('studentNameWrap');
+      var input = document.getElementById('student');
+      if(!wrap) return;
+      var parent = !!form.querySelector('input[name="role"][value="Parent/caregiver"]:checked');
+      wrap.hidden = !parent;
+      if(input){
+        input.disabled = !parent;
+        if(parent) input.setAttribute('required','required');
+        else {
+          input.removeAttribute('required');
+          input.value = '';
+        }
+      }
+    }
+
     function syncAvailabilitySummary(){
       var hidden = document.getElementById('availabilitySelected');
       if(!hidden) return;
+      var mode = document.getElementById('availHalfHour');
+      var half = mode && mode.checked;
+      var root = document.getElementById(half ? 'availModeHalf' : 'availModeHour') || form;
       var picks = [].map.call(
-        form.querySelectorAll('input[name="availability[]"]:checked:not(:disabled)'),
+        root.querySelectorAll('input[name="availability[]"]:checked:not(:disabled)'),
         function(el){ return el.value; }
       );
       hidden.value = picks.join(', ');
+    }
+
+    function syncAvailGranularity(){
+      var toggle = document.getElementById('availHalfHour');
+      var hourMode = document.getElementById('availModeHour');
+      var halfMode = document.getElementById('availModeHalf');
+      if(!toggle || !hourMode || !halfMode) return;
+      var half = !!toggle.checked;
+      var tutoringOn = !!form.querySelector('input[name="enquiry_type"][value="1-on-1 tutoring"]:checked');
+      hourMode.hidden = half;
+      halfMode.hidden = !half;
+      [].forEach.call(hourMode.querySelectorAll('input[name="availability[]"]'), function(el){
+        el.disabled = !tutoringOn || half;
+        if(half) el.checked = false;
+      });
+      [].forEach.call(halfMode.querySelectorAll('input[name="availability[]"]'), function(el){
+        el.disabled = !tutoringOn || !half;
+        if(!half) el.checked = false;
+      });
+      syncAvailabilitySummary();
     }
 
     function setRoute(value){
@@ -212,6 +251,8 @@
         });
       }
       syncHomeAddress();
+      syncStudentName();
+      syncAvailGranularity();
       syncAvailabilitySummary();
     }
 
@@ -253,24 +294,92 @@
       el.addEventListener('change', syncHomeAddress);
     });
 
+    [].forEach.call(form.querySelectorAll('input[name="role"]'), function(el){
+      el.addEventListener('change', syncStudentName);
+    });
+    syncStudentName();
+
+    var halfToggle = document.getElementById('availHalfHour');
+    if(halfToggle){
+      halfToggle.addEventListener('change', syncAvailGranularity);
+    }
+
     form.addEventListener('change', function(e){
       if(e.target && e.target.name === 'availability[]') syncAvailabilitySummary();
     });
 
-    [].forEach.call(form.querySelectorAll('[data-avail-expand]'), function(btn){
-      btn.addEventListener('click', function(){
-        var id = btn.getAttribute('data-avail-expand');
-        var panel = document.getElementById(id);
-        if(!panel) return;
-        var open = panel.hasAttribute('hidden');
-        if(open) panel.removeAttribute('hidden');
-        else panel.setAttribute('hidden','');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        var show = btn.querySelector('.avail-expand-show');
-        var hide = btn.querySelector('.avail-expand-hide');
-        if(show) show.hidden = open;
-        if(hide) hide.hidden = !open;
+    // Click-drag to paint multiple availability slots
+    [].forEach.call(form.querySelectorAll('.avail-wrap'), function(wrap){
+      if(wrap.classList.contains('avail-wrap--display')) return;
+      var painting = false;
+      var paintOn = true;
+
+      function cellFromEvent(e){
+        var t = e.target;
+        if(!t) return null;
+        return t.closest ? t.closest('.avail-cell') : null;
+      }
+
+      function paint(cell){
+        if(!cell) return;
+        var input = cell.querySelector('input[type=checkbox]');
+        if(!input || input.disabled) return;
+        input.checked = paintOn;
+        syncAvailabilitySummary();
+      }
+
+      wrap.addEventListener('mousedown', function(e){
+        if(e.button !== 0) return;
+        var cell = cellFromEvent(e);
+        if(!cell) return;
+        var input = cell.querySelector('input[type=checkbox]');
+        if(!input || input.disabled) return;
+        painting = true;
+        paintOn = !input.checked;
+        wrap.classList.add('is-painting');
+        paint(cell);
+        e.preventDefault();
       });
+
+      // Stop label click from double-toggling after paint
+      wrap.addEventListener('click', function(e){
+        if(cellFromEvent(e)) e.preventDefault();
+      });
+
+      wrap.addEventListener('mouseover', function(e){
+        if(!painting) return;
+        paint(cellFromEvent(e));
+      });
+
+      function endPaint(){
+        if(!painting) return;
+        painting = false;
+        wrap.classList.remove('is-painting');
+      }
+      window.addEventListener('mouseup', endPaint);
+
+      // Touch drag
+      wrap.addEventListener('touchstart', function(e){
+        if(!e.touches || !e.touches[0]) return;
+        var el = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY);
+        var cell = el && el.closest ? el.closest('.avail-cell') : null;
+        if(!cell || !wrap.contains(cell)) return;
+        var input = cell.querySelector('input[type=checkbox]');
+        if(!input || input.disabled) return;
+        painting = true;
+        paintOn = !input.checked;
+        wrap.classList.add('is-painting');
+        paint(cell);
+      }, {passive:true});
+
+      wrap.addEventListener('touchmove', function(e){
+        if(!painting || !e.touches || !e.touches[0]) return;
+        var el = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY);
+        var cell = el && el.closest ? el.closest('.avail-cell') : null;
+        if(cell && wrap.contains(cell)) paint(cell);
+      }, {passive:true});
+
+      window.addEventListener('touchend', endPaint);
     });
 
     applySelected();
@@ -289,6 +398,21 @@
     });
   })();
 
-
+  // Availability expand (enrolment + tutors)
+  [].forEach.call(document.querySelectorAll('[data-avail-expand]'), function(btn){
+    btn.addEventListener('click', function(){
+      var id = btn.getAttribute('data-avail-expand');
+      var panel = document.getElementById(id);
+      if(!panel) return;
+      var open = panel.hasAttribute('hidden');
+      if(open) panel.removeAttribute('hidden');
+      else panel.setAttribute('hidden','');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      var show = btn.querySelector('.avail-expand-show');
+      var hide = btn.querySelector('.avail-expand-hide');
+      if(show) show.hidden = open;
+      if(hide) hide.hidden = !open;
+    });
+  });
 
 })();
