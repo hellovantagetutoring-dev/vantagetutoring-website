@@ -666,11 +666,18 @@
     if(isDisplay && panel && show){
       var hasMorning = panel.querySelectorAll('.avail-half.on').length > 0;
       show.textContent = hasMorning
-        ? 'Show 9am – 3pm · has times'
-        : 'Show 9am – 3pm · no times';
-      if(hide) hide.textContent = 'Hide 9am – 3pm';
+        ? 'Show 8am – 3pm · has times'
+        : 'Show 8am – 3pm · no times';
+      if(hide) hide.textContent = 'Hide 8am – 3pm';
       btn.classList.toggle('has-morning', hasMorning);
       btn.classList.toggle('no-morning', !hasMorning);
+      // Auto-open when morning has times (e.g. Jason — all slots before 3pm)
+      if(hasMorning){
+        panel.removeAttribute('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+        show.hidden = true;
+        if(hide) hide.hidden = false;
+      }
     }
 
     btn.addEventListener('click', function(){
