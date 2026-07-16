@@ -47,6 +47,12 @@
 <section class="tutor-filter-bar" id="tutorFilterBar">
   <div class="wrap">
     <div class="tutor-filters" id="tutorFilters">
+      <button type="button" class="filter-toggle" id="filterToggle" aria-expanded="false" aria-controls="filterPanel">
+        <span class="filter-toggle-label">Filters</span>
+        <span class="filter-toggle-meta" id="filterToggleMeta"></span>
+        <svg class="filter-toggle-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="filter-panel" id="filterPanel">
       <div class="filter-group">
         <span class="filter-label">Subject <em class="filter-hint">(must teach all selected)</em></span>
         <div class="filter-chips" data-filter="subject" role="group" aria-label="Filter by subject">
@@ -74,6 +80,7 @@
       </div>
       <p class="filter-count" id="filterCount" aria-live="polite"></p>
       <p class="filter-empty" id="filterEmpty" hidden>No tutors match these filters. <button type="button" class="filter-reset" id="filterReset">Clear filters</button></p>
+      </div>
     </div>
   </div>
 </section>
@@ -252,6 +259,16 @@
   var filterRoot=document.getElementById('tutorFilters');
   if(!filterRoot) return;
 
+  var filterToggle=document.getElementById('filterToggle');
+  var filterPanel=document.getElementById('filterPanel');
+  var filterToggleMeta=document.getElementById('filterToggleMeta');
+  if(filterToggle && filterPanel){
+    filterToggle.addEventListener('click', function(){
+      var open=filterRoot.classList.toggle('is-open');
+      filterToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+
   var subjects=[];
   var degree='all';
   var cards=[].slice.call(document.querySelectorAll('.tutor-card'));
@@ -316,6 +333,12 @@
       countEl.textContent=filtering ? (shown+' tutor'+(shown===1?'':'s')+' match') : '';
     }
     if(emptyEl) emptyEl.hidden=shown>0;
+    if(filterToggleMeta){
+      var bits=[];
+      if(subjects.length) bits.push(subjects.length+' subject'+(subjects.length===1?'':'s'));
+      if(degree!=='all') bits.push('1 degree');
+      filterToggleMeta.textContent=bits.length ? bits.join(' · ') : 'All tutors';
+    }
   }
 
   function onSubjectClick(e){

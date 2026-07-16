@@ -138,4 +138,157 @@
     });
   }
 
+  // Enquiry form routing (1-on-1 / masterclass / assignment review)
+  (function(){
+    var form = document.getElementById('contactForm');
+    if(!form) return;
+
+    var finish = document.getElementById('formFinish');
+    var typeGrid = document.getElementById('enquiryTypeGrid');
+    var routeMap = {
+      '1-on-1 tutoring': 'routeTutoring',
+      'Weekly subject masterclass': 'routeMasterclass',
+      'Assignment review': 'routeAssignment'
+    };
+
+    function showPanel(el, on){
+      if(!el) return;
+      var visible = !el.hasAttribute('hidden');
+      if(on){
+        if(visible) return;
+        el.removeAttribute('hidden');
+        el.classList.add('is-in');
+      }else if(visible){
+        el.classList.remove('is-in');
+        el.setAttribute('hidden','');
+      }
+    }
+
+    function syncHomeAddress(){
+      var wrap = document.getElementById('homeAddressWrap');
+      var input = document.getElementById('address');
+      if(!wrap) return;
+      var homeOn = !!form.querySelector('input[name="location[]"][value="In person (student\'s home)"]:checked');
+      var tutoringOn = !!form.querySelector('input[name="enquiry_type"][value="1-on-1 tutoring"]:checked');
+      var show = tutoringOn && homeOn;
+      wrap.hidden = !show;
+      if(input){
+        input.disabled = !show;
+        if(!show) input.value = '';
+      }
+    }
+
+    function syncAvailabilitySummary(){
+      var hidden = document.getElementById('availabilitySelected');
+      if(!hidden) return;
+      var picks = [].map.call(
+        form.querySelectorAll('input[name="availability[]"]:checked:not(:disabled)'),
+        function(el){ return el.value; }
+      );
+      hidden.value = picks.join(', ');
+    }
+
+    function setRoute(value){
+      Object.keys(routeMap).forEach(function(key){
+        var panel = document.getElementById(routeMap[key]);
+        if(!panel) return;
+        var on = !!value && key === value;
+        showPanel(panel, on);
+
+        [].forEach.call(panel.querySelectorAll('input, select, textarea'), function(el){
+          el.disabled = !on;
+          var needsRequired = el.hasAttribute('data-route-required');
+          if(needsRequired){
+            if(on) el.setAttribute('required','required');
+            else el.removeAttribute('required');
+          }
+        });
+      });
+
+      showPanel(finish, !!value);
+      if(finish){
+        [].forEach.call(finish.querySelectorAll('input, select, textarea, button'), function(el){
+          el.disabled = !value;
+        });
+      }
+      syncHomeAddress();
+      syncAvailabilitySummary();
+    }
+
+    function selectedType(){
+      var checked = form.querySelector('input[name="enquiry_type"]:checked');
+      return checked ? checked.value : null;
+    }
+
+    function applySelected(){
+      // Keep "What are you after?" fixed in the viewport while panels open below
+      var before = typeGrid ? typeGrid.getBoundingClientRect().top : null;
+      setRoute(selectedType());
+      if(typeGrid && before != null){
+        var delta = typeGrid.getBoundingClientRect().top - before;
+        if(Math.abs(delta) > 0.5) window.scrollBy(0, delta);
+      }
+    }
+
+    [].forEach.call(form.querySelectorAll('input[name="enquiry_type"]'), function(r){
+      r.addEventListener('change', applySelected);
+    });
+
+    [].forEach.call(form.querySelectorAll('.enquiry-type'), function(label){
+      label.addEventListener('click', function(e){
+        var input = label.querySelector('input[name="enquiry_type"]');
+        if(!input) return;
+        if(input.checked){
+          e.preventDefault();
+          applySelected();
+          return;
+        }
+        input.checked = true;
+        applySelected();
+        e.preventDefault();
+      });
+    });
+
+    [].forEach.call(form.querySelectorAll('input[name="location[]"]'), function(el){
+      el.addEventListener('change', syncHomeAddress);
+    });
+
+    form.addEventListener('change', function(e){
+      if(e.target && e.target.name === 'availability[]') syncAvailabilitySummary();
+    });
+
+    [].forEach.call(form.querySelectorAll('[data-avail-expand]'), function(btn){
+      btn.addEventListener('click', function(){
+        var id = btn.getAttribute('data-avail-expand');
+        var panel = document.getElementById(id);
+        if(!panel) return;
+        var open = panel.hasAttribute('hidden');
+        if(open) panel.removeAttribute('hidden');
+        else panel.setAttribute('hidden','');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        var show = btn.querySelector('.avail-expand-show');
+        var hide = btn.querySelector('.avail-expand-hide');
+        if(show) show.hidden = open;
+        if(hide) hide.hidden = !open;
+      });
+    });
+
+    applySelected();
+
+    [].forEach.call(document.querySelectorAll('[data-enquiry]'), function(a){
+      a.addEventListener('click', function(){
+        var map = {masterclass:'Weekly subject masterclass', assignment:'Assignment review'};
+        var val = map[a.getAttribute('data-enquiry')];
+        if(!val) return;
+        var input = form.querySelector('input[name="enquiry_type"][value="'+val+'"]');
+        if(input){
+          input.checked = true;
+          applySelected();
+        }
+      });
+    });
+  })();
+
+
+
 })();
