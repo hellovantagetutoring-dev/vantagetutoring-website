@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/styles.css?v=theme20">
+<link rel="stylesheet" href="/assets/styles.css?v=theme24">
 </head>
 <body>
 
@@ -59,8 +59,8 @@
           <div class="filter-section-head">
             <span class="filter-section-num">1</span>
             <div>
-              <span class="filter-section-title">Find a tutor for your times</span>
-              <span class="filter-section-desc">Days and time of day</span>
+              <span class="filter-section-title">Your times</span>
+              <span class="filter-section-desc">Pick days and time band</span>
             </div>
           </div>
           <div class="filter-section-body" id="dayFilterPanel">
@@ -358,6 +358,7 @@
         <a href="/rates">Rates</a>
         <a href="/reviews">Reviews</a>
         <a href="/about">About</a>
+        <a href="/careers">Careers</a>
         <a href="/contact">Contact</a>
         <a href="/legal">Legal</a>
       </div>
@@ -387,7 +388,12 @@
       else filterPanel.setAttribute('hidden','');
     }
     filterToggle.addEventListener('click', function(){
-      setFiltersOpen(!filterRoot.classList.contains('is-open'));
+      var open=!filterRoot.classList.contains('is-open');
+      setFiltersOpen(open);
+      if(window.matchMedia && window.matchMedia('(max-width:920px)').matches){
+        document.documentElement.classList.toggle('filters-sheet-open', open);
+        document.body.classList.toggle('filters-sheet-open', open);
+      }
     });
     setFiltersOpen(false);
     if(location.hash==='#when'){
@@ -583,6 +589,6 @@
   apply();
 })();
 </script>
-<script src="/assets/main.js?v=theme20"></script>
+<script src="/assets/main.js?v=theme24"></script>
 </body>
 </html>
