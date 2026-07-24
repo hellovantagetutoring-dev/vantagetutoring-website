@@ -130,6 +130,8 @@
         .then(function(r){
           if(r.ok){
             form.style.display='none';
+            var intro=form.parentElement && form.parentElement.querySelector('.form-intro');
+            if(intro) intro.style.display='none';
             var ok=document.getElementById(successId);
             if(ok)ok.classList.add('show');
             return;
@@ -384,9 +386,15 @@
     var typeGrid = document.getElementById('enquiryTypeGrid');
     var routeMap = {
       '1-on-1 tutoring': 'routeTutoring',
+      'Bring a friend (shared lessons)': 'routeTutoring',
       'Weekly subject masterclass': 'routeMasterclass',
       'Assignment review': 'routeAssignment'
     };
+
+    function isTutoringEnquiry(){
+      return !!form.querySelector('input[name="enquiry_type"][value="1-on-1 tutoring"]:checked')
+        || !!form.querySelector('input[name="enquiry_type"][value="Bring a friend (shared lessons)"]:checked');
+    }
 
     function showPanel(el, on){
       if(!el) return;
@@ -406,7 +414,7 @@
       var input = document.getElementById('address');
       if(!wrap) return;
       var homeOn = !!form.querySelector('input[name="location[]"][value="In person (student\'s home)"]:checked');
-      var tutoringOn = !!form.querySelector('input[name="enquiry_type"][value="1-on-1 tutoring"]:checked');
+      var tutoringOn = isTutoringEnquiry();
       var show = tutoringOn && homeOn;
       wrap.hidden = !show;
       if(input){
@@ -450,7 +458,7 @@
       var halfMode = document.getElementById('availModeHalf');
       if(!toggle || !hourMode || !halfMode) return;
       var half = !!toggle.checked;
-      var tutoringOn = !!form.querySelector('input[name="enquiry_type"][value="1-on-1 tutoring"]:checked');
+      var tutoringOn = isTutoringEnquiry();
       hourMode.hidden = half;
       halfMode.hidden = !half;
       [].forEach.call(hourMode.querySelectorAll('input[name="availability[]"]'), function(el){
@@ -568,7 +576,9 @@
     var painting = false;
     var paintOn = true;
     var touchDragged = false;
-    var touchCell = null;
+    var touchStartX = 0;
+    var touchStartY = 0;
+    var TOUCH_DRAG_PX = 12;
 
     function cellFromEvent(e){
       var t = e.target;
@@ -621,35 +631,37 @@
       if(!cell || !wrap.contains(cell)) return;
       var input = cell.querySelector('input[type=checkbox]');
       if(!input || input.disabled) return;
+      if(e.touches && e.touches[0]){
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }
       touchDragged = false;
-      touchCell = cell;
+      painting = true;
       paintOn = !input.checked;
+      wrap.classList.add('is-painting');
+      paint(cell);
     }, {passive:true});
 
     wrap.addEventListener('touchmove', function(e){
       if(!e.touches || !e.touches[0]) return;
-      touchDragged = true;
+      var dx = e.touches[0].clientX - touchStartX;
+      var dy = e.touches[0].clientY - touchStartY;
+      if(!touchDragged && (dx * dx + dy * dy) > TOUCH_DRAG_PX * TOUCH_DRAG_PX){
+        touchDragged = true;
+      }
+      if(!touchDragged) return;
       var el = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY);
       var cell = el && el.closest ? el.closest('.avail-cell') : null;
       if(!cell || !wrap.contains(cell)) return;
-      if(!painting){
-        painting = true;
-        wrap.classList.add('is-painting');
-      }
       paint(cell);
     }, {passive:true});
 
     wrap.addEventListener('touchend', function(){
-      if(!touchDragged && touchCell){
-        paint(touchCell);
-      }
-      touchCell = null;
       touchDragged = false;
       endPaint();
     });
 
     wrap.addEventListener('touchcancel', function(){
-      touchCell = null;
       touchDragged = false;
       endPaint();
     });
@@ -663,22 +675,20 @@
     var hide = btn.querySelector('.avail-expand-hide');
     var isDisplay = !!(btn.closest && btn.closest('.avail-wrap--display'));
 
-    // Tutor calendars: say if morning section has any available slots
+    // Tutor calendars: morning panel collapsed; label from HTML range + slot count
     if(isDisplay && panel && show){
+      var baseLabel = show.getAttribute('data-base-label');
+      if(!baseLabel){
+        baseLabel = show.textContent.replace(/\s*·\s*(has|no) times\s*$/i, '').trim();
+        show.setAttribute('data-base-label', baseLabel);
+      }
       var hasMorning = panel.querySelectorAll('.avail-half.on').length > 0;
       show.textContent = hasMorning
-        ? 'Show 8am – 3pm · has times'
-        : 'Show 8am – 3pm · no times';
-      if(hide) hide.textContent = 'Hide 8am – 3pm';
+        ? baseLabel + ' · has times'
+        : baseLabel + ' · no times';
+      if(hide) hide.textContent = baseLabel.replace(/^Show\s+/i, 'Hide ');
       btn.classList.toggle('has-morning', hasMorning);
       btn.classList.toggle('no-morning', !hasMorning);
-      // Auto-open when morning has times (e.g. Jason — all slots before 3pm)
-      if(hasMorning){
-        panel.removeAttribute('hidden');
-        btn.setAttribute('aria-expanded', 'true');
-        show.hidden = true;
-        if(hide) hide.hidden = false;
-      }
     }
 
     btn.addEventListener('click', function(){
