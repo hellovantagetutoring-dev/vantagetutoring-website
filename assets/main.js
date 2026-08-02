@@ -30,6 +30,7 @@
   var marquee=document.getElementById('marquee');
   if(marquee){
     var tutors=[
+      {name:'Vineth',atar:'99.90',init:'VS',badge:'98th %ile UCAT'},
       {name:'Jason',atar:'99.85',img:'/assets/tutors/jason-liu.jpg'},
       {name:'Yun',atar:'99.90',img:'/assets/tutors/yun-hao.jpg'},
       {name:'Lincoln',atar:'99.80',img:'/assets/tutors/lincoln-murray-brown.jpg'},
@@ -46,7 +47,8 @@
         ? '<img class="chip-av" src="'+t.img+'" alt="" width="40" height="40" loading="eager" decoding="async">'
         : '<span class="chip-av chip-av--init" aria-hidden="true">'+(t.init||t.name.charAt(0))+'</span>';
       var score=t.atar ? '<span class="score">'+t.atar+' ATAR</span>' : '';
-      html+='<span class="chip">'+av+'<b>'+t.name+'</b>'+score+'</span>';
+      var badge=t.badge ? '<span class="score">'+t.badge+'</span>' : '';
+      html+='<span class="chip">'+av+'<b>'+t.name+'</b>'+score+badge+'</span>';
     }
     marquee.innerHTML=html+html;
   }

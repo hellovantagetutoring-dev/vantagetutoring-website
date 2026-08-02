@@ -1466,7 +1466,23 @@ footer{border-top:1px solid var(--stroke);padding:44px 0 30px;margin-top:20px;}
   box-shadow:0 6px 16px -10px rgba(201,154,58,.28),var(--gold-surface-inset);
   overflow:hidden;
 }
-.filter-count{margin:10px 0 0;font-size:12.5px;color:var(--muted);}
+.filter-count{margin:0;font-size:12.5px;color:var(--muted);}
+.filter-footer{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  margin-top:12px;padding-top:10px;border-top:1px solid var(--stroke);
+}
+.filter-reset-btn{
+  appearance:none;flex-shrink:0;
+  border:1px solid rgba(232,184,75,.35);
+  background:var(--overlay-2);
+  color:var(--gold-soft);
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:12px;font-weight:700;
+  padding:7px 14px;border-radius:999px;
+  cursor:pointer;
+  transition:border-color .18s,background .18s,color .18s;
+}
+.filter-reset-btn:hover{border-color:rgba(232,184,75,.55);color:var(--text);}
 .filter-empty{margin:10px 0 0;font-size:13.5px;color:var(--muted);}
 .filter-reset{appearance:none;border:0;background:none;color:var(--gold-soft);font:inherit;font-weight:700;padding:0;text-decoration:underline;}
 .tutor-card.is-filtered-out{display:none !important;}
@@ -1517,7 +1533,9 @@ footer{border-top:1px solid var(--stroke);padding:44px 0 30px;margin-top:20px;}
     gap:5px;flex-wrap:wrap;overflow:visible;padding-bottom:0;
   }
   .filter-chip{padding:5px 9px;font-size:11px;flex:0 0 auto;white-space:nowrap;}
-  .filter-count{margin:8px 0 0;font-size:11.5px;}
+  .filter-count{margin:0;font-size:11.5px;}
+  .filter-footer{margin-top:10px;padding-top:8px;gap:10px;}
+  .filter-reset-btn{padding:6px 12px;font-size:11px;}
   .filter-empty{margin:8px 0 0;font-size:12.5px;}
   .filter-section--when .filter-label{font-size:10px;margin-top:2px;}
   .filter-section--when .filter-checks{gap:4px;}
