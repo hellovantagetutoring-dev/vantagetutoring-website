@@ -70,6 +70,15 @@
   gap:28px;
   align-items:center;
 }
+.page-home-edu .edu-hero-copy{
+  background:linear-gradient(155deg,rgba(255,255,255,.2) 0%,rgba(255,255,255,.08) 52%,rgba(255,255,255,.04) 100%);
+  border:1px solid rgba(255,255,255,.26);
+  border-radius:22px;
+  box-shadow:0 24px 52px -30px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.28);
+  backdrop-filter:blur(16px) saturate(1.15);
+  -webkit-backdrop-filter:blur(16px) saturate(1.15);
+  padding:28px 28px 24px;
+}
 .page-home-edu .edu-hero h1{
   max-width:18ch;
   font-size:clamp(36px,5.2vw,58px);
@@ -400,12 +409,17 @@
 }
 
 /* Online / in-person compact mosaic */
-.page-home-edu .edu-tutoring-section{padding:52px 0;}
+.page-home-edu .edu-tutoring-section{padding:58px 0;}
 .page-home-edu .edu-tutoring-layout{
-  display:grid;
-  grid-template-columns:minmax(220px,.72fr) 1.28fr;
-  gap:22px 28px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
   align-items:start;
+}
+.page-home-edu .edu-tutoring-section .edu-split-copy{
+  max-width:720px;
+  margin:0 auto;
+  text-align:center;
 }
 .page-home-edu .edu-tutoring-section .edu-split-copy h2{
   margin-bottom:8px;
@@ -416,11 +430,16 @@
   font-size:15px;
   line-height:1.45;
 }
+.page-home-edu .edu-tutoring-section .edu-split-copy .cta-row{
+  justify-content:center;
+}
 .page-home-edu .edu-tutoring-mosaic{
   display:grid;
-  grid-template-columns:1.4fr .72fr .72fr 1fr 1fr 1fr;
-  grid-template-rows:auto;
-  gap:8px;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-rows:repeat(2,minmax(0,1fr));
+  gap:10px;
+  width:min(100%,980px);
+  margin:0 auto;
 }
 .page-home-edu .edu-tutoring-mosaic .edu-shot--wide{
   grid-column:1;
@@ -440,9 +459,9 @@
 .page-home-edu .edu-tutoring-mosaic .edu-shot{
   margin:0;
   overflow:hidden;
-  border-radius:12px;
+  border-radius:14px;
   background:#ddd;
-  box-shadow:0 12px 24px -20px rgba(107,76,224,.22);
+  box-shadow:0 16px 30px -22px rgba(107,76,224,.24);
 }
 .page-home-edu .edu-tutoring-mosaic .edu-shot img{
   display:block;
@@ -452,17 +471,20 @@
 }
 .page-home-edu .edu-tutoring-mosaic .edu-shot--wide img{
   aspect-ratio:16/10;
-  max-height:132px;
+  min-height:200px;
+  max-height:240px;
   object-position:center 12%;
 }
 .page-home-edu .edu-tutoring-mosaic .edu-shot--person img{
-  aspect-ratio:4/5;
-  max-height:132px;
+  aspect-ratio:16/10;
+  min-height:200px;
+  max-height:240px;
   object-position:center 22%;
 }
 .page-home-edu .edu-tutoring-mosaic .edu-shot:not(.edu-shot--wide):not(.edu-shot--person) img{
   aspect-ratio:16/10;
-  max-height:132px;
+  min-height:200px;
+  max-height:240px;
 }
 
 /* Legacy split + gallery (other pages) */
@@ -717,7 +739,7 @@
   }
   .page-home-edu .edu-hero-grid{gap:16px;}
   .page-home-edu .edu-hero h1{
-    font-size:clamp(26px,7vw,34px);
+    font-size:clamp(31px,8.6vw,40px);
     max-width:none;
     margin:0 0 10px;
   }
@@ -799,20 +821,24 @@
   .page-home-edu .edu-split,
   .page-home-edu .edu-photo-pair{grid-template-columns:1fr;}
   .page-home-edu .edu-tutoring-section{padding:36px 0;}
-  .page-home-edu .edu-tutoring-layout{gap:12px;}
+  .page-home-edu .edu-tutoring-layout{gap:14px;}
+  .page-home-edu .edu-tutoring-section .edu-split-copy{text-align:center;}
   .page-home-edu .edu-tutoring-section .edu-split-copy h2{font-size:clamp(24px,7vw,32px);}
   .page-home-edu .edu-tutoring-section .edu-split-copy p{margin-bottom:12px;font-size:14px;}
+  .page-home-edu .edu-tutoring-section .edu-split-copy .cta-row{justify-content:center;}
   .page-home-edu .edu-tutoring-mosaic{
     grid-template-columns:repeat(3,1fr);
-    gap:6px;
+    grid-template-rows:repeat(2,minmax(0,1fr));
+    gap:8px;
   }
   .page-home-edu .edu-tutoring-mosaic .edu-shot--wide{
     grid-column:1 / -1;
     grid-row:auto;
   }
   .page-home-edu .edu-tutoring-mosaic .edu-shot--wide img{
-    aspect-ratio:16/9;
-    max-height:140px;
+    aspect-ratio:16/10;
+    min-height:120px;
+    max-height:170px;
   }
   .page-home-edu .edu-tutoring-mosaic .edu-shot--person:nth-of-type(2),
   .page-home-edu .edu-tutoring-mosaic .edu-shot--person:nth-of-type(3){
@@ -825,10 +851,15 @@
     grid-column:auto;
     grid-row:auto;
   }
-  .page-home-edu .edu-tutoring-mosaic .edu-shot--person img{aspect-ratio:4/3;}
+  .page-home-edu .edu-tutoring-mosaic .edu-shot--person img{
+    aspect-ratio:16/10;
+    min-height:120px;
+    max-height:170px;
+  }
   .page-home-edu .edu-tutoring-mosaic .edu-shot:not(.edu-shot--wide):not(.edu-shot--person) img{
     aspect-ratio:16/10;
-    max-height:none;
+    min-height:120px;
+    max-height:170px;
   }
   .page-home-edu .edu-tutoring-mosaic .edu-shot{border-radius:10px;}
   .page-home-edu .edu-media{max-width:none;margin-left:0;}
