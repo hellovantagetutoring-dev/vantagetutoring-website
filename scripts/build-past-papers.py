@@ -3,13 +3,14 @@
 
 Renders local QCAA past-paper PDFs (CC BY 4.0, (c) State of Queensland QCAA)
 to page images and rebuilds the manifest consumed by
-vantage-ai/past-papers/index.html.
+past-papers/index.html.
 
 Output layout (matches the live viewer):
-  vantage-ai/past-papers/img/{docId}/{n}.jpg   e.g. img/mm-20-p1-mc/1.jpg
-  vantage-ai/past-papers/manifest.js           window.PP_MANIFEST = {...}
+  past-papers/img/{docId}/{n}.jpg   e.g. img/mm-20-p1-mc/1.jpg
+  past-papers/pdf/{docId}.pdf       original QCAA PDF (download)
+  past-papers/manifest.js           window.PP_MANIFEST = {...}
 """
-import os, re, json
+import os, re, json, shutil
 import fitz
 
 SRC = {
@@ -18,7 +19,7 @@ SRC = {
 }
 SUBJECT_NAMES = {'mm': 'Mathematical Methods', 'sm': 'Specialist Mathematics'}
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(ROOT, 'vantage-ai', 'past-papers')
+OUT = os.path.join(ROOT, 'past-papers')
 ZOOM, QUALITY = 1.8, 72
 
 KIND_LABEL = {
@@ -58,7 +59,7 @@ def doc_id(subj, d):
 
 def label(d):
     lab = KIND_LABEL[d['kind']]
-    core = ('Paper %d \u2014 %s' % (d['paper'], lab)) if d['paper'] else \
+    core = ('Paper %d - %s' % (d['paper'], lab)) if d['paper'] else \
            (lab + ' (Papers 1 & 2)')
     return ('Sample: ' + core) if d['sample'] else core
 
@@ -85,9 +86,15 @@ for subj in ('mm', 'sm'):
         docs.append(d)
 
     years = {}
+    pdf_dir = os.path.join(OUT, 'pdf')
+    os.makedirs(pdf_dir, exist_ok=True)
     for d in docs:
         out_dir = os.path.join(OUT, 'img', d['id'])
         os.makedirs(out_dir, exist_ok=True)
+        pdf_copy = os.path.join(pdf_dir, d['id'] + '.pdf')
+        if not os.path.exists(pdf_copy):
+            shutil.copy2(d['file'], pdf_copy)
+        d['pdf'] = 'pdf/' + d['id'] + '.pdf'
         pdf = fitz.open(d['file'])
         d['pages'] = len(pdf)
         for i in range(len(pdf)):
@@ -101,7 +108,7 @@ for subj in ('mm', 'sm'):
 
     subjects.append({'id': subj, 'name': SUBJECT_NAMES[subj], 'years': [
         {'year': y, 'docs': [
-            {k: d[k] for k in ('id', 'year', 'sample', 'paper', 'kind', 'label', 'pages')}
+            {k: d[k] for k in ('id', 'year', 'sample', 'paper', 'kind', 'label', 'pages', 'pdf')}
             for d in sorted(years[y], key=sort_key)]}
         for y in sorted(years)]})
 
