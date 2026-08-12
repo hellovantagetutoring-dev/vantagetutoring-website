@@ -6,11 +6,25 @@
   --edu-paper:var(--bg);
   --edu-panel:var(--bg-2);
   --edu-soft:#F3F1EC;
+  --edu-grad-purple:rgba(107,76,224,.08);
+  --edu-grad-gold:rgba(232,184,75,.1);
+  --edu-grad-purple-strong:rgba(107,76,224,.07);
+  --edu-grad-gold-strong:rgba(232,184,75,.08);
+  --edu-trust-wash-start:rgba(232,184,75,.09);
+  --edu-trust-wash-end:rgba(107,76,224,.09);
   --edu-sans:'Plus Jakarta Sans',Helvetica,Arial,sans-serif;
   --edu-display:'Plus Jakarta Sans',Helvetica,Arial,sans-serif;
 }
 @media (prefers-color-scheme:dark){
-  .page-home-edu{--edu-soft:#0C0C15;}
+  .page-home-edu{
+    --edu-soft:#0C0C15;
+    --edu-grad-purple:rgba(124,77,255,.12);
+    --edu-grad-gold:rgba(232,184,75,.1);
+    --edu-grad-purple-strong:rgba(124,77,255,.12);
+    --edu-grad-gold-strong:rgba(232,184,75,.08);
+    --edu-trust-wash-start:rgba(232,184,75,.12);
+    --edu-trust-wash-end:rgba(124,77,255,.14);
+  }
 }
 
 /* Full-bleed photo hero + achievements card */
@@ -70,15 +84,7 @@
   gap:28px;
   align-items:center;
 }
-.page-home-edu .edu-hero-copy{
-  background:linear-gradient(155deg,rgba(255,255,255,.2) 0%,rgba(255,255,255,.08) 52%,rgba(255,255,255,.04) 100%);
-  border:1px solid rgba(255,255,255,.26);
-  border-radius:22px;
-  box-shadow:0 24px 52px -30px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.28);
-  backdrop-filter:blur(16px) saturate(1.15);
-  -webkit-backdrop-filter:blur(16px) saturate(1.15);
-  padding:28px 28px 24px;
-}
+.page-home-edu .edu-hero-copy{padding:0;}
 .page-home-edu .edu-hero h1{
   max-width:18ch;
   font-size:clamp(36px,5.2vw,58px);
@@ -147,7 +153,24 @@
   box-shadow:0 10px 26px -12px rgba(201,154,58,.55),0 0 32px -14px rgba(124,77,255,.42);
 }
 .page-home-edu .edu-hero .hero-card{
-  margin:0;
+  margin:0 0 0 auto;
+  max-width:520px;
+  border-radius:28px;
+  background:linear-gradient(160deg,rgba(17,18,28,.42) 0%,rgba(17,18,28,.26) 100%);
+  border:1px solid rgba(255,255,255,.24);
+  box-shadow:0 28px 56px -30px rgba(0,0,0,.64),inset 0 1px 0 rgba(255,255,255,.2);
+  backdrop-filter:blur(10px) saturate(1.1);
+  -webkit-backdrop-filter:blur(10px) saturate(1.1);
+}
+.page-home-edu .edu-hero .hc-title,
+.page-home-edu .edu-hero .hc-flbl{
+  color:rgba(234,236,246,.92);
+}
+.page-home-edu .edu-hero .hc-feature{
+  border-bottom-color:rgba(255,255,255,.2);
+}
+.page-home-edu .edu-hero .hc-fsub{
+  color:var(--gold-soft);
 }
 .page-home-edu .edu-hero .hc-feature:last-of-type{
   padding-bottom:0;
@@ -169,7 +192,7 @@
   position:absolute;
   inset:0;
   pointer-events:none;
-  background:linear-gradient(90deg,rgba(232,184,75,.09),transparent 38%,rgba(107,76,224,.09));
+  background:linear-gradient(90deg,var(--edu-trust-wash-start),transparent 38%,var(--edu-trust-wash-end));
 }
 .page-home-edu .edu-trust-grid{
   position:relative;
@@ -206,8 +229,8 @@
 .page-home-edu .edu-section.tight{padding:56px 0;}
 .page-home-edu .edu-section--muted{
   background:
-    radial-gradient(700px 320px at 100% 0%,rgba(107,76,224,.08),transparent 55%),
-    radial-gradient(620px 280px at 0% 100%,rgba(232,184,75,.1),transparent 55%),
+    radial-gradient(700px 320px at 100% 0%,var(--edu-grad-purple),transparent 55%),
+    radial-gradient(620px 280px at 0% 100%,var(--edu-grad-gold),transparent 55%),
     var(--edu-soft);
 }
 .page-home-edu .section-head{
@@ -453,9 +476,9 @@
   grid-column:3;
   grid-row:1;
 }
-.page-home-edu .edu-tutoring-mosaic .edu-shot:not(.edu-shot--wide):not(.edu-shot--person):nth-of-type(4){grid-column:4;grid-row:1;}
-.page-home-edu .edu-tutoring-mosaic .edu-shot:not(.edu-shot--wide):not(.edu-shot--person):nth-of-type(5){grid-column:5;grid-row:1;}
-.page-home-edu .edu-tutoring-mosaic .edu-shot:not(.edu-shot--wide):not(.edu-shot--person):nth-of-type(6){grid-column:6;grid-row:1;}
+.page-home-edu .edu-tutoring-mosaic .edu-shot:not(.edu-shot--wide):not(.edu-shot--person):nth-of-type(4){grid-column:1;grid-row:2;}
+.page-home-edu .edu-tutoring-mosaic .edu-shot:not(.edu-shot--wide):not(.edu-shot--person):nth-of-type(5){grid-column:2;grid-row:2;}
+.page-home-edu .edu-tutoring-mosaic .edu-shot:not(.edu-shot--wide):not(.edu-shot--person):nth-of-type(6){grid-column:3;grid-row:2;}
 .page-home-edu .edu-tutoring-mosaic .edu-shot{
   margin:0;
   overflow:hidden;
@@ -585,8 +608,8 @@
 /* Reviews */
 .page-home-edu #reviews{
   background:
-    radial-gradient(800px 360px at 50% 0%,rgba(107,76,224,.07),transparent 60%),
-    radial-gradient(640px 280px at 100% 100%,rgba(232,184,75,.08),transparent 55%),
+    radial-gradient(800px 360px at 50% 0%,var(--edu-grad-purple-strong),transparent 60%),
+    radial-gradient(640px 280px at 100% 100%,var(--edu-grad-gold-strong),transparent 55%),
     var(--edu-panel);
   border-top:1px solid var(--edu-line);
   padding-top:72px;
@@ -658,15 +681,6 @@
     background:rgba(14,14,22,.82);
     border-bottom-color:var(--edu-line);
   }
-  .page-home-edu .edu-trust::before{
-    background:linear-gradient(90deg,rgba(232,184,75,.12),transparent 38%,rgba(124,77,255,.14));
-  }
-  .page-home-edu .edu-section--muted{
-    background:
-      radial-gradient(700px 320px at 100% 0%,rgba(124,77,255,.12),transparent 55%),
-      radial-gradient(620px 280px at 0% 100%,rgba(232,184,75,.1),transparent 55%),
-      var(--edu-soft);
-  }
   .page-home-edu .edu-plan{
     background:rgba(255,255,255,.04);
     border-color:rgba(255,255,255,.1);
@@ -682,13 +696,7 @@
     background:#1a1a24;
     box-shadow:0 16px 34px -24px rgba(0,0,0,.65);
   }
-  .page-home-edu #reviews{
-    background:
-      radial-gradient(800px 360px at 50% 0%,rgba(124,77,255,.12),transparent 60%),
-      radial-gradient(640px 280px at 100% 100%,rgba(232,184,75,.08),transparent 55%),
-      var(--edu-panel);
-    border-top-color:var(--edu-line);
-  }
+  .page-home-edu #reviews{border-top-color:var(--edu-line);}
   .page-home-edu .tst-card,
   .page-home-edu .survey-item,
   .page-home-edu .google-cta{
@@ -897,6 +905,13 @@
   .page-home-edu .home-steps-cta{gap:8px;}
   .page-home-edu .home-steps-cta .btn{padding:11px 14px;font-size:13px;}
   .page-home-edu #reviews .tst-grid{grid-template-columns:1fr;gap:12px;}
+}
+
+@media (prefers-color-scheme:dark) and (max-width:720px){
+  .page-home-edu .edu-trust-item{
+    background:rgba(255,255,255,.06);
+    border-color:rgba(255,255,255,.14);
+  }
 }
 @media (prefers-color-scheme:dark) and (max-width:720px){
   .page-home-edu .edu-trust-item{background:rgba(255,255,255,.04);}
