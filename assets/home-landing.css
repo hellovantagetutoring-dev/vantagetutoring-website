@@ -152,6 +152,19 @@
 .page-home-edu .edu-hero .btn-primary{
   box-shadow:0 10px 26px -12px rgba(201,154,58,.55),0 0 32px -14px rgba(124,77,255,.42);
 }
+.page-home-edu .edu-hero .hero-ctas .btn-primary{
+  background:linear-gradient(180deg,#F3DC96 0%,#E0BC5C 48%,#C99A3A 100%);
+  color:#1a1208;
+  border:1px solid rgba(255,255,255,.42);
+  box-shadow:0 14px 32px -10px rgba(0,0,0,.62),0 0 0 1px rgba(255,255,255,.18) inset;
+}
+.page-home-edu .edu-hero .hero-ctas .btn-ghost{
+  background:rgba(12,14,20,.42);
+  border-color:rgba(255,255,255,.5);
+  color:#fff;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+}
 .page-home-edu .edu-hero .hero-card{
   margin:0 0 0 auto;
   max-width:520px;
@@ -677,6 +690,13 @@
       linear-gradient(105deg,rgba(7,7,12,.86) 0%,rgba(10,8,18,.58) 48%,rgba(12,10,22,.32) 100%),
       linear-gradient(0deg,rgba(7,7,12,.62) 0%,rgba(7,7,12,.16) 58%,rgba(14,10,24,.3) 100%);
   }
+  .page-home-edu .edu-hero .hero-card{
+    background:linear-gradient(160deg,rgba(17,18,28,.52) 0%,rgba(17,18,28,.34) 100%);
+    border-color:rgba(255,255,255,.22);
+    backdrop-filter:blur(10px) saturate(1.1);
+    -webkit-backdrop-filter:blur(10px) saturate(1.1);
+    box-shadow:0 28px 56px -30px rgba(0,0,0,.64),inset 0 1px 0 rgba(255,255,255,.16);
+  }
   .page-home-edu .edu-trust{
     background:rgba(14,14,22,.82);
     border-bottom-color:var(--edu-line);
@@ -735,6 +755,11 @@
   .page-home-edu .edu-plan{border-right:1px solid var(--edu-line);}
   .page-home-edu .edu-split{gap:22px;}
   .page-home-edu .edu-tutors-intro{flex-direction:column;align-items:flex-start;}
+  .page-home-edu .edu-hero .hero-card{
+    margin:0 auto;
+    width:100%;
+    max-width:380px;
+  }
 }
 @media (max-width:720px){
   .page-home-edu .edu-hero{
@@ -750,32 +775,38 @@
     font-size:clamp(31px,8.6vw,40px);
     max-width:none;
     margin:0 0 10px;
+    line-height:1.12;
   }
   .page-home-edu .edu-hero .hero-lead{
-    white-space:nowrap;
-    font-size:inherit;
+    white-space:normal;
+    display:block;
   }
-  .page-home-edu .edu-hero .type-line{margin-top:.06em;min-height:1.15em;}
+  .page-home-edu .edu-hero .type-line{margin-top:.08em;min-height:1.15em;}
   .page-home-edu .edu-hero .lede{
     font-size:14px;
     line-height:1.45;
-    margin-bottom:14px;
+    margin-bottom:16px;
+    max-width:none;
   }
   .page-home-edu .edu-hero .hero-ctas{
     display:flex;
-    flex-direction:row;
-    flex-wrap:nowrap;
+    flex-direction:column;
     align-items:stretch;
-    gap:8px;
+    gap:10px;
   }
   .page-home-edu .edu-hero .hero-ctas .btn{
-    flex:1 1 0;
-    width:auto;
+    flex:none;
+    width:100%;
     justify-content:center;
-    padding:11px 10px;
-    font-size:13px;
-    gap:6px;
+    padding:13px 14px;
+    font-size:14px;
+    gap:8px;
     white-space:nowrap;
+  }
+  .page-home-edu .edu-hero .hero-ctas .btn-primary{
+    font-size:15px;
+    font-weight:800;
+    box-shadow:0 16px 34px -12px rgba(0,0,0,.68),0 0 0 1px rgba(255,255,255,.22) inset;
   }
   .page-home-edu .btn-full{display:none;}
   .page-home-edu .btn-short{display:inline;}
@@ -785,6 +816,9 @@
     flex-shrink:0;
   }
   .page-home-edu .edu-hero .hero-card{
+    margin:0 auto;
+    width:100%;
+    max-width:340px;
     padding:14px 14px 12px;
     border-radius:16px;
   }
@@ -792,15 +826,24 @@
     margin-bottom:10px;
     font-size:10px;
     gap:7px;
+    justify-content:center;
+    text-align:center;
   }
   .page-home-edu .edu-hero .hc-title svg{width:14px;height:14px;}
   .page-home-edu .edu-hero .hc-feature{
     padding-bottom:10px;
     margin-bottom:10px;
+    align-items:center;
+    text-align:center;
   }
   .page-home-edu .edu-hero .hc-fnum{font-size:30px;}
   .page-home-edu .edu-hero .hc-fsub{font-size:12px;margin-top:2px;}
-  .page-home-edu .edu-hero .hc-flbl{font-size:12px;gap:8px;margin-top:6px;}
+  .page-home-edu .edu-hero .hc-flbl{
+    font-size:12px;
+    gap:8px;
+    margin-top:6px;
+    justify-content:center;
+  }
   .page-home-edu .edu-hero .hc-flbl .ic{width:26px;height:26px;border-radius:8px;}
   .page-home-edu .edu-hero .hc-flbl .ic svg{width:13px;height:13px;}
 
