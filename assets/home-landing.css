@@ -90,35 +90,48 @@
 .page-home-edu .edu-hero .hero-card{grid-column:2;grid-row:1 / -1;align-self:center;}
 .page-home-edu .edu-hero .hero-ctas{grid-column:1;grid-row:2;align-self:start;}
 .page-home-edu .edu-hero h1{
-  max-width:18ch;
+  max-width:22ch;
   font-size:clamp(36px,5.2vw,58px);
   font-weight:700;
   color:#fff !important;
   text-shadow:none;
   margin:0 0 14px;
   letter-spacing:-.035em;
+  line-height:1.08;
   animation:eduRise .75s ease both;
 }
 .page-home-edu .edu-hero .hero-lead{
   white-space:nowrap;
 }
-.page-home-edu .edu-hero .hero-lead-sub{
-  display:inline;
+.page-home-edu .edu-hero .hero-for-line,
+.page-home-edu .edu-hero .hero-for-line-live{
+  display:contents;
 }
-.page-home-edu .edu-hero .hero-line-sub{
-  display:inline;
-}
-.page-home-edu .edu-hero .hero-line-sub-live{
-  display:inline;
-}
-.page-home-edu .edu-hero .hero-line-sub .hero-lead-sub::before{
+.page-home-edu .edu-hero .hero-lead-sub::before{
   content:" ";
 }
 .page-home-edu .edu-hero .type-line{
-  display:inline;
+  display:grid;
+  width:max-content;
+  max-width:100%;
+  min-width:0;
+  margin-top:.08em;
 }
-@media (min-width:981px){
-  .page-home-edu .edu-hero .type-line{white-space:nowrap;}
+.page-home-edu .edu-hero .type-line::after{
+  content:"medical school entry.";
+  visibility:hidden;
+  grid-area:1/1;
+  pointer-events:none;
+  user-select:none;
+  white-space:nowrap;
+  font-size:inherit;
+  line-height:inherit;
+  letter-spacing:inherit;
+}
+.page-home-edu .edu-hero .type-line-live{
+  grid-area:1/1;
+  min-width:0;
+  white-space:nowrap;
 }
 .page-home-edu .edu-hero .type-wrap{
   display:inline;
@@ -804,7 +817,7 @@
     letter-spacing:-.04em;
     overflow-wrap:break-word;
   }
-  .page-home-edu .edu-hero .hero-line-sub{
+  .page-home-edu .edu-hero .hero-for-line{
     display:grid;
     width:100%;
     max-width:100%;
@@ -812,17 +825,19 @@
     margin-top:.06em;
     line-height:1.08;
   }
-  .page-home-edu .edu-hero .hero-line-sub::after{
+  .page-home-edu .edu-hero .hero-for-line::after{
     content:"for medical school entry.";
     visibility:hidden;
     grid-area:1/1;
     pointer-events:none;
     user-select:none;
+    white-space:normal;
     font-size:inherit;
     line-height:inherit;
     letter-spacing:inherit;
   }
-  .page-home-edu .edu-hero .hero-line-sub-live{
+  .page-home-edu .edu-hero .hero-for-line-live{
+    display:block;
     grid-area:1/1;
     min-width:0;
     max-width:100%;
@@ -833,14 +848,20 @@
     line-height:inherit;
     margin-top:0;
   }
-  .page-home-edu .edu-hero .hero-line-sub .hero-lead-sub::before{
+  .page-home-edu .edu-hero .hero-lead-sub::before{
     content:none;
   }
   .page-home-edu .edu-hero .type-line{
     display:inline;
     margin-top:0;
-    min-height:0;
-    line-height:inherit;
+    width:auto;
+  }
+  .page-home-edu .edu-hero .type-line::after{
+    content:none;
+  }
+  .page-home-edu .edu-hero .type-line-live{
+    display:inline;
+    white-space:normal;
   }
   .page-home-edu .edu-hero .hero-ctas{
     display:flex;
