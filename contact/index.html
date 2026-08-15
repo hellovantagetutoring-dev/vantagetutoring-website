@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" href="/assets/logo.png">
-<link rel="stylesheet" href="/assets/styles.css?v=theme82">
+<link rel="stylesheet" href="/assets/styles.css?v=theme83">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 <body>
@@ -132,6 +132,13 @@
                 <span class="enquiry-type-card">
                   <span class="enquiry-type-title">Weekly subject masterclass</span>
                   <span class="enquiry-type-desc">Sundays 10:15am at State Library of Queensland · $40 per subject</span>
+                </span>
+              </label>
+              <label class="enquiry-type">
+                <input type="radio" name="enquiry_type" value="UCAT masterclass" id="enquiryUcatMasterclass">
+                <span class="enquiry-type-card">
+                  <span class="enquiry-type-title">UCAT masterclass</span>
+                  <span class="enquiry-type-desc">Led by Vineth · 99.90 ATAR · UCAT 2510 · Sundays 10:15am at SLQ · $80 / 2 hrs</span>
                 </span>
               </label>
               <label class="enquiry-type">
@@ -350,6 +357,51 @@
             <span class="form-note">Sundays 10:15am at the State Library of Queensland · $40 per student per subject · led by 99.80+ ATAR tutors.</span>
           </div>
 
+          <div class="form-route form-step" id="routeUcatMasterclass" hidden>
+            <div class="form-step-badge">3</div>
+            <h3 class="form-step-title">UCAT masterclass details</h3>
+
+            <div class="form-q">
+              <span class="form-q-title">Year level in 2026</span>
+              <div class="choice-grid">
+                <label class="choice"><input type="radio" name="year_level" value="Year 10" data-route-required data-route-field>Year 10</label>
+                <label class="choice"><input type="radio" name="year_level" value="Year 11" data-route-field>Year 11</label>
+              </div>
+            </div>
+
+            <div class="form-q form-q--info">
+              <span class="form-q-title">Schedule</span>
+              <div class="mc-schedule">
+                <div class="mc-schedule-row"><span class="mc-k">Tutor</span><span class="mc-v">Vineth Samaraweera · lead UCAT tutor · 99.90 ATAR · UCAT 2510 (98th percentile)</span></div>
+                <div class="mc-schedule-row"><span class="mc-k">When</span><span class="mc-v">Sundays · 10:15am</span></div>
+                <div class="mc-schedule-row"><span class="mc-k">Where</span><span class="mc-v">State Library of Queensland</span></div>
+                <div class="mc-schedule-row"><span class="mc-k">Format</span><span class="mc-v">Small groups of 4 · 2 hours · hybrid group + individual feedback</span></div>
+              </div>
+              <input type="hidden" name="masterclass_schedule" value="UCAT masterclass · Sundays 10:15am · State Library of Queensland" data-route-field>
+              <input type="hidden" name="subjects[]" value="UCAT" data-route-field>
+            </div>
+
+            <div class="form-q">
+              <span class="form-q-title">Preferred format</span>
+              <div class="choice-grid">
+                <label class="choice"><input type="radio" name="ucat_format" value="In person at SLQ (Sundays 10:15am)" data-route-required data-route-field>In person at SLQ (Sundays 10:15am)</label>
+                <label class="choice"><input type="radio" name="ucat_format" value="Online friend group (flexible Wed / Sat / Sun)" data-route-field>Online friend group (flexible timing)</label>
+                <label class="choice"><input type="radio" name="ucat_format" value="Either / not sure yet" data-route-field>Either / not sure yet</label>
+              </div>
+            </div>
+
+            <div class="form-q">
+              <span class="form-q-title">When would you like to start?</span>
+              <div class="choice-grid">
+                <label class="choice"><input type="radio" name="masterclass_start" value="As soon as possible" data-route-required data-route-field>As soon as possible</label>
+                <label class="choice"><input type="radio" name="masterclass_start" value="Within 2 weeks" data-route-field>Within 2 weeks</label>
+                <label class="choice"><input type="radio" name="masterclass_start" value="Start of next term" data-route-field>Start of next term</label>
+                <label class="choice"><input type="radio" name="masterclass_start" value="Just enquiring for now" data-route-field>Just enquiring</label>
+              </div>
+            </div>
+            <span class="form-note">Now enrolling Year 10 and 11 · led by Vineth Samaraweera (99.90 ATAR · UCAT 2510, 98th percentile) · $80 per student for 2 hours in person · online from $70/hr.</span>
+          </div>
+
           <div class="form-route form-step" id="routeAssignment" hidden>
             <div class="form-step-badge">3</div>
             <h3 class="form-step-title">Assignment review</h3>
@@ -431,6 +483,6 @@
 </footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script src="/assets/main.js?v=theme61"></script>
+<script src="/assets/main.js?v=theme63"></script>
 </body>
 </html>

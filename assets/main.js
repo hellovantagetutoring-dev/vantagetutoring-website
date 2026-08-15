@@ -39,7 +39,8 @@
       {name:'Brooklyn',atar:'99.75',img:'/assets/tutors/brooklyn-tran.jpg'},
       {name:'Jize',atar:'99.85',img:'/assets/tutors/jize-peng.jpg'},
       {name:'Theo',atar:'99.30',img:'/assets/tutors/theo.jpg'},
-      {name:'Ezekiel',atar:'99.85',img:'/assets/tutors/ezekiel-singh.jpg'}
+      {name:'Ezekiel',atar:'99.85',img:'/assets/tutors/ezekiel-singh.jpg'},
+      {name:'Aniruddha',atar:'99.85',img:'/assets/tutors/aniruddha-das.jpg'}
     ];
     var html='';
     for(var i=0;i<tutors.length;i++){
@@ -386,9 +387,10 @@
       '1-on-1 tutoring': 'routeTutoring',
       'Bring a friend (shared lessons)': 'routeTutoring',
       'Weekly subject masterclass': 'routeMasterclass',
+      'UCAT masterclass': 'routeUcatMasterclass',
       'Assignment review': 'routeAssignment'
     };
-    var routePanelIds = ['routeTutoring', 'routeMasterclass', 'routeAssignment'];
+    var routePanelIds = ['routeTutoring', 'routeMasterclass', 'routeUcatMasterclass', 'routeAssignment'];
 
     function isTutoringEnquiry(){
       return !!form.querySelector('input[name="enquiry_type"][value="1-on-1 tutoring"]:checked')
@@ -559,7 +561,11 @@
 
     [].forEach.call(document.querySelectorAll('[data-enquiry]'), function(a){
       a.addEventListener('click', function(){
-        var map = {masterclass:'Weekly subject masterclass', assignment:'Assignment review'};
+        var map = {
+          masterclass:'Weekly subject masterclass',
+          'ucat-masterclass':'UCAT masterclass',
+          assignment:'Assignment review'
+        };
         var val = map[a.getAttribute('data-enquiry')];
         if(!val) return;
         var input = form.querySelector('input[name="enquiry_type"][value="'+val+'"]');
@@ -569,6 +575,26 @@
         }
       });
     });
+
+    try{
+      var params = new URLSearchParams(window.location.search);
+      var typeParam = params.get('type');
+      var typeMap = {
+        masterclass:'Weekly subject masterclass',
+        'ucat-masterclass':'UCAT masterclass',
+        assignment:'Assignment review',
+        tutoring:'1-on-1 tutoring',
+        plus:'Vantage Plus'
+      };
+      var typeVal = typeMap[typeParam];
+      if(typeVal){
+        var typeInput = form.querySelector('input[name="enquiry_type"][value="'+typeVal+'"]');
+        if(typeInput){
+          typeInput.checked = true;
+          applySelected();
+        }
+      }
+    }catch(err){}
   })();
 
   // Click-drag to paint availability slots (enrol + careers)

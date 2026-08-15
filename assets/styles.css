@@ -1490,7 +1490,14 @@ footer{background:var(--bg-2);border-top:1px solid var(--stroke);padding:44px 0 
     border-bottom:1px solid rgba(0,0,0,0.1);
     box-shadow:0 8px 24px -18px rgba(15,12,28,.35);
   }
-  header .nav{position:relative;}
+  header .nav{
+    position:relative;
+    padding:16px 20px;
+    min-height:76px;
+    box-sizing:border-box;
+  }
+  .brand{font-size:19px;}
+  .brand .logo{width:44px;}
   .navlinks{
     position:absolute;top:calc(100% + 10px);left:12px;right:12px;
     display:none;flex-direction:column;align-items:stretch;gap:8px;
