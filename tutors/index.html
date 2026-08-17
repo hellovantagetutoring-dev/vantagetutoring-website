@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/styles.css?v=theme94">
+<link rel="stylesheet" href="/assets/styles.css?v=theme95">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 <body>
@@ -176,6 +176,7 @@
         <p class="filter-count" id="filterCount" aria-live="polite"></p>
         <button type="button" class="filter-reset-btn" id="filterResetBtn" hidden>Reset filters</button>
       </div>
+      <button type="button" class="filter-done-btn filter-done-btn--sheet" id="filterDoneSheetBtn">Done</button>
       <p class="filter-empty" id="filterEmpty" hidden>No tutors match these filters.</p>
       </div>
     </div>
@@ -641,7 +642,6 @@
         <a href="/services">Services</a>
         <a href="/tutors">Tutors</a>
         <a href="/rates">Rates</a>
-        <a href="/bring-a-friend">Bring a friend</a>
         <a href="/reviews">Reviews</a>
         <a href="/about">About</a>
         <a href="/careers">Careers</a>
@@ -667,6 +667,7 @@
 
   var filterToggle=document.getElementById('filterToggle');
   var filterDoneBtn=document.getElementById('filterDoneBtn');
+  var filterDoneSheetBtn=document.getElementById('filterDoneSheetBtn');
   var filterPanel=document.getElementById('filterPanel');
   var filterToggleMeta=document.getElementById('filterToggleMeta');
   var mobileMq=window.matchMedia('(max-width: 920px)');
@@ -698,7 +699,7 @@
       filterRoot.classList.toggle('is-open', open);
       filterToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       if(filterDoneBtn){
-        if(open) filterDoneBtn.removeAttribute('hidden');
+        if(open && !isMobileFilters()) filterDoneBtn.removeAttribute('hidden');
         else filterDoneBtn.setAttribute('hidden','');
       }
 
@@ -744,6 +745,11 @@
     });
     if(filterDoneBtn){
       filterDoneBtn.addEventListener('click', function(){
+        setFiltersOpen(false);
+      });
+    }
+    if(filterDoneSheetBtn){
+      filterDoneSheetBtn.addEventListener('click', function(){
         setFiltersOpen(false);
       });
     }

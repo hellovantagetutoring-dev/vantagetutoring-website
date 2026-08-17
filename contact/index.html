@@ -139,7 +139,7 @@
                 <input type="radio" name="enquiry_type" value="Tutoring" required>
                 <span class="enquiry-type-card">
                   <span class="enquiry-type-title">Tutoring</span>
-                  <span class="enquiry-type-desc">1-on-1 private sessions or bring-a-friend shared lessons · Gold &amp; Platinum tutors</span>
+                  <span class="enquiry-type-desc">1-on-1 private sessions · Gold &amp; Platinum tutors</span>
                 </span>
               </label>
               <label class="enquiry-type">
@@ -170,13 +170,7 @@
             <div class="form-step-badge">3</div>
             <h3 class="form-step-title">Tutoring details</h3>
 
-            <div class="form-q">
-              <span class="form-q-title">Session format</span>
-              <div class="choice-grid">
-                <label class="choice"><input type="radio" name="session_format" value="1-on-1 private" data-route-required data-route-field checked>1-on-1 private</label>
-                <label class="choice"><input type="radio" name="session_format" value="Bring a friend (shared lessons)" data-route-field>Bring a friend (shared, 2–3 students · save up to 33%)</label>
-              </div>
-            </div>
+            <input type="hidden" name="session_format" value="1-on-1 private">
 
             <p class="form-note form-note--student">The questions below are for <strong>Student 1</strong>. Session times and tutor preferences apply to the whole enrolment. If you're enrolling more than one student, <strong>future students'</strong> details are collected at the end.</p>
 
@@ -567,7 +561,6 @@
         <a href="/services">Services</a>
         <a href="/tutors">Tutors</a>
         <a href="/rates">Rates</a>
-        <a href="/bring-a-friend">Bring a friend</a>
         <a href="/reviews">Reviews</a>
         <a href="/about">About</a>
         <a href="/careers">Careers</a>

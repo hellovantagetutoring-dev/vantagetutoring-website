@@ -1416,6 +1416,7 @@ footer{background:var(--bg-2);border-top:1px solid var(--stroke);padding:44px 0 
 }
 .filter-done-btn:hover{transform:translateY(-1px);box-shadow:var(--gold-surface-hover-shadow),var(--gold-surface-hover-inset);}
 .filter-done-btn[hidden]{display:none !important;}
+.filter-done-btn--sheet{display:none;}
 .filter-panel[hidden]{display:none !important;}
 .filter-panel{padding-top:10px;margin-top:8px;border-top:1px solid var(--stroke);}
 .tutor-filters.is-open .filter-panel:not(.is-sheet){
@@ -1483,6 +1484,18 @@ footer{background:var(--bg-2);border-top:1px solid var(--stroke);padding:44px 0 
     border-color:rgba(0,0,0,0.1);
   }
   .filter-toggle-row{gap:10px;}
+  .filter-toggle-row > .filter-done-btn:not(.filter-done-btn--sheet){display:none !important;}
+  .filter-panel.is-sheet .filter-done-btn--sheet{
+    display:flex;
+    width:100%;
+    min-height:48px;
+    margin-top:12px;
+    padding:12px 20px;
+    font-size:15px;
+    position:sticky;
+    bottom:0;
+    z-index:2;
+  }
   .filter-done-btn{padding:10px 20px;font-size:14px;min-height:44px;margin-left:0;}
   /* Backdrop + sheet live on document.body (see tutors JS) so sticky header can't trap them */
   .filter-backdrop{
