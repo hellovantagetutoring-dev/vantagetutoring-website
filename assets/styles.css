@@ -631,6 +631,10 @@ section.tight{padding:56px 0;}
   background:var(--overlay);
   touch-action:none;
 }
+.loc-filter-map--tutors{
+  height:clamp(260px,44vh,400px);
+  min-height:260px;
+}
 .loc-filter-map .leaflet-container{
   width:100% !important;
   height:100% !important;
@@ -1419,6 +1423,22 @@ footer{background:var(--bg-2);border-top:1px solid var(--stroke);padding:44px 0 
 .filter-done-btn--sheet{display:none;}
 .filter-panel[hidden]{display:none !important;}
 .filter-panel{padding-top:10px;margin-top:8px;border-top:1px solid var(--stroke);}
+.filter-dimensions{
+  display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px;padding:10px 12px;
+  border-radius:12px;border:1px solid rgba(232,184,75,.28);
+  background:linear-gradient(100deg,rgba(232,184,75,.1),rgba(107,76,224,.06));
+}
+.filter-dim{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;color:var(--text);
+  letter-spacing:-.01em;
+}
+.filter-dim-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:20px;height:20px;border-radius:6px;
+  font-size:10px;font-weight:800;color:var(--gold-deep);
+  background:rgba(232,184,75,.18);border:1px solid rgba(232,184,75,.35);
+}
 .tutor-filters.is-open .filter-panel:not(.is-sheet){
   max-height:min(72vh, calc(100dvh - 120px));
   overflow-x:hidden;
@@ -1581,8 +1601,11 @@ footer{background:var(--bg-2);border-top:1px solid var(--stroke);padding:44px 0 
   .filter-panel.is-sheet .loc-filter-controls{grid-template-columns:1fr;gap:10px;}
   .filter-panel.is-sheet .loc-filter-field select{font-size:16px;}
   .filter-panel.is-sheet .loc-filter-map{
-    height:clamp(150px,24vh,210px);
-    min-height:150px;
+    height:clamp(180px,30vh,240px);
+  }
+  .filter-panel.is-sheet .loc-filter-map--tutors{
+    height:clamp(200px,32vh,260px);
+    min-height:200px;
   }
   .filter-panel.is-sheet .loc-filter-hint{font-size:11px;line-height:1.4;}
   .filter-panel.is-sheet .filter-section--delivery .filter-section-body{gap:10px;}
@@ -2626,6 +2649,26 @@ footer{background:var(--bg-2);border-top:1px solid var(--stroke);padding:44px 0 
 }
 .leaflet-popup-content strong{display:block;margin-bottom:2px;}
 .leaflet-popup-content a{color:var(--gold-deep);font-weight:700;}
+
+/* Static preview maps (home + enrol) */
+.vt-map-static-wrap{position:relative;}
+.vt-map-static-wrap .loc-frame,
+.vt-map-static-wrap .contact-map-frame{position:relative;z-index:0;}
+.vt-map-static .leaflet-container,
+.vt-map-static-wrap .vt-map-static .leaflet-container{
+  pointer-events:none !important;
+  cursor:default;
+}
+.vt-map-static-cta{
+  position:absolute;inset:auto 12px 12px auto;z-index:450;
+  pointer-events:none;
+}
+.vt-map-static-cta .vt-map-tutor-link{
+  pointer-events:auto;
+  box-shadow:0 10px 28px -12px rgba(15,12,28,.45);
+  font-size:13px;padding:10px 16px;white-space:nowrap;
+}
+.vt-map-static-cta .vt-map-tutor-link svg{width:16px;height:16px;}
 
 /* Full locations section (homepage) */
 .locations-section{

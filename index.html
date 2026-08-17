@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" href="/assets/logo.png">
-<link rel="stylesheet" href="/assets/styles.css?v=theme94">
+<link rel="stylesheet" href="/assets/styles.css?v=theme96">
 <link rel="stylesheet" href="/assets/home-landing.css?v=50">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
@@ -182,30 +182,22 @@
         <button type="button" class="loc-tab" role="tab" aria-selected="false" data-vt-venue="griffith">Griffith University</button>
         <button type="button" class="loc-tab" role="tab" aria-selected="false" data-vt-venue="garden">Garden City</button>
       </div>
-      <div class="loc-filter-controls service-area-controls">
-        <div class="loc-filter-field">
-          <label for="homeServiceSuburb">Your suburb</label>
-          <select id="homeServiceSuburb" data-vt-suburb data-vt-suburb-placeholder="Any area" aria-label="Your suburb">
-            <option value="">Any area</option>
-          </select>
-        </div>
-        <div class="loc-filter-field">
-          <label for="homeServiceRadius">Travel radius</label>
-          <div class="loc-filter-radius-wrap">
-            <input type="range" id="homeServiceRadius" data-vt-radius min="5" max="40" value="15" step="1" aria-valuemin="5" aria-valuemax="40" aria-valuenow="15">
-            <span class="loc-filter-radius-val" data-vt-radius-val>15 km</span>
-          </div>
+      <div class="vt-map-static-wrap">
+        <div class="loc-frame vt-map-static" id="homeMapEl" data-vt-map-static role="img" aria-label="Preview map of Vantage tutoring venues and Brisbane service suburbs"></div>
+        <div class="vt-map-static-cta">
+          <a href="/tutors#when" class="btn btn-primary vt-map-tutor-link">Explore your suburb on the tutor map
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
         </div>
       </div>
-      <div class="loc-frame" id="homeMapEl" data-vt-map role="img" aria-label="Map of Vantage tutoring venues and Brisbane service suburbs"></div>
       <div class="loc-meta">
         <div>
           <strong data-vt-title>Brisbane service area</strong>
-          <p data-vt-detail>Meet-up venues at State Library, UQ, Griffith University, and Garden City, with home visits across greater Brisbane.</p>
+          <p data-vt-detail>Preview of meet-up venues and home-visit suburbs. Pick your suburb and radius on the <a href="/tutors#when">tutor map</a> to see tutors near you.</p>
         </div>
         <div class="loc-meta-actions">
           <a data-vt-link class="card-link" href="https://www.google.com/maps/search/?api=1&amp;query=Vantage+Tutoring+Brisbane" target="_blank" rel="noopener">Open in Google Maps <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a class="card-link" href="/contact#service-map">Enquire about a suburb <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="card-link" href="/tutors#when">Open tutor map <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
     </div>
@@ -345,7 +337,7 @@
 </footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script src="/assets/tutor-locations.js?v=12"></script>
-<script src="/assets/main.js?v=theme68"></script>
+<script src="/assets/tutor-locations.js?v=14"></script>
+<script src="/assets/main.js?v=theme69"></script>
 </body>
 </html>

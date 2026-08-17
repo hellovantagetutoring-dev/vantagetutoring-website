@@ -741,18 +741,190 @@
       if(v.tab) venueMarkers[v.tab] = marker;
     });
 
+    var suburbLayer = null;
     if(boundariesFc && boundariesFc.features && boundariesFc.features.length){
-      var suburbLayer = plotSuburbBoundaries(map, L, options, bounds);
+      suburbLayer = plotSuburbBoundaries(map, L, options, bounds);
       if(suburbLayer) bounds.push(suburbLayer.getBounds());
     }else{
       plotSuburbDots(map, L, options, icons, bounds);
     }
 
     var fitBounds = combineBounds(L, bounds);
-    return { bounds: bounds, fitBounds: fitBounds, venueMarkers: venueMarkers, icons: icons, suburbList: suburbList };
+    return { bounds: bounds, fitBounds: fitBounds, venueMarkers: venueMarkers, icons: icons, suburbList: suburbList, suburbLayer: suburbLayer };
   }
 
-  var SERVICE_AREA_KEY = 'vtServiceArea';
+  var MAP_REGIONS_KEY = 'vtMapRegionIds';
+  var MAP_REGIONS_EVENT = 'vt-map-regions-change';
+  var staticMapRegistry = [];
+
+  function readMapRegionIds(){
+    try{
+      var raw = sessionStorage.getItem(MAP_REGIONS_KEY);
+      if(raw){
+        var parsed = JSON.parse(raw);
+        if(Array.isArray(parsed) && parsed.length) return parsed;
+      }
+    }catch(e){}
+    return serviceMapSuburbIds();
+  }
+
+  function publishMapRegionIds(ids){
+    if(!ids || !ids.length) ids = serviceMapSuburbIds();
+    try{
+      sessionStorage.setItem(MAP_REGIONS_KEY, JSON.stringify(ids));
+    }catch(e){}
+    global.dispatchEvent(new CustomEvent(MAP_REGIONS_EVENT, { detail: ids }));
+    refreshStaticMapRegions();
+  }
+
+  function replotStaticRegions(entry, suburbIds){
+    if(!entry || !entry.map || !entry.L) return;
+    if(entry.suburbLayer){
+      entry.map.removeLayer(entry.suburbLayer);
+      entry.suburbLayer = null;
+    }
+    var opts = {
+      layerGroup: entry.map,
+      includeSuburbIds: suburbIds,
+      serviceCircle: false,
+      suburbExtra: entry.suburbExtra,
+      venueExtra: entry.venueExtra
+    };
+    if(boundariesFc && boundariesFc.features && boundariesFc.features.length){
+      entry.suburbLayer = plotSuburbBoundaries(entry.map, entry.L, opts, []);
+    }
+    if(entry.mapEntry && entry.mapEntry.fitBounds){
+      entry.map.fitBounds(entry.mapEntry.fitBounds, MAP_FIT_OPTS);
+    }
+    finalizeServiceMap(entry.mapEntry, entry.L, readServiceAreaState());
+  }
+
+  function refreshStaticMapRegions(){
+    var ids = readMapRegionIds();
+    staticMapRegistry.forEach(function(entry){
+      replotStaticRegions(entry, ids);
+    });
+  }
+
+  function initStaticServiceMaps(mapNodes, L, options){
+    options = options || {};
+    if(!mapNodes || !mapNodes.length || !L) return Promise.resolve();
+    var coverages = options.coverages || TUTOR_COVERAGE.slice();
+    var suburbExtra = function(loc){
+      var tutors = tutorNamesForSuburb(loc.id, coverages);
+      return tutors ? 'Tutors · ' + tutors : '';
+    };
+    var venueExtra = function(loc){
+      var tutors = tutorNamesForVenue(loc.id, coverages);
+      return tutors ? 'Tutors · ' + tutors : '';
+    };
+
+    return loadBoundaries().then(function(){
+      [].forEach.call(mapNodes, function(el){
+        var plotOpts = {
+          serviceCircle: false,
+          includeSuburbIds: readMapRegionIds(),
+          suburbExtra: suburbExtra,
+          venueExtra: venueExtra
+        };
+        var map = L.map(el, {
+          scrollWheelZoom: false,
+          dragging: false,
+          touchZoom: false,
+          doubleClickZoom: false,
+          boxZoom: false,
+          keyboard: false,
+          zoomControl: false,
+          attributionControl: true,
+          tap: false
+        });
+        addTileLayer(map, L);
+        var result = plotLocations(map, L, plotOpts);
+        var mapEntry = {
+          map: map,
+          picker: null,
+          circle: null,
+          icons: result.icons,
+          fitBounds: result.fitBounds,
+          bounds: result.bounds,
+          static: true
+        };
+        registerServiceMap(mapEntry, { deferApply: true });
+        staticMapRegistry.push({
+          map: map,
+          L: L,
+          suburbLayer: result.suburbLayer,
+          suburbExtra: suburbExtra,
+          venueExtra: venueExtra,
+          mapEntry: mapEntry
+        });
+        if(result.fitBounds){
+          map.fitBounds(result.fitBounds, MAP_FIT_OPTS);
+        }else{
+          map.setView([DEFAULT_MAP_VIEW.lat, DEFAULT_MAP_VIEW.lng], DEFAULT_MAP_VIEW.zoom);
+        }
+        setTimeout(function(){
+          finalizeServiceMap(mapEntry, L, readServiceAreaState());
+          map.invalidateSize(true);
+        }, 140);
+
+        var wrap = el.closest('[data-vt-map-wrap]');
+        if(!wrap) return;
+
+        var titleEl = wrap.querySelector('[data-vt-title]');
+        var detailEl = wrap.querySelector('[data-vt-detail]');
+        var linkEl = wrap.querySelector('[data-vt-link]');
+        var tabs = wrap.querySelectorAll('[data-vt-venue]');
+
+        [].forEach.call(tabs, function(tab){
+          tab.addEventListener('click', function(){
+            var id = tab.getAttribute('data-vt-venue');
+            [].forEach.call(tabs, function(t){
+              t.classList.toggle('is-active', t === tab);
+              t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+            });
+            if(id === 'all'){
+              var areaState = readServiceAreaState();
+              if(areaState.suburb){
+                applyServiceAreaToMap(mapEntry, areaState, L);
+              }else if(result.fitBounds){
+                map.fitBounds(result.fitBounds, MAP_FIT_OPTS);
+              }
+              if(titleEl) titleEl.textContent = 'Brisbane service area';
+              if(detailEl) detailEl.textContent = 'Meet-up venues plus shaded home-visit suburbs. Online available anywhere.';
+              if(linkEl) linkEl.href = 'https://www.google.com/maps/search/?api=1&query=Vantage+Tutoring+Brisbane';
+              return;
+            }
+            var v = getVenueByTab(id);
+            if(!v) return;
+            map.setView([v.lat, v.lng], 14, { animate: false });
+            if(titleEl) titleEl.textContent = v.name;
+            if(detailEl) detailEl.textContent = v.detail || 'Meet-up venue';
+            if(linkEl) linkEl.href = 'https://www.google.com/maps/search/?api=1&query=' + googleQuery(v);
+          });
+        });
+      });
+
+      if(!initStaticServiceMaps._listening){
+        initStaticServiceMaps._listening = true;
+        global.addEventListener(SERVICE_AREA_EVENT, function(e){
+          if(!e.detail) return;
+          refreshServiceAreaOnMaps(e.detail);
+        });
+        global.addEventListener(MAP_REGIONS_EVENT, function(){
+          refreshStaticMapRegions();
+        });
+        global.addEventListener('storage', function(e){
+          if(e.key === SERVICE_AREA_KEY && e.newValue){
+            try{
+              refreshServiceAreaOnMaps(JSON.parse(e.newValue));
+            }catch(err){}
+          }
+          if(e.key === MAP_REGIONS_KEY) refreshStaticMapRegions();
+        });
+      }
+    });
+  }
   var SERVICE_AREA_EVENT = 'vt-service-area-change';
   var DEFAULT_SERVICE_RADIUS = 15;
   var serviceMapRegistry = [];
@@ -769,6 +941,33 @@
       }
     }catch(e){}
     return { suburb: '', radius: DEFAULT_SERVICE_RADIUS };
+  }
+
+  function readServiceAreaFromDom(source){
+    var stored = readServiceAreaState();
+    var suburb = stored.suburb;
+    var radius = stored.radius;
+
+    if(source && (source.getAttribute('data-vt-suburb') || source.id === 'filterSuburb')){
+      suburb = source.value || '';
+    }else{
+      [].forEach.call(document.querySelectorAll('select[data-vt-suburb], #filterSuburb'), function(sel){
+        if(sel.value) suburb = sel.value;
+      });
+    }
+
+    if(source && (source.getAttribute('data-vt-radius') || source.id === 'filterRadius')){
+      radius = parseInt(source.value, 10) || DEFAULT_SERVICE_RADIUS;
+    }else{
+      [].forEach.call(document.querySelectorAll('input[data-vt-radius], #filterRadius'), function(input){
+        if(input.value) radius = parseInt(input.value, 10) || DEFAULT_SERVICE_RADIUS;
+      });
+    }
+
+    return {
+      suburb: suburb || '',
+      radius: radius || DEFAULT_SERVICE_RADIUS
+    };
   }
 
   function syncRadiusLabelFor(input){
@@ -794,6 +993,7 @@
       }else{
         entry.map.setView([DEFAULT_MAP_VIEW.lat, DEFAULT_MAP_VIEW.lng], DEFAULT_MAP_VIEW.zoom);
       }
+      entry.map.invalidateSize(true);
       return;
     }
     var center = getSuburbLoc(state.suburb);
@@ -813,12 +1013,23 @@
       fillOpacity: 0.12
     }).addTo(entry.map);
     entry.map.fitBounds(entry.circle.getBounds(), { padding: [20, 20], maxZoom: 12 });
+    entry.map.invalidateSize(true);
   }
 
-  function refreshServiceAreaOnMaps(state){
-    if(typeof L === 'undefined') return;
+  function finalizeServiceMap(entry, L, state){
+    if(!entry || !entry.map || !L) return;
+    entry.map.invalidateSize(true);
+    applyServiceAreaToMap(entry, state || readServiceAreaState(), L);
+    setTimeout(function(){
+      if(entry.map) entry.map.invalidateSize(true);
+    }, 140);
+  }
+
+  function refreshServiceAreaOnMaps(state, L){
+    var leaflet = L || (typeof global.L !== 'undefined' ? global.L : null);
+    if(!leaflet) return;
     serviceMapRegistry.forEach(function(entry){
-      applyServiceAreaToMap(entry, state, L);
+      applyServiceAreaToMap(entry, state, leaflet);
     });
   }
 
@@ -848,9 +1059,10 @@
   }
 
   function setServiceAreaState(state, source){
-    var next = {
-      suburb: state.suburb || '',
-      radius: parseInt(state.radius, 10) || DEFAULT_SERVICE_RADIUS
+    var next = state || readServiceAreaFromDom(source);
+    next = {
+      suburb: next.suburb || '',
+      radius: parseInt(next.radius, 10) || DEFAULT_SERVICE_RADIUS
     };
     try{
       sessionStorage.setItem(SERVICE_AREA_KEY, JSON.stringify(next));
@@ -860,14 +1072,17 @@
     global.dispatchEvent(new CustomEvent(SERVICE_AREA_EVENT, { detail: next }));
   }
 
-  function registerServiceMap(entry){
+  function registerServiceMap(entry, options){
+    options = options || {};
     if(!entry || !entry.map) return;
     serviceMapRegistry.push(entry);
+    if(options.deferApply) return;
     applyServiceAreaToMap(entry, readServiceAreaState(), typeof L !== 'undefined' ? L : null);
   }
 
   function initServiceAreaMirroring(options){
     options = options || {};
+    if(!document.querySelector('[data-vt-dynamic-area]')) return Promise.resolve();
     if(!initServiceAreaMirroring._storageBound){
       initServiceAreaMirroring._storageBound = true;
       global.addEventListener('storage', function(e){
@@ -886,8 +1101,7 @@
         if(sel._vtServiceBound) return;
         sel._vtServiceBound = true;
         sel.addEventListener('change', function(){
-          var current = readServiceAreaState();
-          setServiceAreaState({ suburb: sel.value || '', radius: current.radius }, sel);
+          setServiceAreaState(readServiceAreaFromDom(sel), sel);
         });
       });
       [].forEach.call(document.querySelectorAll('input[data-vt-radius]'), function(input){
@@ -896,8 +1110,7 @@
         if(input._vtServiceBound) return;
         input._vtServiceBound = true;
         input.addEventListener('input', function(){
-          var current = readServiceAreaState();
-          setServiceAreaState({ suburb: current.suburb, radius: parseInt(input.value, 10) || DEFAULT_SERVICE_RADIUS }, input);
+          setServiceAreaState(readServiceAreaFromDom(input), input);
         });
       });
       refreshServiceAreaOnMaps(state);
@@ -938,7 +1151,10 @@
           fitBounds: result.fitBounds,
           bounds: result.bounds
         };
-        registerServiceMap(mapEntry);
+        registerServiceMap(mapEntry, { deferApply: true });
+        setTimeout(function(){
+          finalizeServiceMap(mapEntry, L);
+        }, 140);
 
         var wrap = el.closest('[data-vt-map-wrap]');
         if(!wrap){
@@ -1024,10 +1240,16 @@
     addTileLayer: addTileLayer,
     plotLocations: plotLocations,
     initServiceMaps: initServiceMaps,
+    initStaticServiceMaps: initStaticServiceMaps,
     initServiceAreaMirroring: initServiceAreaMirroring,
+    readMapRegionIds: readMapRegionIds,
+    publishMapRegionIds: publishMapRegionIds,
+    MAP_REGIONS_EVENT: MAP_REGIONS_EVENT,
     readServiceAreaState: readServiceAreaState,
+    readServiceAreaFromDom: readServiceAreaFromDom,
     setServiceAreaState: setServiceAreaState,
     registerServiceMap: registerServiceMap,
+    finalizeServiceMap: finalizeServiceMap,
     applyServiceAreaToMap: applyServiceAreaToMap,
     SERVICE_AREA_EVENT: SERVICE_AREA_EVENT,
     DEFAULT_SERVICE_RADIUS: DEFAULT_SERVICE_RADIUS,

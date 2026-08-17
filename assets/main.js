@@ -545,7 +545,11 @@
     }
 
     function populateHomeSuburbPicker(){
-      /* suburb list + sync handled by VTLoc.initServiceAreaMirroring */
+      var select = document.getElementById('homeSuburb');
+      if(!select || !window.VTLoc) return;
+      VTLoc.loadBoundaries().then(function(){
+        VTLoc.populateSuburbSelect(select, 'Select suburb');
+      });
     }
     populateHomeSuburbPicker();
 
@@ -928,16 +932,12 @@
     });
   });
 
-  // Venue + suburb service maps (contact + homepage) — data from VTLoc registry
-  var mapNodes=document.querySelectorAll('[data-vt-map]');
-  if(mapNodes.length && typeof L!=='undefined' && window.VTLoc && VTLoc.initServiceMaps){
-    var mapsReady=VTLoc.initServiceMaps(mapNodes, L);
-    if(mapsReady && mapsReady.then && VTLoc.initServiceAreaMirroring){
-      mapsReady.then(function(){ VTLoc.initServiceAreaMirroring(); });
-    }else if(VTLoc.initServiceAreaMirroring){
-      VTLoc.initServiceAreaMirroring();
-    }
-  }else if(window.VTLoc && VTLoc.initServiceAreaMirroring){
+  // Static preview maps (home + contact) + dynamic area controls on tutors page
+  var staticMaps=document.querySelectorAll('[data-vt-map-static]');
+  if(staticMaps.length && typeof L!=='undefined' && window.VTLoc && VTLoc.initStaticServiceMaps){
+    VTLoc.initStaticServiceMaps(staticMaps, L);
+  }
+  if(window.VTLoc && VTLoc.initServiceAreaMirroring && document.querySelector('[data-vt-dynamic-area]')){
     VTLoc.initServiceAreaMirroring();
   }
 
