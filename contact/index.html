@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" href="/assets/logo.png">
-<link rel="stylesheet" href="/assets/styles.css?v=theme94">
+<link rel="stylesheet" href="/assets/styles.css?v=theme96">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 <body>
@@ -80,25 +80,17 @@
         <div class="contact-map" id="service-map" data-vt-map-wrap>
           <div class="contact-map-head">
             <strong>Brisbane venues</strong>
-            <a href="https://www.google.com/maps/search/?api=1&amp;query=Vantage+Tutoring+Brisbane" target="_blank" rel="noopener">Google Maps</a>
+            <a href="/tutors#when">Tutor map</a>
           </div>
-          <div class="loc-filter-controls service-area-controls">
-            <div class="loc-filter-field">
-              <label for="contactServiceSuburb">Your suburb</label>
-              <select id="contactServiceSuburb" data-vt-suburb data-vt-suburb-placeholder="Any area" aria-label="Your suburb">
-                <option value="">Any area</option>
-              </select>
-            </div>
-            <div class="loc-filter-field">
-              <label for="contactServiceRadius">Travel radius</label>
-              <div class="loc-filter-radius-wrap">
-                <input type="range" id="contactServiceRadius" data-vt-radius min="5" max="40" value="15" step="1" aria-valuemin="5" aria-valuemax="40" aria-valuenow="15">
-                <span class="loc-filter-radius-val" data-vt-radius-val>15 km</span>
-              </div>
+          <div class="vt-map-static-wrap">
+            <div class="contact-map-frame vt-map-static" id="serviceMapEl" data-vt-map-static role="img" aria-label="Preview map of Vantage tutoring venues and Brisbane service area"></div>
+            <div class="vt-map-static-cta">
+              <a href="/tutors#when" class="btn btn-primary vt-map-tutor-link">Explore your suburb
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
             </div>
           </div>
-          <div class="contact-map-frame" id="serviceMapEl" data-vt-map role="img" aria-label="Map of Vantage tutoring venues and Brisbane service area"></div>
-          <p class="contact-map-note">Gradient pins are meet-up venues. Gold shading shows suburb boundaries for home visits. Circle shows your travel radius when a suburb is selected.</p>
+          <p class="contact-map-note">Preview only. Gold shading shows tutor coverage. Use the <a href="/tutors#when">tutor map</a> to pick your suburb and travel radius.</p>
         </div>
       </div>
       <div class="contact-card reveal">
@@ -225,16 +217,9 @@
               <div class="loc-filter-controls enrol-loc-controls">
                 <div class="loc-filter-field">
                   <label for="homeSuburb">Your suburb</label>
-                  <select id="homeSuburb" name="home_suburb" aria-label="Your suburb" data-route-field data-vt-suburb data-vt-suburb-placeholder="Select suburb">
+                  <select id="homeSuburb" name="home_suburb" aria-label="Your suburb" data-route-field>
                     <option value="">Select suburb</option>
                   </select>
-                </div>
-                <div class="loc-filter-field">
-                  <label for="homeTravelRadius">Travel radius</label>
-                  <div class="loc-filter-radius-wrap">
-                    <input type="range" id="homeTravelRadius" data-vt-radius min="5" max="40" value="15" step="1" aria-valuemin="5" aria-valuemax="40" aria-valuenow="15">
-                    <span class="loc-filter-radius-val" data-vt-radius-val>15 km</span>
-                  </div>
                 </div>
                 <div class="loc-filter-field">
                   <label for="address">Street address</label>
@@ -577,7 +562,7 @@
 </footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script src="/assets/tutor-locations.js?v=12"></script>
-<script src="/assets/main.js?v=theme68"></script>
+<script src="/assets/tutor-locations.js?v=14"></script>
+<script src="/assets/main.js?v=theme69"></script>
 </body>
 </html>

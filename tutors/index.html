@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/styles.css?v=theme95">
+<link rel="stylesheet" href="/assets/styles.css?v=theme96">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 <body>
@@ -51,7 +51,7 @@
     <div class="tutor-filters" id="tutorFilters">
       <div class="filter-toggle-row">
         <button type="button" class="filter-toggle" id="filterToggle" aria-expanded="false" aria-controls="filterPanel">
-          <span class="filter-toggle-label">Filter tutors</span>
+          <span class="filter-toggle-label">Filter by time, subject, degree &amp; area</span>
           <span class="filter-toggle-meta" id="filterToggleMeta"></span>
           <svg class="filter-toggle-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </button>
@@ -59,13 +59,20 @@
       </div>
       <div class="filter-panel" id="filterPanel" hidden>
 
+      <p class="filter-dimensions" aria-label="Filter by time, subject, degree, and area">
+        <span class="filter-dim"><span class="filter-dim-num">1</span> Time</span>
+        <span class="filter-dim"><span class="filter-dim-num">2</span> Subject</span>
+        <span class="filter-dim"><span class="filter-dim-num">3</span> Degree</span>
+        <span class="filter-dim"><span class="filter-dim-num">4</span> Area map</span>
+      </p>
+
       <div class="filter-sections">
         <div class="filter-section filter-section--when">
           <div class="filter-section-head">
             <span class="filter-section-num">1</span>
             <div>
-              <span class="filter-section-title">Find a tutor for your times</span>
-              <span class="filter-section-desc">Days and time of day</span>
+              <span class="filter-section-title">Time</span>
+              <span class="filter-section-desc">Days and time of day you are free</span>
             </div>
           </div>
           <div class="filter-section-body" id="dayFilterPanel">
@@ -140,33 +147,34 @@
           <div class="filter-section-head">
             <span class="filter-section-num">4</span>
             <div>
-              <span class="filter-section-title">Delivery</span>
-              <span class="filter-section-desc">Online, in person, or both. Pick in-person area below</span>
+              <span class="filter-section-title">Area map</span>
+              <span class="filter-section-desc">Your suburb, travel radius, and tutors who can reach you</span>
             </div>
           </div>
           <div class="filter-section-body">
+            <span class="filter-label">Delivery</span>
             <div class="filter-chips filter-chips--delivery" data-filter="format" role="group" aria-label="Filter by delivery" aria-multiselectable="true">
               <button type="button" class="filter-chip" data-value="online">Online</button>
               <button type="button" class="filter-chip" data-value="in-person">In person</button>
             </div>
-            <div class="filter-loc-area" id="filterLocArea">
+            <div class="filter-loc-area" id="filterLocArea" data-vt-dynamic-area>
               <div class="loc-filter-controls">
                 <div class="loc-filter-field">
                   <label for="filterSuburb">Your suburb</label>
-                  <select id="filterSuburb" aria-label="Your suburb">
+                  <select id="filterSuburb" data-vt-suburb data-vt-suburb-placeholder="Any area" aria-label="Your suburb">
                     <option value="">Any area</option>
                   </select>
                 </div>
                 <div class="loc-filter-field">
                   <label for="filterRadius">Travel radius</label>
                   <div class="loc-filter-radius-wrap">
-                    <input type="range" id="filterRadius" min="5" max="40" value="15" step="1" aria-valuemin="5" aria-valuemax="40" aria-valuenow="15">
-                    <span class="loc-filter-radius-val" id="filterRadiusVal">15 km</span>
+                    <input type="range" id="filterRadius" data-vt-radius min="5" max="40" value="15" step="1" aria-valuemin="5" aria-valuemax="40" aria-valuenow="15">
+                    <span class="loc-filter-radius-val" id="filterRadiusVal" data-vt-radius-val>15 km</span>
                   </div>
                 </div>
               </div>
-              <div class="loc-filter-map" id="tutorLocMap" role="img" aria-label="Map of tutor service suburbs and your selected area"></div>
-              <p class="loc-filter-hint">Gold shading = suburb boundaries · Gradient pins = libraries &amp; venues · Circle shows your travel radius when a suburb is selected.</p>
+              <div class="loc-filter-map loc-filter-map--tutors" id="tutorLocMap" role="img" aria-label="Interactive map of tutor service suburbs and your selected area"></div>
+              <p class="loc-filter-hint">Interactive map · gold = suburb boundaries · gradient pins = venues · circle = your travel radius</p>
             </div>
           </div>
         </div>
@@ -659,7 +667,7 @@
 
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script src="/assets/tutor-locations.js?v=12"></script>
+<script src="/assets/tutor-locations.js?v=14"></script>
 <script>
 (function(){
   var filterRoot=document.getElementById('tutorFilters');
@@ -731,14 +739,26 @@
 
       if(open){
         filterPanel.removeAttribute('hidden');
-        setTimeout(function(){
-          buildLocMap();
-          refreshLocMap();
-          if(locMap) invalidateLocMap();
-        }, isMobileFilters() ? 220 : 120);
+        openFilterMap();
       }else{
         filterPanel.setAttribute('hidden','');
       }
+    }
+    function openFilterMap(){
+      var delay=isMobileFilters() ? 280 : 160;
+      setTimeout(function(){
+        if(locMap && locMapEntry && window.VTLoc && VTLoc.finalizeServiceMap){
+          VTLoc.finalizeServiceMap(locMapEntry, L);
+          invalidateLocMap();
+          return;
+        }
+        buildLocMap().then(function(){
+          if(locMapEntry && window.VTLoc && VTLoc.finalizeServiceMap){
+            VTLoc.finalizeServiceMap(locMapEntry, L);
+          }
+          invalidateLocMap();
+        });
+      }, delay);
     }
     filterToggle.addEventListener('click', function(){
       if(!filterRoot.classList.contains('is-open')) setFiltersOpen(true);
@@ -1014,18 +1034,18 @@
         icons:plotted.icons,
         fitBounds:null
       };
-      if(VTLoc.registerServiceMap) VTLoc.registerServiceMap(locMapEntry);
+      if(VTLoc.registerServiceMap) VTLoc.registerServiceMap(locMapEntry, { deferApply: true });
+      if(VTLoc.publishMapRegionIds) VTLoc.publishMapRegionIds(VTLoc.mapSuburbIdsFromCards(cards));
       locMap.setView([VTLoc.DEFAULT_MAP_VIEW.lat, VTLoc.DEFAULT_MAP_VIEW.lng], VTLoc.DEFAULT_MAP_VIEW.zoom);
       bindLocMapResize();
-      setTimeout(invalidateLocMap, 80);
     });
     return buildLocMap._pending;
   }
 
   function refreshLocMap(){
+    if(!locMapEntry || !window.VTLoc || !VTLoc.finalizeServiceMap) return;
     buildLocMap().then(function(){
-      if(!locMapEntry || !window.VTLoc) return;
-      VTLoc.applyServiceAreaToMap(locMapEntry, { suburb:locationSuburb, radius:locationRadius }, L);
+      VTLoc.finalizeServiceMap(locMapEntry, L);
       invalidateLocMap();
     });
   }
@@ -1174,11 +1194,6 @@
     filterSuburb.addEventListener('change', function(){
       locationSuburb=filterSuburb.value||'';
       locationRadius=parseInt(filterRadius && filterRadius.value, 10)||15;
-      if(window.VTLoc && VTLoc.setServiceAreaState){
-        VTLoc.setServiceAreaState({ suburb:locationSuburb, radius:locationRadius }, filterSuburb);
-      }else{
-        refreshLocMap();
-      }
       if(locationSuburb && !wantsInPerson()) deliveryFormats.push('in-person');
       if(locationSuburb) syncDeliveryUI();
       apply();
@@ -1188,25 +1203,19 @@
     filterRadius.addEventListener('input', function(){
       locationRadius=parseInt(filterRadius.value, 10)||15;
       syncRadiusLabel();
-      if(window.VTLoc && VTLoc.setServiceAreaState){
-        VTLoc.setServiceAreaState({ suburb:locationSuburb, radius:locationRadius }, filterRadius);
-      }else{
-        refreshLocMap();
-      }
       if(locationSuburb) apply();
     });
   }
   if(window.VTLoc && VTLoc.SERVICE_AREA_EVENT){
     window.addEventListener(VTLoc.SERVICE_AREA_EVENT, function(e){
       if(!e.detail) return;
+      var prevSuburb=locationSuburb;
       locationSuburb=e.detail.suburb||'';
       locationRadius=e.detail.radius||15;
-      if(filterSuburb && filterSuburb.value!==locationSuburb) filterSuburb.value=locationSuburb;
-      if(filterRadius && String(filterRadius.value)!==String(locationRadius)){
-        filterRadius.value=String(locationRadius);
-        syncRadiusLabel();
+      if(locationSuburb && locationSuburb!==prevSuburb && !wantsInPerson()){
+        deliveryFormats.push('in-person');
+        syncDeliveryUI();
       }
-      refreshLocMap();
       apply();
     });
   }
@@ -1232,6 +1241,6 @@
   }
 })();
 </script>
-<script src="/assets/main.js?v=theme68"></script>
+<script src="/assets/main.js?v=theme69"></script>
 </body>
 </html>
