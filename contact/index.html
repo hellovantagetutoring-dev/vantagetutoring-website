@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" href="/assets/logo.png">
-<link rel="stylesheet" href="/assets/styles.css?v=theme83">
+<link rel="stylesheet" href="/assets/styles.css?v=theme94">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 <body>
@@ -77,13 +77,28 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
 
-        <div class="contact-map" id="service-map" data-service-map>
+        <div class="contact-map" id="service-map" data-vt-map-wrap>
           <div class="contact-map-head">
             <strong>Brisbane venues</strong>
             <a href="https://www.google.com/maps/search/?api=1&amp;query=Vantage+Tutoring+Brisbane" target="_blank" rel="noopener">Google Maps</a>
           </div>
+          <div class="loc-filter-controls service-area-controls">
+            <div class="loc-filter-field">
+              <label for="contactServiceSuburb">Your suburb</label>
+              <select id="contactServiceSuburb" data-vt-suburb data-vt-suburb-placeholder="Any area" aria-label="Your suburb">
+                <option value="">Any area</option>
+              </select>
+            </div>
+            <div class="loc-filter-field">
+              <label for="contactServiceRadius">Travel radius</label>
+              <div class="loc-filter-radius-wrap">
+                <input type="range" id="contactServiceRadius" data-vt-radius min="5" max="40" value="15" step="1" aria-valuemin="5" aria-valuemax="40" aria-valuenow="15">
+                <span class="loc-filter-radius-val" data-vt-radius-val>15 km</span>
+              </div>
+            </div>
+          </div>
           <div class="contact-map-frame" id="serviceMapEl" data-vt-map role="img" aria-label="Map of Vantage tutoring venues and Brisbane service area"></div>
-          <p class="contact-map-note">Larger pins are meet-up venues. Smaller pins are home-visit suburbs.</p>
+          <p class="contact-map-note">Gradient pins are meet-up venues. Gold shading shows suburb boundaries for home visits. Circle shows your travel radius when a suburb is selected.</p>
         </div>
       </div>
       <div class="contact-card reveal">
@@ -108,8 +123,8 @@
             <label for="name">Your name</label>
             <input id="name" type="text" name="name" placeholder="Jane Smith" required>
           <div class="other-field" id="studentNameWrap" hidden>
-            <label for="student">Student's name(s)</label>
-            <input id="student" type="text" name="student_name" placeholder="Student's full name">
+            <label for="student">Student 1's name</label>
+            <input id="student" type="text" name="student_name" placeholder="Student 1's full name">
           </div>
           <label for="school">School(s)</label>
             <input id="school" type="text" name="school" placeholder="e.g. Brisbane State High School" required>
@@ -121,24 +136,17 @@
 
             <div class="enquiry-type-grid" id="enquiryTypeGrid">
               <label class="enquiry-type">
-                <input type="radio" name="enquiry_type" value="1-on-1 tutoring" required>
+                <input type="radio" name="enquiry_type" value="Tutoring" required>
                 <span class="enquiry-type-card">
-                  <span class="enquiry-type-title">1-on-1 tutoring</span>
-                  <span class="enquiry-type-desc">Private weekly sessions with a Gold or Platinum tutor · Platinum includes full Vantage Plus</span>
+                  <span class="enquiry-type-title">Tutoring</span>
+                  <span class="enquiry-type-desc">1-on-1 private sessions or bring-a-friend shared lessons · Gold &amp; Platinum tutors</span>
                 </span>
               </label>
               <label class="enquiry-type">
-                <input type="radio" name="enquiry_type" value="Weekly subject masterclass" id="enquiryMasterclass">
+                <input type="radio" name="enquiry_type" value="Masterclass" id="enquiryMasterclass">
                 <span class="enquiry-type-card">
-                  <span class="enquiry-type-title">Weekly subject masterclass</span>
-                  <span class="enquiry-type-desc">Sundays 10:15am at State Library of Queensland · $40 per subject</span>
-                </span>
-              </label>
-              <label class="enquiry-type">
-                <input type="radio" name="enquiry_type" value="UCAT masterclass" id="enquiryUcatMasterclass">
-                <span class="enquiry-type-card">
-                  <span class="enquiry-type-title">UCAT masterclass</span>
-                  <span class="enquiry-type-desc">Led by Vineth · 99.90 ATAR · UCAT 2510 · Sundays 10:15am at SLQ · $80 / 2 hrs</span>
+                  <span class="enquiry-type-title">Masterclass</span>
+                  <span class="enquiry-type-desc">Weekly subject sessions or UCAT prep · Sundays at State Library of Queensland</span>
                 </span>
               </label>
               <label class="enquiry-type">
@@ -149,17 +157,10 @@
                 </span>
               </label>
               <label class="enquiry-type">
-                <input type="radio" name="enquiry_type" value="Bring a friend (shared lessons)" id="enquiryBringFriend">
+                <input type="radio" name="enquiry_type" value="General enquiry" id="enquiryGeneral">
                 <span class="enquiry-type-card">
-                  <span class="enquiry-type-title">Bring a friend</span>
-                  <span class="enquiry-type-desc">Shared sessions with 2 or 3 students · save up to 33% per student</span>
-                </span>
-              </label>
-              <label class="enquiry-type">
-                <input type="radio" name="enquiry_type" value="Vantage Plus">
-                <span class="enquiry-type-card">
-                  <span class="enquiry-type-title">Vantage Plus</span>
-                  <span class="enquiry-type-desc">Vantage AI + Chemistry masterclasses &amp; retrieval · $7.99/week</span>
+                  <span class="enquiry-type-title">General enquiry</span>
+                  <span class="enquiry-type-desc">Vantage Plus, service questions, or anything else. Tell us in your own words</span>
                 </span>
               </label>
             </div>
@@ -167,10 +168,22 @@
 
           <div class="form-route form-step" id="routeTutoring" hidden>
             <div class="form-step-badge">3</div>
-            <h3 class="form-step-title">1-on-1 details</h3>
+            <h3 class="form-step-title">Tutoring details</h3>
 
             <div class="form-q">
-              <span class="form-q-title">Year level in 2026</span>
+              <span class="form-q-title">Session format</span>
+              <div class="choice-grid">
+                <label class="choice"><input type="radio" name="session_format" value="1-on-1 private" data-route-required data-route-field checked>1-on-1 private</label>
+                <label class="choice"><input type="radio" name="session_format" value="Bring a friend (shared lessons)" data-route-field>Bring a friend (shared, 2–3 students · save up to 33%)</label>
+              </div>
+            </div>
+
+            <p class="form-note form-note--student">The questions below are for <strong>Student 1</strong>. Session times and tutor preferences apply to the whole enrolment. If you're enrolling more than one student, <strong>future students'</strong> details are collected at the end.</p>
+
+            <h4 class="form-student-heading">Student 1</h4>
+
+            <div class="form-q">
+              <span class="form-q-title">Student 1 · year level in 2026</span>
               <div class="choice-grid">
                 <label class="choice"><input type="checkbox" name="year_level[]" value="Year 7" data-route-field>Year 7</label>
                 <label class="choice"><input type="checkbox" name="year_level[]" value="Year 8" data-route-field>Year 8</label>
@@ -182,7 +195,7 @@
             </div>
 
             <div class="form-q">
-              <span class="form-q-title">Which subjects?</span>
+              <span class="form-q-title">Student 1 · which subjects?</span>
               <div class="choice-grid">
                 <label class="choice"><input type="checkbox" name="subjects[]" value="English" data-route-field>English</label>
                 <label class="choice"><input type="checkbox" name="subjects[]" value="Literature" data-route-field>Literature</label>
@@ -215,8 +228,26 @@
             </div>
 
             <div class="other-field" id="homeAddressWrap" hidden>
-              <label for="address">Home street &amp; suburb</label>
-              <input id="address" type="text" name="home_address" placeholder="Street and suburb" data-route-field>
+              <div class="loc-filter-controls enrol-loc-controls">
+                <div class="loc-filter-field">
+                  <label for="homeSuburb">Your suburb</label>
+                  <select id="homeSuburb" name="home_suburb" aria-label="Your suburb" data-route-field data-vt-suburb data-vt-suburb-placeholder="Select suburb">
+                    <option value="">Select suburb</option>
+                  </select>
+                </div>
+                <div class="loc-filter-field">
+                  <label for="homeTravelRadius">Travel radius</label>
+                  <div class="loc-filter-radius-wrap">
+                    <input type="range" id="homeTravelRadius" data-vt-radius min="5" max="40" value="15" step="1" aria-valuemin="5" aria-valuemax="40" aria-valuenow="15">
+                    <span class="loc-filter-radius-val" data-vt-radius-val>15 km</span>
+                  </div>
+                </div>
+                <div class="loc-filter-field">
+                  <label for="address">Street address</label>
+                  <input id="address" type="text" name="home_address" placeholder="Street and number" data-route-field>
+                </div>
+              </div>
+              <p class="loc-filter-hint">Pick your suburb from our service area. We'll confirm the full address when we match your tutor.</p>
             </div>
 
             <div class="form-q">
@@ -286,11 +317,21 @@
             </div>
 
             <div class="form-q">
-              <span class="form-q-title">Tutor preference</span>
+              <span class="form-q-title">Tutor tier</span>
               <div class="choice-grid tier-choice-grid">
                 <label class="choice choice-tier choice-tier--gold"><input type="radio" name="tutor_tier" value="Gold (top 1%)" data-route-required data-route-field><span class="shine-gold">Gold</span><span class="tier-sub">top 1%</span></label>
                 <label class="choice choice-tier choice-tier--platinum"><input type="radio" name="tutor_tier" value="Platinum (top 0.2%)" data-route-field><span class="shine-platinum">Platinum</span><span class="tier-sub">top 0.2%</span></label>
                 <label class="choice"><input type="radio" name="tutor_tier" value="Decide later" data-route-field>Decide later</label>
+              </div>
+            </div>
+
+            <div class="form-q form-q--optional">
+              <span class="form-q-title">Tutor gender preference <span class="form-q-optional">Optional</span></span>
+              <p class="form-q-lead">If you have a preference, we'll prioritise it when matching, subject to availability.</p>
+              <div class="choice-grid choice-grid--gender">
+                <label class="choice"><input type="radio" name="tutor_gender" value="No preference" data-route-field checked>No preference</label>
+                <label class="choice"><input type="radio" name="tutor_gender" value="Male" data-route-field>Male</label>
+                <label class="choice"><input type="radio" name="tutor_gender" value="Female" data-route-field>Female</label>
               </div>
             </div>
 
@@ -309,14 +350,68 @@
               </div>
             </div>
 
-            <label for="students_detail">More than one student? Add their details</label>
-            <textarea id="students_detail" name="multiple_students" placeholder="Names, year levels and subjects for each student (optional)" data-route-field></textarea>
+            <div class="form-q form-q--toggle">
+              <label class="choice choice--block"><input type="checkbox" id="enrolSecondStudent" name="enrol_second_student" value="yes" data-route-field>Enrolling another student? (future students' details are collected below)</label>
+            </div>
+
+            <div class="form-student-block" id="student2Wrap" hidden>
+              <h4 class="form-student-heading">Another student</h4>
+
+              <label for="student2_name">Student's name</label>
+              <input id="student2_name" type="text" name="student2_name" placeholder="Full name" data-route-field disabled>
+
+              <div class="form-q">
+                <span class="form-q-title">Year level in 2026</span>
+                <div class="choice-grid">
+                  <label class="choice"><input type="checkbox" name="year_level_2[]" value="Year 7" data-route-field disabled>Year 7</label>
+                  <label class="choice"><input type="checkbox" name="year_level_2[]" value="Year 8" data-route-field disabled>Year 8</label>
+                  <label class="choice"><input type="checkbox" name="year_level_2[]" value="Year 9" data-route-field disabled>Year 9</label>
+                  <label class="choice"><input type="checkbox" name="year_level_2[]" value="Year 10" data-route-field disabled>Year 10</label>
+                  <label class="choice"><input type="checkbox" name="year_level_2[]" value="Year 11" data-route-field disabled>Year 11</label>
+                  <label class="choice"><input type="checkbox" name="year_level_2[]" value="Year 12" data-route-field disabled>Year 12</label>
+                </div>
+              </div>
+
+              <div class="form-q">
+                <span class="form-q-title">Which subjects?</span>
+                <div class="choice-grid">
+                  <label class="choice"><input type="checkbox" name="subjects_2[]" value="English" data-route-field disabled>English</label>
+                  <label class="choice"><input type="checkbox" name="subjects_2[]" value="Literature" data-route-field disabled>Literature</label>
+                  <label class="choice"><input type="checkbox" name="subjects_2[]" value="Mathematical Methods" data-route-field disabled>Maths Methods</label>
+                  <label class="choice"><input type="checkbox" name="subjects_2[]" value="Specialist Mathematics" data-route-field disabled>Specialist Maths</label>
+                  <label class="choice"><input type="checkbox" name="subjects_2[]" value="General Mathematics" data-route-field disabled>General Maths</label>
+                  <label class="choice"><input type="checkbox" name="subjects_2[]" value="Chemistry" data-route-field disabled>Chemistry</label>
+                  <label class="choice"><input type="checkbox" name="subjects_2[]" value="Biology" data-route-field disabled>Biology</label>
+                  <label class="choice"><input type="checkbox" name="subjects_2[]" value="Physics" data-route-field disabled>Physics</label>
+                  <label class="choice"><input type="checkbox" name="subjects_2[]" value="Economics" data-route-field disabled>Economics</label>
+                  <label class="choice"><input type="checkbox" name="subjects_2[]" value="Legal Studies" data-route-field disabled>Legal Studies</label>
+                  <label class="choice"><input type="checkbox" name="subjects_2[]" value="Engineering" data-route-field disabled>Engineering</label>
+                  <label class="choice"><input type="checkbox" name="subjects_2[]" value="Spanish" data-route-field disabled>Spanish</label>
+                  <label class="choice"><input type="checkbox" name="subjects_2[]" value="Other" id="subjectOther2" data-route-field disabled>Other</label>
+                </div>
+                <div class="other-field" id="otherSubjectWrap2" hidden>
+                  <label for="other_subject_2">Other subject name</label>
+                  <input type="text" id="other_subject_2" name="other_subject_2" placeholder="Enter the subject name" data-route-field disabled>
+                </div>
+              </div>
+
+              <div id="student2AvailMount"></div>
+            </div>
           </div>
 
           <div class="form-route form-step" id="routeMasterclass" hidden>
             <div class="form-step-badge">3</div>
             <h3 class="form-step-title">Masterclass details</h3>
 
+            <div class="form-q">
+              <span class="form-q-title">Which masterclass?</span>
+              <div class="choice-grid">
+                <label class="choice"><input type="radio" name="masterclass_kind" value="Weekly subject" data-route-required data-route-field checked>Weekly subject masterclass</label>
+                <label class="choice"><input type="radio" name="masterclass_kind" value="UCAT" data-route-field>UCAT masterclass</label>
+              </div>
+            </div>
+
+            <div id="masterclassWeeklyFields">
             <div class="form-q">
               <span class="form-q-title">Year level in 2026</span>
               <div class="choice-grid">
@@ -355,17 +450,14 @@
               </div>
             </div>
             <span class="form-note">Sundays 10:15am at the State Library of Queensland · $40 per student per subject · led by 99.80+ ATAR tutors.</span>
-          </div>
+            </div>
 
-          <div class="form-route form-step" id="routeUcatMasterclass" hidden>
-            <div class="form-step-badge">3</div>
-            <h3 class="form-step-title">UCAT masterclass details</h3>
-
+            <div id="masterclassUcatFields" hidden>
             <div class="form-q">
               <span class="form-q-title">Year level in 2026</span>
               <div class="choice-grid">
-                <label class="choice"><input type="radio" name="year_level" value="Year 10" data-route-required data-route-field>Year 10</label>
-                <label class="choice"><input type="radio" name="year_level" value="Year 11" data-route-field>Year 11</label>
+                <label class="choice"><input type="radio" name="year_level_ucat" value="Year 10" data-route-required data-route-field>Year 10</label>
+                <label class="choice"><input type="radio" name="year_level_ucat" value="Year 11" data-route-field>Year 11</label>
               </div>
             </div>
 
@@ -377,8 +469,8 @@
                 <div class="mc-schedule-row"><span class="mc-k">Where</span><span class="mc-v">State Library of Queensland</span></div>
                 <div class="mc-schedule-row"><span class="mc-k">Format</span><span class="mc-v">Small groups of 4 · 2 hours · hybrid group + individual feedback</span></div>
               </div>
-              <input type="hidden" name="masterclass_schedule" value="UCAT masterclass · Sundays 10:15am · State Library of Queensland" data-route-field>
-              <input type="hidden" name="subjects[]" value="UCAT" data-route-field>
+              <input type="hidden" name="masterclass_schedule_ucat" value="UCAT masterclass · Sundays 10:15am · State Library of Queensland" data-route-field>
+              <input type="hidden" name="subjects_ucat" value="UCAT" data-route-field>
             </div>
 
             <div class="form-q">
@@ -393,13 +485,22 @@
             <div class="form-q">
               <span class="form-q-title">When would you like to start?</span>
               <div class="choice-grid">
-                <label class="choice"><input type="radio" name="masterclass_start" value="As soon as possible" data-route-required data-route-field>As soon as possible</label>
-                <label class="choice"><input type="radio" name="masterclass_start" value="Within 2 weeks" data-route-field>Within 2 weeks</label>
-                <label class="choice"><input type="radio" name="masterclass_start" value="Start of next term" data-route-field>Start of next term</label>
-                <label class="choice"><input type="radio" name="masterclass_start" value="Just enquiring for now" data-route-field>Just enquiring</label>
+                <label class="choice"><input type="radio" name="masterclass_start_ucat" value="As soon as possible" data-route-required data-route-field>As soon as possible</label>
+                <label class="choice"><input type="radio" name="masterclass_start_ucat" value="Within 2 weeks" data-route-field>Within 2 weeks</label>
+                <label class="choice"><input type="radio" name="masterclass_start_ucat" value="Start of next term" data-route-field>Start of next term</label>
+                <label class="choice"><input type="radio" name="masterclass_start_ucat" value="Just enquiring for now" data-route-field>Just enquiring</label>
               </div>
             </div>
             <span class="form-note">Now enrolling Year 10 and 11 · led by Vineth Samaraweera (99.90 ATAR · UCAT 2510, 98th percentile) · $80 per student for 2 hours in person · online from $70/hr.</span>
+            </div>
+          </div>
+
+          <div class="form-route form-step" id="routeGeneral" hidden>
+            <div class="form-step-badge">3</div>
+            <h3 class="form-step-title">Your enquiry</h3>
+            <label for="general_enquiry">What can we help with?</label>
+            <textarea id="general_enquiry" name="general_enquiry" placeholder="e.g. Vantage Plus ($7.99/week), questions about tutoring, or anything else" data-route-required data-route-field></textarea>
+            <span class="form-note">Ask about <strong>Vantage Plus</strong> (Vantage AI, Chemistry masterclasses &amp; retrieval), service options, or anything not covered above.</span>
           </div>
 
           <div class="form-route form-step" id="routeAssignment" hidden>
@@ -438,7 +539,7 @@
             <label for="email">Email address</label>
             <input id="email" type="email" name="email" placeholder="jane@email.com">
             <label for="phone">Phone number</label>
-            <input id="phone" type="tel" name="phone" placeholder="0450 090 330">
+            <input id="phone" type="tel" name="phone" placeholder="0414 131 893">
             <label for="message">Anything else we should know?</label>
             <textarea id="message" name="message" placeholder="Any other requests or information (optional)"></textarea>
             <button type="submit" class="btn btn-primary">Send enquiry
@@ -483,6 +584,7 @@
 </footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script src="/assets/main.js?v=theme63"></script>
+<script src="/assets/tutor-locations.js?v=12"></script>
+<script src="/assets/main.js?v=theme68"></script>
 </body>
 </html>

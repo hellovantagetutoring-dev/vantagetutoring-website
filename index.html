@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" href="/assets/logo.png">
-<link rel="stylesheet" href="/assets/styles.css?v=theme83">
+<link rel="stylesheet" href="/assets/styles.css?v=theme94">
 <link rel="stylesheet" href="/assets/home-landing.css?v=50">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
@@ -218,6 +218,21 @@
         <button type="button" class="loc-tab" role="tab" aria-selected="false" data-vt-venue="griffith">Griffith University</button>
         <button type="button" class="loc-tab" role="tab" aria-selected="false" data-vt-venue="garden">Garden City</button>
       </div>
+      <div class="loc-filter-controls service-area-controls">
+        <div class="loc-filter-field">
+          <label for="homeServiceSuburb">Your suburb</label>
+          <select id="homeServiceSuburb" data-vt-suburb data-vt-suburb-placeholder="Any area" aria-label="Your suburb">
+            <option value="">Any area</option>
+          </select>
+        </div>
+        <div class="loc-filter-field">
+          <label for="homeServiceRadius">Travel radius</label>
+          <div class="loc-filter-radius-wrap">
+            <input type="range" id="homeServiceRadius" data-vt-radius min="5" max="40" value="15" step="1" aria-valuemin="5" aria-valuemax="40" aria-valuenow="15">
+            <span class="loc-filter-radius-val" data-vt-radius-val>15 km</span>
+          </div>
+        </div>
+      </div>
       <div class="loc-frame" id="homeMapEl" data-vt-map role="img" aria-label="Map of Vantage tutoring venues and Brisbane service suburbs"></div>
       <div class="loc-meta">
         <div>
@@ -230,21 +245,6 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="edu-section" id="how">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <h2>Get started in three steps.</h2>
-      <p>Simple enrolment, matched to the right tutor within a day.</p>
-    </div>
-    <div class="edu-steps">
-      <div class="edu-step reveal"><div class="no">01</div><h3>Enquire</h3><p>Tell us year level, subjects, and goals.</p></div>
-      <div class="edu-step reveal"><div class="no">02</div><h3>Get matched</h3><p>Gold or Platinum tutor within 24 hours.</p></div>
-      <div class="edu-step reveal"><div class="no">03</div><h3>Start weekly</h3><p>Sessions, resources, and homework from week one.</p></div>
-    </div>
-    <p class="home-steps-cta reveal"><a href="/contact" class="btn btn-primary">Make an enquiry</a> <a href="https://calendly.com/hello-vantagetutoring/10min" target="_blank" rel="noopener" class="btn btn-ghost">Book a free call</a></p>
   </div>
 </section>
 
@@ -361,6 +361,7 @@
 </footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script src="/assets/main.js?v=theme63"></script>
+<script src="/assets/tutor-locations.js?v=12"></script>
+<script src="/assets/main.js?v=theme68"></script>
 </body>
 </html>

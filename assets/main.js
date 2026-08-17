@@ -88,13 +88,14 @@
     reveals.forEach(function(el,i){el.style.transitionDelay=(i%4*70)+'ms';rio.observe(el);});
   }
 
-  // Other subject field toggle
-  var otherCb=document.getElementById('subjectOther');
-  var otherWrap=document.getElementById('otherSubjectWrap');
-  var otherInput=document.getElementById('other_subject');
-  if(otherCb&&otherWrap){
+  // Other subject field toggle (Student 1 + Student 2)
+  function wireOtherSubject(cbId, wrapId, inputId){
+    var otherCb=document.getElementById(cbId);
+    var otherWrap=document.getElementById(wrapId);
+    var otherInput=document.getElementById(inputId);
+    if(!otherCb||!otherWrap) return;
     function syncOther(){
-      var on=otherCb.checked;
+      var on=otherCb.checked && !otherCb.disabled;
       otherWrap.hidden=!on;
       if(otherInput){
         otherInput.required=on;
@@ -103,7 +104,10 @@
     }
     otherCb.addEventListener('change',syncOther);
     syncOther();
+    return syncOther;
   }
+  wireOtherSubject('subjectOther','otherSubjectWrap','other_subject');
+  var syncOtherSubject2=wireOtherSubject('subjectOther2','otherSubjectWrap2','other_subject_2');
 
   // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(function(btn){
@@ -381,20 +385,127 @@
     var form = document.getElementById('contactForm');
     if(!form) return;
 
+    function cloneAvailabilityMode(src, suffix){
+      var clone = src.cloneNode(true);
+      clone.id = clone.id + suffix;
+      [].forEach.call(clone.querySelectorAll('[id]'), function(el){
+        if(el.id) el.id = el.id + suffix;
+      });
+      [].forEach.call(clone.querySelectorAll('[data-avail-expand]'), function(btn){
+        btn.setAttribute('data-avail-expand', btn.getAttribute('data-avail-expand') + suffix);
+      });
+      [].forEach.call(clone.querySelectorAll('input[name="availability[]"]'), function(el){
+        el.name = 'availability_2[]';
+        el.disabled = true;
+        el.checked = false;
+      });
+      return clone;
+    }
+
+    function buildStudent2Availability(){
+      var mount = document.getElementById('student2AvailMount');
+      var hourSrc = document.getElementById('availModeHour');
+      var halfSrc = document.getElementById('availModeHalf');
+      if(!mount || mount.dataset.built || !hourSrc || !halfSrc) return;
+
+      var block = document.createElement('div');
+      block.className = 'form-q';
+      block.innerHTML = '<span class="form-q-title">When is this student available?</span><p class="avail-hint">Click or drag to select multiple times. Uses the same hour / 30-minute setting as Student 1.</p>';
+
+      var hourClone = cloneAvailabilityMode(hourSrc, '2');
+      var halfClone = cloneAvailabilityMode(halfSrc, '2');
+      halfClone.hidden = true;
+      block.appendChild(hourClone);
+      block.appendChild(halfClone);
+
+      var hidden = document.createElement('input');
+      hidden.type = 'hidden';
+      hidden.name = 'availability_2_selected';
+      hidden.id = 'availabilitySelected2';
+      hidden.value = '';
+      hidden.setAttribute('data-route-field', '');
+      block.appendChild(hidden);
+
+      mount.appendChild(block);
+      mount.dataset.built = '1';
+    }
+    buildStudent2Availability();
+
     var finish = document.getElementById('formFinish');
     var typeGrid = document.getElementById('enquiryTypeGrid');
     var routeMap = {
+      'Tutoring': 'routeTutoring',
       '1-on-1 tutoring': 'routeTutoring',
-      'Bring a friend (shared lessons)': 'routeTutoring',
+      'Masterclass': 'routeMasterclass',
       'Weekly subject masterclass': 'routeMasterclass',
-      'UCAT masterclass': 'routeUcatMasterclass',
-      'Assignment review': 'routeAssignment'
+      'UCAT masterclass': 'routeMasterclass',
+      'Assignment review': 'routeAssignment',
+      'General enquiry': 'routeGeneral',
+      'Vantage Plus': 'routeGeneral'
     };
-    var routePanelIds = ['routeTutoring', 'routeMasterclass', 'routeUcatMasterclass', 'routeAssignment'];
+    var routePanelIds = ['routeTutoring', 'routeMasterclass', 'routeAssignment', 'routeGeneral'];
 
     function isTutoringEnquiry(){
-      return !!form.querySelector('input[name="enquiry_type"][value="1-on-1 tutoring"]:checked')
-        || !!form.querySelector('input[name="enquiry_type"][value="Bring a friend (shared lessons)"]:checked');
+      return !!form.querySelector('input[name="enquiry_type"][value="Tutoring"]:checked')
+        || !!form.querySelector('input[name="enquiry_type"][value="1-on-1 tutoring"]:checked');
+    }
+
+    function isStudent2Enrolled(){
+      var toggle = document.getElementById('enrolSecondStudent');
+      return !!(toggle && toggle.checked && isTutoringEnquiry());
+    }
+
+    function syncStudent2Fields(){
+      var toggle = document.getElementById('enrolSecondStudent');
+      var wrap = document.getElementById('student2Wrap');
+      if(!toggle || !wrap) return;
+      var on = !!toggle.checked && isTutoringEnquiry();
+      wrap.hidden = !on;
+      [].forEach.call(wrap.querySelectorAll('input, select, textarea'), function(el){
+        el.disabled = !on;
+        if(el.id === 'student2_name'){
+          if(on) el.setAttribute('required','required');
+          else el.removeAttribute('required');
+        }
+      });
+      if(!on){
+        [].forEach.call(wrap.querySelectorAll('input[name="availability_2[]"]'), function(el){
+          el.checked = false;
+        });
+      }
+      if(typeof syncOtherSubject2 === 'function') syncOtherSubject2();
+      syncAvailGranularity();
+      syncAvailabilitySummary();
+    }
+
+    function syncMasterclassKind(){
+      var weekly = form.querySelector('input[name="masterclass_kind"][value="Weekly subject"]:checked');
+      var ucat = form.querySelector('input[name="masterclass_kind"][value="UCAT"]:checked');
+      var weeklyEl = document.getElementById('masterclassWeeklyFields');
+      var ucatEl = document.getElementById('masterclassUcatFields');
+      var masterclassOn = !!form.querySelector('input[name="enquiry_type"][value="Masterclass"]:checked');
+      if(weeklyEl){
+        weeklyEl.hidden = !masterclassOn || !weekly;
+        [].forEach.call(weeklyEl.querySelectorAll('input, select, textarea'), function(el){
+          var active = masterclassOn && !!weekly;
+          el.disabled = !active;
+          if(el.hasAttribute('data-route-required')){
+            if(active) el.setAttribute('required','required');
+            else el.removeAttribute('required');
+          }
+        });
+      }
+      if(ucatEl){
+        ucatEl.hidden = !masterclassOn || !ucat;
+        [].forEach.call(ucatEl.querySelectorAll('input, select, textarea'), function(el){
+          var active = masterclassOn && !!ucat;
+          el.disabled = !active;
+          if(el.hasAttribute('data-route-required')){
+            if(active) el.setAttribute('required','required');
+            else el.removeAttribute('required');
+          }
+        });
+      }
     }
 
     function showPanel(el, on){
@@ -413,6 +524,7 @@
     function syncHomeAddress(){
       var wrap = document.getElementById('homeAddressWrap');
       var input = document.getElementById('address');
+      var suburb = document.getElementById('homeSuburb');
       if(!wrap) return;
       var homeOn = !!form.querySelector('input[name="location[]"][value="In person (student\'s home)"]:checked');
       var tutoringOn = isTutoringEnquiry();
@@ -422,7 +534,20 @@
         input.disabled = !show;
         if(!show) input.value = '';
       }
+      if(suburb){
+        suburb.disabled = !show;
+        if(show) suburb.setAttribute('required', 'required');
+        else{
+          suburb.removeAttribute('required');
+          suburb.value = '';
+        }
+      }
     }
+
+    function populateHomeSuburbPicker(){
+      /* suburb list + sync handled by VTLoc.initServiceAreaMirroring */
+    }
+    populateHomeSuburbPicker();
 
     function syncStudentName(){
       var wrap = document.getElementById('studentNameWrap');
@@ -442,15 +567,30 @@
 
     function syncAvailabilitySummary(){
       var hidden = document.getElementById('availabilitySelected');
-      if(!hidden) return;
       var mode = document.getElementById('availHalfHour');
       var half = mode && mode.checked;
       var root = document.getElementById(half ? 'availModeHalf' : 'availModeHour') || form;
-      var picks = [].map.call(
-        root.querySelectorAll('input[name="availability[]"]:checked:not(:disabled)'),
-        function(el){ return el.value; }
-      );
-      hidden.value = picks.join(', ');
+      if(hidden){
+        var picks = [].map.call(
+          root.querySelectorAll('input[name="availability[]"]:checked:not(:disabled)'),
+          function(el){ return el.value; }
+        );
+        hidden.value = picks.join(', ');
+      }
+
+      var hidden2 = document.getElementById('availabilitySelected2');
+      if(hidden2){
+        var root2 = document.getElementById(half ? 'availModeHalf2' : 'availModeHour2');
+        if(root2){
+          var picks2 = [].map.call(
+            root2.querySelectorAll('input[name="availability_2[]"]:checked:not(:disabled)'),
+            function(el){ return el.value; }
+          );
+          hidden2.value = picks2.join(', ');
+        }else{
+          hidden2.value = '';
+        }
+      }
     }
 
     function syncAvailGranularity(){
@@ -460,6 +600,7 @@
       if(!toggle || !hourMode || !halfMode) return;
       var half = !!toggle.checked;
       var tutoringOn = isTutoringEnquiry();
+      var student2On = isStudent2Enrolled();
       hourMode.hidden = half;
       halfMode.hidden = !half;
       [].forEach.call(hourMode.querySelectorAll('input[name="availability[]"]'), function(el){
@@ -470,6 +611,21 @@
         el.disabled = !tutoringOn || !half;
         if(!half) el.checked = false;
       });
+
+      var hourMode2 = document.getElementById('availModeHour2');
+      var halfMode2 = document.getElementById('availModeHalf2');
+      if(hourMode2 && halfMode2){
+        hourMode2.hidden = half;
+        halfMode2.hidden = !half;
+        [].forEach.call(hourMode2.querySelectorAll('input[name="availability_2[]"]'), function(el){
+          el.disabled = !tutoringOn || half || !student2On;
+          if(half || !student2On) el.checked = false;
+        });
+        [].forEach.call(halfMode2.querySelectorAll('input[name="availability_2[]"]'), function(el){
+          el.disabled = !tutoringOn || !half || !student2On;
+          if(!half || !student2On) el.checked = false;
+        });
+      }
       syncAvailabilitySummary();
     }
 
@@ -500,6 +656,8 @@
       }
       syncHomeAddress();
       syncStudentName();
+      syncStudent2Fields();
+      syncMasterclassKind();
       syncAvailGranularity();
       syncAvailabilitySummary();
     }
@@ -547,13 +705,22 @@
     });
     syncStudentName();
 
+    var secondStudentToggle = document.getElementById('enrolSecondStudent');
+    if(secondStudentToggle){
+      secondStudentToggle.addEventListener('change', syncStudent2Fields);
+    }
+
+    [].forEach.call(form.querySelectorAll('input[name="masterclass_kind"]'), function(el){
+      el.addEventListener('change', syncMasterclassKind);
+    });
+
     var halfToggle = document.getElementById('availHalfHour');
     if(halfToggle){
       halfToggle.addEventListener('change', syncAvailGranularity);
     }
 
     form.addEventListener('change', function(e){
-      if(e.target && e.target.name === 'availability[]') syncAvailabilitySummary();
+      if(e.target && (e.target.name === 'availability[]' || e.target.name === 'availability_2[]')) syncAvailabilitySummary();
     });
 
     // Click-drag paint lives in shared handler below (contact + careers)
@@ -562,9 +729,11 @@
     [].forEach.call(document.querySelectorAll('[data-enquiry]'), function(a){
       a.addEventListener('click', function(){
         var map = {
-          masterclass:'Weekly subject masterclass',
-          'ucat-masterclass':'UCAT masterclass',
-          assignment:'Assignment review'
+          masterclass:'Masterclass',
+          'ucat-masterclass':'Masterclass',
+          assignment:'Assignment review',
+          tutoring:'Tutoring',
+          plus:'General enquiry'
         };
         var val = map[a.getAttribute('data-enquiry')];
         if(!val) return;
@@ -572,6 +741,14 @@
         if(input){
           input.checked = true;
           applySelected();
+          if(val === 'Masterclass'){
+            var kind = a.getAttribute('data-enquiry') === 'ucat-masterclass' ? 'UCAT' : 'Weekly subject';
+            var kindInput = form.querySelector('input[name="masterclass_kind"][value="'+kind+'"]');
+            if(kindInput){
+              kindInput.checked = true;
+              syncMasterclassKind();
+            }
+          }
         }
       });
     });
@@ -580,11 +757,11 @@
       var params = new URLSearchParams(window.location.search);
       var typeParam = params.get('type');
       var typeMap = {
-        masterclass:'Weekly subject masterclass',
-        'ucat-masterclass':'UCAT masterclass',
+        masterclass:'Masterclass',
+        'ucat-masterclass':'Masterclass',
         assignment:'Assignment review',
-        tutoring:'1-on-1 tutoring',
-        plus:'Vantage Plus'
+        tutoring:'Tutoring',
+        plus:'General enquiry'
       };
       var typeVal = typeMap[typeParam];
       if(typeVal){
@@ -592,6 +769,13 @@
         if(typeInput){
           typeInput.checked = true;
           applySelected();
+          if(typeVal === 'Masterclass' && typeParam === 'ucat-masterclass'){
+            var ucatKind = form.querySelector('input[name="masterclass_kind"][value="UCAT"]');
+            if(ucatKind){
+              ucatKind.checked = true;
+              syncMasterclassKind();
+            }
+          }
         }
       }
     }catch(err){}
@@ -605,6 +789,8 @@
     var touchDragged = false;
     var touchStartX = 0;
     var touchStartY = 0;
+    var touchStartCell = null;
+    var suppressClick = false;
     var TOUCH_DRAG_PX = 12;
 
     function cellFromEvent(e){
@@ -637,6 +823,11 @@
     });
 
     wrap.addEventListener('click', function(e){
+      if(suppressClick){
+        suppressClick = false;
+        e.preventDefault();
+        return;
+      }
       if(!cellFromEvent(e)) return;
       e.preventDefault();
     });
@@ -662,11 +853,11 @@
         touchStartX = e.touches[0].clientX;
         touchStartY = e.touches[0].clientY;
       }
+      touchStartCell = cell;
       touchDragged = false;
       painting = true;
       paintOn = !input.checked;
       wrap.classList.add('is-painting');
-      paint(cell);
     }, {passive:true});
 
     wrap.addEventListener('touchmove', function(e){
@@ -675,6 +866,7 @@
       var dy = e.touches[0].clientY - touchStartY;
       if(!touchDragged && (dx * dx + dy * dy) > TOUCH_DRAG_PX * TOUCH_DRAG_PX){
         touchDragged = true;
+        paint(touchStartCell);
       }
       if(!touchDragged) return;
       var el = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY);
@@ -683,12 +875,19 @@
       paint(cell);
     }, {passive:true});
 
-    wrap.addEventListener('touchend', function(){
+    wrap.addEventListener('touchend', function(e){
+      if(painting && !touchDragged && touchStartCell){
+        paint(touchStartCell);
+        suppressClick = true;
+        e.preventDefault();
+      }
+      touchStartCell = null;
       touchDragged = false;
       endPaint();
     });
 
     wrap.addEventListener('touchcancel', function(){
+      touchStartCell = null;
       touchDragged = false;
       endPaint();
     });
@@ -729,137 +928,17 @@
     });
   });
 
-  // Venue + suburb service maps (contact + homepage)
+  // Venue + suburb service maps (contact + homepage) — data from VTLoc registry
   var mapNodes=document.querySelectorAll('[data-vt-map]');
-  if(mapNodes.length && typeof L!=='undefined'){
-    var venues=[
-      {id:'slq',name:'State Library of Queensland',detail:'Preferred venue · South Bank',lat:-27.4714,lng:153.0185,query:'State+Library+of+Queensland+South+Bank',tab:'State Library'},
-      {id:'uq',name:'University of Queensland',detail:'St Lucia campus',lat:-27.4975,lng:153.0137,query:'University+of+Queensland+St+Lucia',tab:'UQ St Lucia'},
-      {id:'griffith',name:'Griffith University',detail:'Nathan campus',lat:-27.5537,lng:153.0546,query:'Griffith+University+Nathan',tab:'Griffith University'},
-      {id:'garden',name:'Garden City',detail:'Upper Mount Gravatt',lat:-27.5636,lng:153.0825,query:'Westfield+Garden+City+Upper+Mount+Gravatt',tab:'Garden City'}
-    ];
-    var suburbs=[
-      {name:'Ferny Grove',lat:-27.4028,lng:152.9282,query:'Ferny+Grove+QLD'},
-      {name:'Ashgrove',lat:-27.4456,lng:152.9928,query:'Ashgrove+QLD'},
-      {name:'Indooroopilly',lat:-27.5030,lng:152.9752,query:'Indooroopilly+QLD'},
-      {name:'Mount Ommaney',lat:-27.5491,lng:152.9390,query:'Mount+Ommaney+QLD'},
-      {name:'Carindale',lat:-27.5058,lng:153.1020,query:'Carindale+QLD'},
-      {name:'Robertson',lat:-27.5666,lng:153.0563,query:'Robertson+QLD'},
-      {name:'Rochedale',lat:-27.5702,lng:153.1269,query:'Rochedale+QLD'},
-      {name:'Acacia Ridge',lat:-27.5858,lng:153.0261,query:'Acacia+Ridge+QLD'},
-      {name:'Sunnybank Hills',lat:-27.5955,lng:153.0516,query:'Sunnybank+Hills+QLD'},
-      {name:'Parkinson',lat:-27.6434,lng:153.0301,query:'Parkinson+QLD'},
-      {name:'Browns Plains',lat:-27.6608,lng:153.0417,query:'Browns+Plains+QLD'}
-    ];
-    var lightTiles='https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
-    var darkTiles='https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
-    var preferDark=window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    var tileUrl=preferDark?darkTiles:lightTiles;
-    var suburbList=suburbs.map(function(s){return s.name;}).join(', ');
-    var ferny=null,browns=null;
-    suburbs.forEach(function(s){
-      if(s.name==='Ferny Grove') ferny=s;
-      if(s.name==='Browns Plains') browns=s;
-    });
-    var serviceCenter=L.latLng(
-      (ferny.lat+browns.lat)/2,
-      (ferny.lng+browns.lng)/2
-    );
-    var serviceRadius=serviceCenter.distanceTo(L.latLng(ferny.lat,ferny.lng))+1000;
-
-    [].forEach.call(mapNodes,function(el){
-      var map=L.map(el,{
-        scrollWheelZoom:false,
-        attributionControl:true,
-        zoomControl:true
-      });
-      L.tileLayer(tileUrl,{
-        attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
-        subdomains:'abcd',
-        maxZoom:19
-      }).addTo(map);
-
-      L.circle(serviceCenter,{
-        radius:serviceRadius,
-        color:'#6B4CE0',
-        weight:1.5,
-        opacity:.55,
-        fillColor:'#E8B84B',
-        fillOpacity:.12
-      }).addTo(map).bindPopup('<strong>Home visits</strong><br>Service suburbs across greater Brisbane, including '+suburbList+'.<br>Online available anywhere.');
-
-      var venueIcon=L.divIcon({
-        className:'vt-pin vt-pin--venue',
-        html:'<span></span>',
-        iconSize:[14,14],
-        iconAnchor:[7,7],
-        popupAnchor:[0,-8]
-      });
-      var suburbIcon=L.divIcon({
-        className:'vt-pin vt-pin--suburb',
-        html:'<span></span>',
-        iconSize:[11,11],
-        iconAnchor:[5.5,5.5],
-        popupAnchor:[0,-6]
-      });
-      var bounds=[];
-      var venueMarkers={};
-      venues.forEach(function(v){
-        bounds.push([v.lat,v.lng]);
-        var marker=L.marker([v.lat,v.lng],{icon:venueIcon})
-          .addTo(map)
-          .bindPopup(
-            '<strong>'+v.name+'</strong><br>'+v.detail+
-            '<br><a href="https://www.google.com/maps/search/?api=1&query='+v.query+'" target="_blank" rel="noopener">Open in Google Maps</a>'
-          );
-        venueMarkers[v.id]=marker;
-      });
-      suburbs.forEach(function(s){
-        bounds.push([s.lat,s.lng]);
-        L.marker([s.lat,s.lng],{icon:suburbIcon})
-          .addTo(map)
-          .bindPopup(
-            '<strong>'+s.name+'</strong><br>Home-visit suburb'+
-            '<br><a href="https://www.google.com/maps/search/?api=1&query='+s.query+'" target="_blank" rel="noopener">Open in Google Maps</a>'
-          );
-      });
-      map.fitBounds(bounds,{padding:[24,24],maxZoom:11});
-
-      var wrap=el.closest('[data-vt-map-wrap]');
-      if(wrap){
-        var titleEl=wrap.querySelector('[data-vt-title]');
-        var detailEl=wrap.querySelector('[data-vt-detail]');
-        var linkEl=wrap.querySelector('[data-vt-link]');
-        var tabs=wrap.querySelectorAll('[data-vt-venue]');
-        [].forEach.call(tabs,function(tab){
-          tab.addEventListener('click',function(){
-            var id=tab.getAttribute('data-vt-venue');
-            [].forEach.call(tabs,function(t){
-              t.classList.toggle('is-active',t===tab);
-              t.setAttribute('aria-selected',t===tab?'true':'false');
-            });
-            if(id==='all'){
-              map.fitBounds(bounds,{padding:[28,28],maxZoom:11});
-              if(titleEl) titleEl.textContent='Brisbane service area';
-              if(detailEl) detailEl.textContent='Meet-up venues plus home visits across '+suburbList+'. Online available anywhere.';
-              if(linkEl) linkEl.href='https://www.google.com/maps/search/?api=1&query=Vantage+Tutoring+Brisbane';
-              return;
-            }
-            var v=null;
-            for(var i=0;i<venues.length;i++){ if(venues[i].id===id){ v=venues[i]; break; } }
-            if(!v) return;
-            map.setView([v.lat,v.lng],14,{animate:true});
-            if(venueMarkers[id]) venueMarkers[id].openPopup();
-            if(titleEl) titleEl.textContent=v.name;
-            if(detailEl) detailEl.textContent=v.detail;
-            if(linkEl) linkEl.href='https://www.google.com/maps/search/?api=1&query='+v.query;
-          });
-        });
-      }
-
-      setTimeout(function(){ map.invalidateSize(); },120);
-      window.addEventListener('load',function(){ map.invalidateSize(); });
-    });
+  if(mapNodes.length && typeof L!=='undefined' && window.VTLoc && VTLoc.initServiceMaps){
+    var mapsReady=VTLoc.initServiceMaps(mapNodes, L);
+    if(mapsReady && mapsReady.then && VTLoc.initServiceAreaMirroring){
+      mapsReady.then(function(){ VTLoc.initServiceAreaMirroring(); });
+    }else if(VTLoc.initServiceAreaMirroring){
+      VTLoc.initServiceAreaMirroring();
+    }
+  }else if(window.VTLoc && VTLoc.initServiceAreaMirroring){
+    VTLoc.initServiceAreaMirroring();
   }
 
 })();
