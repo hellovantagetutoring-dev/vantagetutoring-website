@@ -14,7 +14,20 @@
     carindale: { id: 'carindale', name: 'Carindale', type: 'suburb', lat: -27.5058, lng: 153.1020 },
     'holland-park': { id: 'holland-park', name: 'Holland Park', type: 'suburb', lat: -27.5203, lng: 153.0628 },
     'eight-mile-plains': { id: 'eight-mile-plains', name: 'Eight Mile Plains', type: 'suburb', lat: -27.5833, lng: 153.0933 },
-    'ferny-grove': { id: 'ferny-grove', name: 'Ferny Grove', type: 'suburb', lat: -27.4028, lng: 152.9282 },
+    'ferny-grove': { id: 'ferny-grove', name: 'Ferny Grove', type: 'suburb', lat: -27.4012, lng: 152.9326 },
+    'ferny-hills': { id: 'ferny-hills', name: 'Ferny Hills', type: 'suburb', lat: -27.3967, lng: 152.9342, lga: 'Moreton Bay City' },
+    'upper-kedron': { id: 'upper-kedron', name: 'Upper Kedron', type: 'suburb', lat: -27.4192, lng: 152.9207 },
+    keperra: { id: 'keperra', name: 'Keperra', type: 'suburb', lat: -27.4063, lng: 152.9550 },
+    'arana-hills': { id: 'arana-hills', name: 'Arana Hills', type: 'suburb', lat: -27.3981, lng: 152.9560, lga: 'Moreton Bay City' },
+    'the-gap': { id: 'the-gap', name: 'The Gap', type: 'suburb', lat: -27.4426, lng: 152.9403 },
+    mitchelton: { id: 'mitchelton', name: 'Mitchelton', type: 'suburb', lat: -27.4078, lng: 152.9728 },
+    gaythorne: { id: 'gaythorne', name: 'Gaythorne', type: 'suburb', lat: -27.4171, lng: 152.9806 },
+    enoggera: { id: 'enoggera', name: 'Enoggera', type: 'suburb', lat: -27.4240, lng: 152.9855 },
+    alderley: { id: 'alderley', name: 'Alderley', type: 'suburb', lat: -27.4249, lng: 153.0007 },
+    newmarket: { id: 'newmarket', name: 'Newmarket', type: 'suburb', lat: -27.4338, lng: 153.0077 },
+    wilston: { id: 'wilston', name: 'Wilston', type: 'suburb', lat: -27.4326, lng: 153.0186 },
+    windsor: { id: 'windsor', name: 'Windsor', type: 'suburb', lat: -27.4318, lng: 153.0300 },
+    'bowen-hills': { id: 'bowen-hills', name: 'Bowen Hills', type: 'suburb', lat: -27.4424, lng: 153.0387 },
     ashgrove: { id: 'ashgrove', name: 'Ashgrove', type: 'suburb', lat: -27.4456, lng: 152.9928 },
     indooroopilly: { id: 'indooroopilly', name: 'Indooroopilly', type: 'suburb', lat: -27.5030, lng: 152.9752 },
     'mount-ommaney': { id: 'mount-ommaney', name: 'Mount Ommaney', type: 'suburb', lat: -27.5491, lng: 152.9390 },
@@ -63,6 +76,12 @@
       lat: -27.5045, lng: 153.1012,
       detail: 'Carindale',
       query: 'Carindale+Library+QLD'
+    },
+    'mount-ommaney-library': {
+      id: 'mount-ommaney-library', name: 'Mount Ommaney Library', type: 'venue',
+      lat: -27.5525, lng: 152.9388,
+      detail: 'Mount Ommaney',
+      query: 'Mount+Ommaney+Library+QLD'
     }
   };
 
@@ -87,17 +106,30 @@
   var DEFAULT_MAP_VIEW = { lat: -27.55, lng: 153.02, zoom: 11 };
   var woodridgeLat = null;
   var ezekielCoveredIdsCache = null;
+  var explicitCoveredIdsCache = null;
   var TUTOR_COVERAGE = [
     {
       name: 'Lincoln Murray-Brown',
-      regions: ['bcc'],
+      radiusFrom: 'ashgrove',
+      radiusKm: 10,
+      radiusLgas: ['Brisbane City'],
       suburbs: [],
       venues: ['slq', 'uq-st-lucia', 'garden-city', 'annerley-library', 'carindale-library']
+    },
+    {
+      name: 'Ishaan Tiwari',
+      suburbs: [],
+      venues: ['mount-ommaney-library']
     },
     {
       name: 'Vineth Samaraweera',
       suburbs: ['mt-gravatt', 'mansfield', 'sunnybank', 'macgregor', 'wishart', 'rochedale', 'carindale', 'holland-park', 'eight-mile-plains'],
       venues: ['carindale-library', 'slq', 'garden-city']
+    },
+    {
+      name: 'Keeran Subendranathan',
+      suburbs: ['ferny-grove', 'ferny-hills', 'upper-kedron', 'keperra', 'arana-hills', 'the-gap', 'mitchelton', 'gaythorne', 'enoggera', 'alderley', 'newmarket'],
+      venues: ['uq-st-lucia', 'slq']
     },
     {
       name: 'Brooklyn Tran',
@@ -204,10 +236,28 @@
     return set;
   }
 
+  function explicitCoveredSuburbIds(){
+    if(explicitCoveredIdsCache) return explicitCoveredIdsCache;
+    var set = {};
+    var coverages = TUTOR_COVERAGE;
+    if(typeof document !== 'undefined'){
+      var cards = document.querySelectorAll('.tutor-card');
+      if(cards.length) coverages = coveragesFromCards(cards);
+    }
+    coverages.forEach(function(cov){
+      (cov.suburbs || []).forEach(function(id){
+        set[registryToBoundaryId(id)] = true;
+      });
+    });
+    explicitCoveredIdsCache = set;
+    return set;
+  }
+
   function isExcludedFromServiceArea(feature){
+    var id = feature && feature.properties && feature.properties.id;
+    if(id && explicitCoveredSuburbIds()[id]) return false;
     if(isExcludedFeature(feature) || isIslandFeature(feature)) return true;
     if(isSouthOfWoodridge(feature)){
-      var id = feature.properties && feature.properties.id;
       return !id || !ezekielCoveredSuburbIds()[id];
     }
     return false;
@@ -215,6 +265,7 @@
 
   function isServiceAreaSuburbId(id){
     var boundaryId = registryToBoundaryId(resolveId(id));
+    if(explicitCoveredSuburbIds()[boundaryId]) return true;
     var feature = boundariesById[boundaryId];
     if(feature) return !isExcludedFromServiceArea(feature);
     var loc = get(resolveId(id));
@@ -393,6 +444,7 @@
         boundariesById = {};
         woodridgeLat = null;
         ezekielCoveredIdsCache = null;
+        explicitCoveredIdsCache = null;
         (fc.features || []).forEach(function(f){
           if(f.properties && f.properties.id) boundariesById[f.properties.id] = f;
         });
