@@ -150,9 +150,13 @@
   var boundariesFc = null;
   var boundariesById = {};
 
-  var TILE_LIGHT = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
-  var TILE_DARK = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
-  var TILE_ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>';
+  // Default: Esri gray canvas (no API key, muted). Optional CARTO when key is set.
+  var TILE_ESRI_LIGHT = 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}';
+  var TILE_ESRI_DARK = 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}';
+  var TILE_CARTO_LIGHT = 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png';
+  var TILE_CARTO_DARK = 'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png';
+  var TILE_ESRI_ATTR = 'Tiles &copy; <a href="https://www.esri.com/">Esri</a>';
+  var TILE_CARTO_ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>';
 
   function resolveId(id){
     return ID_ALIASES[id] || id;
@@ -622,9 +626,33 @@
     return out;
   }
 
+  function cartoBasemapKey(){
+    if(global.VT_CARTO_BASEMAP_KEY) return String(global.VT_CARTO_BASEMAP_KEY).trim();
+    var meta = typeof document !== 'undefined' && document.querySelector('meta[name="vt-carto-basemap-key"]');
+    return meta ? (meta.getAttribute('content') || '').trim() : '';
+  }
+
+  function prefersDarkBasemap(){
+    return !!(global.matchMedia && global.matchMedia('(prefers-color-scheme: dark)').matches);
+  }
+
   function tileUrl(){
-    var preferDark = global.matchMedia && global.matchMedia('(prefers-color-scheme: dark)').matches;
-    return preferDark ? TILE_DARK : TILE_LIGHT;
+    var key = cartoBasemapKey();
+    if(!key) return prefersDarkBasemap() ? TILE_ESRI_DARK : TILE_ESRI_LIGHT;
+    var base = prefersDarkBasemap() ? TILE_CARTO_DARK : TILE_CARTO_LIGHT;
+    return base + (base.indexOf('?') === -1 ? '?' : '&') + 'key=' + encodeURIComponent(key);
+  }
+
+  function tileAttribution(){
+    return cartoBasemapKey() ? TILE_CARTO_ATTR : TILE_ESRI_ATTR;
+  }
+
+  function tileSubdomains(){
+    return cartoBasemapKey() ? 'abcd' : '';
+  }
+
+  function tileMaxZoom(){
+    return cartoBasemapKey() ? 19 : 16;
   }
 
   function createIcons(L){
@@ -692,11 +720,13 @@
   }
 
   function addTileLayer(map, L){
-    L.tileLayer(tileUrl(), {
-      attribution: TILE_ATTR,
-      subdomains: 'abcd',
-      maxZoom: 19
-    }).addTo(map);
+    var opts = {
+      attribution: tileAttribution(),
+      maxZoom: tileMaxZoom()
+    };
+    var subdomains = tileSubdomains();
+    if(subdomains) opts.subdomains = subdomains;
+    L.tileLayer(tileUrl(), opts).addTo(map);
   }
 
   function combineBounds(L, items){

@@ -2674,10 +2674,6 @@ footer{background:var(--bg-2);border-top:1px solid var(--stroke);padding:44px 0 
 .locations-section{
   padding:72px 0 88px;
   border-top:1px solid var(--stroke);
-  background:
-    radial-gradient(720px 280px at 12% 0%,rgba(232,184,75,.1),transparent 55%),
-    radial-gradient(640px 260px at 88% 100%,rgba(107,76,224,.08),transparent 55%),
-    var(--bg);
 }
 .locations-section .section-head{margin-bottom:28px;}
 .loc-map{max-width:980px;margin:0 auto;}

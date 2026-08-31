@@ -38,7 +38,6 @@
       {name:'Keeran',atar:'99.50',img:'/assets/tutors/keeran-subendranathan.jpg'},
       {name:'Brooklyn',atar:'99.75',img:'/assets/tutors/brooklyn-tran.jpg'},
       {name:'Jize',atar:'99.85',img:'/assets/tutors/jize-peng.jpg'},
-      {name:'Theo',atar:'99.30',img:'/assets/tutors/theo.jpg'},
       {name:'Ezekiel',atar:'99.85',img:'/assets/tutors/ezekiel-singh.jpg'},
       {name:'Aniruddha',atar:'99.85',img:'/assets/tutors/aniruddha-das.jpg'}
     ];
