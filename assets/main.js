@@ -5,48 +5,265 @@
   var toggle=document.getElementById('navtoggle');
   var links=document.getElementById('navlinks');
   if(toggle&&links){
-    toggle.addEventListener('click',function(){links.classList.toggle('open');});
-    links.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click',function(){links.classList.remove('open');});
+    // Plus membership is paused - strip any leftover nav link (cached HTML / old deploy)
+    [].forEach.call(links.querySelectorAll('a[href="/plus"], a[href="/plus/"], a[href="/vantage-ai"], a[href="/vantage-ai/"]'), function(a){
+      if(a.parentNode) a.parentNode.removeChild(a);
     });
+    var backdrop=document.querySelector('.nav-backdrop');
+    if(!backdrop){
+      backdrop=document.createElement('div');
+      backdrop.className='nav-backdrop';
+      backdrop.setAttribute('aria-hidden','true');
+      document.body.appendChild(backdrop);
+    }
+    function setNavOpen(open){
+      links.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Menu');
+      document.documentElement.classList.toggle('nav-open', open);
+    }
+    toggle.setAttribute('aria-controls', 'navlinks');
+    if(!toggle.hasAttribute('aria-expanded')) toggle.setAttribute('aria-expanded', 'false');
+    toggle.addEventListener('click',function(e){
+      e.stopPropagation();
+      setNavOpen(!links.classList.contains('open'));
+    });
+    links.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click',function(){setNavOpen(false);});
+    });
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape' && links.classList.contains('open')) setNavOpen(false);
+    });
+    document.addEventListener('click',function(e){
+      if(!links.classList.contains('open')) return;
+      if(links.contains(e.target) || toggle.contains(e.target)) return;
+      setNavOpen(false);
+    });
+    backdrop.addEventListener('click',function(){setNavOpen(false);});
+    var closeOnScroll=function(){
+      if(links.classList.contains('open')) setNavOpen(false);
+    };
+    window.addEventListener('scroll',closeOnScroll,{passive:true});
   }
 
-  // Typing animation (home)
-  var typed=document.getElementById('typed'), cursor=document.getElementById('cursor');
-  if(typed){
-    var words=(typed.getAttribute('data-words')||'QCE.,ATAR.,future.,A+.').split(',');
-    var w=0,c=0,deleting=false;
+  // Bust stubborn HTML cache on Reviews / About during local preview & after copy updates
+  (function bustNavCache(){
+    var bust = 'v=2';
+    [].forEach.call(document.querySelectorAll('a[href^="/reviews"], a[href^="/about"]'), function(a){
+      var href = a.getAttribute('href');
+      if(!href || href.indexOf('canonical') !== -1) return;
+      if(href.indexOf('?') !== -1) return;
+      if(href === '/reviews' || href === '/reviews/') a.setAttribute('href', '/reviews/?' + bust);
+      if(href === '/about' || href === '/about/') a.setAttribute('href', '/about/?' + bust);
+    });
+  })();
+
+  // Hero: stacked power words scroll up + rest phrase wipe from left
+  var typed=document.getElementById('typed');
+  var cursor=document.getElementById('cursor');
+  var powerList=document.getElementById('heroPowerList');
+  var typedShell=document.getElementById('typedShell');
+  if(typed && powerList){
+    var linesAttr=typed.getAttribute('data-lines')||'Shape the career you want.';
+    var lines=linesAttr.split('|').map(function(s){return s.trim();}).filter(Boolean);
+    var parsed=lines.map(function(line){
+      var i=line.indexOf(' ');
+      if(i<0) return {power:line, rest:''};
+      return {power:line.slice(0,i), rest:line.slice(i+1).replace(/^\s+/,'')};
+    });
+    var n=parsed.length;
+    var html='';
+    // Duplicate list for seamless loop; focus sits on the top row
+    for(var copy=0;copy<2;copy++){
+      for(var i=0;i<n;i++){
+        html+='<span class="hero-power-item" data-i="'+i+'">'+parsed[i].power+'</span>';
+      }
+    }
+    powerList.innerHTML=html;
+    var items=powerList.querySelectorAll('.hero-power-item');
+    var step=1.22; // em — keep in sync with CSS --hero-row
+    var w=0, phase='in', slide=0;
+    var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var headline=typed.closest('.hero-headline');
+    if(cursor) cursor.hidden=true;
+
+    var powerWidths={};
+    function measurePowerWidths(){
+      for(var pi=0;pi<n;pi++){
+        var probe=null;
+        for(var pk=0;pk<items.length;pk++){
+          if(parseInt(items[pk].getAttribute('data-i'),10)===pi){ probe=items[pk]; break; }
+        }
+        powerWidths[pi]=probe ? Math.ceil(probe.getBoundingClientRect().width) : 0;
+      }
+    }
+    measurePowerWidths();
+
+    function setPhraseOn(on){
+      if(!headline) return;
+      headline.classList.toggle('is-phrase-on', !!on);
+    }
+
+    function paintClasses(activeIdx, prevIdx){
+      for(var k=0;k<items.length;k++){
+        var item=items[k];
+        var di=parseInt(item.getAttribute('data-i'),10);
+        item.classList.remove('is-active','is-near','is-exit','is-enter');
+        if(di===activeIdx) item.classList.add('is-active');
+        else if(di===(activeIdx+1)%n || di===(activeIdx+2)%n){
+          item.classList.add('is-near');
+          if(prevIdx!=null && di===prevIdx) item.classList.add('is-exit');
+          if(di===(activeIdx+1)%n) item.classList.add('is-enter');
+        }
+      }
+    }
+
+    function setSlide(idx, animating){
+      powerList.style.transition=animating && !reduce ? 'transform .62s cubic-bezier(.22,1,.36,1)' : 'none';
+      powerList.style.transform='translate3d(0,'+(-idx*step)+'em,0)';
+    }
+
+    function snapIfNeeded(){
+      if(slide<n) return;
+      slide=slide%n;
+      setSlide(slide,false);
+    }
+
+    function syncPowerWidth(idx){
+      if(!typedShell || !headline) return;
+      var i = typeof idx==='number' ? idx : w;
+      var activeW = powerWidths[i] || 0;
+      headline.style.setProperty('--active-w', activeW + 'px');
+      typedShell.style.setProperty('--power-w', activeW + 'px');
+    }
+
+    function showRest(text, entering){
+      // Indent first, then text — avoids a one-frame wrong wrap
+      syncPowerWidth(w);
+      typed.textContent=text;
+      if(!typedShell) return;
+      if(entering){
+        typedShell.classList.remove('is-out');
+        setPhraseOn(true);
+        requestAnimationFrame(function(){
+          requestAnimationFrame(function(){
+            typedShell.classList.add('is-in');
+          });
+        });
+      }else{
+        typedShell.classList.remove('is-in');
+        typedShell.classList.add('is-out');
+      }
+    }
+
+    setSlide(0,false);
+    paintClasses(0,null);
+    syncPowerWidth(0);
+    typed.textContent=parsed[0].rest;
+    if(reduce){
+      setPhraseOn(true);
+      if(typedShell) typedShell.classList.add('is-in');
+    }else{
+      (function tick(){
+        var delay=80;
+        if(phase==='in'){
+          showRest(parsed[w].rest, true);
+          phase='hold';
+          delay=2300;
+        }else if(phase==='hold'){
+          phase='out';
+          delay=40;
+        }else if(phase==='out'){
+          if(typedShell){
+            typedShell.classList.remove('is-in');
+            typedShell.classList.add('is-out');
+          }
+          setPhraseOn(false);
+          // Linger on greyed stack before sliding
+          phase='browse';
+          delay=520;
+        }else if(phase==='browse'){
+          phase='swap';
+          delay=40;
+        }else if(phase==='swap'){
+          var prev=w;
+          w=(w+1)%n;
+          slide+=1;
+          setSlide(slide,true);
+          paintClasses(w,prev);
+          // Width while phrase is still clipped out — avoids indent jiggle on wipe-in
+          syncPowerWidth(w);
+          phase='wipe';
+          delay=220;
+          setTimeout(snapIfNeeded,680);
+        }else if(phase==='wipe'){
+          showRest(parsed[w].rest, true);
+          phase='hold';
+          delay=2300;
+        }else{
+          showRest(parsed[w].rest, true);
+          phase='hold';
+          delay=2300;
+        }
+        setTimeout(tick,delay);
+      })();
+    }
+    window.addEventListener('resize', function(){
+      measurePowerWidths();
+      syncPowerWidth(w);
+    });
+  }else if(typed){
+    // Fallback: plain typing if power stack markup missing
+    var fallbackLines=(typed.getAttribute('data-lines')||typed.getAttribute('data-words')||'QCE.').split(/[|,]/).map(function(s){return s.trim();}).filter(Boolean);
+    var fw=0,fc=0,fdel=false;
     (function tick(){
-      var word=words[w];
-      typed.textContent=deleting?word.substring(0,c--):word.substring(0,c++);
-      var delay=deleting?55:110;
-      if(!deleting&&c===word.length+1){deleting=true;delay=1500;}
-      else if(deleting&&c<0){deleting=false;w=(w+1)%words.length;c=0;delay=350;}
+      var word=fallbackLines[fw];
+      typed.textContent=fdel?word.substring(0,fc--):word.substring(0,fc++);
+      var delay=fdel?36:58;
+      if(!fdel&&fc===word.length+1){fdel=true;delay=2200;}
+      else if(fdel&&fc<0){fdel=false;fw=(fw+1)%fallbackLines.length;fc=0;delay=320;}
       setTimeout(tick,delay);
     })();
   }
 
-  // Featured tutors marquee (homepage - photo tutors only)
-  var marquee=document.getElementById('marquee');
-  if(marquee){
+  // Featured tutors marquee (homepage - photo tutors only, 2 staggered rows)
+  var marqueeA=document.getElementById('marqueeA');
+  var marqueeB=document.getElementById('marqueeB');
+  if(marqueeA && marqueeB){
     var tutors=[
-      {name:'Jason',atar:'99.85',img:'/assets/tutors/jason-liu.jpg'},
-      {name:'Yun',atar:'99.90',img:'/assets/tutors/yun-hao.jpg'},
-      {name:'Lincoln',atar:'99.80',img:'/assets/tutors/lincoln-murray-brown.jpg'},
-      {name:'Ishaan',atar:'99.90',img:'/assets/tutors/ishaan-tiwari.jpg'},
-      {name:'Jerry',atar:'99.90',img:'/assets/tutors/jerry-zhang.jpg'},
-      {name:'Keeran',atar:'99.50',img:'/assets/tutors/keeran-subendranathan.jpg'},
-      {name:'Brooklyn',atar:'99.75',img:'/assets/tutors/brooklyn-tran.jpg'},
-      {name:'Jize',atar:'99.85',img:'/assets/tutors/jize-peng.jpg'},
-      {name:'Ezekiel',atar:'99.85',img:'/assets/tutors/ezekiel-singh.jpg'},
-      {name:'Aniruddha',atar:'99.85',img:'/assets/tutors/aniruddha-das.jpg'}
+      {name:'Jason',atar:'99.85',img:'/assets/tutors/jason-liu.jpg',tops:[]},
+      {name:'Yun',atar:'99.90',img:'/assets/tutors/yun-hao.jpg',tops:[{s:'100',l:'Methods'},{s:'100',l:'Physics'}]},
+      {name:'Lincoln',atar:'99.80',img:'/assets/tutors/lincoln-murray-brown.jpg',tops:[{s:'100',l:'Methods'},{s:'99',l:'Physics'}]},
+      {name:'Ishaan',atar:'99.90',img:'/assets/tutors/ishaan-tiwari.jpg',tops:[{s:'100',l:'Methods'},{s:'99',l:'Physics'}]},
+      {name:'Jerry',atar:'99.90',img:'/assets/tutors/jerry-zhang.jpg',tops:[{s:'100',l:'Literature'},{s:'100',l:'Methods'}]},
+      {name:'Keeran',atar:'99.50',img:'/assets/tutors/keeran-subendranathan.jpg',tops:[{s:'100',l:'Literature'},{s:'99',l:'Economics'}]},
+      {name:'Brooklyn',atar:'99.75',img:'/assets/tutors/brooklyn-tran.jpg',tops:[{s:'100',l:'Literature'},{s:'99',l:'Chemistry'}]},
+      {name:'Jize',atar:'99.85',img:'/assets/tutors/jize-peng.jpg',tops:[{s:'100',l:'Methods'},{s:'100',l:'Physics'}]},
+      {name:'Ezekiel',atar:'99.85',img:'/assets/tutors/ezekiel-singh.jpg',tops:[{s:'99',l:'Methods'},{s:'99',l:'Physics'}]},
+      {name:'Aniruddha',atar:'99.85',img:'/assets/tutors/aniruddha-das.jpg',tops:[{s:'98',l:'Chemistry'},{s:'98',l:'Physics'}]}
     ];
-    var html='';
-    for(var i=0;i<tutors.length;i++){
-      var t=tutors[i];
-      html+='<a class="chip" href="/tutors"><img class="chip-av" src="'+t.img+'" alt="" width="56" height="56" loading="eager" decoding="async"><b>'+t.name+'</b><span class="score">'+t.atar+' ATAR</span></a>';
+    function chipHtml(t){
+      var tops='';
+      if(t.tops && t.tops.length){
+        tops='<span class="chip-subs">';
+        for(var j=0;j<t.tops.length;j++){
+          if(j) tops+='<span class="chip-sub-sep" aria-hidden="true">·</span>';
+          tops+='<span class="chip-sub"><b>'+t.tops[j].s+'</b> '+t.tops[j].l+'</span>';
+        }
+        tops+='</span>';
+      }
+      return '<a class="chip" href="/tutors"><img class="chip-av" src="'+t.img+'" alt="" width="96" height="96" loading="eager" decoding="async"><span class="chip-body"><span class="chip-name"><b>'+t.name+'</b><span class="score">'+t.atar+' ATAR</span></span>'+tops+'</span></a>';
     }
-    marquee.innerHTML=html+html;
+    var row1='', row2='';
+    for(var i=0;i<tutors.length;i++){
+      var chip=chipHtml(tutors[i]);
+      if(i%2===0) row1+=chip; else row2+=chip;
+    }
+    // Duplicate each row for seamless loop; pad short rows so scroll stays smooth
+    if(row1.split('class="chip"').length-1 < 4) row1=row1+row1;
+    if(row2.split('class="chip"').length-1 < 4) row2=row2+row2;
+    marqueeA.innerHTML=row1+row1;
+    marqueeB.innerHTML=row2+row2;
   }
 
   // Animated counters
@@ -379,7 +596,7 @@
     syncAvailSummary();
   })();
 
-  // Enquiry form routing (1-on-1 / masterclass / assignment review)
+  // Enquiry form routing (1-on-1 / masterclass / general)
   (function(){
     var form = document.getElementById('contactForm');
     if(!form) return;
@@ -438,11 +655,10 @@
       'Masterclass': 'routeMasterclass',
       'Weekly subject masterclass': 'routeMasterclass',
       'UCAT masterclass': 'routeMasterclass',
-      'Assignment review': 'routeAssignment',
       'General enquiry': 'routeGeneral',
       'Vantage Plus': 'routeGeneral'
     };
-    var routePanelIds = ['routeTutoring', 'routeMasterclass', 'routeAssignment', 'routeGeneral'];
+    var routePanelIds = ['routeTutoring', 'routeMasterclass', 'routeGeneral'];
 
     function isTutoringEnquiry(){
       return !!form.querySelector('input[name="enquiry_type"][value="Tutoring"]:checked')
@@ -734,7 +950,6 @@
         var map = {
           masterclass:'Masterclass',
           'ucat-masterclass':'Masterclass',
-          assignment:'Assignment review',
           tutoring:'Tutoring',
           plus:'General enquiry'
         };
@@ -762,7 +977,6 @@
       var typeMap = {
         masterclass:'Masterclass',
         'ucat-masterclass':'Masterclass',
-        assignment:'Assignment review',
         tutoring:'Tutoring',
         plus:'General enquiry'
       };

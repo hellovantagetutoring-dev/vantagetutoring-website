@@ -1,13 +1,1364 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=/contact/">
-  <link rel="canonical" href="https://vantagetutoring.com.au/contact">
-  <title>Redirecting… | Enrol | Vantage Tutoring</title>
-  <script>location.replace('/contact/' + (location.hash || ''));</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#F5F5F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#07070C" media="(prefers-color-scheme: dark)">
+<title>Enrol | Vantage Tutoring</title>
+<meta name="description" content="Enrol with Vantage Tutoring. Tell us your year level and subjects and we’ll match you with a Gold or Platinum tutor within 24 hours.">
+<link rel="canonical" href="https://vantagetutoring.com.au/enrol">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vantagetutoring.com.au/enrol">
+<meta property="og:title" content="Enrol | Vantage Tutoring">
+<meta property="og:description" content="Start enrolment in a few short steps. Prefer to talk first? Book a free consultation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="/assets/logo.png">
+<link rel="stylesheet" href="/assets/styles.css?v=theme141">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 <body>
-  <p>Redirecting to <a href="/contact/">contact</a>…</p>
+
+<header>
+  <div class="nav wrap">
+    <a href="/" class="brand"><img class="logo" src="/assets/logo.png" alt="Vantage Tutoring" onerror="this.onerror=null;this.src='/assets/logo.svg'">Vantage Tutoring</a>
+    <nav class="navlinks" id="navlinks">
+      <a class="link" href="/about/?v=2"><svg class="nav-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>About</a>
+      <a class="link" href="/services"><svg class="nav-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Services</a>
+      <a class="link" href="/tutors"><svg class="nav-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>Tutors</a>
+      <a class="link" href="/rates"><svg class="nav-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Rates</a>
+      <a class="link" href="/reviews/?v=2"><svg class="nav-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.9 6.9L22 10l-5 4.6L18.2 22 12 18.3 5.8 22 7 14.6 2 10l7.1-1.1z"/></svg>Reviews</a>
+      <a href="/enrol" class="btn btn-primary"><svg class="nav-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>Enrol today</a>
+    </nav>
+    <button class="navtoggle" id="navtoggle" aria-label="Menu" aria-expanded="false" aria-controls="navlinks"><span class="navtoggle-bar" aria-hidden="true"></span><span class="navtoggle-bar" aria-hidden="true"></span></button>
+  </div>
+</header>
+
+<section class="page-hero enrol-hero">
+  <div class="wrap reveal">
+    <p class="enrol-kicker">Enrol today</p>
+    <h1>Start your learning journey <span class="grad-text">today.</span></h1>
+    <p>Tell us who you’re enrolling and what you need. We’ll match you with a Gold or Platinum tutor within 24 hours.</p>
+    <div class="enrol-talk-first">
+      <p class="enrol-talk-label">Prefer to talk first?</p>
+      <div class="enrol-talk-lines">
+        <div class="enrol-talk-line">
+          <div class="k">Phone</div>
+          <a href="tel:0414131893">0414 131 893</a>
+        </div>
+        <div class="enrol-talk-line">
+          <div class="k">Email</div>
+          <a href="mailto:hello@vantagetutoring.com.au">hello@vantagetutoring.com.au</a>
+        </div>
+      </div>
+      <a href="https://calendly.com/hello-vantagetutoring/10min" target="_blank" rel="noopener" class="btn btn-primary enrol-consult-btn">Book a free consultation
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <p class="enrol-talk-note">10 minutes by phone or Google Meet</p>
+    </div>
+  </div>
+</section>
+
+<section class="tight enrol-section">
+  <div class="wrap enrol-wrap">
+    <form id="enrolForm" class="enrol-accordion" action="https://formspree.io/f/xnjenyao" method="POST" novalidate>
+      <input type="hidden" name="enquiry_type" value="Tutoring">
+      <input type="hidden" name="session_format" value="1-on-1 private">
+      <input type="hidden" name="_subject" value="Vantage enrolment">
+
+      <div class="enrol-panel is-open" data-step="0">
+        <button type="button" class="enrol-panel-head" data-enrol-toggle>
+          <span class="enrol-panel-title">About you</span>
+          <span class="enrol-panel-status">Here</span>
+        </button>
+        <div class="enrol-panel-body">
+          <div class="enrol-fields">
+
+            <p class="enrol-q">Are you a parent/caregiver or a student?</p>
+            <div class="enrol-tiles" role="radiogroup" aria-label="Your role">
+              <label class="enrol-tile enrol-tile--graphic">
+                <input type="radio" name="role" value="Parent/caregiver" required>
+                <span class="enrol-tile-card">
+                  <span class="enrol-tile-art" aria-hidden="true">
+                    <span class="enrol-tile-art-outline">Parent</span>
+                    <span class="enrol-tile-art-fill">Parent</span>
+                  </span>
+                  <span class="enrol-tile-desc">Enrolling on behalf of a student</span>
+                </span>
+              </label>
+              <label class="enrol-tile enrol-tile--graphic">
+                <input type="radio" name="role" value="Student">
+                <span class="enrol-tile-card">
+                  <span class="enrol-tile-art" aria-hidden="true">
+                    <span class="enrol-tile-art-outline">Student</span>
+                    <span class="enrol-tile-art-fill">Student</span>
+                  </span>
+                  <span class="enrol-tile-desc">Enrolling for yourself</span>
+                </span>
+              </label>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="enrol-panel is-pending" data-step="1">
+        <button type="button" class="enrol-panel-head" data-enrol-toggle disabled>
+          <span class="enrol-panel-title">Contact details</span>
+          <span class="enrol-panel-status">Pending</span>
+        </button>
+        <div class="enrol-panel-body">
+          <div class="enrol-peek" aria-hidden="true">
+            <div class="enrol-peek-row"></div>
+            <div class="enrol-peek-row enrol-peek-row--short"></div>
+          </div>
+          <div class="enrol-fields">
+
+            <label for="enrol_name">Your name</label>
+            <input id="enrol_name" type="text" name="name" placeholder="Jane Smith" required autocomplete="name">
+
+            <div id="enrolStudentWrap" hidden>
+              <label for="enrol_student">Student’s name</label>
+              <input id="enrol_student" type="text" name="student_name" placeholder="Student’s full name" autocomplete="off">
+            </div>
+
+            <label for="enrol_school">School</label>
+            <input id="enrol_school" type="text" name="school" placeholder="e.g. Brisbane State High School" required>
+
+            <div class="enrol-row-2">
+              <div>
+                <label for="enrol_email">Email</label>
+                <input id="enrol_email" type="email" name="email" placeholder="jane@email.com" required autocomplete="email">
+              </div>
+              <div>
+                <label for="enrol_phone">Phone</label>
+                <input id="enrol_phone" type="tel" name="phone" placeholder="0414 131 893" required autocomplete="tel">
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary enrol-next" data-enrol-next>Continue</button>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="enrol-panel is-pending" data-step="2">
+        <button type="button" class="enrol-panel-head" data-enrol-toggle disabled>
+          <span class="enrol-panel-title">Year &amp; subjects</span>
+          <span class="enrol-panel-status">Pending</span>
+        </button>
+        <div class="enrol-panel-body">
+          <div class="enrol-peek" aria-hidden="true">
+            <div class="enrol-peek-row"></div>
+            <div class="enrol-peek-row enrol-peek-row--short"></div>
+          </div>
+          <div class="enrol-fields">
+
+            <p class="enrol-q">Year level in 2026</p>
+            <p class="enrol-hint" style="margin-top:-6px">Years 4-6 available. Varied pricing for lower years.</p>
+            <div class="enrol-years" role="radiogroup" aria-label="Year level">
+              <label class="enrol-year"><input type="radio" name="year_level[]" value="Year 4"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">4</span><span class="enrol-year-fill">4</span></span><span class="enrol-year-hint">Year 4</span></span></label>
+              <label class="enrol-year"><input type="radio" name="year_level[]" value="Year 5"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">5</span><span class="enrol-year-fill">5</span></span><span class="enrol-year-hint">Year 5</span></span></label>
+              <label class="enrol-year"><input type="radio" name="year_level[]" value="Year 6"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">6</span><span class="enrol-year-fill">6</span></span><span class="enrol-year-hint">Year 6</span></span></label>
+              <label class="enrol-year"><input type="radio" name="year_level[]" value="Year 7"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">7</span><span class="enrol-year-fill">7</span></span><span class="enrol-year-hint">Year 7</span></span></label>
+              <label class="enrol-year"><input type="radio" name="year_level[]" value="Year 8"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">8</span><span class="enrol-year-fill">8</span></span><span class="enrol-year-hint">Year 8</span></span></label>
+              <label class="enrol-year"><input type="radio" name="year_level[]" value="Year 9"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">9</span><span class="enrol-year-fill">9</span></span><span class="enrol-year-hint">Year 9</span></span></label>
+              <label class="enrol-year"><input type="radio" name="year_level[]" value="Year 10"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">10</span><span class="enrol-year-fill">10</span></span><span class="enrol-year-hint">Year 10</span></span></label>
+              <label class="enrol-year"><input type="radio" name="year_level[]" value="Year 11"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">11</span><span class="enrol-year-fill">11</span></span><span class="enrol-year-hint">Year 11</span></span></label>
+              <label class="enrol-year"><input type="radio" name="year_level[]" value="Year 12"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">12</span><span class="enrol-year-fill">12</span></span><span class="enrol-year-hint">Year 12</span></span></label>
+            </div>
+
+            <p class="enrol-q">Subjects</p>
+            <div class="enrol-chips" id="enrolSubjectChips" role="group" aria-label="Subjects">
+              <label class="enrol-chip" data-band="both"><input type="checkbox" name="subjects[]" value="English"><span>English</span></label>
+              <label class="enrol-chip" data-band="both"><input type="checkbox" name="subjects[]" value="General Mathematics"><span>General Maths</span></label>
+              <label class="enrol-chip" data-band="junior"><input type="checkbox" name="subjects[]" value="Science"><span>Science</span></label>
+              <label class="enrol-chip" data-band="junior"><input type="checkbox" name="subjects[]" value="Humanities"><span>Humanities</span></label>
+              <label class="enrol-chip" data-band="junior"><input type="checkbox" name="subjects[]" value="Languages"><span>Languages</span></label>
+
+              <label class="enrol-chip" data-band="senior" hidden><input type="checkbox" name="subjects[]" value="Literature"><span>Literature</span></label>
+              <label class="enrol-chip" data-band="senior" hidden><input type="checkbox" name="subjects[]" value="Mathematical Methods"><span>Methods</span></label>
+              <label class="enrol-chip" data-band="senior" hidden><input type="checkbox" name="subjects[]" value="Specialist Mathematics"><span>Specialist</span></label>
+              <label class="enrol-chip" data-band="senior" hidden><input type="checkbox" name="subjects[]" value="Chemistry"><span>Chemistry</span></label>
+              <label class="enrol-chip" data-band="senior" hidden><input type="checkbox" name="subjects[]" value="Biology"><span>Biology</span></label>
+              <label class="enrol-chip" data-band="senior" hidden><input type="checkbox" name="subjects[]" value="Physics"><span>Physics</span></label>
+              <label class="enrol-chip" data-band="senior" hidden><input type="checkbox" name="subjects[]" value="Economics"><span>Economics</span></label>
+              <label class="enrol-chip" data-band="senior" hidden><input type="checkbox" name="subjects[]" value="Legal Studies"><span>Legal Studies</span></label>
+              <label class="enrol-chip" data-band="senior" hidden><input type="checkbox" name="subjects[]" value="Engineering"><span>Engineering</span></label>
+              <label class="enrol-chip" data-band="senior" hidden><input type="checkbox" name="subjects[]" value="Philosophy"><span>Philosophy</span></label>
+              <label class="enrol-chip" data-band="senior" hidden><input type="checkbox" name="subjects[]" value="Digital Solutions"><span>Digital Solutions</span></label>
+              <label class="enrol-chip" data-band="senior" hidden><input type="checkbox" name="subjects[]" value="Japanese"><span>Japanese</span></label>
+              <label class="enrol-chip" data-band="senior" hidden><input type="checkbox" name="subjects[]" value="French"><span>French</span></label>
+              <label class="enrol-chip" data-band="senior" hidden><input type="checkbox" name="subjects[]" value="UCAT"><span>UCAT</span></label>
+
+              <label class="enrol-chip" data-band="both"><input type="checkbox" name="subjects[]" value="Other" id="enrolSubjectOther"><span>Other</span></label>
+            </div>
+            <div id="enrolOtherSubjectWrap" hidden>
+              <label for="enrol_other_subject">Other subject</label>
+              <input id="enrol_other_subject" type="text" name="other_subject" placeholder="Subject name">
+            </div>
+            <button type="button" class="btn btn-primary enrol-next" data-enrol-next>Continue</button>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="enrol-panel-group" data-peek-title="Time and place">
+      <div class="enrol-panel is-pending" data-step="3">
+        <button type="button" class="enrol-panel-head" data-enrol-toggle disabled>
+          <span class="enrol-panel-title">Session location</span>
+          <span class="enrol-panel-status">Pending</span>
+        </button>
+        <div class="enrol-panel-body">
+          <div class="enrol-peek" aria-hidden="true">
+            <div class="enrol-peek-row"></div>
+            <div class="enrol-peek-row enrol-peek-row--short"></div>
+          </div>
+          <div class="enrol-fields">
+
+            <p class="enrol-q">Where should sessions be held?</p>
+            <p class="enrol-hint" style="margin-top:-6px">Select both if you’re happy either way.</p>
+            <div class="enrol-tiles enrol-loc-mode" role="group" aria-label="Session format">
+              <label class="enrol-tile">
+                <input type="checkbox" name="location[]" value="Online" id="enrolLocOnline">
+                <span class="enrol-tile-card">
+                  <span class="enrol-tile-label">Online</span>
+                  <span class="enrol-tile-desc">Zoom sessions anywhere</span>
+                </span>
+              </label>
+              <label class="enrol-tile">
+                <input type="checkbox" name="location_mode" value="In person" id="enrolLocInPerson">
+                <span class="enrol-tile-card">
+                  <span class="enrol-tile-label">In person</span>
+                  <span class="enrol-tile-desc">Libraries, campuses, or home</span>
+                </span>
+              </label>
+            </div>
+
+            <div class="enrol-inperson" id="enrolInPersonWrap" hidden>
+              <p class="enrol-q">Select a library or campus</p>
+              <p class="enrol-hint" style="margin-top:-6px">Tap a card below, or tap the matching pin on the map.</p>
+              <div class="enrol-venue-grid" id="enrolVenueGrid" role="group" aria-label="Libraries and campuses">
+                <label class="enrol-venue">
+                  <input type="checkbox" name="location[]" value="In person (State Library of Queensland)" data-venue-tab="slq" data-venue-id="slq">
+                  <span class="enrol-venue-card">
+                    <span class="enrol-venue-kicker">Preferred</span>
+                    <span class="enrol-venue-name">State Library</span>
+                    <span class="enrol-venue-meta">South Bank</span>
+                  </span>
+                </label>
+                <label class="enrol-venue">
+                  <input type="checkbox" name="location[]" value="In person (University of Queensland)" data-venue-tab="uq" data-venue-id="uq-st-lucia">
+                  <span class="enrol-venue-card">
+                    <span class="enrol-venue-name">UQ St Lucia</span>
+                    <span class="enrol-venue-meta">Campus</span>
+                  </span>
+                </label>
+                <label class="enrol-venue">
+                  <input type="checkbox" name="location[]" value="In person (Griffith University)" data-venue-tab="griffith" data-venue-id="griffith-nathan">
+                  <span class="enrol-venue-card">
+                    <span class="enrol-venue-name">Griffith Nathan</span>
+                    <span class="enrol-venue-meta">Campus</span>
+                  </span>
+                </label>
+                <label class="enrol-venue">
+                  <input type="checkbox" name="location[]" value="In person (Garden City)" data-venue-tab="garden" data-venue-id="garden-city">
+                  <span class="enrol-venue-card">
+                    <span class="enrol-venue-name">Garden City</span>
+                    <span class="enrol-venue-meta">Upper Mount Gravatt</span>
+                  </span>
+                </label>
+                <label class="enrol-venue">
+                  <input type="checkbox" name="location[]" value="In person (Annerley Library)" data-venue-id="annerley-library">
+                  <span class="enrol-venue-card">
+                    <span class="enrol-venue-name">Annerley Library</span>
+                    <span class="enrol-venue-meta">Library</span>
+                  </span>
+                </label>
+                <label class="enrol-venue">
+                  <input type="checkbox" name="location[]" value="In person (Carindale Library)" data-venue-id="carindale-library">
+                  <span class="enrol-venue-card">
+                    <span class="enrol-venue-name">Carindale Library</span>
+                    <span class="enrol-venue-meta">Library</span>
+                  </span>
+                </label>
+                <label class="enrol-venue">
+                  <input type="checkbox" name="location[]" value="In person (Mount Ommaney Library)" data-venue-id="mount-ommaney-library">
+                  <span class="enrol-venue-card">
+                    <span class="enrol-venue-name">Mount Ommaney Library</span>
+                    <span class="enrol-venue-meta">Library</span>
+                  </span>
+                </label>
+              </div>
+
+              <p class="enrol-q">Or select home suburb(s)
+                <button type="button" class="enrol-map-link" id="enrolMapOpen" aria-haspopup="dialog">Larger map</button>
+              </p>
+              <p class="enrol-hint" style="margin-top:-6px">Type a suburb name, or click shaded areas on the map. You can pick more than one.</p>
+              <div class="enrol-suburb-type">
+                <label class="visually-hidden" for="enrolSuburbType">Type a suburb</label>
+                <input id="enrolSuburbType" type="text" autocomplete="off" placeholder="Start typing a suburb…" list="enrolSuburbList" aria-autocomplete="list">
+                <datalist id="enrolSuburbList"></datalist>
+              </div>
+              <div class="enrol-suburb-map-wrap">
+                <div class="enrol-map-frame loc-frame" id="enrolInlineMapEl" role="img" aria-label="Click suburbs on the map to select home visit areas"></div>
+              </div>
+              <div class="enrol-suburb-chips" id="enrolSuburbChips" hidden></div>
+              <input type="hidden" name="home_suburbs" id="enrolHomeSuburbs" value="">
+              <input type="hidden" name="location[]" value="In person (student's home)" id="enrolLocHome" disabled>
+
+              <div class="other-field" id="homeAddressWrap" hidden>
+                <label for="address">Street address <span class="form-optional">(optional)</span></label>
+                <input id="address" type="text" name="home_address" placeholder="Street and number">
+                <p class="loc-filter-hint">We’ll confirm the full address when we match your tutor.</p>
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary enrol-next" data-enrol-next>Continue</button>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="enrol-panel is-pending" data-step="4">
+        <button type="button" class="enrol-panel-head" data-enrol-toggle disabled>
+          <span class="enrol-panel-title">Availability</span>
+          <span class="enrol-panel-status">Pending</span>
+        </button>
+        <div class="enrol-panel-body">
+          <div class="enrol-peek" aria-hidden="true">
+            <div class="enrol-peek-row"></div>
+            <div class="enrol-peek-row enrol-peek-row--short"></div>
+          </div>
+          <div class="enrol-fields">
+<div class="form-q">
+                            <span class="form-q-title">When is your student available?</span>
+              <p class="avail-hint">Click or drag to select multiple times</p>
+              <label class="avail-granularity choice">
+                <input type="checkbox" id="availHalfHour" name="availability_granularity" value="30-minute blocks">
+                Select in 30-minute blocks
+              </label>
+              <div class="avail-mode" id="availModeHour">
+                <div class="avail-wrap">
+                  <div class="avail-grid">
+                    <div class="avail-row avail-head"><div class="avail-time"></div><div class="avail-day">Mon</div><div class="avail-day">Tue</div><div class="avail-day">Wed</div><div class="avail-day">Thu</div><div class="avail-day">Fri</div><div class="avail-day">Sat</div><div class="avail-day">Sun</div></div>
+                    <div class="avail-early" id="availEarlyTutoringHour" hidden><div class="avail-row"><div class="avail-time">9am-10am</div><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Mon 9:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Tue 9:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Wed 9:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Thu 9:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Fri 9:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Sat 9:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Sun 9:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">10am-11am</div><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Mon 10:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Tue 10:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Wed 10:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Thu 10:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Fri 10:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Sat 10:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Sun 10:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">11am-12pm</div><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Mon 11:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Tue 11:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Wed 11:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Thu 11:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Fri 11:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Sat 11:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Sun 11:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">12pm-1pm</div><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Mon 12:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Tue 12:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Wed 12:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Thu 12:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Fri 12:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Sat 12:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Sun 12:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">1pm-2pm</div><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Mon 1:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Tue 1:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Wed 1:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Thu 1:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Fri 1:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Sat 1:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Sun 1:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">2pm-3pm</div><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Mon 2:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Tue 2:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Wed 2:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Thu 2:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Fri 2:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Sat 2:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Sun 2:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div></div>
+                    <button type="button" class="avail-expand" data-avail-expand="availEarlyTutoringHour" aria-expanded="false">
+                      <span class="avail-expand-show">Show 9am - 3pm</span>
+                      <span class="avail-expand-hide" hidden>Hide 9am - 3pm</span>
+                    </button>
+                    <div class="avail-row"><div class="avail-time">3pm-4pm</div><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Mon 3:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Tue 3:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Wed 3:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Thu 3:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Fri 3:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Sat 3:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Sun 3:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">4pm-5pm</div><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Mon 4:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Tue 4:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Wed 4:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Thu 4:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Fri 4:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Sat 4:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Sun 4:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">5pm-6pm</div><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Mon 5:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Tue 5:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Wed 5:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Thu 5:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Fri 5:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Sat 5:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Sun 5:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">6pm-7pm</div><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Mon 6:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Tue 6:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Wed 6:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Thu 6:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Fri 6:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Sat 6:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Sun 6:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">7pm-8pm</div><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Mon 7:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Tue 7:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Wed 7:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Thu 7:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Fri 7:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Sat 7:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Sun 7:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">8pm-9pm</div><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Mon 8:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Tue 8:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Wed 8:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Thu 8:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Fri 8:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Sat 8:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--hour"><input type="checkbox" name="availability[]" value="Sun 8:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div>                  </div>
+                </div>
+              </div>
+              <div class="avail-mode" id="availModeHalf" hidden>
+                <div class="avail-wrap">
+                  <div class="avail-grid">
+                    <div class="avail-row avail-head"><div class="avail-time"></div><div class="avail-day">Mon</div><div class="avail-day">Tue</div><div class="avail-day">Wed</div><div class="avail-day">Thu</div><div class="avail-day">Fri</div><div class="avail-day">Sat</div><div class="avail-day">Sun</div></div>
+                    <div class="avail-early" id="availEarlyTutoringHalf" hidden><div class="avail-row"><div class="avail-time">9:00am</div><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Mon 9:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Tue 9:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Wed 9:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Thu 9:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Fri 9:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sat 9:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sun 9:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">9:30am</div><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Mon 9:30am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Tue 9:30am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Wed 9:30am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Thu 9:30am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Fri 9:30am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sat 9:30am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sun 9:30am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">10:00am</div><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Mon 10:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Tue 10:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Wed 10:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Thu 10:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Fri 10:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sat 10:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sun 10:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">10:30am</div><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Mon 10:30am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Tue 10:30am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Wed 10:30am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Thu 10:30am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Fri 10:30am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sat 10:30am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sun 10:30am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">11:00am</div><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Mon 11:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Tue 11:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Wed 11:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Thu 11:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Fri 11:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sat 11:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sun 11:00am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">11:30am</div><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Mon 11:30am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Tue 11:30am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Wed 11:30am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Thu 11:30am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Fri 11:30am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sat 11:30am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sun 11:30am"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">12:00pm</div><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Mon 12:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Tue 12:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Wed 12:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Thu 12:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Fri 12:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sat 12:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sun 12:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">12:30pm</div><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Mon 12:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Tue 12:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Wed 12:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Thu 12:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Fri 12:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sat 12:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sun 12:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">1:00pm</div><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Mon 1:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Tue 1:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Wed 1:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Thu 1:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Fri 1:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sat 1:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sun 1:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">1:30pm</div><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Mon 1:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Tue 1:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Wed 1:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Thu 1:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Fri 1:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sat 1:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sun 1:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">2:00pm</div><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Mon 2:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Tue 2:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Wed 2:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Thu 2:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Fri 2:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sat 2:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sun 2:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">2:30pm</div><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Mon 2:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Tue 2:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Wed 2:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Thu 2:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Fri 2:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sat 2:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sun 2:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div></div>
+                    <button type="button" class="avail-expand" data-avail-expand="availEarlyTutoringHalf" aria-expanded="false">
+                      <span class="avail-expand-show">Show 9am - 3pm</span>
+                      <span class="avail-expand-hide" hidden>Hide 9am - 3pm</span>
+                    </button>
+                    <div class="avail-row"><div class="avail-time">3:00pm</div><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Mon 3:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Tue 3:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Wed 3:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Thu 3:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Fri 3:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sat 3:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sun 3:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">3:30pm</div><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Mon 3:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Tue 3:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Wed 3:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Thu 3:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Fri 3:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sat 3:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sun 3:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">4:00pm</div><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Mon 4:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Tue 4:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Wed 4:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Thu 4:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Fri 4:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sat 4:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sun 4:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">4:30pm</div><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Mon 4:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Tue 4:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Wed 4:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Thu 4:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Fri 4:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sat 4:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sun 4:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">5:00pm</div><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Mon 5:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Tue 5:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Wed 5:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Thu 5:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Fri 5:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sat 5:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sun 5:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">5:30pm</div><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Mon 5:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Tue 5:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Wed 5:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Thu 5:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Fri 5:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sat 5:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sun 5:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">6:00pm</div><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Mon 6:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Tue 6:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Wed 6:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Thu 6:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Fri 6:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sat 6:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sun 6:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">6:30pm</div><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Mon 6:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Tue 6:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Wed 6:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Thu 6:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Fri 6:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sat 6:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sun 6:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">7:00pm</div><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Mon 7:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Tue 7:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Wed 7:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Thu 7:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Fri 7:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sat 7:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sun 7:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">7:30pm</div><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Mon 7:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Tue 7:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Wed 7:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Thu 7:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Fri 7:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sat 7:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sun 7:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">8:00pm</div><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Mon 8:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Tue 8:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Wed 8:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Thu 8:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Fri 8:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sat 8:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sun 8:00pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div><div class="avail-row"><div class="avail-time">8:30pm</div><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Mon 8:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Tue 8:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Wed 8:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Thu 8:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Fri 8:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sat 8:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label><label class="avail-cell avail-cell--half"><input type="checkbox" name="availability[]" value="Sun 8:30pm"><span class="avail-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></label></div>                  </div>
+                </div>
+              </div>
+              <input type="hidden" name="availability_selected" id="availabilitySelected" value="">
+            </div>
+            <button type="button" class="btn btn-primary enrol-next" data-enrol-next>Continue</button>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="enrol-panel-group" data-peek-title="Make it yours">
+      <div class="enrol-panel is-pending" data-step="5">
+        <button type="button" class="enrol-panel-head" data-enrol-toggle disabled>
+          <span class="enrol-panel-title">Session plan</span>
+          <span class="enrol-panel-status">Pending</span>
+        </button>
+        <div class="enrol-panel-body">
+          <div class="enrol-peek" aria-hidden="true">
+            <div class="enrol-peek-row"></div>
+            <div class="enrol-peek-row enrol-peek-row--short"></div>
+          </div>
+          <div class="enrol-fields">
+            <div class="form-q">
+              <span class="form-q-title">How many sessions a week?</span>
+              <div class="choice-grid choice-grid--row4" role="radiogroup" aria-label="Sessions per week">
+                <label class="choice choice--compact"><input type="radio" name="sessions_per_week" value="1"><span>1</span></label>
+                <label class="choice choice--compact"><input type="radio" name="sessions_per_week" value="2"><span>2</span></label>
+                <label class="choice choice--compact"><input type="radio" name="sessions_per_week" value="3"><span>3</span></label>
+                <label class="choice choice--compact"><input type="radio" name="sessions_per_week" value="4 or more"><span>4+</span></label>
+              </div>
+            </div>
+
+            <div class="form-q">
+              <span class="form-q-title">How many hours per session?</span>
+              <div class="choice-grid choice-grid--row4" role="radiogroup" aria-label="Hours per session">
+                <label class="choice choice--compact"><input type="radio" name="hours_per_session" value="1 hour"><span>1</span></label>
+                <label class="choice choice--compact"><input type="radio" name="hours_per_session" value="1.5 hours"><span>1.5</span></label>
+                <label class="choice choice--compact"><input type="radio" name="hours_per_session" value="2 hours"><span>2</span></label>
+                <label class="choice choice--compact"><input type="radio" name="hours_per_session" value="Other / not sure"><span>Other</span></label>
+              </div>
+            </div>
+
+            <div class="form-q">
+              <span class="form-q-title">When would you like to start?</span>
+              <div class="choice-grid choice-grid--start" role="radiogroup" aria-label="Preferred start">
+                <label class="choice"><input type="radio" name="start_time" value="As soon as possible">As soon as possible</label>
+                <label class="choice"><input type="radio" name="start_time" value="Within 2 weeks">Within 2 weeks</label>
+                <label class="choice"><input type="radio" name="start_time" value="Start of next term">Start of next term</label>
+                <label class="choice"><input type="radio" name="start_time" value="Just enquiring for now">Just enquiring</label>
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary enrol-next" data-enrol-next>Continue</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="enrol-panel is-pending" data-step="6">
+        <button type="button" class="enrol-panel-head" data-enrol-toggle disabled>
+          <span class="enrol-panel-title">Tutor preferences</span>
+          <span class="enrol-panel-status">Pending</span>
+        </button>
+        <div class="enrol-panel-body">
+          <div class="enrol-peek" aria-hidden="true">
+            <div class="enrol-peek-row"></div>
+            <div class="enrol-peek-row enrol-peek-row--short"></div>
+          </div>
+          <div class="enrol-fields">
+<div class="form-q">
+              <span class="form-q-title">Tutor tier</span>
+              <div class="choice-grid tier-choice-grid">
+                <label class="choice choice-tier choice-tier--gold"><input type="radio" name="tutor_tier" value="Gold (top 1%)"><span class="shine-gold">Gold</span><span class="tier-sub">top 1%</span></label>
+                <label class="choice choice-tier choice-tier--platinum"><input type="radio" name="tutor_tier" value="Platinum (top 0.2%)"><span class="shine-platinum">Platinum</span><span class="tier-sub">top 0.2%</span></label>
+                <label class="choice"><input type="radio" name="tutor_tier" value="Decide later">Decide later</label>
+              </div>
+            </div>
+
+            <div class="form-q form-q--optional">
+              <span class="form-q-title">Tutor gender preference <span class="form-q-optional">Optional</span></span>
+              <p class="form-q-lead">If you have a preference, we'll prioritise it when matching, subject to availability.</p>
+              <div class="choice-grid choice-grid--gender">
+                <label class="choice"><input type="radio" name="tutor_gender" value="No preference" checked>No preference</label>
+                <label class="choice"><input type="radio" name="tutor_gender" value="Male">Male</label>
+                <label class="choice"><input type="radio" name="tutor_gender" value="Female">Female</label>
+              </div>
+            </div>
+
+            <div class="form-q">
+              <span class="form-q-title">Preferred tutor's degree</span>
+              <div class="choice-grid">
+                <label class="choice"><input type="checkbox" name="degree[]" value="Medicine / Health">Medicine / Health</label>
+                <label class="choice"><input type="checkbox" name="degree[]" value="Dentistry">Dentistry</label>
+                <label class="choice"><input type="checkbox" name="degree[]" value="Engineering">Engineering</label>
+                <label class="choice"><input type="checkbox" name="degree[]" value="Law">Law</label>
+                <label class="choice"><input type="checkbox" name="degree[]" value="Science">Science</label>
+                <label class="choice"><input type="checkbox" name="degree[]" value="Commerce / Business">Commerce / Business</label>
+                <label class="choice"><input type="checkbox" name="degree[]" value="IT / Computer Science">IT / Computer Science</label>
+                <label class="choice"><input type="checkbox" name="degree[]" value="BAFE">BAFE</label>
+                <label class="choice"><input type="checkbox" name="degree[]" value="No preference">No preference</label>
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary enrol-next" data-enrol-next>Continue</button>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="enrol-panel is-pending" data-step="7">
+        <button type="button" class="enrol-panel-head" data-enrol-toggle disabled>
+          <span class="enrol-panel-title">Finish</span>
+          <span class="enrol-panel-status">Pending</span>
+        </button>
+        <div class="enrol-panel-body">
+          <div class="enrol-peek" aria-hidden="true">
+            <div class="enrol-peek-row"></div>
+            <div class="enrol-peek-row enrol-peek-row--short"></div>
+          </div>
+          <div class="enrol-fields">
+<div class="form-q form-q--toggle">
+              <label class="choice choice--block"><input type="checkbox" id="enrolSecondStudent" name="enrol_second_student" value="yes">Enrolling another student? (future students' details are collected below)</label>
+            </div>
+
+            <div class="form-student-block" id="student2Wrap" hidden>
+              <h4 class="form-student-heading">Another student</h4>
+
+              <label for="student2_name">Student's name</label>
+              <input id="student2_name" type="text" name="student2_name" placeholder="Full name" disabled>
+
+              <div class="form-q">
+                <span class="form-q-title">Year level in 2026</span>
+                <div class="choice-grid choice-grid--years2" role="radiogroup" aria-label="Year level">
+                  <label class="choice"><input type="radio" name="year_level_2[]" value="Year 4" disabled>Year 4</label>
+                  <label class="choice"><input type="radio" name="year_level_2[]" value="Year 5" disabled>Year 5</label>
+                  <label class="choice"><input type="radio" name="year_level_2[]" value="Year 6" disabled>Year 6</label>
+                  <label class="choice"><input type="radio" name="year_level_2[]" value="Year 7" disabled>Year 7</label>
+                  <label class="choice"><input type="radio" name="year_level_2[]" value="Year 8" disabled>Year 8</label>
+                  <label class="choice"><input type="radio" name="year_level_2[]" value="Year 9" disabled>Year 9</label>
+                  <label class="choice"><input type="radio" name="year_level_2[]" value="Year 10" disabled>Year 10</label>
+                  <label class="choice"><input type="radio" name="year_level_2[]" value="Year 11" disabled>Year 11</label>
+                  <label class="choice"><input type="radio" name="year_level_2[]" value="Year 12" disabled>Year 12</label>
+                </div>
+              </div>
+
+              <div class="form-q">
+                <span class="form-q-title">Which subjects?</span>
+                <div class="choice-grid" id="enrolSubject2Grid">
+                  <label class="choice" data-band="both"><input type="checkbox" name="subjects_2[]" value="English" disabled>English</label>
+                  <label class="choice" data-band="both"><input type="checkbox" name="subjects_2[]" value="General Mathematics" disabled>General Maths</label>
+                  <label class="choice" data-band="junior"><input type="checkbox" name="subjects_2[]" value="Science" disabled>Science</label>
+                  <label class="choice" data-band="junior"><input type="checkbox" name="subjects_2[]" value="Humanities" disabled>Humanities</label>
+                  <label class="choice" data-band="junior"><input type="checkbox" name="subjects_2[]" value="Languages" disabled>Languages</label>
+
+                  <label class="choice" data-band="senior" hidden><input type="checkbox" name="subjects_2[]" value="Literature" disabled>Literature</label>
+                  <label class="choice" data-band="senior" hidden><input type="checkbox" name="subjects_2[]" value="Mathematical Methods" disabled>Maths Methods</label>
+                  <label class="choice" data-band="senior" hidden><input type="checkbox" name="subjects_2[]" value="Specialist Mathematics" disabled>Specialist Maths</label>
+                  <label class="choice" data-band="senior" hidden><input type="checkbox" name="subjects_2[]" value="Chemistry" disabled>Chemistry</label>
+                  <label class="choice" data-band="senior" hidden><input type="checkbox" name="subjects_2[]" value="Biology" disabled>Biology</label>
+                  <label class="choice" data-band="senior" hidden><input type="checkbox" name="subjects_2[]" value="Physics" disabled>Physics</label>
+                  <label class="choice" data-band="senior" hidden><input type="checkbox" name="subjects_2[]" value="Economics" disabled>Economics</label>
+                  <label class="choice" data-band="senior" hidden><input type="checkbox" name="subjects_2[]" value="Legal Studies" disabled>Legal Studies</label>
+                  <label class="choice" data-band="senior" hidden><input type="checkbox" name="subjects_2[]" value="Engineering" disabled>Engineering</label>
+                  <label class="choice" data-band="senior" hidden><input type="checkbox" name="subjects_2[]" value="Philosophy" disabled>Philosophy</label>
+                  <label class="choice" data-band="senior" hidden><input type="checkbox" name="subjects_2[]" value="Digital Solutions" disabled>Digital Solutions</label>
+                  <label class="choice" data-band="senior" hidden><input type="checkbox" name="subjects_2[]" value="Japanese" disabled>Japanese</label>
+                  <label class="choice" data-band="senior" hidden><input type="checkbox" name="subjects_2[]" value="French" disabled>French</label>
+                  <label class="choice" data-band="senior" hidden><input type="checkbox" name="subjects_2[]" value="UCAT" disabled>UCAT</label>
+
+                  <label class="choice" data-band="both"><input type="checkbox" name="subjects_2[]" value="Other" id="subjectOther2" disabled>Other</label>
+                </div>
+                <div class="other-field" id="otherSubjectWrap2" hidden>
+                  <label for="other_subject_2">Other subject name</label>
+                  <input type="text" id="other_subject_2" name="other_subject_2" placeholder="Enter the subject name" disabled>
+                </div>
+              </div>
+
+              <div id="student2AvailMount"></div>
+            </div>
+            <label for="enrol_message">Anything else we should know? <span class="form-optional">(optional)</span></label>
+            <textarea id="enrol_message" name="message" rows="3" placeholder="Goals, questions, or other requests"></textarea>
+
+            <label for="enrol_referral">Referral code <span class="form-optional">(optional)</span></label>
+            <input id="enrol_referral" type="text" name="referral_code" placeholder="If you have one" autocomplete="off">
+            <p class="enrol-hint">Were you referred by a Vantage family? Add their code and you each receive $20 credit after the first paid lesson.</p>
+
+            <button type="submit" class="btn btn-primary enrol-submit">Send enrolment
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+            <p class="privacy-note">By submitting, you agree to our <a href="/legal">Privacy Policy</a> and <a href="/legal">Terms</a>. We’ll reply within 24 hours.</p>
+
+          </div>
+        </div>
+      </div>
+
+    </form>
+
+    <div class="enrol-success" id="enrolSuccess" hidden>
+      <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <h3>Enrolment received</h3>
+      <p>Thanks. We’ll match you and reply within 24 hours.</p>
+      <a href="https://calendly.com/hello-vantagetutoring/10min" target="_blank" rel="noopener" class="btn btn-primary">Or book a free consultation now</a>
+    </div>
+
+    <p class="enrol-alt">Questions? Call <a href="tel:0414131893">0414 131 893</a>.</p>
+  </div>
+</section>
+
+<div class="enrol-map-modal" id="enrolMapModal" hidden>
+  <div class="enrol-map-backdrop" data-enrol-map-close tabindex="-1"></div>
+  <div class="enrol-map-dialog" role="dialog" aria-modal="true" aria-labelledby="enrolMapTitle">
+    <div class="enrol-map-dialog-head">
+      <div>
+        <h2 id="enrolMapTitle">Where we tutor</h2>
+        <p>Meet-up venues across Brisbane, plus shaded home-visit suburbs.</p>
+      </div>
+      <button type="button" class="enrol-map-close" data-enrol-map-close aria-label="Close map">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="enrol-map-body" data-vt-map-wrap>
+      <p class="enrol-map-picker-hint">Tap a library pin or shaded suburb to select it for your enrolment.</p>
+      <div class="enrol-venue-grid enrol-venue-grid--modal" id="enrolModalVenueGrid"></div>
+      <div class="enrol-map-frame loc-frame" id="enrolMapEl" role="img" aria-label="Click suburbs or venues to select"></div>
+      <div class="enrol-map-meta">
+        <div>
+          <strong data-vt-title>Select on the map</strong>
+          <p data-vt-detail>Selected suburbs and libraries sync back to your enrolment form.</p>
+        </div>
+        <button type="button" class="btn btn-primary" data-enrol-map-close>Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <a href="/" class="brand"><img class="logo" src="/assets/logo.png" alt="Vantage Tutoring" onerror="this.onerror=null;this.src='/assets/logo.svg'">Vantage Tutoring</a>
+      <div class="footer-links">
+        <a href="/services">Services</a>
+        <a href="/tutors">Tutors</a>
+        <a href="/rates">Rates</a>
+        <a href="/reviews/?v=2">Reviews</a>
+        <a href="/about/?v=2">About</a>
+        <a href="/careers">Careers</a>
+        <a href="/enrol">Contact</a>
+        <a href="/legal">Legal</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/company/89952543/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.5h4.52V24H.24V8.5zM8.34 8.5h4.33v2.11h.06c.6-1.14 2.08-2.34 4.28-2.34 4.58 0 5.42 3.01 5.42 6.93V24h-4.52v-7.55c0-1.8-.03-4.11-2.5-4.11-2.5 0-2.89 1.95-2.89 3.98V24H8.34V8.5z"/></svg></a>
+        <a href="https://www.instagram.com/vantage_tutoring/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-bottom">Vantage Tutoring &copy; 2026 · All rights reserved.</div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="/assets/tutor-locations.js?v=21"></script>
+<script src="/assets/main.js?v=theme97"></script>
+<script>
+(function(){
+  var form = document.getElementById('enrolForm');
+  if(!form) return;
+  var panels = [].slice.call(form.querySelectorAll('.enrol-panel'));
+  var success = document.getElementById('enrolSuccess');
+  var studentWrap = document.getElementById('enrolStudentWrap');
+  var otherWrap = document.getElementById('enrolOtherSubjectWrap');
+  var homeWrap = document.getElementById('homeAddressWrap');
+  var current = 0;
+  var advanceTimer = null;
+
+  var scrollTimer = null;
+
+  function headerOffset(){
+    var header = document.querySelector('header');
+    return (header ? header.getBoundingClientRect().height : 72) + 12;
+  }
+
+  function scrollToPanel(panel){
+    if(!panel) return;
+    clearTimeout(scrollTimer);
+    // Wait a beat so expand/collapse layout settles before measuring
+    scrollTimer = setTimeout(function(){
+      var offset = headerOffset();
+      var rect = panel.getBoundingClientRect();
+      var topGap = rect.top - offset;
+      // Already comfortably in view - don't jump
+      if(topGap >= 0 && topGap < Math.min(140, window.innerHeight * 0.28)) return;
+      // Prefer landing the panel head just under the sticky nav
+      var target = window.scrollY + topGap;
+      // If next step is only slightly below, ease a shorter nudge instead of a big leap
+      if(topGap > 0 && topGap < 220){
+        target = window.scrollY + Math.max(48, topGap - 24);
+      }
+      var maxY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+      target = Math.max(0, Math.min(target, maxY));
+      window.scrollTo({ top: target, behavior: 'smooth' });
+    }, 80);
+  }
+
+  function syncPeekGroups(){
+    [].forEach.call(form.querySelectorAll('.enrol-panel-group'), function(group){
+      var kids = [].slice.call(group.querySelectorAll(':scope > .enrol-panel'));
+      var allPending = kids.length > 0 && kids.every(function(p){ return p.classList.contains('is-pending'); });
+      group.classList.toggle('is-peek-merged', allPending);
+      var peekTitle = group.getAttribute('data-peek-title');
+      var titleEl = kids[0] && kids[0].querySelector('.enrol-panel-title');
+      if(!titleEl) return;
+      if(!titleEl.getAttribute('data-real-title')){
+        titleEl.setAttribute('data-real-title', titleEl.textContent);
+      }
+      titleEl.textContent = allPending && peekTitle
+        ? peekTitle
+        : titleEl.getAttribute('data-real-title');
+    });
+  }
+
+  function setStep(n, scroll){
+    var prev = current;
+    current = n;
+    panels.forEach(function(panel, i){
+      var head = panel.querySelector('[data-enrol-toggle]');
+      var status = panel.querySelector('.enrol-panel-status');
+      panel.classList.remove('is-open','is-pending','is-done','is-entering');
+      if(i < n){
+        panel.classList.add('is-done');
+        if(status) status.textContent = 'Done';
+        if(head) head.disabled = false;
+      } else if(i === n){
+        panel.classList.add('is-open');
+        if(status){
+          status.textContent = 'Here';
+          status.classList.remove('is-pop');
+          void status.offsetWidth;
+          status.classList.add('is-pop');
+        }
+        if(head) head.disabled = false;
+        if(i !== prev){
+          panel.classList.add('is-entering');
+          setTimeout(function(){ panel.classList.remove('is-entering'); }, 450);
+        }
+      } else {
+        panel.classList.add('is-pending');
+        if(status) status.textContent = 'Pending';
+        if(head) head.disabled = true;
+      }
+    });
+    syncPeekGroups();
+    if(scroll !== false) scrollToPanel(panels[n]);
+  }
+
+  function popTarget(el){
+    if(!el) return;
+    el.classList.remove('is-popping');
+    void el.offsetWidth;
+    el.classList.add('is-popping');
+    setTimeout(function(){ el.classList.remove('is-popping'); }, 420);
+  }
+
+  function hasChecked(name){
+    return !!form.querySelector('input[name="'+name+'"]:checked');
+  }
+
+  function yearNumsFrom(name){
+    return [].slice.call(form.querySelectorAll('input[name="'+name+'"]:checked')).map(function(el){
+      var m = String(el.value || '').match(/(\d+)/);
+      return m ? parseInt(m[1], 10) : 0;
+    }).filter(function(n){ return n > 0; });
+  }
+
+  function subjectBandForYears(years){
+    if(!years.length) return 'junior';
+    /* Years 10-12 get senior subjects; 4-9 stay junior (Science / Humanities / Languages). */
+    return years.some(function(y){ return y >= 10; }) ? 'senior' : 'junior';
+  }
+
+  function syncSubjectBand(root, band){
+    if(!root) return;
+    [].slice.call(root.querySelectorAll('[data-band]')).forEach(function(el){
+      var b = el.getAttribute('data-band');
+      var show = b === 'both' || b === band;
+      el.hidden = !show;
+      var input = el.querySelector('input[type="checkbox"]');
+      if(input && !show){
+        input.checked = false;
+      }
+    });
+  }
+
+  function syncEnrolSubjects(){
+    var band = subjectBandForYears(yearNumsFrom('year_level[]'));
+    syncSubjectBand(document.getElementById('enrolSubjectChips'), band);
+    if(otherWrap){
+      var other = document.getElementById('enrolSubjectOther');
+      otherWrap.hidden = !(other && other.checked);
+    }
+  }
+
+  function syncEnrolSubjects2(){
+    var band = subjectBandForYears(yearNumsFrom('year_level_2[]'));
+    syncSubjectBand(document.getElementById('enrolSubject2Grid'), band);
+    var w2 = document.getElementById('otherSubjectWrap2');
+    var o2 = document.getElementById('subjectOther2');
+    if(w2) w2.hidden = !(o2 && o2.checked);
+  }
+
+  function validateStep(n){
+    if(n === 0) return hasChecked('role');
+    if(n === 1){
+      var name = form.querySelector('#enrol_name');
+      var school = form.querySelector('#enrol_school');
+      var email = form.querySelector('#enrol_email');
+      var phone = form.querySelector('#enrol_phone');
+      var role = form.querySelector('input[name="role"]:checked');
+      var student = form.querySelector('#enrol_student');
+      if(!name.value.trim() || !school.value.trim() || !email.value.trim() || !phone.value.trim()) return false;
+      if(role && role.value.indexOf('Parent') === 0 && student && !student.value.trim()) return false;
+      return true;
+    }
+    if(n === 2){
+      return !!form.querySelector('input[name="year_level[]"]:checked')
+        && form.querySelectorAll('#enrolSubjectChips .enrol-chip:not([hidden]) input[name="subjects[]"]:checked').length > 0;
+    }
+    if(n === 3){
+      var online = !!form.querySelector('#enrolLocOnline:checked');
+      var inPerson = !!form.querySelector('#enrolLocInPerson:checked');
+      if(!online && !inPerson) return false;
+      if(inPerson){
+        var venues = form.querySelectorAll('#enrolVenueGrid input[name="location[]"]:checked').length;
+        var suburbs = selectedSuburbs.length;
+        if(!venues && !suburbs) return false;
+      }
+      return true;
+    }
+    if(n === 4){
+      syncAvailabilitySummary();
+      var hidden = document.getElementById('availabilitySelected');
+      return !!(hidden && hidden.value.trim());
+    }
+    if(n === 5){
+      return hasChecked('sessions_per_week') && hasChecked('hours_per_session') && hasChecked('start_time');
+    }
+    if(n === 6){
+      return hasChecked('tutor_tier') && form.querySelectorAll('input[name="degree[]"]:checked').length > 0;
+    }
+    if(n === 7){
+      var s2 = document.getElementById('enrolSecondStudent');
+      if(s2 && s2.checked){
+        var n2 = document.getElementById('student2_name');
+        if(!n2 || !n2.value.trim()) return false;
+        if(!form.querySelector('input[name="year_level_2[]"]:checked')) return false;
+        if(!form.querySelectorAll('#enrolSubject2Grid [data-band]:not([hidden]) input[name="subjects_2[]"]:checked').length) return false;
+      }
+      return true;
+    }
+    return true;
+  }
+
+  function goNext(from){
+    if(from !== current) return;
+    if(!validateStep(from)){
+      panels[from].classList.add('is-invalid');
+      setTimeout(function(){ panels[from].classList.remove('is-invalid'); }, 600);
+      return;
+    }
+    setStep(Math.min(from + 1, panels.length - 1));
+  }
+
+  function scheduleAdvance(from, delay){
+    clearTimeout(advanceTimer);
+    advanceTimer = setTimeout(function(){ goNext(from); }, delay || 280);
+  }
+
+  var selectedSuburbs = [];
+  var suburbLayerSets = [];
+  var venueMarkersById = {};
+  var inPersonWrap = document.getElementById('enrolInPersonWrap');
+  var suburbChips = document.getElementById('enrolSuburbChips');
+  var homeSuburbsField = document.getElementById('enrolHomeSuburbs');
+  var locHome = document.getElementById('enrolLocHome');
+  var styleIdle = { fillColor:'#E8B84B', color:'#C9A227', weight:1, opacity:0.7, fillOpacity:0.17 };
+  var styleSelected = { fillColor:'#A67C2A', color:'#7A5A1A', weight:2.2, opacity:0.95, fillOpacity:0.42 };
+
+  function syncInPersonUI(){
+    var on = !!form.querySelector('#enrolLocInPerson:checked');
+    if(inPersonWrap) inPersonWrap.hidden = !on;
+    if(on){
+      ensureInlineMap().then(function(){ fillSuburbDatalist(); }).catch(function(){ fillSuburbDatalist(); });
+      fillSuburbDatalist();
+    }
+    syncHomeFromSuburbs();
+  }
+
+  function syncHomeFromSuburbs(){
+    var has = selectedSuburbs.length > 0;
+    if(locHome){
+      locHome.disabled = !has;
+    }
+    if(homeWrap) homeWrap.hidden = !has;
+    if(homeSuburbsField){
+      homeSuburbsField.value = selectedSuburbs.map(function(s){ return s.name; }).join(', ');
+    }
+    renderSuburbChips();
+    refreshSuburbStyles();
+  }
+
+  function suburbCatalog(){
+    if(window.VTLoc && typeof VTLoc.pickerSuburbs === 'function') return VTLoc.pickerSuburbs() || [];
+    if(window.VTLoc && typeof VTLoc.allSuburbs === 'function') return VTLoc.allSuburbs() || [];
+    return [];
+  }
+
+  function fillSuburbDatalist(){
+    var list = document.getElementById('enrolSuburbList');
+    if(!list || list.dataset.filled) return;
+    var subs = suburbCatalog().slice().sort(function(a,b){
+      return String(a.name||'').localeCompare(String(b.name||''));
+    });
+    if(!subs.length) return;
+    list.innerHTML = subs.map(function(s){
+      return '<option value="'+String(s.name||'').replace(/"/g,'&quot;')+'" data-id="'+s.id+'"></option>';
+    }).join('');
+    list.dataset.filled = '1';
+  }
+
+  function findSuburbByTyped(raw){
+    var q = String(raw || '').trim().toLowerCase();
+    if(!q) return null;
+    var subs = suburbCatalog();
+    var exact = null, starts = null, includes = null;
+    for(var i=0;i<subs.length;i++){
+      var name = String(subs[i].name || '').toLowerCase();
+      if(name === q){ exact = subs[i]; break; }
+      if(!starts && name.indexOf(q) === 0) starts = subs[i];
+      if(!includes && name.indexOf(q) >= 0) includes = subs[i];
+    }
+    return exact || starts || includes;
+  }
+
+  function selectSuburbFromType(raw, clearInput){
+    var match = findSuburbByTyped(raw);
+    if(!match) return false;
+    var already = selectedSuburbs.some(function(s){ return s.id === match.id; });
+    if(!already){
+      selectedSuburbs.push({ id: match.id, name: match.name || match.id });
+      if(!form.querySelector('#enrolLocInPerson:checked')){
+        var ip = document.getElementById('enrolLocInPerson');
+        if(ip){ ip.checked = true; syncInPersonUI(); }
+      }
+      syncHomeFromSuburbs();
+      focusSuburbOnMaps(match.id);
+    }
+    if(clearInput){
+      var inp = document.getElementById('enrolSuburbType');
+      if(inp) inp.value = '';
+    }
+    return true;
+  }
+
+  function focusSuburbOnMaps(id){
+    if(!id) return;
+    suburbLayerSets.forEach(function(set){
+      var layer = set[id];
+      if(!layer || !layer.getBounds) return;
+      [inlineMap, enrolMap].forEach(function(map){
+        if(map) map.fitBounds(layer.getBounds(), { padding:[28,28], maxZoom:13, animate:true });
+      });
+    });
+  }
+
+  function renderSuburbChips(){
+    if(!suburbChips) return;
+    if(!selectedSuburbs.length){
+      suburbChips.hidden = true;
+      suburbChips.innerHTML = '';
+      return;
+    }
+    suburbChips.hidden = false;
+    suburbChips.innerHTML = selectedSuburbs.map(function(s){
+      return '<button type="button" class="enrol-suburb-chip" data-suburb-id="'+s.id+'">'+s.name+' <span aria-hidden="true">×</span></button>';
+    }).join('');
+  }
+
+  function toggleSuburb(id, name){
+    if(!id) return;
+    var idx = -1;
+    for(var i=0;i<selectedSuburbs.length;i++){
+      if(selectedSuburbs[i].id === id){ idx = i; break; }
+    }
+    if(idx >= 0) selectedSuburbs.splice(idx, 1);
+    else selectedSuburbs.push({ id:id, name:name || id });
+    if(!form.querySelector('#enrolLocInPerson:checked')){
+      var ip = document.getElementById('enrolLocInPerson');
+      if(ip){ ip.checked = true; syncInPersonUI(); }
+    }
+    syncHomeFromSuburbs();
+  }
+
+  function refreshSuburbStyles(){
+    suburbLayerSets.forEach(function(set){
+      Object.keys(set).forEach(function(id){
+        var layer = set[id];
+        if(!layer || !layer.setStyle) return;
+        var on = selectedSuburbs.some(function(s){ return s.id === id; });
+        layer.setStyle(on ? styleSelected : styleIdle);
+      });
+    });
+  }
+
+  function wireSelectableMap(map, result){
+    var localLayers = {};
+    suburbLayerSets.push(localLayers);
+    var markers = result.venueMarkers || {};
+    var largeVenueIcon = L.divIcon({
+      className: 'vt-pin vt-pin--venue vt-pin--venue-hit',
+      html: '<span></span>',
+      iconSize: [44, 44],
+      iconAnchor: [22, 22],
+      popupAnchor: [0, -14]
+    });
+    Object.keys(markers).forEach(function(key){
+      venueMarkersById[key] = markers[key];
+      if(markers[key] && !markers[key]._vtVenueId) markers[key]._vtVenueId = key;
+    });
+    if(result.suburbLayer && result.suburbLayer.eachLayer){
+      result.suburbLayer.eachLayer(function(layer){
+        var props = (layer.feature && layer.feature.properties) || {};
+        var id = props.id;
+        var name = props.locality || props.name || id;
+        if(!id) return;
+        localLayers[id] = layer;
+        layer.off('click');
+        if(layer.unbindPopup) layer.unbindPopup();
+        if(layer.unbindTooltip) layer.unbindTooltip();
+        layer.bindTooltip(name, {
+          sticky: true,
+          direction: 'top',
+          opacity: 0.95,
+          className: 'enrol-suburb-tooltip'
+        });
+        layer.on('click', function(){ toggleSuburb(id, name); });
+        layer.setStyle(styleIdle);
+        if(layer.bringToBack) layer.bringToBack();
+      });
+    }
+    var seen = [];
+    Object.keys(markers).forEach(function(key){
+      var marker = markers[key];
+      if(!marker || !marker.on || seen.indexOf(marker) >= 0) return;
+      seen.push(marker);
+      var venueKey = marker._vtVenueId || key;
+      if(marker.setIcon) marker.setIcon(largeVenueIcon);
+      if(marker.setZIndexOffset) marker.setZIndexOffset(600);
+      marker.off('click');
+      marker.unbindPopup && marker.unbindPopup();
+      marker.on('click', function(ev){
+        if(ev && ev.originalEvent) L.DomEvent.stopPropagation(ev.originalEvent);
+        var input = form.querySelector('#enrolVenueGrid input[data-venue-id="'+venueKey+'"], #enrolVenueGrid input[data-venue-tab="'+venueKey+'"]');
+        if(!input){
+          var v = VTLoc.getVenueByTab && VTLoc.getVenueByTab(venueKey);
+          if(v) input = form.querySelector('#enrolVenueGrid input[data-venue-id="'+v.id+'"]');
+        }
+        if(input){
+          input.checked = !input.checked;
+          input.dispatchEvent(new Event('change', { bubbles:true }));
+          if(!form.querySelector('#enrolLocInPerson:checked')){
+            var ip = document.getElementById('enrolLocInPerson');
+            if(ip){ ip.checked = true; syncInPersonUI(); }
+          }
+        }
+        if(marker.getLatLng) map.setView(marker.getLatLng(), Math.max(map.getZoom(), 14), { animate:true });
+      });
+    });
+    refreshSuburbStyles();
+  }
+
+  function focusVenueOnMaps(tabOrId){
+    var v = (VTLoc.getVenueByTab && VTLoc.getVenueByTab(tabOrId)) || null;
+    if(!v && VTLoc.allVenues){
+      var all = VTLoc.allVenues();
+      for(var i=0;i<all.length;i++){ if(all[i].id === tabOrId){ v = all[i]; break; } }
+    }
+    if(!v) return;
+    [inlineMap, enrolMap].forEach(function(map){
+      if(map) map.setView([v.lat, v.lng], 14, { animate:true });
+    });
+  }
+
+  /* Maps (inline + modal) */
+  var mapModal = document.getElementById('enrolMapModal');
+  var mapEl = document.getElementById('enrolMapEl');
+  var inlineMapEl = document.getElementById('enrolInlineMapEl');
+  var mapOpenBtn = document.getElementById('enrolMapOpen');
+  var enrolMap = null;
+  var inlineMap = null;
+  var enrolMapBounds = null;
+  var mapInitPromise = null;
+  var inlineInitPromise = null;
+  var lastFocus = null;
+
+  function plotEnrolMap(el){
+    var map = L.map(el, {
+      scrollWheelZoom: true,
+      zoomControl: true,
+      attributionControl: true
+    });
+    VTLoc.addTileLayer(map, L);
+    var result = VTLoc.plotLocations(map, L, {
+      serviceCircle: false,
+      includeSuburbIds: VTLoc.readMapRegionIds ? VTLoc.readMapRegionIds() : null
+    });
+    if(result.fitBounds){
+      enrolMapBounds = result.fitBounds;
+      map.fitBounds(result.fitBounds, VTLoc.MAP_FIT_OPTS || { padding:[24,24] });
+    } else if(VTLoc.DEFAULT_MAP_VIEW){
+      map.setView([VTLoc.DEFAULT_MAP_VIEW.lat, VTLoc.DEFAULT_MAP_VIEW.lng], VTLoc.DEFAULT_MAP_VIEW.zoom);
+    }
+    wireSelectableMap(map, result);
+    return map;
+  }
+
+  function ensureInlineMap(){
+    if(inlineMap) {
+      setTimeout(function(){ inlineMap.invalidateSize(true); }, 40);
+      return Promise.resolve(inlineMap);
+    }
+    if(inlineInitPromise) return inlineInitPromise;
+    if(!inlineMapEl || typeof L === 'undefined' || !window.VTLoc){
+      return Promise.reject(new Error('map unavailable'));
+    }
+    inlineInitPromise = VTLoc.loadBoundaries().then(function(){
+      inlineMap = plotEnrolMap(inlineMapEl);
+      setTimeout(function(){ inlineMap.invalidateSize(true); }, 80);
+      return inlineMap;
+    });
+    return inlineInitPromise;
+  }
+
+  function ensureEnrolMap(){
+    if(enrolMap) return Promise.resolve(enrolMap);
+    if(mapInitPromise) return mapInitPromise;
+    if(!mapEl || typeof L === 'undefined' || !window.VTLoc){
+      return Promise.reject(new Error('map unavailable'));
+    }
+    mapInitPromise = VTLoc.loadBoundaries().then(function(){
+      enrolMap = plotEnrolMap(mapEl);
+      return enrolMap;
+    });
+    return mapInitPromise;
+  }
+
+  function openMapModal(){
+    if(!mapModal) return;
+    lastFocus = document.activeElement;
+    mapModal.hidden = false;
+    document.body.classList.add('enrol-map-open');
+    var ip = document.getElementById('enrolLocInPerson');
+    if(ip && !ip.checked){ ip.checked = true; syncInPersonUI(); }
+    ensureEnrolMap().then(function(map){
+      setTimeout(function(){
+        map.invalidateSize(true);
+        if(enrolMapBounds) map.fitBounds(enrolMapBounds, VTLoc.MAP_FIT_OPTS || { padding:[24,24] });
+        refreshSuburbStyles();
+      }, 60);
+    }).catch(function(){});
+    var closeBtn = mapModal.querySelector('.enrol-map-close');
+    if(closeBtn) closeBtn.focus();
+  }
+
+  function closeMapModal(){
+    if(!mapModal || mapModal.hidden) return;
+    mapModal.hidden = true;
+    document.body.classList.remove('enrol-map-open');
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  if(mapOpenBtn){
+    mapOpenBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      openMapModal();
+    });
+  }
+  if(mapModal){
+    mapModal.addEventListener('click', function(e){
+      if(e.target.closest('[data-enrol-map-close]')) closeMapModal();
+    });
+  }
+  if(suburbChips){
+    suburbChips.addEventListener('click', function(e){
+      var btn = e.target.closest('[data-suburb-id]');
+      if(!btn) return;
+      toggleSuburb(btn.getAttribute('data-suburb-id'), btn.textContent.replace('×','').trim());
+    });
+  }
+  var suburbType = document.getElementById('enrolSuburbType');
+  if(suburbType){
+    suburbType.addEventListener('change', function(){
+      selectSuburbFromType(suburbType.value, true);
+    });
+    suburbType.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){
+        e.preventDefault();
+        selectSuburbFromType(suburbType.value, true);
+      }
+    });
+  }
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeMapModal();
+  });
+
+  form.addEventListener('change', function(e){
+    var t = e.target;
+    if(!t) return;
+
+    var popHost = t.closest('.enrol-tile, .enrol-year, .enrol-chip, .choice');
+    if(popHost && (t.type === 'checkbox' || t.type === 'radio')) popTarget(popHost);
+
+    if(t.name === 'role'){
+      var isParent = t.value.indexOf('Parent') === 0;
+      if(studentWrap){
+        studentWrap.hidden = !isParent;
+        var inp = document.getElementById('enrol_student');
+        if(inp){
+          if(isParent) inp.setAttribute('required','required');
+          else { inp.removeAttribute('required'); inp.value = ''; }
+        }
+      }
+      if(current === 0) scheduleAdvance(0, 360);
+      return;
+    }
+
+    if(t.id === 'enrolSubjectOther' && otherWrap){
+      otherWrap.hidden = !t.checked;
+    }
+    if(t.id === 'subjectOther2'){
+      var w2 = document.getElementById('otherSubjectWrap2');
+      if(w2) w2.hidden = !t.checked;
+    }
+
+    if(t.name === 'year_level[]'){
+      syncEnrolSubjects();
+      if(current === 2){
+        var subj = document.getElementById('enrolSubjectChips');
+        if(subj) setTimeout(function(){ subj.scrollIntoView({ behavior:'smooth', block:'nearest' }); }, 160);
+      }
+    }
+    if(t.name === 'year_level_2[]') syncEnrolSubjects2();
+
+    if(t.id === 'enrolLocInPerson'){
+      syncInPersonUI();
+    }
+    if(t.closest && t.closest('#enrolVenueGrid')){
+      var tab = t.getAttribute('data-venue-tab') || t.getAttribute('data-venue-id');
+      if(t.checked && tab) focusVenueOnMaps(tab);
+      popTarget(t.closest('.enrol-venue'));
+    }
+
+    if(t.id === 'availHalfHour') syncAvailGranularity();
+    if(t.name === 'availability[]' || t.name === 'availability_2[]') syncAvailabilitySummary();
+
+    if(t.id === 'enrolSecondStudent') syncStudent2Fields();
+
+    /* Single-select radios: scroll to next question, or auto-advance the step when complete */
+    if(t.type === 'radio' && t.name !== 'role' && t.name !== 'tutor_gender'){
+      var panel = t.closest('.enrol-panel');
+      var idx = panels.indexOf(panel);
+      if(idx < 0 || idx !== current) return;
+      if(validateStep(idx)){
+        scheduleAdvance(idx, 380);
+        return;
+      }
+      var q = t.closest('.form-q');
+      if(!q || !panel) return;
+      var qs = [].slice.call(panel.querySelectorAll('.enrol-fields > .form-q'));
+      var qi = qs.indexOf(q);
+      if(qi < 0) return;
+      var nextQ = null;
+      for(var i = qi + 1; i < qs.length; i++){
+        var radios = qs[i].querySelectorAll('input[type="radio"]');
+        if(!radios.length) continue;
+        var answered = [].slice.call(radios).some(function(r){ return r.checked; });
+        if(!answered){ nextQ = qs[i]; break; }
+      }
+      if(nextQ){
+        setTimeout(function(){
+          nextQ.scrollIntoView({ behavior:'smooth', block:'nearest' });
+        }, 180);
+      }
+    }
+  });
+
+  form.addEventListener('click', function(e){
+    var next = e.target.closest('[data-enrol-next]');
+    if(next){
+      var panel = next.closest('.enrol-panel');
+      var idx = panels.indexOf(panel);
+      if(idx < 0) return;
+      goNext(idx);
+      return;
+    }
+    var toggle = e.target.closest('[data-enrol-toggle]');
+    if(toggle && !toggle.disabled){
+      var panel = toggle.closest('.enrol-panel');
+      var idx = panels.indexOf(panel);
+      if(idx >= 0 && (panel.classList.contains('is-done') || panel.classList.contains('is-open'))){
+        setStep(idx);
+      }
+    }
+  });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    syncAvailabilitySummary();
+    var i;
+    for(i = 0; i <= 7; i++){
+      if(!validateStep(i)){
+        setStep(i);
+        panels[i].classList.add('is-invalid');
+        setTimeout(function(){ panels[i].classList.remove('is-invalid'); }, 600);
+        return;
+      }
+    }
+    var btn = form.querySelector('.enrol-submit');
+    if(btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
+    var data = new FormData(form);
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res){
+      if(!res.ok) throw new Error('send failed');
+      form.hidden = true;
+      if(success) success.hidden = false;
+      window.scrollTo({top:0, behavior:'smooth'});
+    }).catch(function(){
+      if(btn){ btn.disabled = false; btn.innerHTML = 'Send enrolment'; }
+      alert('Something went wrong sending your enrolment. Please try again or email hello@vantagetutoring.com.au.');
+    });
+  });
+
+  function syncAvailabilitySummary(){
+    var hidden = document.getElementById('availabilitySelected');
+    var mode = document.getElementById('availHalfHour');
+    var half = mode && mode.checked;
+    var root = document.getElementById(half ? 'availModeHalf' : 'availModeHour') || form;
+    if(hidden){
+      hidden.value = [].map.call(
+        root.querySelectorAll('input[name="availability[]"]:checked:not(:disabled)'),
+        function(el){ return el.value; }
+      ).join(', ');
+    }
+  }
+
+  function syncAvailGranularity(){
+    var toggle = document.getElementById('availHalfHour');
+    var hourMode = document.getElementById('availModeHour');
+    var halfMode = document.getElementById('availModeHalf');
+    if(!toggle || !hourMode || !halfMode) return;
+    var half = !!toggle.checked;
+    hourMode.hidden = half;
+    halfMode.hidden = !half;
+    [].forEach.call(hourMode.querySelectorAll('input[name="availability[]"]'), function(el){
+      el.disabled = half;
+      if(half) el.checked = false;
+    });
+    [].forEach.call(halfMode.querySelectorAll('input[name="availability[]"]'), function(el){
+      el.disabled = !half;
+      if(!half) el.checked = false;
+    });
+    syncAvailabilitySummary();
+  }
+
+  function buildStudent2Availability(){
+    var mount = document.getElementById('student2AvailMount');
+    var hourSrc = document.getElementById('availModeHour');
+    if(!mount || mount.dataset.built || !hourSrc) return;
+    mount.dataset.built = '1';
+  }
+
+  function syncStudent2Fields(){
+    var toggle = document.getElementById('enrolSecondStudent');
+    var wrap = document.getElementById('student2Wrap');
+    if(!toggle || !wrap) return;
+    var on = !!toggle.checked;
+    wrap.hidden = !on;
+    [].forEach.call(wrap.querySelectorAll('input, select, textarea'), function(el){
+      el.disabled = !on;
+    });
+    if(on) syncEnrolSubjects2();
+  }
+
+  buildStudent2Availability();
+  syncInPersonUI();
+  syncAvailGranularity();
+  syncStudent2Fields();
+  syncEnrolSubjects();
+  syncEnrolSubjects2();
+  window.scrollTo(0, 0);
+  setStep(0, false);
+})();
+</script>
 </body>
 </html>

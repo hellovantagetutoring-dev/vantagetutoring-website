@@ -757,11 +757,11 @@
     return L.geoJSON({ type: 'FeatureCollection', features: features }, {
       style: function(){
         return {
-          fillColor: '#E8B84B',
-          color: '#C9A227',
+          fillColor: '#F0C45A',
+          color: '#8B6FD4',
           weight: 1,
-          opacity: 0.7,
-          fillOpacity: 0.17
+          opacity: 0.65,
+          fillOpacity: 0.14
         };
       },
       onEachFeature: function(feature, layer){
@@ -803,8 +803,8 @@
           color: '#6B4CE0',
           weight: 1.5,
           opacity: 0.55,
-          fillColor: '#E8B84B',
-          fillOpacity: 0.12
+          fillColor: '#F0C45A',
+          fillOpacity: 0.1
         }).addTo(map).bindPopup(
           '<strong>Home visits</strong><br>Service suburbs across greater Brisbane, including '
           + area.suburbList + '.<br>Online available anywhere.'
@@ -1091,8 +1091,8 @@
       color: '#6B4CE0',
       weight: 1.5,
       opacity: 0.55,
-      fillColor: '#E8B84B',
-      fillOpacity: 0.12
+      fillColor: '#F0C45A',
+      fillOpacity: 0.1
     }).addTo(entry.map);
     entry.map.fitBounds(entry.circle.getBounds(), { padding: [20, 20], maxZoom: 12 });
     entry.map.invalidateSize(true);
