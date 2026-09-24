@@ -633,7 +633,7 @@
   }
 
   function prefersDarkBasemap(){
-    return !!(global.matchMedia && global.matchMedia('(prefers-color-scheme: dark)').matches);
+    return false; /* site is light-only */
   }
 
   function tileUrl(){

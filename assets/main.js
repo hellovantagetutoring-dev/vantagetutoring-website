@@ -81,7 +81,7 @@
     }
     powerList.innerHTML=html;
     var items=powerList.querySelectorAll('.hero-power-item');
-    var step=1.22; // em — keep in sync with CSS --hero-row
+    var step=1.2; // em - keep in sync with CSS --hero-row
     var w=0, phase='in', slide=0;
     var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var headline=typed.closest('.hero-headline');
@@ -102,6 +102,12 @@
     function setPhraseOn(on){
       if(!headline) return;
       headline.classList.toggle('is-phrase-on', !!on);
+      if(!on && typedShell) typedShell.style.width='';
+    }
+
+    function setGreyCollapsed(on){
+      if(!headline) return;
+      headline.classList.toggle('is-grey-collapsed', !!on);
     }
 
     function paintClasses(activeIdx, prevIdx){
@@ -119,7 +125,7 @@
     }
 
     function setSlide(idx, animating){
-      powerList.style.transition=animating && !reduce ? 'transform .62s cubic-bezier(.22,1,.36,1)' : 'none';
+      powerList.style.transition=animating && !reduce ? 'transform .79s cubic-bezier(.14,.82,.16,1)' : 'none';
       powerList.style.transform='translate3d(0,'+(-idx*step)+'em,0)';
     }
 
@@ -135,82 +141,141 @@
       var activeW = powerWidths[i] || 0;
       headline.style.setProperty('--active-w', activeW + 'px');
       typedShell.style.setProperty('--power-w', activeW + 'px');
+      // Narrow viewports + long power words: stack rest under power to avoid crush/overlap
+      var shellW = typedShell.getBoundingClientRect().width || 0;
+      var stack = shellW > 0 && activeW > shellW * 0.4;
+      headline.classList.toggle('is-hero-stack', stack);
     }
 
-    function showRest(text, entering){
-      // Indent first, then text — avoids a one-frame wrong wrap
+    // Size the gradient shell to the phrase ink box so the wipe ends at the text
+    // with the same edge thickness as the left pad (no empty overshoot on the right).
+    function fitPhraseShell(){
+      if(!typedShell || !typed || !headline) return;
+      typedShell.style.width='';
+      if(!headline.classList.contains('is-phrase-on')) return;
+      void typedShell.offsetWidth;
+      var padX=parseFloat(window.getComputedStyle(typedShell).paddingLeft)||0;
+      var shellLeft=typedShell.getBoundingClientRect().left;
+      var right=shellLeft;
+      try{
+        var range=document.createRange();
+        range.selectNodeContents(typed);
+        var rects=range.getClientRects();
+        for(var ri=0;ri<rects.length;ri++){
+          if(rects[ri].width>0) right=Math.max(right, rects[ri].right);
+        }
+      }catch(err){}
+      right=Math.max(right, typed.getBoundingClientRect().right);
+      var parent=typedShell.parentElement;
+      var maxW=parent ? parent.getBoundingClientRect().width : right-shellLeft+padX;
+      var next=Math.ceil(right-shellLeft+padX);
+      if(next>0) typedShell.style.width=Math.min(next, Math.floor(maxW))+'px';
+    }
+
+    // Keep in sync with --hero-wipe-in / --hero-wipe-out / --hero-slide in home-landing.css
+    var WIPE_IN=1265, OUT_WIPE=605, SLIDE_MS=790, HOLD_MS=1600, AFTER_OUT=160;
+
+    function showRest(text){
+      // Indent first, then text - avoids a one-frame wrong wrap
       syncPowerWidth(w);
       typed.textContent=text;
       if(!typedShell) return;
-      if(entering){
-        typedShell.classList.remove('is-out');
-        setPhraseOn(true);
-        requestAnimationFrame(function(){
-          requestAnimationFrame(function(){
-            typedShell.classList.add('is-in');
-          });
-        });
-      }else{
-        typedShell.classList.remove('is-in');
-        typedShell.classList.add('is-out');
+      typedShell.classList.remove('is-out');
+      setPhraseOn(true);
+      setGreyCollapsed(true);
+      fitPhraseShell();
+      // Start wipe in the same frame as grey leave so they track together
+      void typedShell.offsetWidth;
+      typedShell.classList.add('is-in');
+    }
+
+    // Reserve the tallest phrase's height so the lede and CTAs never shift
+    function reserveHeadlineHeight(){
+      if(!headline || !typedShell) return;
+      var saveText=typed.textContent;
+      var saveOn=headline.classList.contains('is-phrase-on');
+      var saveGrey=headline.classList.contains('is-grey-collapsed');
+      var saveStack=headline.classList.contains('is-hero-stack');
+      var saveWidth=typedShell.style.width;
+      headline.classList.add('is-measuring');
+      headline.style.minHeight='';
+      typedShell.style.width='';
+      var max=0;
+      for(var mi=0;mi<n;mi++){
+        typed.textContent=parsed[mi].rest;
+        for(var on=0;on<2;on++){
+          headline.classList.toggle('is-phrase-on', !!on);
+          headline.classList.toggle('is-grey-collapsed', !!on);
+          syncPowerWidth(mi);
+          if(on) fitPhraseShell();
+          else typedShell.style.width='';
+          max=Math.max(max, headline.getBoundingClientRect().height);
+        }
       }
+      typed.textContent=saveText;
+      headline.classList.toggle('is-phrase-on', saveOn);
+      headline.classList.toggle('is-grey-collapsed', saveGrey);
+      syncPowerWidth(w);
+      headline.classList.toggle('is-hero-stack', saveStack);
+      typedShell.style.width=saveWidth;
+      if(saveOn) fitPhraseShell();
+      void headline.offsetHeight;
+      headline.classList.remove('is-measuring');
+      headline.style.minHeight=Math.ceil(max)+'px';
     }
 
     setSlide(0,false);
     paintClasses(0,null);
     syncPowerWidth(0);
     typed.textContent=parsed[0].rest;
+    reserveHeadlineHeight();
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ measurePowerWidths(); reserveHeadlineHeight(); });
     if(reduce){
       setPhraseOn(true);
+      setGreyCollapsed(true);
       if(typedShell) typedShell.classList.add('is-in');
     }else{
       (function tick(){
-        var delay=80;
-        if(phase==='in'){
-          showRest(parsed[w].rest, true);
-          phase='hold';
-          delay=2300;
-        }else if(phase==='hold'){
-          phase='out';
-          delay=40;
-        }else if(phase==='out'){
+        var delay=100;
+        if(phase==='out'){
+          // Wipe left: retract phrase and reveal grey together
           if(typedShell){
             typedShell.classList.remove('is-in');
             typedShell.classList.add('is-out');
           }
+          setGreyCollapsed(false);
+          phase='unphrase';
+          delay=OUT_WIPE;
+        }else if(phase==='unphrase'){
+          // Phrase gone + grey open: clear phrase layout, then scroll
           setPhraseOn(false);
-          // Linger on greyed stack before sliding
-          phase='browse';
-          delay=520;
-        }else if(phase==='browse'){
           phase='swap';
-          delay=40;
+          delay=AFTER_OUT;
         }else if(phase==='swap'){
           var prev=w;
           w=(w+1)%n;
           slide+=1;
           setSlide(slide,true);
           paintClasses(w,prev);
-          // Width while phrase is still clipped out — avoids indent jiggle on wipe-in
           syncPowerWidth(w);
-          phase='wipe';
-          delay=220;
-          setTimeout(snapIfNeeded,680);
-        }else if(phase==='wipe'){
-          showRest(parsed[w].rest, true);
-          phase='hold';
-          delay=2300;
+          setTimeout(snapIfNeeded,SLIDE_MS+40);
+          phase='in';
+          delay=SLIDE_MS;
         }else{
-          showRest(parsed[w].rest, true);
-          phase='hold';
-          delay=2300;
+          showRest(parsed[w].rest);
+          phase='out';
+          delay=WIPE_IN+HOLD_MS;
         }
         setTimeout(tick,delay);
       })();
     }
+    var reserveTimer=null;
     window.addEventListener('resize', function(){
       measurePowerWidths();
       syncPowerWidth(w);
+      if(headline && headline.classList.contains('is-phrase-on')) fitPhraseShell();
+      clearTimeout(reserveTimer);
+      reserveTimer=setTimeout(reserveHeadlineHeight,120);
     });
   }else if(typed){
     // Fallback: plain typing if power stack markup missing
@@ -252,18 +317,27 @@
         }
         tops+='</span>';
       }
-      return '<a class="chip" href="/tutors"><img class="chip-av" src="'+t.img+'" alt="" width="96" height="96" loading="eager" decoding="async"><span class="chip-body"><span class="chip-name"><b>'+t.name+'</b><span class="score">'+t.atar+' ATAR</span></span>'+tops+'</span></a>';
+      return '<a class="chip" href="/tutors"><img class="chip-av" src="'+t.img+'" alt="" width="96" height="96" loading="lazy" decoding="async"><span class="chip-body"><span class="chip-name"><b>'+t.name+'</b><span class="score">'+t.atar+' ATAR</span></span>'+tops+'</span></a>';
     }
     var row1='', row2='';
     for(var i=0;i<tutors.length;i++){
       var chip=chipHtml(tutors[i]);
       if(i%2===0) row1+=chip; else row2+=chip;
     }
-    // Duplicate each row for seamless loop; pad short rows so scroll stays smooth
-    if(row1.split('class="chip"').length-1 < 4) row1=row1+row1;
-    if(row2.split('class="chip"').length-1 < 4) row2=row2+row2;
-    marqueeA.innerHTML=row1+row1;
-    marqueeB.innerHTML=row2+row2;
+    // One repeat of the half is enough for a calm, seamless -50% loop
+    function padMarqueeHalf(html){
+      var half=html;
+      var guard=0;
+      while((half.match(/class="chip"/g)||[]).length < 6 && guard < 4){
+        half+=html;
+        guard++;
+      }
+      return half;
+    }
+    var halfA=padMarqueeHalf(row1);
+    var halfB=padMarqueeHalf(row2);
+    marqueeA.innerHTML=halfA+halfA;
+    marqueeB.innerHTML=halfB+halfB;
   }
 
   // Animated counters
@@ -1152,6 +1226,40 @@
   }
   if(window.VTLoc && VTLoc.initServiceAreaMirroring && document.querySelector('[data-vt-dynamic-area]')){
     VTLoc.initServiceAreaMirroring();
+  }
+
+  // Home: subject chip hover/focus preview → tutors page with filter
+  var subjectPreview=document.getElementById('subjectPreview');
+  var subjectBoard=document.querySelector('.edu-subject-board');
+  if(subjectPreview && subjectBoard){
+    var subjectPreviewDefault=subjectPreview.textContent;
+    function setSubjectPreview(chip){
+      if(!chip){
+        subjectPreview.textContent=subjectPreviewDefault;
+        subjectPreview.classList.remove('is-active');
+        return;
+      }
+      var label=chip.getAttribute('data-label')||chip.textContent.trim();
+      var atar=chip.getAttribute('data-atar');
+      subjectPreview.textContent=atar
+        ? 'Find a tutor for '+label+' · up to '+atar+' ATAR'
+        : 'Find a tutor for '+label;
+      subjectPreview.classList.add('is-active');
+    }
+    subjectBoard.addEventListener('mouseover', function(e){
+      var chip=e.target.closest ? e.target.closest('a.edu-subject-chip') : null;
+      if(chip) setSubjectPreview(chip);
+    });
+    subjectBoard.addEventListener('mouseout', function(e){
+      if(!subjectBoard.contains(e.relatedTarget)) setSubjectPreview(null);
+    });
+    subjectBoard.addEventListener('focusin', function(e){
+      var chip=e.target.closest ? e.target.closest('a.edu-subject-chip') : null;
+      if(chip) setSubjectPreview(chip);
+    });
+    subjectBoard.addEventListener('focusout', function(e){
+      if(!subjectBoard.contains(e.relatedTarget)) setSubjectPreview(null);
+    });
   }
 
 })();

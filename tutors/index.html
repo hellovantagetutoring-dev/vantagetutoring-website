@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#F5F5F7" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#07070C" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FEF9F2">
 <title>Our Tutors | Vantage Tutoring</title>
 <meta name="description" content="Meet the Vantage Tutoring team. Gold and Platinum tutors who are Queensland's highest-scoring recent graduates, matched to your subjects and goals.">
 <link rel="canonical" href="https://vantagetutoring.com.au/tutors">
@@ -16,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/styles.css?v=theme141">
+<link rel="stylesheet" href="/assets/styles.css?v=theme159">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 <body>
@@ -40,8 +39,8 @@
 <section class="page-hero">
   <div class="wrap reveal">
     <div class="crumbs"><a href="/">Home</a><span>/</span>Tutors</div>
-    <h1>Meet the tutors behind <span class="grad-text">the results.</span></h1>
-    <p>Every Vantage tutor is a recent, top-scoring QCE graduate, placed into one of two tiers and matched to your subjects and goals within 24 hours.</p>
+    <h1 id="tutorsHeroTitle">Meet the tutors behind <span class="grad-text">the results.</span></h1>
+    <p id="tutorsHeroLead">Every Vantage tutor is a recent, top-scoring QCE graduate, placed into one of two tiers and matched to your subjects and goals within 24 hours.</p>
   </div>
 </section>
 
@@ -110,6 +109,7 @@
               <button type="button" class="filter-chip" data-value="chemistry">Chemistry</button>
               <button type="button" class="filter-chip" data-value="physics">Physics</button>
               <button type="button" class="filter-chip" data-value="literature">Literature</button>
+              <button type="button" class="filter-chip" data-value="english">English</button>
               <button type="button" class="filter-chip" data-value="economics">Economics</button>
               <button type="button" class="filter-chip" data-value="philosophy">Philosophy</button>
               <button type="button" class="filter-chip" data-value="digital-solutions">Digital Solutions</button>
@@ -679,6 +679,28 @@
   var filterRoot=document.getElementById('tutorFilters');
   if(!filterRoot) return;
 
+  var SUBJECT_LABELS={
+    'maths-methods':'Maths Methods',
+    'specialist-maths':'Specialist Maths',
+    'chemistry':'Chemistry',
+    'physics':'Physics',
+    'literature':'Literature',
+    'english':'English',
+    'economics':'Economics',
+    'philosophy':'Philosophy',
+    'digital-solutions':'Digital Solutions',
+    'engineering':'Engineering',
+    'japanese':'Japanese',
+    'french':'French',
+    'ucat':'UCAT'
+  };
+  var subjects=[];
+  try{
+    var params=new URLSearchParams(window.location.search||'');
+    var rawSubject=(params.get('subject')||'').trim().toLowerCase();
+    if(rawSubject && SUBJECT_LABELS[rawSubject]) subjects=[rawSubject];
+  }catch(err){}
+
   var filterToggle=document.getElementById('filterToggle');
   var filterDoneBtn=document.getElementById('filterDoneBtn');
   var filterDoneSheetBtn=document.getElementById('filterDoneSheetBtn');
@@ -767,7 +789,7 @@
       }, delay);
     }
     filterToggle.addEventListener('click', function(){
-      if(!filterRoot.classList.contains('is-open')) setFiltersOpen(true);
+      setFiltersOpen(!filterRoot.classList.contains('is-open'));
     });
     if(filterDoneBtn){
       filterDoneBtn.addEventListener('click', function(){
@@ -789,14 +811,13 @@
       }
     });
     setFiltersOpen(false);
-    if(location.hash==='#when'){
+    if(subjects.length || location.hash==='#when'){
       setFiltersOpen(true);
       var bar=document.getElementById('tutorFilterBar');
       if(bar && bar.scrollIntoView) setTimeout(function(){ bar.scrollIntoView({behavior:'smooth',block:'start'}); }, 50);
     }
   }
 
-  var subjects=[];
   var degree='all';
   var deliveryFormats=[];
   var locationSuburb='';
@@ -1225,6 +1246,27 @@
       apply();
     });
   }
+  function applySubjectLead(){
+    var title=document.getElementById('tutorsHeroTitle');
+    var lead=document.getElementById('tutorsHeroLead');
+    if(!title||!lead||subjects.length!==1) return;
+    var slug=subjects[0];
+    var label=SUBJECT_LABELS[slug]||slug;
+    var best=null;
+    cards.forEach(function(card){
+      var list=tags(card,'data-subjects');
+      if(list.indexOf(slug)===-1) return;
+      var num=card.querySelector('.a-num');
+      if(!num) return;
+      var v=parseFloat(num.textContent,10);
+      if(!isNaN(v) && (best===null || v>best)) best=v;
+    });
+    title.innerHTML='Find a tutor for <span class="grad-text">'+label+'.</span>';
+    lead.textContent=best!==null
+      ? 'Including tutors up to '+best.toFixed(2)+' ATAR.'
+      : 'Matched to your subject — refine filters below if you like.';
+  }
+
   function bootFilters(){
     populateSuburbPicker();
     if(filterSuburb) filterSuburb.value=locationSuburb;
@@ -1235,6 +1277,7 @@
     syncSubjectUI();
     syncDegreeUI();
     syncDeliveryUI();
+    applySubjectLead();
     if(filterRoot.classList.contains('is-open')){
       buildLocMap().then(refreshLocMap);
     }
@@ -1247,6 +1290,6 @@
   }
 })();
 </script>
-<script src="/assets/main.js?v=theme97"></script>
+<script src="/assets/main.js?v=theme121"></script>
 </body>
 </html>
