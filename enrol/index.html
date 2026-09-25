@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#FEF9F2">
 <title>Enrol | Vantage Tutoring</title>
-<meta name="description" content="Enrol with Vantage Tutoring. Tell us your year level and subjects and we’ll match you with a Gold or Platinum tutor within 24 hours.">
+<meta name="description" content="Enrol with Vantage Tutoring. Tell us your year level and subjects and we’ll match you with an Academic or Senior tutor within 24 hours.">
 <link rel="canonical" href="https://vantagetutoring.com.au/enrol">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://vantagetutoring.com.au/enrol">
@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" href="/assets/logo.png">
-<link rel="stylesheet" href="/assets/styles.css?v=theme157">
+<link rel="stylesheet" href="/assets/styles.css?v=theme188">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 <body>
@@ -30,11 +30,11 @@
   <div class="nav wrap">
     <a href="/" class="brand"><img class="logo" src="/assets/logo.png" alt="Vantage Tutoring" onerror="this.onerror=null;this.src='/assets/logo.svg'">Vantage Tutoring</a>
         <nav class="navlinks" id="navlinks">
-      <a class="link" href="/about/?v=2"><svg class="nav-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>About</a>
+      <a class="link" href="/about/"><svg class="nav-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>About</a>
       <a class="link" href="/services"><svg class="nav-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Services</a>
       <a class="link" href="/tutors"><svg class="nav-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>Tutors</a>
       <a class="link" href="/rates"><svg class="nav-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Rates</a>
-      <a class="link" href="/reviews/?v=2"><svg class="nav-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.9 6.9L22 10l-5 4.6L18.2 22 12 18.3 5.8 22 7 14.6 2 10l7.1-1.1z"/></svg>Reviews</a>
+      <a class="link" href="/reviews/"><svg class="nav-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.9 6.9L22 10l-5 4.6L18.2 22 12 18.3 5.8 22 7 14.6 2 10l7.1-1.1z"/></svg>Reviews</a>
       <a href="/enrol" class="btn btn-primary"><svg class="nav-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>Enrol today</a>
     </nav>
     <button class="navtoggle" id="navtoggle" aria-label="Menu" aria-expanded="false" aria-controls="navlinks"><span class="navtoggle-bar" aria-hidden="true"></span><span class="navtoggle-bar" aria-hidden="true"></span></button>
@@ -46,7 +46,7 @@
     <div class="enrol-hero-copy">
       <p class="enrol-kicker">Enrol today</p>
       <h1>Start your learning journey <span class="grad-text">today.</span></h1>
-      <p>Tell us who you’re enrolling and what you need. We’ll match you with a Gold or Platinum tutor within 24 hours.</p>
+      <p>Tell us who you’re enrolling and what you need. We’ll match you with an Academic or Senior tutor within 24 hours.</p>
     </div>
     <div class="enrol-talk-first">
       <p class="enrol-talk-label">Prefer to talk first?</p>
@@ -75,7 +75,7 @@
       <input type="hidden" name="session_format" value="1-on-1 private">
       <input type="hidden" name="_subject" value="Vantage enrolment">
 
-      <div class="enrol-progress" id="enrolProgress" aria-label="Enrolment progress">
+      <div class="enrol-progress" id="enrolProgress" aria-label="Enrolment progress" hidden>
         <div class="enrol-progress-meta">
           <span class="enrol-progress-label" id="enrolProgressLabel">Step 1 of 4</span>
           <span class="enrol-progress-title" id="enrolProgressTitle">About you</span>
@@ -139,16 +139,22 @@
             </div>
 
             <label for="enrol_school">School</label>
-            <input id="enrol_school" type="text" name="school" placeholder="e.g. Brisbane State High School" required>
+            <div class="enrol-school-combo" id="enrolSchoolCombo">
+              <input id="enrol_school" type="text" name="school" placeholder="Start typing your school" required autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="enrolSchoolList" aria-haspopup="listbox">
+              <ul class="enrol-school-list" id="enrolSchoolList" role="listbox" hidden></ul>
+            </div>
+            <p class="enrol-hint enrol-school-hint" id="enrolSchoolHint" hidden>Can’t find it? Leave the full name as you’ve typed it and continue.</p>
 
             <div class="enrol-row-2">
               <div>
                 <label for="enrol_email">Email</label>
-                <input id="enrol_email" type="email" name="email" placeholder="jane@email.com" required autocomplete="email">
+                <input id="enrol_email" type="email" name="email" placeholder="jane@email.com" required autocomplete="email" inputmode="email">
+                <p class="enrol-field-error" id="enrolEmailError" hidden>Enter a valid email address.</p>
               </div>
               <div>
                 <label for="enrol_phone">Phone</label>
-                <input id="enrol_phone" type="tel" name="phone" placeholder="0414 131 893" required autocomplete="tel">
+                <input id="enrol_phone" type="tel" name="phone" placeholder="0414 131 893" required autocomplete="tel" inputmode="tel">
+                <p class="enrol-field-error" id="enrolPhoneError" hidden>Enter a valid Australian mobile or landline.</p>
               </div>
             </div>
             <button type="button" class="btn btn-primary enrol-next" data-enrol-next>Continue</button>
@@ -159,7 +165,7 @@
       <!-- STEP 3 -->
       <div class="enrol-panel is-pending" data-step="2">
         <button type="button" class="enrol-panel-head" data-enrol-toggle disabled>
-          <span class="enrol-panel-title">Year &amp; subjects</span>
+          <span class="enrol-panel-title">Programs &amp; subjects</span>
           <span class="enrol-panel-status">Pending</span>
         </button>
         <div class="enrol-panel-body">
@@ -167,45 +173,135 @@
             <div class="enrol-peek-chips"><span></span><span></span><span></span><span></span></div>
           </div>
           <div class="enrol-fields">
-            <p class="enrol-q">Year level in 2026</p>
-            <p class="enrol-hint">Years 4-6 available - varied pricing for lower years.</p>
-            <div class="enrol-years" role="group" aria-label="Year level">
-              <label class="enrol-year"><input type="checkbox" name="year_level[]" value="Year 4"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">4</span><span class="enrol-year-fill">4</span></span><span class="enrol-year-hint">Year 4</span></span></label>
-              <label class="enrol-year"><input type="checkbox" name="year_level[]" value="Year 5"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">5</span><span class="enrol-year-fill">5</span></span><span class="enrol-year-hint">Year 5</span></span></label>
-              <label class="enrol-year"><input type="checkbox" name="year_level[]" value="Year 6"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">6</span><span class="enrol-year-fill">6</span></span><span class="enrol-year-hint">Year 6</span></span></label>
-              <label class="enrol-year"><input type="checkbox" name="year_level[]" value="Year 7"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">7</span><span class="enrol-year-fill">7</span></span><span class="enrol-year-hint">Year 7</span></span></label>
-              <label class="enrol-year"><input type="checkbox" name="year_level[]" value="Year 8"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">8</span><span class="enrol-year-fill">8</span></span><span class="enrol-year-hint">Year 8</span></span></label>
-              <label class="enrol-year"><input type="checkbox" name="year_level[]" value="Year 9"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">9</span><span class="enrol-year-fill">9</span></span><span class="enrol-year-hint">Year 9</span></span></label>
-              <label class="enrol-year"><input type="checkbox" name="year_level[]" value="Year 10"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">10</span><span class="enrol-year-fill">10</span></span><span class="enrol-year-hint">Year 10</span></span></label>
-              <label class="enrol-year"><input type="checkbox" name="year_level[]" value="Year 11"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">11</span><span class="enrol-year-fill">11</span></span><span class="enrol-year-hint">Year 11</span></span></label>
-              <label class="enrol-year"><input type="checkbox" name="year_level[]" value="Year 12"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">12</span><span class="enrol-year-fill">12</span></span><span class="enrol-year-hint">Year 12</span></span></label>
+            <p class="enrol-q">Programs</p>
+            <p class="enrol-hint">Select all that apply. You can choose more than one.</p>
+            <div class="enrol-program-grid" role="group" aria-label="Programs">
+              <label class="enrol-program">
+                <input type="checkbox" name="program[]" value="Private" data-enrol-program="private">
+                <span class="enrol-program-card">
+                  <span class="enrol-program-brand">
+                    <img src="/assets/logo.png" alt="" width="20" height="20">
+                    <span class="enrol-program-brand-text"><span class="enrol-program-name">vantage</span> <span class="enrol-program-tag">PRIVATE</span></span>
+                  </span>
+                  <span class="enrol-program-title">1-on-1 Tutoring</span>
+                  <span class="enrol-program-desc">Weekly private sessions with Academic or Senior tutors</span>
+                </span>
+              </label>
+              <label class="enrol-program">
+                <input type="checkbox" name="program[]" value="Masterclass" data-enrol-program="masterclass">
+                <span class="enrol-program-card">
+                  <span class="enrol-program-brand">
+                    <img src="/assets/logo.png" alt="" width="20" height="20">
+                    <span class="enrol-program-brand-text"><span class="enrol-program-name">vantage</span> <span class="enrol-program-tag">MASTERCLASS</span></span>
+                  </span>
+                  <span class="enrol-program-title">Subject Groups</span>
+                  <span class="enrol-program-desc">Year 12 online masterclasses · 90 minutes · Term 1 2027 · $50/week</span>
+                </span>
+              </label>
+              <label class="enrol-program">
+                <input type="checkbox" name="program[]" value="UCAT" data-enrol-program="medprep">
+                <span class="enrol-program-card">
+                  <span class="enrol-program-brand">
+                    <img src="/assets/logo.png" alt="" width="20" height="20">
+                    <span class="enrol-program-brand-text"><span class="enrol-program-name">vantage</span> <span class="enrol-program-tag">UCAT</span></span>
+                  </span>
+                  <span class="enrol-program-title">Med School Entry</span>
+                  <span class="enrol-program-desc">UCAT tutoring &amp; interview prep for medicine pathways</span>
+                </span>
+              </label>
             </div>
 
-            <p class="enrol-q">Subjects</p>
-            <div class="enrol-chips">
-              <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Mathematical Methods"><span>Maths Methods</span></label>
-              <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Specialist Mathematics"><span>Specialist Maths</span></label>
-              <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="General Mathematics"><span>General Maths</span></label>
-              <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Chemistry"><span>Chemistry</span></label>
-              <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Physics"><span>Physics</span></label>
-              <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Biology"><span>Biology</span></label>
-              <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Engineering"><span>Engineering</span></label>
-              <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Digital Solutions"><span>Digital Solutions</span></label>
-              <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Science"><span>Science</span></label>
-              <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="English"><span>English</span></label>
-              <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Literature"><span>Literature</span></label>
-              <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Economics"><span>Economics</span></label>
-              <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Legal Studies"><span>Legal Studies</span></label>
-              <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Philosophy"><span>Philosophy</span></label>
-              <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="UCAT"><span>UCAT</span></label>
-              <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Japanese"><span>Japanese</span></label>
-              <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="French"><span>French</span></label>
-              <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Other" id="enrolSubjectOther"><span>Other</span></label>
+            <div class="enrol-program-panel" id="enrolPrivatePanel" hidden>
+              <p class="enrol-q">Private tutor tier</p>
+              <p class="enrol-hint">Both tiers include full Vantage resource access.</p>
+              <div class="choice-grid tier-choice-grid" role="radiogroup" aria-label="Private tutor tier">
+                <label class="choice choice-tier choice-tier--gold">
+                  <input type="radio" name="tutor_tier" value="Academic Tutor" id="enrolTierAcademic">
+                  <span class="shine-gold">Academic Tutor</span>
+                  <span class="tier-sub">top 1% · structured weekly mastery</span>
+                </label>
+                <label class="choice choice-tier choice-tier--platinum">
+                  <input type="radio" name="tutor_tier" value="Senior Tutor" id="enrolTierSenior">
+                  <span class="shine-platinum">Senior Tutor</span>
+                  <span class="tier-sub">perfect-score ambitions · scholarship support</span>
+                </label>
+                <label class="choice">
+                  <input type="radio" name="tutor_tier" value="Help me decide" id="enrolTierHelp">Help me decide
+                </label>
+              </div>
             </div>
-            <div id="enrolOtherSubjectWrap" hidden>
-              <label for="enrol_other_subject">Other subject</label>
-              <input id="enrol_other_subject" type="text" name="other_subject" placeholder="Subject name">
+
+            <p class="enrol-q">Year level in 2026</p>
+            <p class="enrol-hint" id="enrolYearHint">Select a program above to see available year levels.</p>
+            <div class="enrol-years" role="group" aria-label="Year level">
+              <label class="enrol-year" data-enrol-year="4" hidden><input type="checkbox" name="year_level[]" value="Year 4"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">4</span><span class="enrol-year-fill">4</span></span><span class="enrol-year-hint">Year 4</span></span></label>
+              <label class="enrol-year" data-enrol-year="5" hidden><input type="checkbox" name="year_level[]" value="Year 5"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">5</span><span class="enrol-year-fill">5</span></span><span class="enrol-year-hint">Year 5</span></span></label>
+              <label class="enrol-year" data-enrol-year="6" hidden><input type="checkbox" name="year_level[]" value="Year 6"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">6</span><span class="enrol-year-fill">6</span></span><span class="enrol-year-hint">Year 6</span></span></label>
+              <label class="enrol-year" data-enrol-year="7" hidden><input type="checkbox" name="year_level[]" value="Year 7"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">7</span><span class="enrol-year-fill">7</span></span><span class="enrol-year-hint">Year 7</span></span></label>
+              <label class="enrol-year" data-enrol-year="8" hidden><input type="checkbox" name="year_level[]" value="Year 8"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">8</span><span class="enrol-year-fill">8</span></span><span class="enrol-year-hint">Year 8</span></span></label>
+              <label class="enrol-year" data-enrol-year="9" hidden><input type="checkbox" name="year_level[]" value="Year 9"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">9</span><span class="enrol-year-fill">9</span></span><span class="enrol-year-hint">Year 9</span></span></label>
+              <label class="enrol-year" data-enrol-year="10" hidden><input type="checkbox" name="year_level[]" value="Year 10"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">10</span><span class="enrol-year-fill">10</span></span><span class="enrol-year-hint">Year 10</span></span></label>
+              <label class="enrol-year" data-enrol-year="11" hidden><input type="checkbox" name="year_level[]" value="Year 11"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">11</span><span class="enrol-year-fill">11</span></span><span class="enrol-year-hint">Year 11</span></span></label>
+              <label class="enrol-year" data-enrol-year="12" hidden><input type="checkbox" name="year_level[]" value="Year 12"><span class="enrol-year-card"><span class="enrol-year-art" aria-hidden="true"><span class="enrol-year-outline">12</span><span class="enrol-year-fill">12</span></span><span class="enrol-year-hint">Year 12</span></span></label>
             </div>
+
+            <div class="enrol-program-panel" id="enrolSubjectsPanel" hidden>
+              <p class="enrol-q">Subjects for 1-on-1 tutoring</p>
+              <p class="enrol-hint">Choose the subjects you want weekly private tutoring in.</p>
+              <div class="enrol-chips">
+                <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Mathematical Methods"><span>Maths Methods</span></label>
+                <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Specialist Mathematics"><span>Specialist Maths</span></label>
+                <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="General Mathematics"><span>General Maths</span></label>
+                <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Chemistry"><span>Chemistry</span></label>
+                <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Physics"><span>Physics</span></label>
+                <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Biology"><span>Biology</span></label>
+                <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Engineering"><span>Engineering</span></label>
+                <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Digital Solutions"><span>Digital Solutions</span></label>
+                <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Science"><span>Science</span></label>
+                <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="English"><span>English</span></label>
+                <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Literature"><span>Literature</span></label>
+                <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Economics"><span>Economics</span></label>
+                <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Legal Studies"><span>Legal Studies</span></label>
+                <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Philosophy"><span>Philosophy</span></label>
+                <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Japanese"><span>Japanese</span></label>
+                <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="French"><span>French</span></label>
+                <label class="enrol-chip"><input type="checkbox" name="subjects[]" value="Other" id="enrolSubjectOther"><span>Other</span></label>
+              </div>
+              <div id="enrolOtherSubjectWrap" hidden>
+                <label for="enrol_other_subject">Other subject</label>
+                <input id="enrol_other_subject" type="text" name="other_subject" placeholder="Subject name">
+              </div>
+            </div>
+
+            <div class="enrol-program-panel" id="enrolMasterclassPanel" hidden>
+              <div class="enrol-masterclass-block" style="border-top:0;margin-top:8px;padding-top:0;">
+                <p class="enrol-q">Year 12 online masterclasses · 90 minutes · Term 1 2027</p>
+                <aside class="enrol-earlybird" role="note">
+                  <p class="enrol-earlybird-title">$50/week · Early bird $450 for 10 weeks</p>
+                  <p class="enrol-earlybird-text">Chemistry, Physics, Maths Methods and Specialist Maths. Cohorts capped at 8 to 10. Resource access included (mock practice papers). <strong>100% refundable after Week 1</strong> if your child does not find the cohort valuable.</p>
+                </aside>
+                <p class="enrol-hint">Tick any you’re interested in and we’ll follow up when enrolment opens.</p>
+                <div class="enrol-chips" role="group" aria-label="Masterclass interest">
+                  <label class="enrol-chip"><input type="checkbox" name="masterclass_interest[]" value="Maths Methods"><span>Maths Methods</span></label>
+                  <label class="enrol-chip"><input type="checkbox" name="masterclass_interest[]" value="Specialist Maths"><span>Specialist Maths</span></label>
+                  <label class="enrol-chip"><input type="checkbox" name="masterclass_interest[]" value="Chemistry"><span>Chemistry</span></label>
+                  <label class="enrol-chip"><input type="checkbox" name="masterclass_interest[]" value="Physics"><span>Physics</span></label>
+                </div>
+                <input type="hidden" name="masterclass_early_bird" id="enrolMcEarlyBird" value="">
+                <input type="hidden" name="masterclass_early_bird_rate" value="$450 for 10 weeks (weekly $50)">
+              </div>
+            </div>
+
+            <div class="enrol-program-panel" id="enrolMedprepPanel" hidden>
+              <p class="enrol-q">UCAT interest</p>
+              <p class="enrol-hint">UCAT pathway prep for Years 10–12. Coming Term 1 2027 · still in design.</p>
+              <div class="enrol-chips" role="group" aria-label="UCAT interest">
+                <label class="enrol-chip"><input type="checkbox" name="medprep_interest[]" value="UCAT masterclass"><span>UCAT masterclass</span></label>
+                <label class="enrol-chip"><input type="checkbox" name="medprep_interest[]" value="UCAT 1-on-1 tutoring"><span>UCAT 1-on-1 tutoring</span></label>
+                <label class="enrol-chip"><input type="checkbox" name="medprep_interest[]" value="Interview prep interest"><span>Interview prep interest</span></label>
+              </div>
+            </div>
+
             <button type="button" class="btn btn-primary enrol-next" data-enrol-next>Continue</button>
           </div>
         </div>
@@ -222,6 +318,7 @@
             <div class="enrol-peek-row"></div>
           </div>
           <div class="enrol-fields">
+            <div data-enrol-private-only hidden>
             <p class="enrol-q">Where should sessions be held?</p>
             <div class="enrol-tiles enrol-loc-mode" role="group" aria-label="Session format">
               <label class="enrol-tile">
@@ -242,7 +339,7 @@
 
             <div class="enrol-inperson" id="enrolInPersonWrap" hidden>
               <p class="enrol-q">Meet at a library or campus</p>
-              <p class="enrol-hint" style="margin-top:-6px">Tap a venue — these are our main meet-up spots.</p>
+              <p class="enrol-hint" style="margin-top:-6px">Tap a venue. These are our main meet-up spots.</p>
               <div class="enrol-venue-grid" id="enrolVenueGrid" role="group" aria-label="Libraries and campuses">
                 <label class="enrol-venue">
                   <input type="checkbox" name="location[]" value="In person (State Library of Queensland)" data-venue-tab="slq" data-venue-id="slq">
@@ -297,9 +394,10 @@
                 <p class="loc-filter-hint">We'll confirm the full address when we match your tutor.</p>
               </div>
             </div>
+            </div>
 
-            <p class="enrol-q">When is your student available?</p>
-            <p class="enrol-hint">Click or drag to select multiple times.</p>
+            <p class="enrol-q" id="enrolAvailQ">When is your student available?</p>
+            <p class="enrol-hint" id="enrolAvailHint">Click or drag to select multiple times.</p>
             <label class="avail-granularity choice">
             <input type="checkbox" id="availHalfHour" name="availability_granularity" value="30-minute blocks">
             Select in 30-minute blocks
@@ -330,6 +428,7 @@
             </div>
             <input type="hidden" name="availability_selected" id="availabilitySelected" value="">
 
+            <div data-enrol-private-only hidden>
             <p class="enrol-q">How many sessions a week?</p>
             <div class="choice-grid choice-grid--tight choice-grid--row4">
               <label class="choice choice--compact"><input type="radio" name="sessions_per_week" value="1"><span>1</span></label>
@@ -357,26 +456,6 @@
             </div>
 
 
-            <p class="enrol-q">Tutor preference</p>
-            <div class="choice-grid tier-choice-grid" role="radiogroup" aria-label="Tutor preference">
-              <label class="choice choice-tier choice-tier--gold">
-                <input type="radio" name="tutor_tier" value="Gold (top 1%)">
-                <span class="shine-gold">Gold</span>
-                <span class="tier-sub">top 1% · from $60/hr</span>
-              </label>
-              <label class="choice choice-tier choice-tier--platinum">
-                <input type="radio" name="tutor_tier" value="Platinum (top 0.2%)">
-                <span class="shine-platinum">Platinum</span>
-                <span class="tier-sub">top 0.2% · AI &amp; masterclasses</span>
-              </label>
-              <label class="choice">
-                <input type="radio" name="tutor_tier" value="Help me decide">Help me decide
-              </label>
-              <label class="choice">
-                <input type="radio" name="tutor_tier" value="No preference">No preference
-              </label>
-            </div>
-
             <p class="enrol-q">Tutor gender preference <span class="form-optional">(optional)</span></p>
             <p class="enrol-hint">If you have a preference, we'll prioritise it when matching, subject to availability.</p>
             <div class="choice-grid choice-grid--gender" role="radiogroup" aria-label="Tutor gender preference">
@@ -397,6 +476,7 @@
               <label class="choice"><input type="checkbox" name="degree[]" value="BAFE">BAFE</label>
               <label class="choice"><input type="checkbox" name="degree[]" value="No preference">No preference</label>
             </div>
+            </div>
 
             <label for="students_detail">More than one student? Add their details <span class="form-optional">(optional)</span></label>
             <textarea id="students_detail" name="multiple_students" rows="2" placeholder="Names, year levels and subjects for each student"></textarea>
@@ -404,8 +484,8 @@
             <label for="enrol_message">Anything else we should know? <span class="form-optional">(optional)</span></label>
             <textarea id="enrol_message" name="message" rows="3" placeholder="Goals, availability windows, or questions"></textarea>
 
-            <label for="enrol_referral">Referral code <span class="form-optional">(optional)</span></label>
-            <input id="enrol_referral" type="text" name="referral_code" placeholder="If you have one" autocomplete="off">
+            <label for="enrol_referred_by">Were you referred by a current Vantage family? <span class="form-optional">(Optional)</span></label>
+            <input id="enrol_referred_by" type="text" name="referred_by" placeholder="Enter parent or student full name" autocomplete="name">
 
             <button type="submit" class="btn btn-primary enrol-submit">Send enrolment
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -461,8 +541,8 @@
         <a href="/services">Services</a>
         <a href="/tutors">Tutors</a>
         <a href="/rates">Rates</a>
-        <a href="/reviews/?v=2">Reviews</a>
-        <a href="/about/?v=2">About</a>
+        <a href="/reviews/">Reviews</a>
+        <a href="/about/">About</a>
         <a href="/careers">Careers</a>
         <a href="/enrol">Contact</a>
         <a href="/legal">Legal</a>
@@ -478,7 +558,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="/assets/tutor-locations.js?v=20"></script>
-<script src="/assets/main.js?v=theme121"></script>
+<script src="/assets/main.js?v=theme135"></script>
 <script>
 (function(){
   var form = document.getElementById('enrolForm');
@@ -492,9 +572,14 @@
 
   var scrollTimer = null;
 
-  function headerOffset(){
+  function stickyStackOffset(){
     var header = document.querySelector('header');
-    return (header ? header.getBoundingClientRect().height : 72) + 12;
+    var progress = document.getElementById('enrolProgress');
+    var offset = (header ? header.getBoundingClientRect().height : 72) + 12;
+    if(progress && !progress.hidden){
+      offset += progress.getBoundingClientRect().height + 14;
+    }
+    return offset;
   }
 
   function scrollToPanel(panel){
@@ -502,16 +587,16 @@
     clearTimeout(scrollTimer);
     // Wait a beat so expand/collapse layout settles before measuring
     scrollTimer = setTimeout(function(){
-      var offset = headerOffset();
+      var offset = stickyStackOffset();
       var rect = panel.getBoundingClientRect();
       var topGap = rect.top - offset;
-      // Already comfortably in view - don't jump
-      if(topGap >= 0 && topGap < Math.min(140, window.innerHeight * 0.28)) return;
-      // Prefer landing the panel head just under the sticky nav
+      // Already comfortably in view under sticky header + progress - don't jump
+      if(topGap >= 0 && topGap < Math.min(120, window.innerHeight * 0.22)) return;
+      // Land the panel head just under the sticky stack
       var target = window.scrollY + topGap;
       // If next step is only slightly below, ease a shorter nudge instead of a big leap
       if(topGap > 0 && topGap < 220){
-        target = window.scrollY + Math.max(48, topGap - 24);
+        target = window.scrollY + Math.max(48, topGap - 16);
       }
       var maxY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
       target = Math.max(0, Math.min(target, maxY));
@@ -521,10 +606,14 @@
 
   
   function syncProgress(n){
+    var progress = document.getElementById('enrolProgress');
     var fill = document.getElementById('enrolProgressFill');
     var bar = document.getElementById('enrolProgressBar');
     var label = document.getElementById('enrolProgressLabel');
     var title = document.getElementById('enrolProgressTitle');
+    var rolePicked = !!form.querySelector('input[name="role"]:checked');
+    if(progress) progress.hidden = !rolePicked;
+    if(!rolePicked) return;
     var total = panels.length || 4;
     var step = Math.min(Math.max(n, 0), total - 1) + 1;
     var pct = Math.round((step / total) * 100);
@@ -583,6 +672,24 @@
     setTimeout(function(){ el.classList.remove('is-popping'); }, 420);
   }
 
+  function isValidEmail(v){
+    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(v || '').trim());
+  }
+
+  function isValidAuPhone(v){
+    var d = String(v || '').replace(/\D/g, '');
+    if(d.indexOf('61') === 0 && d.length >= 10) d = '0' + d.slice(2);
+    if(/^04\d{8}$/.test(d)) return true;
+    if(/^0[2378]\d{8}$/.test(d)) return true;
+    return false;
+  }
+
+  function setFieldError(input, errorEl, show){
+    if(input) input.setAttribute('aria-invalid', show ? 'true' : 'false');
+    if(input) input.classList.toggle('is-invalid', !!show);
+    if(errorEl) errorEl.hidden = !show;
+  }
+
   function validateStep(n){
     if(n === 0){
       return !!form.querySelector('input[name="role"]:checked');
@@ -594,14 +701,38 @@
       var phone = form.querySelector('#enrol_phone');
       var role = form.querySelector('input[name="role"]:checked');
       var student = form.querySelector('#enrol_student');
-      if(!name.value.trim() || !school.value.trim() || !email.value.trim() || !phone.value.trim()) return false;
-      if(role && role.value.indexOf('Parent') === 0 && student && !student.value.trim()) return false;
-      return true;
+      var emailErr = document.getElementById('enrolEmailError');
+      var phoneErr = document.getElementById('enrolPhoneError');
+      var ok = true;
+      if(!name.value.trim()) ok = false;
+      if(!school.value.trim() || school.value.trim().length < 2) ok = false;
+      var emailOk = isValidEmail(email.value);
+      var phoneOk = isValidAuPhone(phone.value);
+      setFieldError(email, emailErr, !emailOk);
+      setFieldError(phone, phoneErr, !phoneOk);
+      if(!emailOk) ok = false;
+      if(!phoneOk) ok = false;
+      if(role && role.value.indexOf('Parent') === 0 && student && !student.value.trim()) ok = false;
+      return ok;
     }
     if(n === 2){
+      var programs = form.querySelectorAll('input[name="program[]"]:checked');
       var years = form.querySelectorAll('input[name="year_level[]"]:checked');
       var subjects = form.querySelectorAll('input[name="subjects[]"]:checked');
-      return years.length > 0 && subjects.length > 0;
+      var mcInterest = form.querySelectorAll('input[name="masterclass_interest[]"]:checked');
+      var medInterest = form.querySelectorAll('input[name="medprep_interest[]"]:checked');
+      var privateOn = !!form.querySelector('input[data-enrol-program="private"]:checked');
+      var masterOn = !!form.querySelector('input[data-enrol-program="masterclass"]:checked');
+      var medOn = !!form.querySelector('input[data-enrol-program="medprep"]:checked');
+      if(programs.length === 0 || years.length === 0) return false;
+      if(privateOn){
+        var tier = form.querySelector('input[name="tutor_tier"]:checked');
+        if(!tier || subjects.length === 0) return false;
+      }
+      if(masterOn && mcInterest.length === 0) return false;
+      if(medOn && medInterest.length === 0) return false;
+      if(!privateOn && !masterOn && !medOn) return false;
+      return true;
     }
     return true;
   }
@@ -954,6 +1085,7 @@
         }
       }
       popTarget(t.closest('.enrol-tile'));
+      syncProgress(current);
       if(current === 0) scheduleAdvance(0, 360);
       return;
     }
@@ -975,8 +1107,9 @@
     if(t.name === 'year_level[]'){
       popTarget(t.closest('.enrol-year'));
     }
-    if(t.name === 'subjects[]' || t.classList.contains('enrol-chip') || t.closest('.enrol-chip')){
+    if(t.name === 'subjects[]' || t.name === 'masterclass_interest[]' || t.classList.contains('enrol-chip') || t.closest('.enrol-chip')){
       popTarget(t.closest('.enrol-chip') || t.closest('label'));
+      if(t.name === 'subjects[]' || t.name === 'masterclass_interest[]') syncMasterclassMeta();
     }
     if(t.closest('.choice')) popTarget(t.closest('.choice'));
     if(t.closest('.enrol-tile') && t.name !== 'role') popTarget(t.closest('.enrol-tile'));
@@ -1001,22 +1134,43 @@
     }
   });
 
+  function syncMasterclassMeta(){
+    var mcChecked = form.querySelectorAll('input[name="masterclass_interest[]"]:checked').length > 0;
+    var oneToOne = form.querySelectorAll('input[name="subjects[]"]:checked').length > 0;
+    var earlyField = document.getElementById('enrolMcEarlyBird');
+    var enquiry = form.querySelector('input[name="enquiry_type"]');
+    var subjectField = form.querySelector('input[name="_subject"]');
+    if(earlyField) earlyField.value = mcChecked ? 'Yes: Early bird $450 for 10-week Term 1 (weekly $50)' : '';
+    if(enquiry){
+      if(oneToOne && mcChecked) enquiry.value = 'Tutoring + Masterclass interest';
+      else if(mcChecked) enquiry.value = 'Masterclass interest';
+      else enquiry.value = 'Tutoring';
+    }
+    if(subjectField){
+      if(oneToOne && mcChecked) subjectField.value = 'Vantage enrolment + Term 1 2027 masterclass interest';
+      else if(mcChecked) subjectField.value = 'Vantage Term 1 2027 masterclass interest';
+      else subjectField.value = 'Vantage enrolment';
+    }
+  }
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
     if(!validateStep(0) || !validateStep(1) || !validateStep(2)){
       setStep(!validateStep(0) ? 0 : (!validateStep(1) ? 1 : 2));
       return;
     }
+    syncMasterclassMeta();
+    var oneToOne = form.querySelectorAll('input[name="subjects[]"]:checked').length > 0;
     var online = !!form.querySelector('#enrolLocOnline:checked');
     var inPerson = !!form.querySelector('#enrolLocInPerson:checked');
     var formats = form.querySelectorAll('input[name="location[]"]:checked');
-    if(!online && !inPerson && !formats.length){
+    if(oneToOne && !online && !inPerson && !formats.length){
       setStep(3);
       panels[3].classList.add('is-invalid');
       setTimeout(function(){ panels[3].classList.remove('is-invalid'); }, 600);
       return;
     }
-    if(inPerson){
+    if(oneToOne && inPerson){
       var venues = form.querySelectorAll('#enrolVenueGrid input[name="location[]"]:checked').length;
       if(!venues && !selectedSuburbs.length){
         setStep(3);
@@ -1042,6 +1196,300 @@
       alert('Something went wrong sending your enrolment. Please try again or email hello@vantagetutoring.com.au.');
     });
   });
+
+  function clearPrivateOnlyFields(){
+    [].forEach.call(form.querySelectorAll('[data-enrol-private-only] input'), function(el){
+      if(el.type === 'checkbox' || el.type === 'radio') el.checked = false;
+      else el.value = '';
+    });
+    var genderDefault = form.querySelector('input[name="tutor_gender"][value="No preference"]');
+    if(genderDefault) genderDefault.checked = true;
+    selectedSuburbs = [];
+    if(typeof syncInPersonUI === 'function') syncInPersonUI();
+    if(typeof syncHomeFromSuburbs === 'function') syncHomeFromSuburbs();
+  }
+
+  function syncEnrolPrograms(){
+    var privateOn = !!form.querySelector('input[data-enrol-program="private"]:checked');
+    var masterOn = !!form.querySelector('input[data-enrol-program="masterclass"]:checked');
+    var medOn = !!form.querySelector('input[data-enrol-program="medprep"]:checked');
+    var privatePanel = document.getElementById('enrolPrivatePanel');
+    var subjectsPanel = document.getElementById('enrolSubjectsPanel');
+    var masterPanel = document.getElementById('enrolMasterclassPanel');
+    var medPanel = document.getElementById('enrolMedprepPanel');
+    if(privatePanel) privatePanel.hidden = !privateOn;
+    if(subjectsPanel) subjectsPanel.hidden = !privateOn;
+    if(masterPanel) masterPanel.hidden = !masterOn;
+    if(medPanel) medPanel.hidden = !medOn;
+    var anyProgram = privateOn || masterOn || medOn;
+    var visibleYears = 0;
+    [].forEach.call(form.querySelectorAll('.enrol-year[data-enrol-year]'), function(el){
+      var y = parseInt(el.getAttribute('data-enrol-year'), 10);
+      var allowed = false;
+      if(anyProgram){
+        allowed = true;
+        if(privateOn) allowed = allowed && y >= 4 && y <= 12;
+        if(medOn) allowed = allowed && y >= 10 && y <= 12;
+        if(masterOn) allowed = allowed && y === 12;
+      }
+      el.hidden = !allowed;
+      var yInput = el.querySelector('input[name="year_level[]"]');
+      if(yInput && !allowed) yInput.checked = false;
+      if(allowed) visibleYears += 1;
+    });
+    if(masterOn){
+      var year12 = form.querySelector('input[name="year_level[]"][value="Year 12"]');
+      if(year12) year12.checked = true;
+    }
+    var yearsWrap = form.querySelector('.enrol-years');
+    if(yearsWrap){
+      yearsWrap.classList.remove('enrol-years--many', 'enrol-years--mid', 'enrol-years--single');
+      if(visibleYears >= 5) yearsWrap.classList.add('enrol-years--many');
+      else if(visibleYears >= 2) yearsWrap.classList.add('enrol-years--mid');
+      else if(visibleYears === 1) yearsWrap.classList.add('enrol-years--single');
+    }
+    var yearHint = document.getElementById('enrolYearHint');
+    if(yearHint){
+      if(masterOn) yearHint.textContent = 'Masterclasses are Year 12 only.';
+      else if(medOn && privateOn) yearHint.textContent = 'Years 10–12 when Private and UCAT are both selected.';
+      else if(medOn) yearHint.textContent = 'Years 10–12 for UCAT pathway.';
+      else if(privateOn) yearHint.textContent = 'Years 4–12 for Private tutoring. Varied pricing for lower years.';
+      else yearHint.textContent = 'Select a program above to see available year levels.';
+    }
+    [].forEach.call(form.querySelectorAll('[data-enrol-private-only]'), function(el){
+      el.hidden = !privateOn;
+    });
+    var availQ = document.getElementById('enrolAvailQ');
+    var availHint = document.getElementById('enrolAvailHint');
+    if(availQ){
+      availQ.textContent = privateOn
+        ? 'When is your student available?'
+        : 'Preferred times (expression of interest)';
+    }
+    if(availHint){
+      availHint.textContent = privateOn
+        ? 'Click or drag to select multiple times.'
+        : 'Optional for now. Share times that could work for Term 1 scheduling.';
+    }
+    var sessionFormat = form.querySelector('input[name="session_format"]');
+    if(sessionFormat){
+      if(privateOn) sessionFormat.value = '1-on-1 private';
+      else if(masterOn && medOn) sessionFormat.value = 'Masterclass + UCAT interest';
+      else if(masterOn) sessionFormat.value = 'Masterclass';
+      else if(medOn) sessionFormat.value = 'UCAT';
+      else sessionFormat.value = '1-on-1 private';
+    }
+    if(!privateOn){
+      [].forEach.call(form.querySelectorAll('input[name="tutor_tier"]'), function(el){ el.checked = false; });
+      [].forEach.call(form.querySelectorAll('input[name="subjects[]"]'), function(el){ el.checked = false; });
+      if(otherWrap) otherWrap.hidden = true;
+      clearPrivateOnlyFields();
+    }
+    if(!masterOn){
+      [].forEach.call(form.querySelectorAll('input[name="masterclass_interest[]"]'), function(el){ el.checked = false; });
+    }
+    if(!medOn){
+      [].forEach.call(form.querySelectorAll('input[name="medprep_interest[]"]'), function(el){ el.checked = false; });
+    }
+    syncMasterclassMeta();
+  }
+
+  /* Prefill from ?program= & ?tier= */
+  try{
+    var params = new URLSearchParams(window.location.search);
+    var prog = (params.get('program') || '').toLowerCase();
+    var tier = (params.get('tier') || '').toLowerCase();
+    if(prog === 'private' || prog === 'masterclass' || prog === 'medprep'){
+      var progInput = form.querySelector('input[data-enrol-program="'+prog+'"]');
+      if(progInput) progInput.checked = true;
+    }
+    if(tier === 'academic'){
+      var a = document.getElementById('enrolTierAcademic');
+      if(a) a.checked = true;
+    }else if(tier === 'senior'){
+      var s = document.getElementById('enrolTierSenior');
+      if(s) s.checked = true;
+    }
+    syncEnrolPrograms();
+  }catch(err){}
+
+  form.addEventListener('change', function(e){
+    var t = e.target;
+    if(!t) return;
+    if(t.getAttribute && t.getAttribute('data-enrol-program')){
+      syncEnrolPrograms();
+      popTarget(t.closest('.enrol-program'));
+    }
+  });
+
+  document.querySelectorAll('.enrol-program').forEach(function(label){
+    label.addEventListener('pointerdown', function(){
+      label.classList.add('enrol-program--lock');
+    });
+    label.addEventListener('mouseleave', function(){
+      label.classList.remove('enrol-program--lock');
+    });
+    label.addEventListener('blur', function(){
+      label.classList.remove('enrol-program--lock');
+    }, true);
+  });
+
+  (function initSchoolCombo(){
+    var input = document.getElementById('enrol_school');
+    var list = document.getElementById('enrolSchoolList');
+    var hint = document.getElementById('enrolSchoolHint');
+    var combo = document.getElementById('enrolSchoolCombo');
+    if(!input || !list) return;
+
+    var schools = [];
+    var activeIndex = -1;
+    var MAX = 10;
+
+    function norm(s){
+      return String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+    }
+
+    function scoreMatch(name, q){
+      var n = norm(name);
+      var query = norm(q);
+      if(!query) return 0;
+      if(n === query) return 100;
+      if(n.indexOf(query) === 0) return 90;
+      if(n.indexOf(query) >= 0) return 70;
+      var parts = query.split(/\s+/).filter(Boolean);
+      if(parts.length && parts.every(function(p){ return n.indexOf(p) >= 0; })) return 50;
+      return 0;
+    }
+
+    function filterSchools(q){
+      if(!q || q.trim().length < 1) return [];
+      var scored = [];
+      for(var i = 0; i < schools.length; i++){
+        var sc = scoreMatch(schools[i], q);
+        if(sc > 0) scored.push({ name: schools[i], score: sc });
+      }
+      scored.sort(function(a, b){
+        if(b.score !== a.score) return b.score - a.score;
+        return a.name.localeCompare(b.name);
+      });
+      return scored.slice(0, MAX).map(function(x){ return x.name; });
+    }
+
+    function closeList(){
+      list.hidden = true;
+      list.innerHTML = '';
+      input.setAttribute('aria-expanded', 'false');
+      activeIndex = -1;
+    }
+
+    function openList(items, q){
+      list.innerHTML = '';
+      activeIndex = -1;
+      if(!items.length){
+        closeList();
+        if(hint) hint.hidden = !(q && q.trim().length >= 2);
+        return;
+      }
+      if(hint) hint.hidden = true;
+      items.forEach(function(name, i){
+        var li = document.createElement('li');
+        li.setAttribute('role', 'option');
+        li.id = 'enrolSchoolOpt' + i;
+        li.textContent = name;
+        li.addEventListener('mousedown', function(e){
+          e.preventDefault();
+          pickSchool(name);
+        });
+        list.appendChild(li);
+      });
+      list.hidden = false;
+      input.setAttribute('aria-expanded', 'true');
+    }
+
+    function pickSchool(name){
+      input.value = name;
+      if(hint) hint.hidden = true;
+      closeList();
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+
+    function setActive(i){
+      var opts = list.querySelectorAll('[role="option"]');
+      if(!opts.length) return;
+      activeIndex = (i + opts.length) % opts.length;
+      [].forEach.call(opts, function(opt, idx){
+        opt.classList.toggle('is-active', idx === activeIndex);
+        if(idx === activeIndex) input.setAttribute('aria-activedescendant', opt.id);
+      });
+    }
+
+    fetch('/assets/qld-schools.json')
+      .then(function(r){ return r.ok ? r.json() : []; })
+      .then(function(data){
+        if(Array.isArray(data)) schools = data;
+      })
+      .catch(function(){ schools = []; });
+
+    input.addEventListener('input', function(){
+      var q = input.value;
+      openList(filterSchools(q), q);
+    });
+    input.addEventListener('focus', function(){
+      var q = input.value;
+      if(q.trim()) openList(filterSchools(q), q);
+    });
+    input.addEventListener('keydown', function(e){
+      if(list.hidden) return;
+      if(e.key === 'ArrowDown'){ e.preventDefault(); setActive(activeIndex + 1); }
+      else if(e.key === 'ArrowUp'){ e.preventDefault(); setActive(activeIndex - 1); }
+      else if(e.key === 'Enter' && activeIndex >= 0){
+        e.preventDefault();
+        var opt = list.querySelectorAll('[role="option"]')[activeIndex];
+        if(opt) pickSchool(opt.textContent);
+      }else if(e.key === 'Escape'){ closeList(); }
+    });
+    input.addEventListener('blur', function(){
+      setTimeout(closeList, 120);
+      var q = input.value.trim();
+      if(hint && q.length >= 2){
+        var exact = schools.some(function(s){ return norm(s) === norm(q); });
+        var hasPartial = filterSchools(q).length > 0;
+        hint.hidden = exact || hasPartial;
+      }
+    });
+    document.addEventListener('click', function(e){
+      if(combo && !combo.contains(e.target)) closeList();
+    });
+  })();
+
+  var emailInput = document.getElementById('enrol_email');
+  var phoneInput = document.getElementById('enrol_phone');
+  var emailErr = document.getElementById('enrolEmailError');
+  var phoneErr = document.getElementById('enrolPhoneError');
+  function liveContactCheck(){
+    if(emailInput && emailInput.value.trim()){
+      setFieldError(emailInput, emailErr, !isValidEmail(emailInput.value));
+    }else if(emailInput){
+      setFieldError(emailInput, emailErr, false);
+    }
+    if(phoneInput && phoneInput.value.trim()){
+      setFieldError(phoneInput, phoneErr, !isValidAuPhone(phoneInput.value));
+    }else if(phoneInput){
+      setFieldError(phoneInput, phoneErr, false);
+    }
+  }
+  if(emailInput){
+    emailInput.addEventListener('blur', liveContactCheck);
+    emailInput.addEventListener('input', function(){
+      if(emailInput.classList.contains('is-invalid')) liveContactCheck();
+    });
+  }
+  if(phoneInput){
+    phoneInput.addEventListener('blur', liveContactCheck);
+    phoneInput.addEventListener('input', function(){
+      if(phoneInput.classList.contains('is-invalid')) liveContactCheck();
+    });
+  }
 
   window.scrollTo(0, 0);
   setStep(0, false);

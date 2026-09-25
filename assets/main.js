@@ -46,18 +46,6 @@
     window.addEventListener('scroll',closeOnScroll,{passive:true});
   }
 
-  // Bust stubborn HTML cache on Reviews / About during local preview & after copy updates
-  (function bustNavCache(){
-    var bust = 'v=2';
-    [].forEach.call(document.querySelectorAll('a[href^="/reviews"], a[href^="/about"]'), function(a){
-      var href = a.getAttribute('href');
-      if(!href || href.indexOf('canonical') !== -1) return;
-      if(href.indexOf('?') !== -1) return;
-      if(href === '/reviews' || href === '/reviews/') a.setAttribute('href', '/reviews/?' + bust);
-      if(href === '/about' || href === '/about/') a.setAttribute('href', '/about/?' + bust);
-    });
-  })();
-
   // Hero: stacked power words scroll up + rest phrase wipe from left
   var typed=document.getElementById('typed');
   var cursor=document.getElementById('cursor');
