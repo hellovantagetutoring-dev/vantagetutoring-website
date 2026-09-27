@@ -812,7 +812,12 @@
     if(subjects.length || location.hash==='#when'){
       setFiltersOpen(true);
       var bar=document.getElementById('tutorFilterBar');
-      if(bar && bar.scrollIntoView) setTimeout(function(){ bar.scrollIntoView({behavior:'smooth',block:'start'}); }, 50);
+      if(bar){
+        setTimeout(function(){
+          if(window.vtSmoothScrollIntoView) window.vtSmoothScrollIntoView(bar);
+          else if(bar.scrollIntoView) bar.scrollIntoView({behavior:'smooth',block:'start'});
+        }, 50);
+      }
     }
   }
 
@@ -1214,7 +1219,10 @@
     filterConsoleSubject.addEventListener('click', function(){
       openFilterPanel();
       var subjSec=filterRoot.querySelector('[data-filter="subject"]');
-      if(subjSec) setTimeout(function(){ subjSec.scrollIntoView({block:'nearest',behavior:'smooth'}); }, 80);
+      if(subjSec) setTimeout(function(){
+        if(window.vtSmoothScrollIntoView) window.vtSmoothScrollIntoView(subjSec);
+        else subjSec.scrollIntoView({block:'nearest',behavior:'smooth'});
+      }, 80);
     });
   }
   function resetFilters(){
@@ -1318,6 +1326,6 @@
   }
 })();
 </script>
-<script src="/assets/main.js?v=theme135"></script>
+<script src="/assets/main.js?v=theme137"></script>
 </body>
 </html>

@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" href="/assets/logo.png">
-<link rel="stylesheet" href="/assets/styles.css?v=editorial17">
+<link rel="stylesheet" href="/assets/styles.css?v=editorial22">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 <body>
@@ -206,7 +206,7 @@
                     <span class="enrol-program-brand-text"><span class="enrol-program-name">vantage</span> <span class="enrol-program-tag">UCAT</span></span>
                   </span>
                   <span class="enrol-program-title">Med School Entry</span>
-                  <span class="enrol-program-desc">UCAT tutoring &amp; interview prep for medicine pathways</span>
+                  <span class="enrol-program-desc">UCAT 1-on-1 at Senior rates · interview prep · group pathway coming Term 1 2027</span>
                 </span>
               </label>
             </div>
@@ -296,7 +296,7 @@
 
             <div class="enrol-program-panel" id="enrolMedprepPanel" hidden>
               <p class="enrol-q">UCAT interest</p>
-              <p class="enrol-hint">UCAT pathway prep for Years 10–12. Coming Term 1 2027 · still in design.</p>
+              <p class="enrol-hint">UCAT 1-on-1 is available now at Senior rates. Group pathway prep for Years 10–12 is coming Term 1 2027 · still in design.</p>
               <div class="enrol-chips" role="group" aria-label="UCAT interest">
                 <label class="enrol-chip"><input type="checkbox" name="medprep_interest[]" value="UCAT masterclass"><span>UCAT masterclass</span></label>
                 <label class="enrol-chip"><input type="checkbox" name="medprep_interest[]" value="UCAT 1-on-1 tutoring"><span>UCAT 1-on-1 tutoring</span></label>
@@ -498,6 +498,22 @@
       </div>
     </form>
 
+    <div class="fit-guarantee-block fit-guarantee-block--enrol">
+      <aside class="fit-guarantee" aria-labelledby="fit-guarantee-title-enrol">
+        <div class="fit-guarantee-main">
+          <div class="fit-guarantee-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <div class="fit-guarantee-copy">
+            <p class="fit-guarantee-eyebrow">Risk-free match promise</p>
+            <h3 id="fit-guarantee-title-enrol">The Vantage First-Session Fit Guarantee</h3>
+            <p>Every student starts with a dedicated 60-minute diagnostic and strategy lesson at our standard ongoing rate. If you do not feel your tutor is the exact right fit after your first session, we will rematch you with a new tutor for free or void the session invoice completely.</p>
+          </div>
+        </div>
+        <span class="fit-guarantee-pill">Zero lock-in contracts</span>
+      </aside>
+    </div>
+
     <div class="enrol-success" id="enrolSuccess" hidden>
       <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
       <h3>Enrolment received</h3>
@@ -560,7 +576,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="/assets/tutor-locations.js?v=20"></script>
-<script src="/assets/main.js?v=theme135"></script>
+<script src="/assets/main.js?v=theme137"></script>
 <script>
 (function(){
   var form = document.getElementById('enrolForm');
@@ -602,7 +618,8 @@
       }
       var maxY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
       target = Math.max(0, Math.min(target, maxY));
-      window.scrollTo({ top: target, behavior: 'smooth' });
+      if(window.vtSmoothScrollTo) window.vtSmoothScrollTo(target);
+      else window.scrollTo({ top: target, behavior: 'smooth' });
     }, 80);
   }
 
@@ -1203,7 +1220,8 @@
       if(!res.ok) throw new Error('send failed');
       form.hidden = true;
       if(success) success.hidden = false;
-      window.scrollTo({top:0, behavior:'smooth'});
+      if(window.vtSmoothScrollTo) window.vtSmoothScrollTo(0);
+      else window.scrollTo({top:0, behavior:'smooth'});
     }).catch(function(){
       if(btn){ btn.disabled = false; btn.innerHTML = 'Send enrolment'; }
       alert('Something went wrong sending your enrolment. Please try again or email hello@vantagetutoring.com.au.');

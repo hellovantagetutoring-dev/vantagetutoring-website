@@ -16,8 +16,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" href="/assets/logo.png">
-<link rel="stylesheet" href="/assets/styles.css?v=editorial17">
-<link rel="stylesheet" href="/assets/home-landing.css?v=228">
+<link rel="stylesheet" href="/assets/styles.css?v=editorial21">
+<link rel="stylesheet" href="/assets/home-landing.css?v=230">
 <link rel="stylesheet" href="/assets/contour-pass.css?v=33">
 <link rel="preload" as="image" href="/assets/tutoring/hero-premium.jpg?v=25" fetchpriority="high">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
@@ -83,6 +83,10 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
         <a href="https://calendly.com/hello-vantagetutoring/10min" target="_blank" rel="noopener" class="btn btn-ghost"><span class="btn-full">Book a free consultation</span><span class="btn-short">Book a call</span></a>
+        <p class="hero-fit-trust">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          <span>Matched within 24 hours · Protected by our First-Session Fit Guarantee</span>
+        </p>
       </div>
     </div>
   </div>
@@ -123,7 +127,7 @@
     </div>
 
     <div class="vt-pillars reveal" id="vtPillars">
-      <a class="vt-pillar" href="/services#private" data-pillar="private">
+      <a class="vt-pillar" href="/rates#private" data-pillar="private">
         <span class="vt-pillar-media" style="--pillar-img:url('/assets/pillars/private.jpg?v=3')">
           <span class="vt-pillar-brand">
             <img src="/assets/logo.png" alt="" width="28" height="28">
@@ -131,10 +135,10 @@
           </span>
         </span>
         <span class="vt-pillar-copy">1-on-1 tutoring online, at venues, or at home subject to travel.</span>
-        <span class="vt-pillar-cta">Explore Private</span>
+        <span class="vt-pillar-cta">See Private rates</span>
       </a>
 
-      <a class="vt-pillar" href="/services#masterclass" data-pillar="masterclass">
+      <a class="vt-pillar" href="/rates#masterclass" data-pillar="masterclass">
         <span class="vt-pillar-media" style="--pillar-img:url('/assets/pillars/masterclass.jpg?v=3')">
           <span class="vt-pillar-brand">
             <img src="/assets/logo.png" alt="" width="28" height="28">
@@ -142,19 +146,35 @@
           </span>
         </span>
         <span class="vt-pillar-copy">Year 12 online · Chemistry, Physics, Methods, Specialist · $50/week · Term 1 2027.</span>
-        <span class="vt-pillar-cta">Explore Masterclass</span>
+        <span class="vt-pillar-cta">See Masterclass rates</span>
       </a>
 
-      <a class="vt-pillar" href="/services#medprep" data-pillar="medprep">
+      <a class="vt-pillar" href="/rates#medprep" data-pillar="medprep">
         <span class="vt-pillar-media" style="--pillar-img:url('/assets/pillars/medprep.jpg?v=3')">
           <span class="vt-pillar-brand">
             <img src="/assets/logo.png" alt="" width="28" height="28">
             <span class="vt-pillar-brand-text"><span class="vt-pillar-brand-name">vantage</span> <span class="vt-pillar-brand-tag">UCAT</span></span>
           </span>
         </span>
-        <span class="vt-pillar-copy">UCAT and medicine pathway prep for Years 10-11.</span>
-        <span class="vt-pillar-cta">Explore UCAT</span>
+        <span class="vt-pillar-copy">UCAT 1-on-1 at Senior rates · medicine pathway prep for Years 10-11.</span>
+        <span class="vt-pillar-cta">See UCAT rates</span>
       </a>
+    </div>
+
+    <div class="fit-guarantee-block fit-guarantee-block--home reveal">
+      <aside class="fit-guarantee" aria-labelledby="fit-guarantee-title-home">
+        <div class="fit-guarantee-main">
+          <div class="fit-guarantee-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <div class="fit-guarantee-copy">
+            <p class="fit-guarantee-eyebrow">Risk-free match promise</p>
+            <h3 id="fit-guarantee-title-home">The Vantage First-Session Fit Guarantee</h3>
+            <p>Every student starts with a dedicated 60-minute diagnostic and strategy lesson at our standard ongoing rate. If you do not feel your tutor is the exact right fit after your first session, we will rematch you with a new tutor for free or void the session invoice completely.</p>
+          </div>
+        </div>
+        <a href="/rates#private" class="fit-guarantee-pill">Zero lock-in contracts</a>
+      </aside>
     </div>
   </div>
 </section>
@@ -279,23 +299,23 @@
       <p>Clear pathways from weekly private tutoring through to exam-focused groups.</p>
     </div>
     <div class="cp-offer-grid reveal">
-      <a href="/services#private" class="cp-offer">
+      <a href="/rates#private" class="cp-offer">
         <span class="cp-offer-kicker">vantage private</span>
         <h3>1-on-1 Academic &amp; Senior</h3>
         <p>Weekly sessions with Queensland’s highest-scoring graduates, online, at venues, or at home subject to travel availability.</p>
-        <span class="card-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <span class="card-link">See rates <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-      <a href="/services#masterclass" class="cp-offer">
+      <a href="/rates#masterclass" class="cp-offer">
         <span class="cp-offer-kicker">vantage masterclass</span>
         <h3>Year 12 subject groups</h3>
         <p>Chemistry, Physics, Methods and Specialist · 90 minutes online · capped at 8 to 10 · Term 1 2027 · early bird $450 for 10 weeks.</p>
-        <span class="card-link">Join the waitlist <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <span class="card-link">See rates <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-      <a href="/services#medprep" class="cp-offer">
+      <a href="/rates#medprep" class="cp-offer">
         <span class="cp-offer-kicker">vantage ucat</span>
         <h3>Med school entry</h3>
-        <p>Coming soon and still in design. Year 10 and 11 UCAT prep with Vineth · 99.90 ATAR · UCAT 2510.</p>
-        <span class="card-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <p>1-on-1 UCAT tutoring billed at Senior rates, plus group pathway sessions coming Term 1 2027. Led by Vineth · 99.90 ATAR · UCAT 2510.</p>
+        <span class="card-link">See rates <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
     </div>
   </div>
@@ -387,6 +407,6 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="/assets/tutor-locations.js?v=21"></script>
-<script src="/assets/main.js?v=theme135"></script>
+<script src="/assets/main.js?v=theme137"></script>
 </body>
 </html>

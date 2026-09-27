@@ -46,6 +46,106 @@
     window.addEventListener('scroll',closeOnScroll,{passive:true});
   }
 
+  // Shared page scroll: fixed duration + easing (no CSS scroll-behavior conflict)
+  var vtScrollRaf = 0;
+  var vtScrollListeners = null;
+  var VT_SCROLL_MS = 700;
+  function vtEaseInOutCubic(t){
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+  function vtStopSmoothScroll(){
+    if(vtScrollRaf){
+      cancelAnimationFrame(vtScrollRaf);
+      vtScrollRaf = 0;
+    }
+    if(vtScrollListeners){
+      window.removeEventListener('wheel', vtScrollListeners);
+      window.removeEventListener('touchstart', vtScrollListeners);
+      window.removeEventListener('keydown', vtScrollListeners);
+      vtScrollListeners = null;
+    }
+  }
+  function vtHeaderOffset(){
+    var header = document.querySelector('header');
+    if(!header) return 88;
+    return Math.max(72, Math.round(header.getBoundingClientRect().bottom) + 12);
+  }
+  function vtSmoothScrollTo(targetY, opts){
+    opts = opts || {};
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var startY = window.scrollY || window.pageYOffset || 0;
+    var maxY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    var endY = Math.max(0, Math.min(Number(targetY) || 0, maxY));
+    var dist = endY - startY;
+    if(Math.abs(dist) < 2) return;
+    vtStopSmoothScroll();
+    if(reduce){
+      window.scrollTo(0, endY);
+      return;
+    }
+    var duration = opts.duration != null ? opts.duration : VT_SCROLL_MS;
+    var start = performance.now();
+    var alive = true;
+    function onUserCancel(e){
+      if(e.type === 'keydown'){
+        var k = e.key;
+        if(k !== 'Escape' && k !== 'ArrowUp' && k !== 'ArrowDown' && k !== 'PageUp' && k !== 'PageDown' && k !== 'Home' && k !== 'End' && k !== ' ') return;
+      }
+      alive = false;
+      vtStopSmoothScroll();
+    }
+    vtScrollListeners = onUserCancel;
+    window.addEventListener('wheel', onUserCancel, {passive:true});
+    window.addEventListener('touchstart', onUserCancel, {passive:true});
+    window.addEventListener('keydown', onUserCancel);
+    function frame(now){
+      if(!alive) return;
+      var t = Math.min(1, (now - start) / duration);
+      window.scrollTo(0, startY + dist * vtEaseInOutCubic(t));
+      if(t < 1) vtScrollRaf = requestAnimationFrame(frame);
+      else vtStopSmoothScroll();
+    }
+    vtScrollRaf = requestAnimationFrame(frame);
+  }
+  function vtSmoothScrollIntoView(el, opts){
+    if(!el) return;
+    opts = opts || {};
+    var delay = opts.delay != null ? opts.delay : 0;
+    var run = function(){
+      if(!el.isConnected) return;
+      var sm = parseFloat(getComputedStyle(el).scrollMarginTop);
+      if(isNaN(sm)) sm = 0;
+      var extra = opts.offset != null ? opts.offset : 0;
+      // Prefer explicit offset, else scroll-margin, else live header clearance
+      var pad = extra > 0 ? extra : (sm > 0 ? sm : vtHeaderOffset());
+      var y = (window.scrollY || window.pageYOffset || 0) + el.getBoundingClientRect().top - pad;
+      vtSmoothScrollTo(y, opts);
+    };
+    if(delay > 0) setTimeout(run, delay);
+    else requestAnimationFrame(function(){ requestAnimationFrame(run); });
+  }
+  window.vtSmoothScrollTo = vtSmoothScrollTo;
+  window.vtSmoothScrollIntoView = vtSmoothScrollIntoView;
+  window.vtStopSmoothScroll = vtStopSmoothScroll;
+  if('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+  // Same-page hash links: eased scroll to target
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if(!a) return;
+    var href = a.getAttribute('href');
+    if(!href || href === '#' || href.indexOf('#') !== 0) return;
+    if(a.hasAttribute('download') || a.getAttribute('target') === '_blank') return;
+    var id = decodeURIComponent(href.slice(1));
+    if(!id) return;
+    var target = document.getElementById(id);
+    if(!target) return;
+    e.preventDefault();
+    if(history.pushState) history.pushState(null, '', href);
+    else location.hash = href;
+    vtSmoothScrollIntoView(target);
+  });
+
   // Hero: stacked power words scroll up + rest phrase wipe from left
   var typed=document.getElementById('typed');
   var cursor=document.getElementById('cursor');
@@ -634,7 +734,10 @@
         e.preventDefault();
         e.stopImmediatePropagation();
         alert('Please select all ' + MAX_SUBJECTS + ' subjects you studied in Year 12, and enter each score.');
-        if(subjectRoot) subjectRoot.scrollIntoView({behavior:'smooth', block:'center'});
+        if(subjectRoot){
+          if(window.vtSmoothScrollIntoView) window.vtSmoothScrollIntoView(subjectRoot, {offset: 80});
+          else subjectRoot.scrollIntoView({behavior:'smooth', block:'center'});
+        }
         return;
       }
       var missingScore = scoresEl && [].some.call(scoresEl.querySelectorAll('input'), function(inp){
