@@ -642,7 +642,19 @@
 .page-home-edu .edu-guarantee-section{
   padding:48px 0;
 }
-.page-home-edu .edu-guarantee-section .section-head{margin-bottom:0;}
+.page-home-edu .edu-guarantee-section .section-head{margin-bottom:0;max-width:42rem;}
+.page-home-edu .edu-guarantee-section .section-head > p:first-of-type{
+  font-size:18px;
+  color:var(--edu-ink);
+  font-weight:600;
+}
+.page-home-edu .edu-guarantee-detail{
+  margin:14px 0 0 !important;
+  font-size:16px !important;
+  line-height:1.65 !important;
+  color:var(--edu-muted) !important;
+  font-weight:400 !important;
+}
 .page-home-edu .edu-section--muted{background:inherit;}
 .page-home-edu .section-head{
   max-width:none;
