@@ -639,6 +639,10 @@
 /* Sections */
 .page-home-edu .edu-section{padding:72px 0;}
 .page-home-edu .edu-section.tight{padding:56px 0;}
+.page-home-edu .edu-guarantee-section{
+  padding:48px 0;
+}
+.page-home-edu .edu-guarantee-section .section-head{margin-bottom:0;}
 .page-home-edu .edu-section--muted{background:inherit;}
 .page-home-edu .section-head{
   max-width:none;

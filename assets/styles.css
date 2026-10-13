@@ -754,6 +754,47 @@ section.tight{padding:56px 0;}
   color:var(--gold-surface-text);
   box-shadow:none;
 }
+/* Language toggle (EN / 中文) — same control language as rates format */
+.lang-format-wrap{
+  display:flex;
+  justify-content:center;
+  margin:18px 0 0;
+}
+.lang-format{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  padding:4px;
+  border-radius:999px;
+  border:1px solid var(--border-grid);
+  background:var(--bg-surface);
+  box-shadow:none;
+}
+.lang-format-btn{
+  appearance:none;
+  border:0;
+  background:transparent;
+  color:var(--text-muted);
+  font-family:var(--font-sans);
+  font-size:13px;
+  font-weight:700;
+  padding:8px 16px;
+  border-radius:999px;
+  cursor:pointer;
+  text-decoration:none;
+  line-height:1.2;
+  transition:background .18s ease,color .18s ease;
+}
+a.lang-format-btn{display:inline-flex;align-items:center;justify-content:center;}
+.lang-format-btn.is-active{
+  background:var(--gold-btn);
+  color:var(--gold-surface-text);
+  pointer-events:none;
+}
+.lang-format-btn:not(.is-active):hover{
+  color:var(--text-primary);
+}
+.footer-bottom .lang-format-wrap{margin-top:16px;}
 .rates-hubs{
   text-align:center;
   color:var(--muted);

@@ -256,7 +256,10 @@
       right=Math.max(right, typed.getBoundingClientRect().right);
       var parent=typedShell.parentElement;
       var maxW=parent ? parent.getBoundingClientRect().width : right-shellLeft+padX;
-      var next=Math.ceil(right-shellLeft+padX);
+      // CJK letter-spacing can outrun getClientRects; keep a small end buffer
+      var isZh = document.documentElement.classList.contains('lang-zh') || (document.documentElement.lang || '').indexOf('zh') === 0;
+      var padEnd = isZh ? Math.ceil((parseFloat(window.getComputedStyle(typed).fontSize) || 16) * 0.35) : 0;
+      var next=Math.ceil(right-shellLeft+padX+padEnd);
       if(next>0) typedShell.style.width=Math.min(next, Math.floor(maxW))+'px';
     }
 
@@ -1319,11 +1322,42 @@
     VTLoc.initServiceAreaMirroring();
   }
 
+  // Footer language toggle: EN ↔ 中文 (/ch/ mirror)
+  (function(){
+    var path = location.pathname || '/';
+    var isZh = path === '/ch' || path === '/ch/' || path.indexOf('/ch/') === 0;
+    var enPath = isZh ? (path.replace(/^\/ch/, '') || '/') : path;
+    if(enPath.length > 1 && enPath.slice(-1) === '/'){ /* keep trailing slash */ }
+    var zhPath = isZh ? path : ('/ch' + (path === '/' ? '/' : path));
+    var qs = location.search || '';
+    var hash = location.hash || '';
+    var footers = document.querySelectorAll('footer .footer-bottom, footer .wrap');
+    var host = null;
+    var bottom = document.querySelector('footer .footer-bottom');
+    if(bottom){
+      host = document.createElement('div');
+      host.className = 'lang-format-wrap';
+      bottom.appendChild(host);
+    } else {
+      var wrap = document.querySelector('footer .wrap');
+      if(!wrap) return;
+      host = document.createElement('div');
+      host.className = 'lang-format-wrap';
+      wrap.appendChild(host);
+    }
+    host.innerHTML =
+      '<div class="lang-format" data-lang-toggle role="group" aria-label="'+(isZh ? '语言' : 'Language')+'">' +
+        '<a class="lang-format-btn'+(isZh ? '' : ' is-active')+'" href="'+enPath+qs+hash+'" lang="en"'+(isZh ? '' : ' aria-current="true"')+'>EN</a>' +
+        '<a class="lang-format-btn'+(isZh ? ' is-active' : '')+'" href="'+zhPath+qs+hash+'" lang="zh-Hans"'+(isZh ? ' aria-current="true"' : '')+'>中文</a>' +
+      '</div>';
+  })();
+
   // Home: subject chip hover/focus preview → tutors page with filter
   var subjectPreview=document.getElementById('subjectPreview');
   var subjectBoard=document.querySelector('.edu-subject-board');
   if(subjectPreview && subjectBoard){
     var subjectPreviewDefault=subjectPreview.textContent;
+    var isZhHome = document.documentElement.classList.contains('lang-zh') || (document.documentElement.lang || '').indexOf('zh') === 0;
     function setSubjectPreview(chip){
       if(!chip){
         subjectPreview.textContent=subjectPreviewDefault;
@@ -1332,9 +1366,15 @@
       }
       var label=chip.getAttribute('data-label')||chip.textContent.trim();
       var atar=chip.getAttribute('data-atar');
-      subjectPreview.textContent=atar
-        ? 'Find a tutor for '+label+' · up to '+atar+' ATAR'
-        : 'Find a tutor for '+label;
+      if(isZhHome){
+        subjectPreview.textContent=atar
+          ? '查找 '+label+' 导师 · 最高 ATAR '+atar
+          : '查找 '+label+' 导师';
+      } else {
+        subjectPreview.textContent=atar
+          ? 'Find a tutor for '+label+' · up to '+atar+' ATAR'
+          : 'Find a tutor for '+label;
+      }
       subjectPreview.classList.add('is-active');
     }
     subjectBoard.addEventListener('mouseover', function(e){
