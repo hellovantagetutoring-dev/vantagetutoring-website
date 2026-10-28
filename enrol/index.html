@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#FEF9F2">
 <title>Enrol | Vantage Tutoring</title>
 <meta name="description" content="Enrol with Vantage Tutoring. Tell us your year level and subjects and we’ll match you with an Academic or Senior tutor within 24 hours.">
@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" href="/assets/logo.png">
-<link rel="stylesheet" href="/assets/styles.css?v=editorial23">
+<link rel="stylesheet" href="/assets/styles.css?v=hig1">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 <body>
@@ -35,6 +35,7 @@
       <a class="link" href="/tutors"><svg class="nav-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>Tutors</a>
       <a class="link" href="/rates"><svg class="nav-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Rates</a>
       <a class="link" href="/reviews/"><svg class="nav-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.9 6.9L22 10l-5 4.6L18.2 22 12 18.3 5.8 22 7 14.6 2 10l7.1-1.1z"/></svg>Reviews</a>
+      <a href="https://learn.vantagetutoring.com.au/login" class="btn btn-ghost btn-nav-portal">Learning Portal</a>
       <a href="/enrol" class="btn btn-primary"><svg class="nav-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>Enrol today</a>
     </nav>
     <button class="navtoggle" id="navtoggle" aria-label="Menu" aria-expanded="false" aria-controls="navlinks"><span class="navtoggle-bar" aria-hidden="true"></span><span class="navtoggle-bar" aria-hidden="true"></span></button>
@@ -195,7 +196,7 @@
                     <span class="enrol-program-brand-text"><span class="enrol-program-name">vantage</span> <span class="enrol-program-tag">MASTERCLASS</span></span>
                   </span>
                   <span class="enrol-program-title">Subject Groups</span>
-                  <span class="enrol-program-desc">Year 12 online masterclasses · 90 minutes · Term 1 2027 · $50/week</span>
+                  <span class="enrol-program-desc">Unit 1&amp;2 and Unit 3&amp;4 · online · 2 hours · Term 1 2027 · $50/week</span>
                 </span>
               </label>
               <label class="enrol-program">
@@ -278,17 +279,25 @@
 
             <div class="enrol-program-panel" id="enrolMasterclassPanel" hidden>
               <div class="enrol-masterclass-block" style="border-top:0;margin-top:8px;padding-top:0;">
-                <p class="enrol-q">Year 12 online masterclasses · 90 minutes · Term 1 2027</p>
+                <p class="enrol-q">Masterclasses · Unit 1&amp;2 and Unit 3&amp;4 · 2 hours · Term 1 2027</p>
                 <aside class="enrol-earlybird" role="note">
                   <p class="enrol-earlybird-title">$50/week · Early bird $450 for 10 weeks</p>
-                  <p class="enrol-earlybird-text">Chemistry, Physics, Maths Methods and Specialist Maths. Cohorts capped at 8 to 10. Resource access included (mock practice papers). <strong>100% refundable after Week 1</strong> if your child does not find the cohort valuable.</p>
+                  <p class="enrol-earlybird-text">Physics, Chemistry, Maths Methods, Specialist Maths and Literature. Structured by Unit 1&amp;2 and Unit 3&amp;4. Cohorts capped at 10. Includes portal access (mock papers, recorded masterclasses, class resources), private tutor consultations, and 24/7 study help via chat. <strong>100% refundable after Week 1</strong> if your child does not find the cohort valuable.</p>
                 </aside>
+                <p class="enrol-q">Unit band</p>
+                <p class="enrol-hint">Masterclasses are organised by QCE unit band, not year level.</p>
+                <div class="enrol-chips" role="group" aria-label="Masterclass unit band">
+                  <label class="enrol-chip"><input type="checkbox" name="masterclass_unit[]" value="Unit 1 &amp; 2"><span>Unit 1 &amp; 2</span></label>
+                  <label class="enrol-chip"><input type="checkbox" name="masterclass_unit[]" value="Unit 3 &amp; 4"><span>Unit 3 &amp; 4</span></label>
+                </div>
+                <p class="enrol-q">Subjects</p>
                 <p class="enrol-hint">Tick any you’re interested in and we’ll follow up when enrolment opens.</p>
                 <div class="enrol-chips" role="group" aria-label="Masterclass interest">
+                  <label class="enrol-chip"><input type="checkbox" name="masterclass_interest[]" value="Physics"><span>Physics</span></label>
+                  <label class="enrol-chip"><input type="checkbox" name="masterclass_interest[]" value="Chemistry"><span>Chemistry</span></label>
                   <label class="enrol-chip"><input type="checkbox" name="masterclass_interest[]" value="Maths Methods"><span>Maths Methods</span></label>
                   <label class="enrol-chip"><input type="checkbox" name="masterclass_interest[]" value="Specialist Maths"><span>Specialist Maths</span></label>
-                  <label class="enrol-chip"><input type="checkbox" name="masterclass_interest[]" value="Chemistry"><span>Chemistry</span></label>
-                  <label class="enrol-chip"><input type="checkbox" name="masterclass_interest[]" value="Physics"><span>Physics</span></label>
+                  <label class="enrol-chip"><input type="checkbox" name="masterclass_interest[]" value="Literature"><span>Literature</span></label>
                 </div>
                 <input type="hidden" name="masterclass_early_bird" id="enrolMcEarlyBird" value="">
                 <input type="hidden" name="masterclass_early_bird_rate" value="$450 for 10 weeks (weekly $50)">
@@ -577,7 +586,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="/assets/tutor-locations.js?v=20"></script>
-<script src="/assets/main.js?v=theme138"></script>
+<script src="/assets/main.js?v=theme142"></script>
 <script>
 (function(){
   var form = document.getElementById('enrolForm');
@@ -749,6 +758,7 @@
       var years = form.querySelectorAll('input[name="year_level[]"]:checked');
       var subjects = form.querySelectorAll('input[name="subjects[]"]:checked');
       var mcInterest = form.querySelectorAll('input[name="masterclass_interest[]"]:checked');
+      var mcUnits = form.querySelectorAll('input[name="masterclass_unit[]"]:checked');
       var medInterest = form.querySelectorAll('input[name="medprep_interest[]"]:checked');
       var privateOn = !!form.querySelector('input[data-enrol-program="private"]:checked');
       var masterOn = !!form.querySelector('input[data-enrol-program="masterclass"]:checked');
@@ -758,7 +768,7 @@
         var tier = form.querySelector('input[name="tutor_tier"]:checked');
         if(!tier || subjects.length === 0) return false;
       }
-      if(masterOn && mcInterest.length === 0) return false;
+      if(masterOn && (mcInterest.length === 0 || mcUnits.length === 0)) return false;
       if(medOn && medInterest.length === 0) return false;
       if(!privateOn && !masterOn && !medOn) return false;
       return true;
@@ -1262,17 +1272,13 @@
         allowed = true;
         if(privateOn) allowed = allowed && y >= 4 && y <= 12;
         if(medOn) allowed = allowed && y >= 10 && y <= 12;
-        if(masterOn) allowed = allowed && y === 12;
+        if(masterOn) allowed = allowed && y >= 11 && y <= 12;
       }
       el.hidden = !allowed;
       var yInput = el.querySelector('input[name="year_level[]"]');
       if(yInput && !allowed) yInput.checked = false;
       if(allowed) visibleYears += 1;
     });
-    if(masterOn){
-      var year12 = form.querySelector('input[name="year_level[]"][value="Year 12"]');
-      if(year12) year12.checked = true;
-    }
     var yearsWrap = form.querySelector('.enrol-years');
     if(yearsWrap){
       yearsWrap.classList.remove('enrol-years--many', 'enrol-years--mid', 'enrol-years--single');
@@ -1282,7 +1288,9 @@
     }
     var yearHint = document.getElementById('enrolYearHint');
     if(yearHint){
-      if(masterOn) yearHint.textContent = 'Masterclasses are Year 12 only.';
+      if(masterOn && !privateOn && !medOn) yearHint.textContent = 'Masterclasses are Unit 1&2 and Unit 3&4 (typically Years 11–12).';
+      else if(masterOn && privateOn) yearHint.textContent = 'Years 11–12 when Masterclass is selected with Private.';
+      else if(masterOn && medOn) yearHint.textContent = 'Years 11–12 when Masterclass is selected with UCAT.';
       else if(medOn && privateOn) yearHint.textContent = 'Years 10–12 when Private and UCAT are both selected.';
       else if(medOn) yearHint.textContent = 'Years 10–12 for UCAT pathway.';
       else if(privateOn) yearHint.textContent = 'Years 4–12 for Private tutoring. Varied pricing for lower years.';
@@ -1319,6 +1327,7 @@
     }
     if(!masterOn){
       [].forEach.call(form.querySelectorAll('input[name="masterclass_interest[]"]'), function(el){ el.checked = false; });
+      [].forEach.call(form.querySelectorAll('input[name="masterclass_unit[]"]'), function(el){ el.checked = false; });
     }
     if(!medOn){
       [].forEach.call(form.querySelectorAll('input[name="medprep_interest[]"]'), function(el){ el.checked = false; });

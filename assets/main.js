@@ -539,6 +539,101 @@
   wireAjaxForm('careersForm','careersFormSuccess');
   wireAjaxForm('vantageAiForm','vantageAiFormSuccess');
 
+  // Masterclass sample PDF gate (rates page)
+  (function(){
+    var form = document.getElementById('mcSampleForm');
+    if(!form) return;
+    var gate = form.closest('[data-mc-sample-gate]') || form.parentElement;
+    var unlock = gate ? gate.querySelector('[data-mc-sample-unlock]') : null;
+    var status = form.querySelector('[data-mc-sample-status]');
+    var pdfUrl = form.getAttribute('data-mc-pdf') || '';
+    var pdfName = form.getAttribute('data-mc-pdf-name') || 'Vantage-Masterclass-sample.pdf';
+    var isZh = document.documentElement.classList.contains('lang-zh') || (document.documentElement.lang || '').indexOf('zh') === 0;
+    try{ localStorage.removeItem('vantage_mc_sample_unlocked_methods_1_1'); }catch(e){}
+
+    function setStatus(msg, isError){
+      if(!status) return;
+      status.hidden = !msg;
+      status.classList.toggle('is-error', !!isError);
+      status.textContent = msg || '';
+    }
+
+    function fieldValue(name){
+      var el = form.elements[name];
+      if(!el) return '';
+      if(el.type === 'checkbox') return el.checked ? String(el.value || '').trim() : '';
+      return String(el.value || '').trim();
+    }
+
+    function validateGate(){
+      var name = fieldValue('student_name');
+      var phone = fieldValue('phone');
+      var email = fieldValue('email');
+      var newsletter = form.elements.newsletter;
+      if(!name) return isZh ? '请填写学生姓名。' : 'Please enter the student name.';
+      if(!phone) return isZh ? '请填写电话号码。' : 'Please enter a phone number.';
+      if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return isZh ? '请填写有效的电子邮箱。' : 'Please enter a valid email address.';
+      if(!newsletter || !newsletter.checked) return isZh ? '请订阅 Vantage tips 通讯以解锁下载。' : 'Please sign up to the Vantage tips newsletter to unlock the download.';
+      if(!pdfUrl) return isZh ? '下载暂时不可用，请邮件联系 hello@vantagetutoring.com.au。' : 'Download is temporarily unavailable. Please email hello@vantagetutoring.com.au.';
+      return '';
+    }
+
+    function showUnlocked(){
+      form.hidden = true;
+      if(!unlock) return;
+      unlock.hidden = false;
+      var link = unlock.querySelector('[data-mc-sample-download]');
+      if(link){
+        link.href = pdfUrl;
+        link.setAttribute('download', pdfName);
+      }
+    }
+
+    if(unlock){
+      unlock.hidden = true;
+      unlock.addEventListener('click', function(e){
+        var a = e.target.closest ? e.target.closest('[data-mc-sample-download]') : null;
+        if(!a) return;
+        var href = a.getAttribute('href') || '';
+        if(!href || href === '#') e.preventDefault();
+      });
+    }
+    form.hidden = false;
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      setStatus('', false);
+      var err = validateGate();
+      if(err){
+        setStatus(err, true);
+        return;
+      }
+      var btn = form.querySelector('button[type=submit]');
+      var original = btn ? btn.innerHTML : '';
+      if(btn){ btn.textContent = 'Unlocking…'; btn.disabled = true; }
+      var data = new FormData(form);
+      fetch(form.action, { method:'POST', body:data, headers:{ 'Accept':'application/json' } })
+        .then(function(r){
+          if(r.ok){
+            showUnlocked();
+            return;
+          }
+          return r.json().then(function(d){
+            var msg = (d && d.errors) ? d.errors.map(function(x){ return x.message; }).join(', ') : (d && d.message) || 'Something went wrong. Please try again or email hello@vantagetutoring.com.au.';
+            setStatus(msg, true);
+            if(btn){ btn.innerHTML = original; btn.disabled = false; }
+          }).catch(function(){
+            setStatus('Something went wrong. Please email hello@vantagetutoring.com.au.', true);
+            if(btn){ btn.innerHTML = original; btn.disabled = false; }
+          });
+        })
+        .catch(function(){
+          setStatus('Network error. Please try again or email hello@vantagetutoring.com.au.', true);
+          if(btn){ btn.innerHTML = original; btn.disabled = false; }
+        });
+    });
+  })();
+
   // Careers tutor application: subjects + scores, ABN/Blue Card numbers, availability summary
   (function(){
     var form = document.getElementById('careersForm');

@@ -2,7 +2,7 @@
 <html lang="zh-Hans" class="lang-zh">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#FEF9F2">
 <title>报名 | Vantage Tutoring</title>
 <meta name="description" content="报名加入 Vantage Tutoring。告诉我们年级与科目，我们将在 24 小时内为您匹配 Academic 或 Senior 导师。">
@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="/assets/logo.png">
-<link rel="stylesheet" href="/assets/styles.css?v=editorial24">
+<link rel="stylesheet" href="/assets/styles.css?v=hig1">
 <link rel="stylesheet" href="/assets/zh.css?v=2">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
@@ -196,7 +196,7 @@
                     <span class="enrol-program-brand-text"><span class="enrol-program-name">vantage</span> <span class="enrol-program-tag">MASTERCLASS</span></span>
                   </span>
                   <span class="enrol-program-title">科目小班</span>
-                  <span class="enrol-program-desc">十二年级线上 Masterclass · 90 分钟 · 2027 第一学期 · $50/周</span>
+                  <span class="enrol-program-desc">Unit 1&amp;2 与 Unit 3&amp;4 · 线上 · 2 小时 · 2027 第一学期 · $50/周</span>
                 </span>
               </label>
               <label class="enrol-program">
@@ -207,7 +207,7 @@
                     <span class="enrol-program-brand-text"><span class="enrol-program-name">vantage</span> <span class="enrol-program-tag">UCAT</span></span>
                   </span>
                   <span class="enrol-program-title">医学院入学</span>
-                  <span class="enrol-program-desc">UCAT 一对一（Senior 费率）· 面试准备 · 小组路径 2027 第一学期推出</span>
+                  <span class="enrol-program-desc">UCAT 一对一（Senior 导师费率）· 面试准备 · 小组路径 2027 第一学期推出</span>
                 </span>
               </label>
             </div>
@@ -279,17 +279,25 @@
 
             <div class="enrol-program-panel" id="enrolMasterclassPanel" hidden>
               <div class="enrol-masterclass-block" style="border-top:0;margin-top:8px;padding-top:0;">
-                <p class="enrol-q">十二年级线上 Masterclass · 90 分钟 · 2027 第一学期</p>
+                <p class="enrol-q">Masterclass · Unit 1&amp;2 与 Unit 3&amp;4 · 2 小时 · 2027 第一学期</p>
                 <aside class="enrol-earlybird" role="note">
-                  <p class="enrol-earlybird-title">每周 $50 · 早鸟价 10 周 $450</p>
-                  <p class="enrol-earlybird-text">化学、物理、Maths Methods 与 Specialist Maths。每班限额 8–10 人。含资源权限（模拟练习卷）。若您的孩子在第一周后觉得班级不合适，可<strong>全额退款</strong>。</p>
+                  <p class="enrol-earlybird-title">每周 $50 · 提前报名价 10 周 $450</p>
+                  <p class="enrol-earlybird-text">Physics、Chemistry、Maths Methods、Specialist Maths 与 Literature。按 Unit 1&amp;2 与 Unit 3&amp;4 分班。每班限额 10 人。含学习门户（模拟卷、录播 Masterclass、课堂资料）、私人导师答疑，以及全天候聊天学习支持。若您的孩子在第一周后觉得班级不合适，可<strong>全额退款</strong>。</p>
                 </aside>
+                <p class="enrol-q">单元分段</p>
+                <p class="enrol-hint">Masterclass 按 QCE 单元分段组织，而非年级。</p>
+                <div class="enrol-chips" role="group" aria-label="Masterclass 单元分段">
+                  <label class="enrol-chip"><input type="checkbox" name="masterclass_unit[]" value="Unit 1 &amp; 2"><span>Unit 1 &amp; 2</span></label>
+                  <label class="enrol-chip"><input type="checkbox" name="masterclass_unit[]" value="Unit 3 &amp; 4"><span>Unit 3 &amp; 4</span></label>
+                </div>
+                <p class="enrol-q">科目</p>
                 <p class="enrol-hint">勾选您感兴趣的科目，报名开放时我们会跟进。</p>
                 <div class="enrol-chips" role="group" aria-label="Masterclass 意向">
+                  <label class="enrol-chip"><input type="checkbox" name="masterclass_interest[]" value="Physics"><span>Physics</span></label>
+                  <label class="enrol-chip"><input type="checkbox" name="masterclass_interest[]" value="Chemistry"><span>Chemistry</span></label>
                   <label class="enrol-chip"><input type="checkbox" name="masterclass_interest[]" value="Maths Methods"><span>Maths Methods</span></label>
                   <label class="enrol-chip"><input type="checkbox" name="masterclass_interest[]" value="Specialist Maths"><span>Specialist Maths</span></label>
-                  <label class="enrol-chip"><input type="checkbox" name="masterclass_interest[]" value="Chemistry"><span>Chemistry</span></label>
-                  <label class="enrol-chip"><input type="checkbox" name="masterclass_interest[]" value="Physics"><span>Physics</span></label>
+                  <label class="enrol-chip"><input type="checkbox" name="masterclass_interest[]" value="Literature"><span>Literature</span></label>
                 </div>
                 <input type="hidden" name="masterclass_early_bird" id="enrolMcEarlyBird" value="">
                 <input type="hidden" name="masterclass_early_bird_rate" value="$450 for 10 weeks (weekly $50)">
@@ -298,7 +306,7 @@
 
             <div class="enrol-program-panel" id="enrolMedprepPanel" hidden>
               <p class="enrol-q">UCAT 意向</p>
-              <p class="enrol-hint">UCAT 一对一现已开放（Senior 费率）。十至十二年级小组路径准备将于 2027 第一学期推出 · 仍在设计中。</p>
+              <p class="enrol-hint">UCAT 一对一现已开放（Senior 导师费率）。十至十二年级小组路径准备将于 2027 第一学期推出 · 仍在设计中。</p>
               <div class="enrol-chips" role="group" aria-label="UCAT 意向">
                 <label class="enrol-chip"><input type="checkbox" name="medprep_interest[]" value="UCAT masterclass"><span>UCAT Masterclass</span></label>
                 <label class="enrol-chip"><input type="checkbox" name="medprep_interest[]" value="UCAT 1-on-1 tutoring"><span>UCAT 一对一辅导</span></label>
@@ -578,7 +586,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="/assets/tutor-locations.js?v=20"></script>
-<script src="/assets/main.js?v=theme140"></script>
+<script src="/assets/main.js?v=theme142"></script>
 <script>
 (function(){
   var form = document.getElementById('enrolForm');
@@ -750,6 +758,7 @@
       var years = form.querySelectorAll('input[name="year_level[]"]:checked');
       var subjects = form.querySelectorAll('input[name="subjects[]"]:checked');
       var mcInterest = form.querySelectorAll('input[name="masterclass_interest[]"]:checked');
+      var mcUnits = form.querySelectorAll('input[name="masterclass_unit[]"]:checked');
       var medInterest = form.querySelectorAll('input[name="medprep_interest[]"]:checked');
       var privateOn = !!form.querySelector('input[data-enrol-program="private"]:checked');
       var masterOn = !!form.querySelector('input[data-enrol-program="masterclass"]:checked');
@@ -759,7 +768,7 @@
         var tier = form.querySelector('input[name="tutor_tier"]:checked');
         if(!tier || subjects.length === 0) return false;
       }
-      if(masterOn && mcInterest.length === 0) return false;
+      if(masterOn && (mcInterest.length === 0 || mcUnits.length === 0)) return false;
       if(medOn && medInterest.length === 0) return false;
       if(!privateOn && !masterOn && !medOn) return false;
       return true;
@@ -1263,17 +1272,13 @@
         allowed = true;
         if(privateOn) allowed = allowed && y >= 4 && y <= 12;
         if(medOn) allowed = allowed && y >= 10 && y <= 12;
-        if(masterOn) allowed = allowed && y === 12;
+        if(masterOn) allowed = allowed && y >= 11 && y <= 12;
       }
       el.hidden = !allowed;
       var yInput = el.querySelector('input[name="year_level[]"]');
       if(yInput && !allowed) yInput.checked = false;
       if(allowed) visibleYears += 1;
     });
-    if(masterOn){
-      var year12 = form.querySelector('input[name="year_level[]"][value="十二年级"]');
-      if(year12) year12.checked = true;
-    }
     var yearsWrap = form.querySelector('.enrol-years');
     if(yearsWrap){
       yearsWrap.classList.remove('enrol-years--many', 'enrol-years--mid', 'enrol-years--single');
@@ -1283,7 +1288,9 @@
     }
     var yearHint = document.getElementById('enrolYearHint');
     if(yearHint){
-      if(masterOn) yearHint.textContent = 'Masterclass 仅限十二年级。';
+      if(masterOn && !privateOn && !medOn) yearHint.textContent = 'Masterclass 按 Unit 1&2 与 Unit 3&4 分班（通常对应十一、十二年级）。';
+      else if(masterOn && privateOn) yearHint.textContent = '同时选择 Masterclass 与一对一时，可选十一至十二年级。';
+      else if(masterOn && medOn) yearHint.textContent = '同时选择 Masterclass 与 UCAT 时，可选十一至十二年级。';
       else if(medOn && privateOn) yearHint.textContent = '同时选择一对一与 UCAT 时，可选十至十二年级。';
       else if(medOn) yearHint.textContent = 'UCAT 路径可选十至十二年级。';
       else if(privateOn) yearHint.textContent = '一对一辅导可选四至十二年级。低年级价格有所不同。';
@@ -1320,6 +1327,7 @@
     }
     if(!masterOn){
       [].forEach.call(form.querySelectorAll('input[name="masterclass_interest[]"]'), function(el){ el.checked = false; });
+      [].forEach.call(form.querySelectorAll('input[name="masterclass_unit[]"]'), function(el){ el.checked = false; });
     }
     if(!medOn){
       [].forEach.call(form.querySelectorAll('input[name="medprep_interest[]"]'), function(el){ el.checked = false; });
