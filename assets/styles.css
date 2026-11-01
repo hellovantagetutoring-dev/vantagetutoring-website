@@ -402,49 +402,55 @@ header{
  overflow:hidden;
 }
 .portal-preview-visual--private{
- background:linear-gradient(135deg, #12264a 0%, #2a4a7a 55%, #d4a84b 100%);
+ background:#fef9f2;
+ border:1px solid rgba(18,38,74,.08);
 }
 .portal-preview-visual--private::after{
  content:"";
  position:absolute; left:10px; top:12px;
- width:18px; height:18px; border-radius:50%;
- background:rgba(255,255,255,.9);
- box-shadow:22px 4px 0 -2px rgba(255,255,255,.55);
+ width:16px; height:16px; border-radius:50%;
+ background:#d4a84b;
+ box-shadow:20px 2px 0 -1px #e8d5a8, 40px 4px 0 #fff, 40px 4px 0 1px rgba(18,38,74,.12);
 }
 .portal-preview-visual--mc{
- background:linear-gradient(135deg, #1c3d5a, #3d6f8f 40%, #e8c56a);
+ background:#fef9f2;
+ border:1px solid rgba(18,38,74,.08);
 }
 .portal-preview-visual--mc::before,
 .portal-preview-visual--mc::after{
  content:"";
  position:absolute;
- border-radius:4px;
- background:rgba(255,255,255,.88);
+ border-radius:6px;
+ background:#fff;
+ border:1px solid rgba(18,38,74,.1);
+ box-shadow:0 1px 2px rgba(18,38,74,.06);
 }
-.portal-preview-visual--mc::before{ left:8px; top:10px; width:28px; height:8px; }
-.portal-preview-visual--mc::after{ left:8px; top:22px; width:20px; height:8px; opacity:.65; }
+.portal-preview-visual--mc::before{ left:8px; top:8px; width:30px; height:12px; }
+.portal-preview-visual--mc::after{ left:8px; top:24px; width:22px; height:12px; opacity:.9; }
 .portal-preview-visual--atar{
- background:linear-gradient(160deg, #0f2744, #245a4a 50%, #c9a227);
+ background:#fef9f2;
+ border:1px solid rgba(18,38,74,.08);
 }
 .portal-preview-visual--atar::after{
- content:"99.5";
+ content:"94.75";
  position:absolute; inset:0;
  display:grid; place-items:center;
- font:800 15px/1 "Plus Jakarta Sans", system-ui, sans-serif;
- color:#fff;
+ font:800 14px/1 "Plus Jakarta Sans", system-ui, sans-serif;
+ color:#12264a;
  letter-spacing:-.03em;
 }
 .portal-preview-visual--progress{
- background:linear-gradient(135deg, #243b55, #4a6fa5 45%, #f0d28a);
+ background:#fef9f2;
+ border:1px solid rgba(18,38,74,.08);
 }
 .portal-preview-visual--progress span{
  position:absolute; left:8px; right:8px; top:12px; height:6px;
- border-radius:999px; background:rgba(255,255,255,.25);
+ border-radius:999px; background:rgba(18,38,74,.1);
 }
 .portal-preview-visual--progress span::after{
  content:"";
  position:absolute; left:0; top:0; bottom:0; width:68%;
- border-radius:inherit; background:#fff;
+ border-radius:inherit; background:linear-gradient(90deg,#d4a84b,#e8c56a);
 }
 .portal-preview-card strong{
  font-size:13px;
