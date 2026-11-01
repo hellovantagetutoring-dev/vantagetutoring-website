@@ -1,7 +1,8 @@
 /* Sitewide presentation polish — Apple HIG–inspired clarity on Vantage brand */
 
 :root{
-  --wrap-max: 1120px;
+  /* Keep Contour-era width — 1120 felt too narrow */
+  --wrap-max: 1280px;
   --fs-body: 17px;
   --lh-body: 1.65;
   --header-offset: 68px;
