@@ -1447,6 +1447,64 @@
       '</div>';
   })();
 
+  // Learning Portal button → feature preview (fade in/out on hover)
+  (function(){
+    var portalUrl = 'https://learn.vantagetutoring.com.au/login';
+    var html =
+      '<p class="portal-preview-kicker">Inside the Learning Portal</p>' +
+      '<div class="portal-preview-grid">' +
+        '<a class="portal-preview-card" href="'+portalUrl+'">' +
+          '<div class="portal-preview-visual portal-preview-visual--private" aria-hidden="true"></div>' +
+          '<strong>Private 1-1</strong>' +
+          '<p>Matched tutor, custom homework, flexible sessions.</p>' +
+        '</a>' +
+        '<a class="portal-preview-card" href="'+portalUrl+'">' +
+          '<div class="portal-preview-visual portal-preview-visual--mc" aria-hidden="true"></div>' +
+          '<strong>Masterclass</strong>' +
+          '<p>Weekly classes, workbooks, solutions &amp; recordings.</p>' +
+        '</a>' +
+        '<a class="portal-preview-card" href="'+portalUrl+'">' +
+          '<div class="portal-preview-visual portal-preview-visual--atar" aria-hidden="true"></div>' +
+          '<strong>ATAR calculator</strong>' +
+          '<p>IA1–EA marks grid with QTAC-based estimates.</p>' +
+        '</a>' +
+        '<a class="portal-preview-card" href="'+portalUrl+'">' +
+          '<div class="portal-preview-visual portal-preview-visual--progress" aria-hidden="true"><span></span></div>' +
+          '<strong>Progress tools</strong>' +
+          '<p>Sylly-Map syllabus tracking — open on signup.</p>' +
+        '</a>' +
+      '</div>';
+
+    document.querySelectorAll('a.btn-nav-portal').forEach(function(btn){
+      if (btn.closest('.portal-nav-wrap')) return;
+      var wrap = document.createElement('div');
+      wrap.className = 'portal-nav-wrap';
+      btn.parentNode.insertBefore(wrap, btn);
+      wrap.appendChild(btn);
+      var panel = document.createElement('div');
+      panel.className = 'portal-preview';
+      panel.setAttribute('role', 'region');
+      panel.setAttribute('aria-label', 'Learning Portal features');
+      panel.innerHTML = html;
+      wrap.appendChild(panel);
+
+      var hideTimer = null;
+      function open(){
+        if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+        wrap.classList.add('is-open');
+      }
+      function scheduleClose(){
+        hideTimer = setTimeout(function(){ wrap.classList.remove('is-open'); }, 120);
+      }
+      wrap.addEventListener('mouseenter', open);
+      wrap.addEventListener('mouseleave', scheduleClose);
+      wrap.addEventListener('focusin', open);
+      wrap.addEventListener('focusout', function(e){
+        if (!wrap.contains(e.relatedTarget)) scheduleClose();
+      });
+    });
+  })();
+
   // Home: subject chip hover/focus preview → tutors page with filter
   var subjectPreview=document.getElementById('subjectPreview');
   var subjectBoard=document.querySelector('.edu-subject-board');
