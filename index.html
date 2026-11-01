@@ -17,7 +17,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" href="/assets/logo.png">
 <link rel="stylesheet" href="/assets/styles.css?v=apple2">
-<link rel="stylesheet" href="/assets/home-landing.css?v=234">
+<link rel="stylesheet" href="/assets/home-landing.css?v=235">
 <link rel="stylesheet" href="/assets/contour-pass.css?v=35">
 <link rel="stylesheet" href="/assets/portal-ui.css?v=3">
 <link rel="stylesheet" href="/assets/site-polish.css?v=3">
@@ -253,45 +253,57 @@
   <div class="wrap">
     <div class="section-head reveal">
       <h2>Subjects we tutor.</h2>
-      <p>Tap a subject to find a tutor, from junior years through QCE and UCAT.</p>
+      <p>Pick a subject to open matching tutors. Flagship QCE subjects sit first in each group.</p>
     </div>
-    <div class="edu-subject-board reveal" aria-label="Subjects offered">
-      <div class="edu-subject-group">
-        <h3 class="edu-subject-label">STEM</h3>
-        <ul class="edu-subject-list">
-          <li><a class="edu-subject-chip edu-subject-chip--key" href="/tutors?subject=maths-methods" data-label="Maths Methods" data-atar="99.90">Maths Methods</a></li>
-          <li><a class="edu-subject-chip edu-subject-chip--key" href="/tutors?subject=specialist-maths" data-label="Specialist Maths" data-atar="99.90">Specialist Maths</a></li>
-          <li><a class="edu-subject-chip edu-subject-chip--key" href="/tutors?subject=chemistry" data-label="Chemistry" data-atar="99.90">Chemistry</a></li>
-          <li><a class="edu-subject-chip edu-subject-chip--key" href="/tutors?subject=physics" data-label="Physics" data-atar="99.90">Physics</a></li>
-          <li><span class="edu-subject-chip edu-subject-chip--key">Biology</span></li>
-          <li><span class="edu-subject-chip">General Maths</span></li>
-          <li><a class="edu-subject-chip" href="/tutors?subject=engineering" data-label="Engineering" data-atar="99.85">Engineering</a></li>
-          <li><a class="edu-subject-chip" href="/tutors?subject=digital-solutions" data-label="Digital Solutions" data-atar="99.85">Digital Solutions</a></li>
-          <li><span class="edu-subject-chip">Science</span></li>
+    <div class="subj-dir reveal" aria-label="Subjects offered">
+      <article class="subj-col">
+        <header class="subj-col-head">
+          <p class="subj-col-kicker">01</p>
+          <h3>STEM</h3>
+          <p>Maths, sciences, and tech subjects.</p>
+        </header>
+        <ul class="subj-list">
+          <li><a class="subj-item is-key edu-subject-chip" href="/tutors?subject=maths-methods" data-label="Maths Methods" data-atar="99.90"><span class="subj-name">Maths Methods</span><span class="subj-meta">to 99.90</span></a></li>
+          <li><a class="subj-item is-key edu-subject-chip" href="/tutors?subject=specialist-maths" data-label="Specialist Maths" data-atar="99.90"><span class="subj-name">Specialist Maths</span><span class="subj-meta">to 99.90</span></a></li>
+          <li><a class="subj-item is-key edu-subject-chip" href="/tutors?subject=chemistry" data-label="Chemistry" data-atar="99.90"><span class="subj-name">Chemistry</span><span class="subj-meta">to 99.90</span></a></li>
+          <li><a class="subj-item is-key edu-subject-chip" href="/tutors?subject=physics" data-label="Physics" data-atar="99.90"><span class="subj-name">Physics</span><span class="subj-meta">to 99.90</span></a></li>
+          <li><span class="subj-item is-soft"><span class="subj-name">Biology</span><span class="subj-meta">Available</span></span></li>
+          <li><span class="subj-item is-soft"><span class="subj-name">General Maths</span><span class="subj-meta">Available</span></span></li>
+          <li><a class="subj-item edu-subject-chip" href="/tutors?subject=engineering" data-label="Engineering" data-atar="99.85"><span class="subj-name">Engineering</span><span class="subj-meta">to 99.85</span></a></li>
+          <li><a class="subj-item edu-subject-chip" href="/tutors?subject=digital-solutions" data-label="Digital Solutions" data-atar="99.85"><span class="subj-name">Digital Solutions</span><span class="subj-meta">to 99.85</span></a></li>
+          <li><span class="subj-item is-soft"><span class="subj-name">Junior Science</span><span class="subj-meta">Years 7-10</span></span></li>
         </ul>
-      </div>
-      <div class="edu-subject-group">
-        <h3 class="edu-subject-label">Humanities</h3>
-        <ul class="edu-subject-list">
-          <li><a class="edu-subject-chip edu-subject-chip--key" href="/tutors?subject=literature" data-label="Literature" data-atar="99.90">Literature</a></li>
-          <li><a class="edu-subject-chip edu-subject-chip--key" href="/tutors?subject=english" data-label="English" data-atar="99.85">English</a></li>
-          <li><a class="edu-subject-chip" href="/tutors?subject=economics" data-label="Economics" data-atar="99.90">Economics</a></li>
-          <li><span class="edu-subject-chip">Legal Studies</span></li>
-          <li><a class="edu-subject-chip" href="/tutors?subject=philosophy" data-label="Philosophy" data-atar="99.85">Philosophy</a></li>
-          <li><span class="edu-subject-chip">Humanities</span></li>
+      </article>
+      <article class="subj-col">
+        <header class="subj-col-head">
+          <p class="subj-col-kicker">02</p>
+          <h3>Humanities</h3>
+          <p>English, literature, and social sciences.</p>
+        </header>
+        <ul class="subj-list">
+          <li><a class="subj-item is-key edu-subject-chip" href="/tutors?subject=literature" data-label="Literature" data-atar="99.90"><span class="subj-name">Literature</span><span class="subj-meta">to 99.90</span></a></li>
+          <li><a class="subj-item is-key edu-subject-chip" href="/tutors?subject=english" data-label="English" data-atar="99.85"><span class="subj-name">English</span><span class="subj-meta">to 99.85</span></a></li>
+          <li><a class="subj-item edu-subject-chip" href="/tutors?subject=economics" data-label="Economics" data-atar="99.90"><span class="subj-name">Economics</span><span class="subj-meta">to 99.90</span></a></li>
+          <li><span class="subj-item is-soft"><span class="subj-name">Legal Studies</span><span class="subj-meta">Available</span></span></li>
+          <li><a class="subj-item edu-subject-chip" href="/tutors?subject=philosophy" data-label="Philosophy" data-atar="99.85"><span class="subj-name">Philosophy</span><span class="subj-meta">to 99.85</span></a></li>
+          <li><span class="subj-item is-soft"><span class="subj-name">Junior Humanities</span><span class="subj-meta">Years 7-10</span></span></li>
         </ul>
-      </div>
-      <div class="edu-subject-group">
-        <h3 class="edu-subject-label">Pathways &amp; languages</h3>
-        <ul class="edu-subject-list">
-          <li><a class="edu-subject-chip edu-subject-chip--accent" href="/tutors?subject=ucat" data-label="UCAT" data-atar="99.90">UCAT</a></li>
-          <li><a class="edu-subject-chip" href="/tutors?subject=japanese" data-label="Japanese" data-atar="99.90">Japanese</a></li>
-          <li><a class="edu-subject-chip" href="/tutors?subject=french" data-label="French" data-atar="99.85">French</a></li>
-          <li><a class="edu-subject-chip" href="/tutors?subject=spanish" data-label="Spanish" data-atar="99.80">Spanish</a></li>
-          <li><span class="edu-subject-chip">Languages</span></li>
+      </article>
+      <article class="subj-col">
+        <header class="subj-col-head">
+          <p class="subj-col-kicker">03</p>
+          <h3>Pathways</h3>
+          <p>UCAT and language options.</p>
+        </header>
+        <ul class="subj-list">
+          <li><a class="subj-item is-feature edu-subject-chip" href="/tutors?subject=ucat" data-label="UCAT" data-atar="99.90"><span class="subj-name">UCAT</span><span class="subj-meta">Med pathway</span></a></li>
+          <li><a class="subj-item edu-subject-chip" href="/tutors?subject=japanese" data-label="Japanese" data-atar="99.90"><span class="subj-name">Japanese</span><span class="subj-meta">to 99.90</span></a></li>
+          <li><a class="subj-item edu-subject-chip" href="/tutors?subject=french" data-label="French" data-atar="99.85"><span class="subj-name">French</span><span class="subj-meta">to 99.85</span></a></li>
+          <li><a class="subj-item edu-subject-chip" href="/tutors?subject=spanish" data-label="Spanish" data-atar="99.80"><span class="subj-name">Spanish</span><span class="subj-meta">to 99.80</span></a></li>
+          <li><span class="subj-item is-soft"><span class="subj-name">Other languages</span><span class="subj-meta">Ask us</span></span></li>
         </ul>
-      </div>
-      <p class="edu-subject-preview" id="subjectPreview">Select a subject to find a tutor.</p>
+      </article>
+      <p class="subj-preview edu-subject-preview" id="subjectPreview">Hover a subject to preview tutor strength, then tap to open the tutors page.</p>
     </div>
   </div>
 </section>
@@ -478,6 +490,6 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="/assets/tutor-locations.js?v=21"></script>
-<script src="/assets/main.js?v=apple3"></script>
+<script src="/assets/main.js?v=apple4"></script>
 </body>
 </html>

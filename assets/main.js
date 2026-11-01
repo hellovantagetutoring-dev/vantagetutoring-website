@@ -1507,7 +1507,7 @@
 
  // Home: subject chip hover/focus preview → tutors page with filter
  var subjectPreview=document.getElementById('subjectPreview');
- var subjectBoard=document.querySelector('.edu-subject-board');
+ var subjectBoard=document.querySelector('.subj-dir') || document.querySelector('.edu-subject-board');
  if(subjectPreview && subjectBoard){
  var subjectPreviewDefault=subjectPreview.textContent;
  var isZhHome = document.documentElement.classList.contains('lang-zh') || (document.documentElement.lang || '').indexOf('zh') === 0;
