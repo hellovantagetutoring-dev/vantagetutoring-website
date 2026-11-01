@@ -1,0 +1,168 @@
+/* Sitewide presentation polish — Apple HIG–inspired clarity on Vantage brand */
+
+:root{
+  --wrap-max: 1120px;
+  --fs-body: 17px;
+  --lh-body: 1.65;
+  --header-offset: 68px;
+  --header-bg: rgba(254,249,242,0.86);
+}
+
+body{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Quieter header */
+header{
+  backdrop-filter: saturate(1.4) blur(20px);
+  -webkit-backdrop-filter: saturate(1.4) blur(20px);
+  border-bottom-color: rgba(18,38,74,.06);
+}
+.brand{
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+.navlinks a.link{
+  font-size: 14px;
+  font-weight: 550;
+  color: rgba(26,26,26,.72);
+}
+.navlinks a.link:hover,
+.navlinks a.link.active{ color: var(--text); }
+.navlinks a.link.active::after{
+  height: 1.5px;
+  bottom: -8px;
+  background: var(--bg-navy);
+  opacity: .85;
+}
+.navlinks .btn-primary,
+.navlinks .btn-ghost{
+  border-radius: 980px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+/* Section rhythm — more air, less noise */
+.section-head{
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.section-head h2,
+.edu-section h2,
+.page-hero h1{
+  letter-spacing: -0.04em;
+  font-weight: 700;
+}
+.section-head p,
+.edu-section .section-head p{
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+.edu-tutors-intro,
+.lp-full-head .section-head,
+.lp-teaser-copy .section-head,
+.edu-tutoring-layout .edu-split-copy{
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.page-hero{
+  padding: clamp(3.5rem, 8vw, 5.5rem) 0 clamp(2.5rem, 5vw, 3.5rem);
+}
+.page-hero h1{
+  font-size: clamp(2.2rem, 4.5vw, 3.25rem);
+  max-width: 16ch;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.page-hero p{
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--muted);
+}
+.page-hero .crumbs{
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  font-size: 13px;
+  color: var(--muted-2);
+}
+
+/* Soften dense grids */
+.edu-trust-grid{
+  gap: clamp(1rem, 3vw, 2rem);
+}
+.edu-trust-item .num{
+  letter-spacing: -0.045em;
+  font-weight: 750;
+}
+.edu-trust-item .lbl{
+  font-size: 0.86rem;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.vt-pillar,
+.cp-offer,
+.step{
+  border-radius: 22px;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.vt-pillar:hover,
+.cp-offer:hover{
+  transform: translateY(-2px);
+}
+
+.steps{
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+.step .no{
+  font-variant-numeric: tabular-nums;
+  opacity: .35;
+  letter-spacing: -0.04em;
+}
+
+/* Buttons — clearer primary */
+.btn-primary{
+  box-shadow: 0 1px 0 rgba(255,255,255,.35) inset, 0 10px 24px -16px rgba(201,154,58,.55);
+}
+.btn-ghost{
+  background: rgba(255,255,255,.55);
+}
+
+/* Reduce visual clutter on announce pill */
+.edu-announce-pill{
+  border-radius: 16px;
+}
+
+/* Footer breathe */
+footer{
+  padding-top: clamp(3rem, 6vw, 4.5rem);
+}
+footer a{ transition: color .15s ease; }
+
+/* Focus visibility (HIG) */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible{
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+@media (max-width: 720px){
+  .page-hero h1{ max-width: none; }
+  .section-head{ text-align: left; }
+}

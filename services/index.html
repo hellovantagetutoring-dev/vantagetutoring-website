@@ -15,9 +15,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" href="/assets/logo.png">
-<link rel="stylesheet" href="/assets/styles.css?v=portalprev1">
+<link rel="stylesheet" href="/assets/styles.css?v=apple1">
+<link rel="stylesheet" href="/assets/portal-ui.css?v=1">
+<link rel="stylesheet" href="/assets/site-polish.css?v=1">
 </head>
-<body>
+<body class="page-services">
 
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -44,8 +46,8 @@
 <section class="page-hero">
   <div class="wrap reveal">
     <div class="crumbs"><a href="/">Home</a><span>/</span>Services</div>
-    <h1>Three ways to learn with <span class="grad-text">Vantage.</span></h1>
-    <p>Private 1-on-1, weekly masterclasses, and UCAT, each built around your subject score and pathway.</p>
+    <h1>Three ways to learn with Vantage.</h1>
+    <p>Private 1-on-1, weekly masterclasses, and UCAT — plus a Learning Portal that keeps resources, progress, and ATAR tools in one place.</p>
   </div>
 </section>
 
@@ -126,11 +128,116 @@
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
+<section class="lp-section" id="portal" aria-labelledby="lp-services-title">
+  <div class="wrap">
+    <div class="lp-full-head reveal">
+      <div class="section-head">
+        <p style="margin:0 0 .5rem;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);">Learning Portal</p>
+        <h2 id="lp-services-title">A clearer view of every program.</h2>
+        <p>Modern screens for Private, Masterclass, Progress, and ATAR — the same tools students use after they sign up.</p>
+      </div>
+      <a href="https://learn.vantagetutoring.com.au/login" class="btn btn-primary">Open portal</a>
+    </div>
+    <div class="lp-full-grid reveal">
+      <article class="lp-feature">
+        <div class="lp-feature-visual" aria-hidden="true">
+          <div class="lp-screen">
+            <div class="lp-screen-nav">
+              <span class="lp-pill is-active">Private</span>
+              <span class="lp-pill">Masterclass</span>
+              <span class="lp-pill">Progress</span>
+            </div>
+            <div class="lp-panel" style="margin-top:8px">
+              <h4>Your pairs</h4>
+              <div class="lp-progress-list">
+                <div class="lp-progress-item"><span>Methods · Tutor Keeran</span><em>3 files</em></div>
+                <div class="lp-progress-item"><span>Chemistry · Tutor Annie</span><em>IA draft</em></div>
+                <div class="lp-progress-item"><span>Assessment dropbox</span><em>Ready</em></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lp-feature-copy">
+          <h3>Private 1-1</h3>
+          <p>Matched tutor, custom PDFs, and an assessment dropbox for IA drafts and feedback.</p>
+        </div>
+      </article>
+      <article class="lp-feature">
+        <div class="lp-feature-visual" aria-hidden="true">
+          <div class="lp-screen">
+            <div class="lp-screen-nav">
+              <span class="lp-pill">Private</span>
+              <span class="lp-pill is-active">Masterclass</span>
+              <span class="lp-pill">Progress</span>
+            </div>
+            <div class="lp-mc-tiles" style="margin-top:8px">
+              <div class="lp-mc-tile"><span>Methods</span><small>Unit 3&amp;4 · Workbook</small></div>
+              <div class="lp-mc-tile"><span>Chemistry</span><small>Recording · Week 4</small></div>
+              <div class="lp-mc-tile"><span>Physics</span><small>Solutions released</small></div>
+            </div>
+          </div>
+        </div>
+        <div class="lp-feature-copy">
+          <h3>Masterclass</h3>
+          <p>Subject libraries, weekly sessions, recordings, and worked solutions when your tutor releases them.</p>
+        </div>
+      </article>
+      <article class="lp-feature">
+        <div class="lp-feature-visual" aria-hidden="true">
+          <div class="lp-screen">
+            <div class="lp-screen-nav">
+              <span class="lp-pill">Private</span>
+              <span class="lp-pill">Masterclass</span>
+              <span class="lp-pill is-active">Progress</span>
+            </div>
+            <div class="lp-screen-body" style="margin-top:8px">
+              <div class="lp-panel">
+                <h4>IA1 · IA2 · IA3 · EA</h4>
+                <div class="lp-rows">
+                  <div class="lp-row"><span>English</span><span>22</span><span>21</span><span>20</span><span>19</span></div>
+                  <div class="lp-row"><span>Methods</span><span>18</span><span>14</span><span>13</span><span>42</span></div>
+                </div>
+              </div>
+              <div class="lp-panel lp-atar-hero">
+                <small>Est. ATAR</small>
+                <strong>94.75</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lp-feature-copy">
+          <h3>ATAR calculator</h3>
+          <p>Enter ISMG marks by subject. Estimates track last QTAC year with a tight trajectory trim.</p>
+        </div>
+      </article>
+      <article class="lp-feature">
+        <div class="lp-feature-visual" aria-hidden="true">
+          <div class="lp-screen">
+            <div class="lp-screen-nav">
+              <span class="lp-pill is-active">Sylly-Map</span>
+              <span class="lp-pill">ATAR</span>
+            </div>
+            <div class="lp-progress-list" style="margin-top:8px">
+              <div class="lp-progress-item"><span>Unit 3 · Exponential functions</span><em>Mastered</em></div>
+              <div class="lp-progress-item"><span>Unit 3 · Calculus intro</span><em>Okay</em></div>
+              <div class="lp-progress-item"><span>Unit 4 · Integration</span><em>Need help</em></div>
+              <div class="lp-progress-item"><span>Unit 4 · Applications</span><em>—</em></div>
+            </div>
+          </div>
+        </div>
+        <div class="lp-feature-copy">
+          <h3>Progress tools</h3>
+          <p>Sylly-Map syllabus checklist opens on signup — track topics before programs unlock.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section class="tight">
   <div class="wrap">
     <div class="section-head reveal">
-      <h2>From first message to <span class="grad-text">first result.</span></h2>
+      <h2>From first message to first result.</h2>
     </div>
     <div class="steps">
       <div class="step reveal"><div class="no">01</div><h3>Tell us your goals</h3><p>Send your year level, subjects, and target score and we build a personalised plan.</p></div>
@@ -177,6 +284,6 @@
   </div>
 </footer>
 
-<script src="/assets/main.js?v=portalprev1"></script>
+<script src="/assets/main.js?v=apple1"></script>
 </body>
 </html>
