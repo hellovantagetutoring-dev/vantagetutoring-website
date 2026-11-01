@@ -4,20 +4,81 @@
   padding: clamp(4rem, 8vw, 6.5rem) 0;
 }
 .lp-section .section-head{
-  max-width: 38rem;
-  margin-bottom: clamp(2rem, 4vw, 3rem);
+  max-width: none;
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
 }
+.page-home-edu .lp-section .section-head h2,
 .lp-section .section-head h2{
-  font-size: clamp(1.85rem, 3.2vw, 2.65rem);
-  letter-spacing: -0.035em;
+  font-size: clamp(30px, 3.7vw, 44px);
+  letter-spacing: -0.04em;
   line-height: 1.12;
   font-weight: 700;
+  margin: 0 0 10px;
 }
 .lp-section .section-head p{
-  margin-top: 0.75rem;
+  margin: 0;
   font-size: 1.05rem;
   color: var(--muted);
   line-height: 1.55;
+  max-width: 42rem;
+}
+
+.lp-access{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 clamp(1.5rem, 3vw, 2.25rem);
+}
+.lp-access-card{
+  padding: 16px 15px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(18,38,74,.1);
+  background: rgba(255,255,255,.72);
+}
+.lp-access-kicker{
+  margin: 0 0 6px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--gold-deep, #b9822e);
+}
+.lp-access-card h3{
+  margin: 0 0 10px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #12264a;
+}
+.lp-access-card ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+.lp-access-card li{
+  position: relative;
+  padding-left: 12px;
+  font-size: 13px;
+  line-height: 1.35;
+  color: rgba(18,38,74,.78);
+}
+.lp-access-card li::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-gold, #e8b84b);
+}
+@media (max-width: 980px){
+  .lp-access{ grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px){
+  .lp-access{ grid-template-columns: 1fr; }
 }
 
 .lp-teaser{
@@ -27,8 +88,8 @@
   align-items: center;
 }
 .lp-teaser-copy h2{ margin: 0; }
-.lp-teaser-copy p{
-  margin: 0.85rem 0 0;
+.lp-teaser-copy > p{
+  margin: 0;
   color: var(--muted);
   font-size: 1.05rem;
   line-height: 1.55;
