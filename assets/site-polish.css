@@ -15,8 +15,11 @@ body{
  text-rendering: optimizeLegibility;
 }
 
-/* Quieter header */
+/* Quieter header - stay above transformed section cards on scroll */
 header{
+ position: sticky;
+ top: 0;
+ z-index: 1000;
  backdrop-filter: saturate(1.4) blur(20px);
  -webkit-backdrop-filter: saturate(1.4) blur(20px);
  border-bottom-color: rgba(18,38,74,.06);
