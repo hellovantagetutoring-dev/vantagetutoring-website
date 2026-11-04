@@ -15,14 +15,21 @@ body{
  text-rendering: optimizeLegibility;
 }
 
-/* Quieter header - stay above transformed section cards on scroll */
+/* Quieter header - stay above transformed section cards on scroll.
+   Desktop only: mobile uses the floating fixed pill header in styles.css.
+   Overriding position/top on small screens caused a huge top gap + broken menu. */
+@media (min-width: 921px){
+ header{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: saturate(1.4) blur(20px);
+  -webkit-backdrop-filter: saturate(1.4) blur(20px);
+  border-bottom-color: rgba(18,38,74,.06);
+ }
+}
 header{
- position: sticky;
- top: 0;
  z-index: 1000;
- backdrop-filter: saturate(1.4) blur(20px);
- -webkit-backdrop-filter: saturate(1.4) blur(20px);
- border-bottom-color: rgba(18,38,74,.06);
 }
 .brand{
  font-size: 22px;
