@@ -197,7 +197,7 @@
  <span class="enrol-program-brand-text"><span class="enrol-program-name">vantage</span> <span class="enrol-program-tag">MASTERCLASS</span></span>
  </span>
  <span class="enrol-program-title">Subject Groups</span>
- <span class="enrol-program-desc">$50/week · portal unlocks class libraries, recordings, solutions</span>
+ <span class="enrol-program-desc">$60/week · Early bird $50/week if you sign up now · portal unlocks class libraries, recordings, solutions</span>
  </span>
  </label>
  <label class="enrol-program">
@@ -283,8 +283,8 @@
  <div class="enrol-masterclass-block" style="border-top:0;margin-top:8px;padding-top:0;">
  <p class="enrol-q">Masterclasses · Unit 1&amp;2 and Unit 3&amp;4 · 2 hours · Term 1 2027</p>
  <aside class="enrol-earlybird" role="note">
- <p class="enrol-earlybird-title">$50/week · Early bird $450 for 10 weeks</p>
- <p class="enrol-earlybird-text">Physics, Chemistry, Maths Methods, Specialist Maths and Literature. Structured by Unit 1&amp;2 and Unit 3&amp;4. Cohorts capped at 10. Portal unlocks the Masterclass tab (mock papers, recordings, released solutions), plus free ATAR calculator. Private pairs need a Private enrolment. Also includes tutor consultations and 24/7 study chat. <strong>100% refundable after Week 1</strong> if your child does not find the cohort valuable.</p>
+ <p class="enrol-earlybird-title">$60/week · Early bird $50/week if you sign up now</p>
+ <p class="enrol-earlybird-text">Sign up now to lock in <strong>$50/week</strong> for Term 1 2027. <strong>No payment required</strong> to reserve. Physics, Chemistry, Maths Methods, Specialist Maths and Literature. Structured by Unit 1&amp;2 and Unit 3&amp;4. Cohorts capped at 10. Portal unlocks the Masterclass tab (mock papers, recordings, released solutions), plus free ATAR calculator. Private pairs need a Private enrolment. Also includes tutor consultations and 24/7 study chat. <strong>100% refundable after Week 1</strong> if your child does not find the cohort valuable.</p>
  </aside>
  <p class="enrol-q">Unit band</p>
  <p class="enrol-hint">Masterclasses are organised by QCE unit band, not year level.</p>
@@ -302,7 +302,7 @@
  <label class="enrol-chip"><input type="checkbox" name="masterclass_interest[]" value="Literature"><span>Literature</span></label>
  </div>
  <input type="hidden" name="masterclass_early_bird" id="enrolMcEarlyBird" value="">
- <input type="hidden" name="masterclass_early_bird_rate" value="$450 for 10 weeks (weekly $50)">
+ <input type="hidden" name="masterclass_early_bird_rate" value="Early bird $50/week locked in for Term 1 2027 · no payment required now">
  </div>
  </div>
 
@@ -1183,7 +1183,7 @@
  var earlyField = document.getElementById('enrolMcEarlyBird');
  var enquiry = form.querySelector('input[name="enquiry_type"]');
  var subjectField = form.querySelector('input[name="_subject"]');
- if(earlyField) earlyField.value = mcChecked ? 'Yes: Early bird $450 for 10-week Term 1 (weekly $50)' : '';
+ if(earlyField) earlyField.value = mcChecked ? 'Yes: Early bird $50/week locked in for Term 1 2027 (no payment required now)' : '';
  if(enquiry){
  if(oneToOne && mcChecked) enquiry.value = 'Tutoring + Masterclass interest';
  else if(mcChecked) enquiry.value = 'Masterclass interest';
@@ -1342,6 +1342,7 @@
  var params = new URLSearchParams(window.location.search);
  var prog = (params.get('program') || '').toLowerCase();
  var tier = (params.get('tier') || '').toLowerCase();
+ if(prog === 'ucat') prog = 'medprep';
  if(prog === 'private' || prog === 'masterclass' || prog === 'medprep'){
  var progInput = form.querySelector('input[data-enrol-program="'+prog+'"]');
  if(progInput) progInput.checked = true;
